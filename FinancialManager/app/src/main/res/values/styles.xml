@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary" tools:ignore="NewApi">@color/blue_color</item>
+        <item name="colorPrimaryDark" tools:ignore="NewApi">@color/blue_color</item>
+        <item name="colorAccent" tools:ignore="NewApi">@color/blue_color</item>
+        <item name="colorControlNormal" tools:ignore="NewApi">@color/grey_divider</item>
+        <item name="colorControlActivated" tools:ignore="NewApi">@color/blue_color</item>
+        <item name="colorControlHighlight" tools:ignore="NewApi">@color/blue_color</item>
+    </style>
+
+    <style name="FullscreenDialogAnimation">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
+    <style name="FullscreenDialog" parent="android:Theme.Dialog">
+        <item name="android:colorAccent" tools:ignore="NewApi">@color/app_color</item>
+        <item name="android:colorPrimaryDark" tools:ignore="NewApi">@color/app_color</item>
+        <item name="android:colorControlNormal" tools:ignore="NewApi">@color/grey_divider</item>
+        <item name="android:colorControlActivated" tools:ignore="NewApi">@color/app_color</item>
+        <item name="android:colorControlHighlight" tools:ignore="NewApi">@color/app_color</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">#009df7</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustNothing</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:colorForeground">@color/transparent_dialog</item>
+        <item name="android:windowAnimationStyle">@style/FullscreenDialogAnimation</item>
+    </style>
+
+</resources>

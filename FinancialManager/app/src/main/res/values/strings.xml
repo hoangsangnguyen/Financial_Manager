@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinancialManager</string>
+    <string name="error">Error</string>
+    <string name="api_err_no_network">No internet connection</string>
+    <string name="api_err_time_out">Request time out</string>
+    <string name="api_err_unknown_error">Unknown error</string>
+    <string name="no_internet_network">No internet connection</string>
+    <string name="success">Success</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+</resources>

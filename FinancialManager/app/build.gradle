@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.horical.gito.chat"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+    compileOptions {
+    }
+}
+
+repositories {
+    maven {
+        url "http://dl.bintray.com/lukaville/maven"
+    }
+    google()
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.1.0'
+            }
+        }
+    }
+}
+dependencies {
+    ext {
+        support_library_version = '26.1.0'
+        retrofit_library_verson = '2.1.0'
+        butter_knife_library_version = '8.6.0'
+        dagger_library_version = '2.8'
+        fire_base_library_version = '11.4.2'
+    }
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // android support library
+    compile "com.android.support:design:${support_library_version}"
+    compile "com.android.support:appcompat-v7:${support_library_version}"
+    compile "com.android.support:recyclerview-v7:${support_library_version}"
+    compile "com.android.support:cardview-v7:${support_library_version}"
+    compile "com.android.support:animated-vector-drawable:${support_library_version}"
+    compile "com.android.support:customtabs:${support_library_version}"
+    compile "com.android.support:mediarouter-v7:${support_library_version}"
+
+    // multi dex
+    compile 'com.android.support:multidex:1.0.2'
+
+    // gson
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    // retrofit
+    compile "com.squareup.retrofit2:retrofit:${retrofit_library_verson}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofit_library_verson}"
+    compile "com.squareup.retrofit2:converter-scalars:${retrofit_library_verson}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${retrofit_library_verson}"
+
+    // ok http3 logging
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    // glide
+    compile 'com.github.bumptech.glide:glide:4.2.0'
+    compile "com.github.bumptech.glide:okhttp3-integration:4.2.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    // butter knife
+    compile "com.jakewharton:butterknife:${butter_knife_library_version}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butter_knife_library_version}"
+
+    // custom font
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    compile "com.google.dagger:dagger-android:${dagger_library_version}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dagger_library_version}"
+
+    // fire base
+    compile "com.google.firebase:firebase-core:${fire_base_library_version}"
+    compile "com.google.firebase:firebase-messaging:${fire_base_library_version}"
+    compile "com.google.android.gms:play-services-auth:${fire_base_library_version}"
+
+    // facebook
+    compile 'com.facebook.android:facebook-android-sdk:4.23.0'
+
+    // circle image view
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    // crop image view
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.4.7'
+
+    // file picker
+    compile 'com.nbsp:library:1.8'
+
+    // scrollable
+    compile 'ru.noties:scrollable:1.3.0'
+    compile 'org.zakariya.stickyheaders:stickyheaders:0.7.6'
+
+    //socket
+    compile('io.socket:socket.io-client:0.8.3') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    //pdf
+    compile 'com.github.barteksc:android-pdf-viewer:2.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+}

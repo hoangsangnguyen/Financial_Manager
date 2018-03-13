@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ic_bg_login"
+    tools:context="com.example.nhattruong.financialmanager.mvp.login.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical">
+
+        <com.example.nhattruong.financialmanager.custom_view.CustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:background="@drawable/border_white_text"
+            android:padding="@dimen/small_10dp"
+            android:layout_marginStart="@dimen/large_60dp"
+            android:layout_marginEnd="@dimen/large_60dp"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/default_text_size"
+            android:maxLines="1"/>
+
+        <com.example.nhattruong.financialmanager.custom_view.CustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:background="@drawable/border_white_text"
+            android:padding="@dimen/small_10dp"
+            android:layout_marginStart="@dimen/large_60dp"
+            android:layout_marginEnd="@dimen/large_60dp"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/default_text_size"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/small_14dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="@dimen/default_text_size"
+                android:background="@drawable/border_blue_text"
+                android:textColor="@color/white_color"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/small_14dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="@dimen/default_text_size"
+                android:background="@drawable/border_blue_text"
+                android:textColor="@color/white_color"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:layout_margin="@dimen/small_14dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
