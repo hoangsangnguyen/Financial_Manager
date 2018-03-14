@@ -10,19 +10,6 @@ public class PreferManager {
         mPreferences = sharedPreferences;
     }
 
-    // FCM token
-    private static final String KEY_FCM_TOKEN = "KEY_FCM_TOKEN";
-
-    public String getFcmToken() {
-        return mPreferences.getString(KEY_FCM_TOKEN, null);
-    }
-
-    public void setFcmToken(String fcmToken) {
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putString(KEY_FCM_TOKEN, fcmToken);
-        editor.apply();
-    }
-
     // Token
     private static final String KEY_TOKEN = "TOKEN";
 

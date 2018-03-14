@@ -137,7 +137,8 @@ public class CustomEditText extends EditText {
     public void onEditorAction(int actionId) {
         super.onEditorAction(actionId);
         if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                actionId == EditorInfo.IME_ACTION_DONE) {
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_NEXT) {
             clearFocus();
         }
     }

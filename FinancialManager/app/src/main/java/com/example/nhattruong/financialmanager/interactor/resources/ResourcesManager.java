@@ -2,12 +2,7 @@ package com.example.nhattruong.financialmanager.interactor.resources;
 
 import android.content.Context;
 
-import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class ResourcesManager {
 

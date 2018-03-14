@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nhattruong.financialmanager.MainApplication;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.dialog.DialogOk;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
@@ -52,7 +53,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
             }
         }
 
-//        MainApplication.getAppComponent().inject(this);
+        MainApplication.getAppComponent().inject(this);
         unbinder = ButterKnife.bind(this);
         if (mPresenter != null)
             mPresenter.onCreate(this, unbinder);
