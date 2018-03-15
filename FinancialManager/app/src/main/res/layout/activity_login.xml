@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.example.nhattruong.financialmanager.custom_view.CustomEditText
+        <EditText
             android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:textColor="@color/app_color"
             android:textSize="@dimen/default_text_size" />
 
-        <com.example.nhattruong.financialmanager.custom_view.CustomEditText
+        <EditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:textSize="@dimen/default_text_size"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

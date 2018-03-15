@@ -3,6 +3,7 @@ package com.example.nhattruong.financialmanager.mvp.login;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
@@ -15,10 +16,10 @@ import butterknife.BindView;
 public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
 
     @BindView(R.id.edt_username)
-    CustomEditText edtUsername;
+    EditText edtUsername;
 
     @BindView(R.id.edt_password)
-    CustomEditText edtPassword;
+    EditText edtPassword;
 
     @BindView(R.id.btn_login)
     Button btnLogin;
