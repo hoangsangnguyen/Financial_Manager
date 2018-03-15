@@ -23,14 +23,17 @@ class LoginPresenter extends BasePresenter implements LoginContract.IPresenter{
 
     @Override
     public void login(String username, String password) {
+        getView().showLoading();
         getApiManager().login(new LoginRequest(username, password), new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
+                getView().hideLoading();
                 getView().onSuccess();
             }
 
             @Override
             public void failure(RestError error) {
+                getView().hideLoading();
                 getView().onFailure(error.toString());
             }
         });
