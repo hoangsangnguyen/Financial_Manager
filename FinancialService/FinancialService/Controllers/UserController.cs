@@ -34,8 +34,14 @@ namespace FinancialService.Controllers
                 Users userDB = db.Users.FirstOrDefault(x => x.userName == user.userName);
                 userDB.token = createToken(userDB.userName);
                 db.SubmitChanges();
-
+                result.message = "SignUp success";
                 result.results = userDB;
+            } else
+            {
+                if (response == 1)
+                    result.message = "Username already exists !";
+                else
+                    result.message = "Email already exists !";
             }
 
             return result;

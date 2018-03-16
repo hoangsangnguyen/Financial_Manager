@@ -43,18 +43,19 @@
       <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.SpendingDetails" Member="SpendingDetails">
+    <Type Name="SpendingDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="detail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="jarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_Login" Method="sp_Login">
     <Parameter Name="Username" Parameter="username" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(255)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_SignUp" Method="sp_SignUp">
-    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(255)" />
-    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(255)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_checkUserHasJars" Method="sp_checkUserHasJars">
@@ -66,6 +67,23 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.sp_UpdateIncomeAmount" Method="sp_UpdateIncomeAmount">
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="detail" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="jarID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_SignUp" Method="sp_SignUp">
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_CreateSpending" Method="sp_CreateSpending">
     <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="detail" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="amount" Type="System.Decimal" DbType="Money" />

@@ -149,6 +149,7 @@ namespace FinancialService.Controllers
             }
             return result;
         }
+
         private bool checkAuthenticated (string token, string userName)
         {
             string tokenDB = db.Users.FirstOrDefault(x => x.userName == userName).token;

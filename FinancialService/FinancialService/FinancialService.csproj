@@ -148,6 +148,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\JarController.cs" />
+    <Compile Include="Controllers\SpendingController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UserController.cs" />

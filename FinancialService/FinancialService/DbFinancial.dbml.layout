@@ -32,5 +32,11 @@
         <elementListCompartment Id="6f33f1cb-0eff-4fe7-8838-fe4354950e25" absoluteBounds="6.765, 1.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="0451d042-01ea-41b7-bf96-3e32190b7918" absoluteBounds="2.875, 2.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DbFinancialDataContext/SpendingDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a31af5a-4490-4745-93f3-58855db758a1" absoluteBounds="2.8899999999999997, 3.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
