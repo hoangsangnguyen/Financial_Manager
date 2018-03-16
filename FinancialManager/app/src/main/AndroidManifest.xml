@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.login.detail.DetailActivity"></activity>
+        <activity android:name=".mvp.detail.DetailActivity"></activity>
         <activity android:name=".mvp.home.HomeActivity" />
         <activity android:name=".mvp.signup.SignUpActivity"></activity>
     </application>

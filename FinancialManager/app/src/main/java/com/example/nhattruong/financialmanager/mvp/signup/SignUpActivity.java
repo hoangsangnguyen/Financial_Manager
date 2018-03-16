@@ -16,6 +16,21 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
     @BindView(R.id.edt_last_name)
     EditText edtLastName;
 
+    @BindView(R.id.email)
+    EditText edtEmail;
+
+    @BindView(R.id.edt_phone)
+    EditText edtPhone;
+
+    @BindView(R.id.edt_username)
+    EditText edtUsername;
+
+    @BindView(R.id.edt_password)
+    EditText edtPassword;
+
+    @BindView(R.id.edt_confirm_password)
+    EditText edtConfirmPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setPresenter(new SignUpPresenter());

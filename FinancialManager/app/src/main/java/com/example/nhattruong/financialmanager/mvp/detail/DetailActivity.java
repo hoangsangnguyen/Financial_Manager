@@ -1,4 +1,4 @@
-package com.example.nhattruong.financialmanager.mvp.login.detail;
+package com.example.nhattruong.financialmanager.mvp.detail;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

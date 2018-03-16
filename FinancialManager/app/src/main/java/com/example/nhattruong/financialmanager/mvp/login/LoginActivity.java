@@ -15,6 +15,7 @@ import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.signup.SignUpActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View, View.OnClickListener {
 
