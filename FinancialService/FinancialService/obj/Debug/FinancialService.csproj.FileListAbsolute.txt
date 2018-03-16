@@ -38,3 +38,4 @@ D:\Workspace\Webservice\Financial_Manager\FinancialService\FinancialService\bin\
 D:\Workspace\Webservice\Financial_Manager\FinancialService\FinancialService\bin\System.Web.WebPages.xml
 D:\Workspace\Webservice\Financial_Manager\FinancialService\FinancialService\bin\System.Web.WebPages.Deployment.xml
 D:\Workspace\Webservice\Financial_Manager\FinancialService\FinancialService\bin\System.Web.WebPages.Razor.xml
+D:\Workspace\Webservice\Financial_Manager\FinancialService\FinancialService\obj\Debug\FinancialService.csprojResolveAssemblyReference.cache

@@ -20,10 +20,16 @@
         <elementListCompartment Id="9abd6a78-edc0-477f-af3b-e545f4c286b0" absoluteBounds="5.1400000000000006, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="89736648-9319-4519-a489-1af7ce654764" absoluteBounds="3.5, 0.875, 2, 1.7708968098958333">
+    <classShape Id="89736648-9319-4519-a489-1af7ce654764" absoluteBounds="3, 0.5, 2, 1.7708968098958333">
       <DataClassMoniker Name="/DbFinancialDataContext/JAR" />
       <nestedChildShapes>
-        <elementListCompartment Id="0e55f0a8-fe2a-4ad8-92d5-a2c350cc7078" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0e55f0a8-fe2a-4ad8-92d5-a2c350cc7078" absoluteBounds="3.015, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2560cc10-f209-49c3-93e5-b08d82895c15" absoluteBounds="6.75, 1, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DbFinancialDataContext/Income" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f33f1cb-0eff-4fe7-8838-fe4354950e25" absoluteBounds="6.765, 1.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
