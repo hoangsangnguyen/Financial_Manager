@@ -5,10 +5,15 @@ import com.example.nhattruong.financialmanager.interactor.api.network.ApiService
 import com.example.nhattruong.financialmanager.interactor.api.network.RestCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ApiManager {
@@ -25,6 +30,7 @@ public class ApiManager {
         mEventManager = eventManager;
     }
 
+    //======================== Login ==========================
     public void login(final LoginRequest request, final ApiCallback<BaseResponse> callback) {
         mApiServices.login(request)
                 .enqueue(new RestCallback<BaseResponse>() {
@@ -38,6 +44,22 @@ public class ApiManager {
                         callback.failure(error);
                     }
 
+                });
+    }
+
+    //======================== Sign up ==========================
+    public void signUp(SignUpRequest request, final ApiCallback<UserResponse> callback) {
+        mApiServices.signUp(request)
+                .enqueue(new RestCallback<UserResponse>() {
+                    @Override
+                    public void success(UserResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
                 });
     }
 }

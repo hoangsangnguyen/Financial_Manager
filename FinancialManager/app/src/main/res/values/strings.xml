@@ -13,4 +13,10 @@
     <string name="username">Username</string>
     <string name="success">Success</string>
     <string name="failed">Failed</string>
+    <string name="confirm_password">Confirm\npassword</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="register">Register</string>
 </resources>
