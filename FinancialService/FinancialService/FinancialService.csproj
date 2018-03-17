@@ -147,11 +147,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DebtController.cs" />
     <Compile Include="Controllers\JarController.cs" />
     <Compile Include="Controllers\SpendingController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DbFinancial.cs">
+      <DependentUpon>DbFinancial.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DbFinancial.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

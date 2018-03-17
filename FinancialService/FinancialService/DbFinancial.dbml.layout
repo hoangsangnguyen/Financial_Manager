@@ -1,41 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DbFinancial">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.5, 8.5" name="DbFinancial">
   <DataContextMoniker Name="/DbFinancialDataContext" />
   <nestedChildShapes>
-    <classShape Id="b827ff45-4347-4812-90d4-f495e0335462" absoluteBounds="0.75, 4.875, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/DbFinancialDataContext/Users" />
+    <classShape Id="aa5a82cc-934c-4715-aff3-5c0c1bc2a656" absoluteBounds="9.25, 4.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/DbFinancialDataContext/Debt" />
       <nestedChildShapes>
-        <elementListCompartment Id="58c31a66-46a7-41dd-a732-666ede0dcf77" absoluteBounds="0.765, 5.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="846d9ab0-af40-4bb0-98c7-a6e66e0a2cd6" absoluteBounds="9.265, 4.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c71e173f-13ac-4ddc-bcec-0101306efec1" absoluteBounds="0.75, 1.25, 2, 1.1939925130208338">
-      <DataClassMoniker Name="/DbFinancialDataContext/Types" />
-      <nestedChildShapes>
-        <elementListCompartment Id="512e8040-a1ff-4da3-864d-e2cc7b47f8f9" absoluteBounds="0.765, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0cb7516b-4718-4079-ba55-15cc037da9cd" absoluteBounds="5.125, 3.625, 2, 1.193992513020834">
-      <DataClassMoniker Name="/DbFinancialDataContext/States" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9abd6a78-edc0-477f-af3b-e545f4c286b0" absoluteBounds="5.1400000000000006, 4.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="89736648-9319-4519-a489-1af7ce654764" absoluteBounds="3, 0.5, 2, 1.7708968098958333">
-      <DataClassMoniker Name="/DbFinancialDataContext/JAR" />
-      <nestedChildShapes>
-        <elementListCompartment Id="0e55f0a8-fe2a-4ad8-92d5-a2c350cc7078" absoluteBounds="3.015, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2560cc10-f209-49c3-93e5-b08d82895c15" absoluteBounds="6.75, 1, 2, 1.9631982421875">
+    <classShape Id="cba40f69-6dff-4160-872a-0f1b07a72c08" absoluteBounds="6.25, 3, 2, 1.9631982421875009">
       <DataClassMoniker Name="/DbFinancialDataContext/Income" />
       <nestedChildShapes>
-        <elementListCompartment Id="6f33f1cb-0eff-4fe7-8838-fe4354950e25" absoluteBounds="6.765, 1.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="87c2a0a9-033b-4013-a3e7-6c85efa4cce8" absoluteBounds="6.265, 3.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="0451d042-01ea-41b7-bf96-3e32190b7918" absoluteBounds="2.875, 2.875, 2, 1.9631982421875">
+    <classShape Id="575f568b-ba2d-4434-af42-1f6653c9da95" absoluteBounds="0.75, 1.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DbFinancialDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7841b92c-f8f8-403a-9618-d95589b74474" absoluteBounds="0.765, 1.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c7c1146-289f-4181-84fe-862e5e914b8d" absoluteBounds="3.5, 4.375, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/DbFinancialDataContext/JAR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="93e72bea-2712-4dd7-aff5-95053082e60a" absoluteBounds="3.515, 4.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b7a30e8-50f2-4098-8aac-4f32f719d957" absoluteBounds="6.25, 5.75, 2, 1.9631982421875005">
       <DataClassMoniker Name="/DbFinancialDataContext/SpendingDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="1a31af5a-4490-4745-93f3-58855db758a1" absoluteBounds="2.8899999999999997, 3.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="45dd24de-e927-4012-9db9-898c4dad3f32" absoluteBounds="6.265, 6.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="548a77cc-8631-4c3a-8b42-88efcee9643c" absoluteBounds="6.5, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DbFinancialDataContext/State" />
+      <nestedChildShapes>
+        <elementListCompartment Id="425e36de-a226-4f6e-bc94-1e4a04931cd3" absoluteBounds="6.515, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac79ea7e-8187-44f4-9678-9bab1d9d2034" absoluteBounds="0.75, 4.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DbFinancialDataContext/Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02327499-5ec2-43f6-9f93-dba2051dfd79" absoluteBounds="0.765, 5.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

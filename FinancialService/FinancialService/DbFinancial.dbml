@@ -1,36 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FINANCIAL" Class="DbFinancialDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-5VBLALA;Initial Catalog=FINANCIAL;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FINANCIALConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="Users">
+  <Table Name="dbo.Debt" Member="Debts">
+    <Type Name="Debt">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="firstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="lastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="userName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="token" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Types" Member="Types">
-    <Type Name="Types">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.States" Member="States">
-    <Type Name="States">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.JAR" Member="JARs">
-    <Type Name="JAR">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="typeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="inCome" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="spend" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="detail" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="origin" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="jarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="stateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isPositive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Income" Member="Incomes">
@@ -43,6 +23,28 @@
       <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="userName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="token" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JAR" Member="JARs">
+    <Type Name="JAR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="typeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="inCome" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="debt" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="spend" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.SpendingDetails" Member="SpendingDetails">
     <Type Name="SpendingDetail">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -51,6 +53,18 @@
       <Column Name="amount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="jarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.States" Member="States">
+    <Type Name="State">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Types" Member="Types">
+    <Type Name="Type">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_Login" Method="sp_Login">
@@ -89,6 +103,17 @@
     <Parameter Name="amount" Type="System.Decimal" DbType="Money" />
     <Parameter Name="jarID" Type="System.Int32" DbType="Int" />
     <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_InsertDebt" Method="sp_InsertDebt">
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="detail" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="origin" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="stateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="jarID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isPositive" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
