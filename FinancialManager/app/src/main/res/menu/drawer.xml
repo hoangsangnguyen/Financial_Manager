@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/jar1"
+            android:checked="true"
+            android:title="Lọ 1" />
+        <item
+            android:id="@+id/jar2"
+            android:title="Lọ 2" />
+        <item
+            android:id="@+id/jar3"
+            android:title="Lọ 3" />
+        <item
+            android:id="@+id/jar4"
+            android:title="Lọ 4" />
+        <item
+            android:id="@+id/jar5"
+            android:title="Lọ 5" />
+        <item
+            android:id="@+id/jar6"
+            android:title="Lọ 6" />
+    </group>
+</menu>
