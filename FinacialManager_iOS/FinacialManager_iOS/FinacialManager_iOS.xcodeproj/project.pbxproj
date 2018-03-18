@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
 		CA5D8176205E4FEF005C23E6 /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816B205E4FEE005C23E6 /* BaseNV.m */; };
 		CA5D8177205E4FEF005C23E6 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816E205E4FEE005C23E6 /* BaseVC.m */; };
 		CA5D8178205E4FEF005C23E6 /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8171205E4FEE005C23E6 /* BaseTBV.m */; };
@@ -27,6 +28,7 @@
 		CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */; };
 		CAAE45AB205CB14D00090152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45AA205CB14D00090152 /* main.m */; };
 		CAAE45B5205CB14D00090152 /* FinacialManager_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */; };
+		D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		289502364A49E235EF2CD79C /* Pods-FinacialManager_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA5D816A205E4FEE005C23E6 /* BaseNV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNV.h; sourceTree = "<group>"; };
 		CA5D816B205E4FEE005C23E6 /* BaseNV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNV.m; sourceTree = "<group>"; };
 		CA5D816D205E4FEE005C23E6 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 		CAAE45B0205CB14D00090152 /* FinacialManager_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinacialManager_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinacialManager_iOSUITests.m; sourceTree = "<group>"; };
 		CAAE45B6205CB14D00090152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E119DCAFB56F754334F1C8B2 /* Pods-FinacialManager_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,12 +104,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49B80F489F95FDCAA352B663 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */,
+				888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CBC7ECC4D21A08B23D37C38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				289502364A49E235EF2CD79C /* Pods-FinacialManager_iOS.debug.xcconfig */,
+				E119DCAFB56F754334F1C8B2 /* Pods-FinacialManager_iOS.release.xcconfig */,
+				A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */,
+				D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CA5D8163205E4F91005C23E6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +326,8 @@
 				CAAE459A205CB14D00090152 /* FinacialManager_iOS */,
 				CAAE45B3205CB14D00090152 /* FinacialManager_iOSUITests */,
 				CAAE4599205CB14D00090152 /* Products */,
+				4CBC7ECC4D21A08B23D37C38 /* Pods */,
+				49B80F489F95FDCAA352B663 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -335,9 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAAE45B9205CB14D00090152 /* Build configuration list for PBXNativeTarget "FinacialManager_iOS" */;
 			buildPhases = (
+				26DAD81BC4172432737C62B0 /* [CP] Check Pods Manifest.lock */,
 				CAAE4594205CB14D00090152 /* Sources */,
 				CAAE4595205CB14D00090152 /* Frameworks */,
 				CAAE4596205CB14D00090152 /* Resources */,
+				E03AC6DA9A7165170D860C7D /* [CP] Embed Pods Frameworks */,
+				BBAAAB5C47851D340CD69B28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,9 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAAE45BC205CB14D00090152 /* Build configuration list for PBXNativeTarget "FinacialManager_iOSUITests" */;
 			buildPhases = (
+				53C5340A4B2024DD9F316C9F /* [CP] Check Pods Manifest.lock */,
 				CAAE45AC205CB14D00090152 /* Sources */,
 				CAAE45AD205CB14D00090152 /* Frameworks */,
 				CAAE45AE205CB14D00090152 /* Resources */,
+				E98955F723B07FCC7D21044D /* [CP] Embed Pods Frameworks */,
+				564AA5D9E27E6E0F99E45B77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -424,6 +462,105 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26DAD81BC4172432737C62B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinacialManager_iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53C5340A4B2024DD9F316C9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinacialManager_iOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		564AA5D9E27E6E0F99E45B77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBAAAB5C47851D340CD69B28 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E03AC6DA9A7165170D860C7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E98955F723B07FCC7D21044D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CAAE4594205CB14D00090152 /* Sources */ = {
@@ -593,6 +730,7 @@
 		};
 		CAAE45BA205CB14D00090152 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 289502364A49E235EF2CD79C /* Pods-FinacialManager_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -607,6 +745,7 @@
 		};
 		CAAE45BB205CB14D00090152 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E119DCAFB56F754334F1C8B2 /* Pods-FinacialManager_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -621,6 +760,7 @@
 		};
 		CAAE45BD205CB14D00090152 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52BEENW56Y;
@@ -635,6 +775,7 @@
 		};
 		CAAE45BE205CB14D00090152 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52BEENW56Y;
