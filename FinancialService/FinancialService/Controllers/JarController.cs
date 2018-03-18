@@ -94,7 +94,17 @@ namespace FinancialService.Controllers
             }
 
             ResultModel result = new ResultModel();
-            var userName = db.Users.Where(x => x.ID == inCome.userID).First().userName;
+            var userName = "";
+            try
+            {
+                userName = db.Users.Where(x => x.ID == inCome.userID).First().userName;
+            }
+            catch
+            {
+                result.success = false;
+                result.message = "Update Jars failed";
+                return result;
+            }
 
             if (!checkAuthenticated(token, userName))
             {
@@ -129,7 +139,17 @@ namespace FinancialService.Controllers
             }
 
             ResultModel result = new ResultModel();
-            var userName = db.Users.Where(x => x.ID == userID).First().userName;
+            var userName = "";
+            try
+            {
+                userName = db.Users.Where(x => x.ID == userID).First().userName;
+            }
+            catch
+            {
+                result.success = false;
+                result.message = "Get Jar income failed";
+                return result;
+            }
 
             if (!checkAuthenticated(token, userName))
             {

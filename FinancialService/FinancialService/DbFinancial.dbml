@@ -116,4 +116,20 @@
     <Parameter Name="isPositive" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.sp_UpdateDebt" Method="sp_UpdateDebt">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="detail" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="origin" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="stateID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="jarID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isPositive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_DeleteDebt" Method="sp_DeleteDebt">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
