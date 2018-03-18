@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Configure.h"
+#import "define.h"
+#import "SlideNavigationController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

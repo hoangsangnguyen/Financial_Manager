@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
-		CA5D8176205E4FEF005C23E6 /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816B205E4FEE005C23E6 /* BaseNV.m */; };
-		CA5D8177205E4FEF005C23E6 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816E205E4FEE005C23E6 /* BaseVC.m */; };
-		CA5D8178205E4FEF005C23E6 /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8171205E4FEE005C23E6 /* BaseTBV.m */; };
-		CA5D8179205E4FEF005C23E6 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8174205E4FEF005C23E6 /* BaseCell.m */; };
 		CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */; };
 		CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */; };
 		CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8181205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
@@ -22,12 +18,22 @@
 		CA5D8196205E5049005C23E6 /* Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8194205E5049005C23E6 /* Configure.m */; };
 		CA5D819A205E508B005C23E6 /* UserDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8199205E508B005C23E6 /* UserDto.m */; };
 		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
+		CA765707205EB62100751B9F /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7656FD205EB62000751B9F /* BaseCell.m */; };
+		CA765708205EB62100751B9F /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765700205EB62100751B9F /* BaseTBV.m */; };
+		CA765709205EB62100751B9F /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765703205EB62100751B9F /* BaseNV.m */; };
+		CA76570A205EB62100751B9F /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765706205EB62100751B9F /* BaseVC.m */; };
+		CA76570E205EB70300751B9F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA76570D205EB70300751B9F /* Login.storyboard */; };
+		CA765712205EB72500751B9F /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765711205EB72500751B9F /* MenuVC.m */; };
+		CA76571D205EB72C00751B9F /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765716205EB72C00751B9F /* SignInVC.m */; };
+		CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765719205EB72C00751B9F /* SignUpVC.m */; };
+		CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA76571C205EB72C00751B9F /* WelcomeVC.m */; };
 		CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE459C205CB14D00090152 /* AppDelegate.m */; };
 		CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A1205CB14D00090152 /* Main.storyboard */; };
 		CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A4205CB14D00090152 /* Assets.xcassets */; };
 		CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */; };
 		CAAE45AB205CB14D00090152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45AA205CB14D00090152 /* main.m */; };
 		CAAE45B5205CB14D00090152 /* FinacialManager_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */; };
+		CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CACAA6A4205EBDFB0096DB80 /* MenuDto.m */; };
 		D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -46,15 +52,6 @@
 		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		CA5D816A205E4FEE005C23E6 /* BaseNV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNV.h; sourceTree = "<group>"; };
-		CA5D816B205E4FEE005C23E6 /* BaseNV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNV.m; sourceTree = "<group>"; };
-		CA5D816D205E4FEE005C23E6 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
-		CA5D816E205E4FEE005C23E6 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
-		CA5D8170205E4FEE005C23E6 /* BaseTBV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTBV.h; sourceTree = "<group>"; };
-		CA5D8171205E4FEE005C23E6 /* BaseTBV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTBV.m; sourceTree = "<group>"; };
-		CA5D8173205E4FEF005C23E6 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
-		CA5D8174205E4FEF005C23E6 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
-		CA5D8175205E4FEF005C23E6 /* define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = define.h; path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/define.h; sourceTree = "<group>"; };
 		CA5D817B205E5038005C23E6 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
 		CA5D817C205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
 		CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
@@ -76,6 +73,24 @@
 		CA5D8199205E508B005C23E6 /* UserDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDto.m; sourceTree = "<group>"; };
 		CA5D819C205E510E005C23E6 /* BaseDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDto.h; sourceTree = "<group>"; };
 		CA5D819D205E510E005C23E6 /* BaseDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDto.m; sourceTree = "<group>"; };
+		CA7656FC205EB62000751B9F /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		CA7656FD205EB62000751B9F /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		CA7656FF205EB62100751B9F /* BaseTBV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTBV.h; sourceTree = "<group>"; };
+		CA765700205EB62100751B9F /* BaseTBV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTBV.m; sourceTree = "<group>"; };
+		CA765702205EB62100751B9F /* BaseNV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNV.h; sourceTree = "<group>"; };
+		CA765703205EB62100751B9F /* BaseNV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNV.m; sourceTree = "<group>"; };
+		CA765705205EB62100751B9F /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		CA765706205EB62100751B9F /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		CA76570C205EB69B00751B9F /* define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
+		CA76570D205EB70300751B9F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CA765710205EB72500751B9F /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
+		CA765711205EB72500751B9F /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
+		CA765715205EB72C00751B9F /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
+		CA765716205EB72C00751B9F /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
+		CA765718205EB72C00751B9F /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpVC.h; sourceTree = "<group>"; };
+		CA765719205EB72C00751B9F /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
+		CA76571B205EB72C00751B9F /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
+		CA76571C205EB72C00751B9F /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
 		CAAE4598205CB14D00090152 /* FinacialManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinacialManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE459B205CB14D00090152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAAE459C205CB14D00090152 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +102,8 @@
 		CAAE45B0205CB14D00090152 /* FinacialManager_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinacialManager_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinacialManager_iOSUITests.m; sourceTree = "<group>"; };
 		CAAE45B6205CB14D00090152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACAA6A3205EBDFB0096DB80 /* MenuDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDto.h; sourceTree = "<group>"; };
+		CACAA6A4205EBDFB0096DB80 /* MenuDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDto.m; sourceTree = "<group>"; };
 		D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E119DCAFB56F754334F1C8B2 /* Pods-FinacialManager_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +151,8 @@
 		CA5D8163205E4F91005C23E6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CA76570C205EB69B00751B9F /* define.h */,
+				CA76570B205EB64E00751B9F /* Base */,
 				CA5D8168205E4FB8005C23E6 /* AppDelegate */,
 				CA5D8164205E4F99005C23E6 /* Manager */,
 				CA5D8167205E4FB1005C23E6 /* Models */,
@@ -164,11 +183,8 @@
 		CA5D8166205E4FA8005C23E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CA5D8175205E4FEF005C23E6 /* define.h */,
-				CA5D8169205E4FEE005C23E6 /* BaseNV */,
-				CA5D816F205E4FEE005C23E6 /* BaseTbv */,
-				CA5D8172205E4FEF005C23E6 /* BaseCell */,
-				CA5D816C205E4FEE005C23E6 /* BaseVC */,
+				CA765713205EB72C00751B9F /* LoginVC */,
+				CA76570F205EB72500751B9F /* MenuVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,7 +192,7 @@
 		CA5D8167205E4FB1005C23E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CA5D819B205E510E005C23E6 /* BaseDto */,
+				CACAA6A2205EBDFB0096DB80 /* MenuDto */,
 				CA5D8197205E508B005C23E6 /* UserDto */,
 			);
 			path = Models;
@@ -189,46 +205,6 @@
 				CAAE459C205CB14D00090152 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		CA5D8169205E4FEE005C23E6 /* BaseNV */ = {
-			isa = PBXGroup;
-			children = (
-				CA5D816A205E4FEE005C23E6 /* BaseNV.h */,
-				CA5D816B205E4FEE005C23E6 /* BaseNV.m */,
-			);
-			name = BaseNV;
-			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseNV;
-			sourceTree = "<group>";
-		};
-		CA5D816C205E4FEE005C23E6 /* BaseVC */ = {
-			isa = PBXGroup;
-			children = (
-				CA5D816D205E4FEE005C23E6 /* BaseVC.h */,
-				CA5D816E205E4FEE005C23E6 /* BaseVC.m */,
-			);
-			name = BaseVC;
-			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseVC;
-			sourceTree = "<group>";
-		};
-		CA5D816F205E4FEE005C23E6 /* BaseTbv */ = {
-			isa = PBXGroup;
-			children = (
-				CA5D8170205E4FEE005C23E6 /* BaseTBV.h */,
-				CA5D8171205E4FEE005C23E6 /* BaseTBV.m */,
-			);
-			name = BaseTbv;
-			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseTbv;
-			sourceTree = "<group>";
-		};
-		CA5D8172205E4FEF005C23E6 /* BaseCell */ = {
-			isa = PBXGroup;
-			children = (
-				CA5D8173205E4FEF005C23E6 /* BaseCell.h */,
-				CA5D8174205E4FEF005C23E6 /* BaseCell.m */,
-			);
-			name = BaseCell;
-			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseCell;
 			sourceTree = "<group>";
 		};
 		CA5D817A205E5038005C23E6 /* AnimationsSlideNav */ = {
@@ -316,8 +292,103 @@
 			children = (
 				CAAE45A1205CB14D00090152 /* Main.storyboard */,
 				CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */,
+				CA76570D205EB70300751B9F /* Login.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CA7656FB205EB62000751B9F /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA7656FC205EB62000751B9F /* BaseCell.h */,
+				CA7656FD205EB62000751B9F /* BaseCell.m */,
+			);
+			path = BaseCell;
+			sourceTree = "<group>";
+		};
+		CA7656FE205EB62100751B9F /* BaseTbv */ = {
+			isa = PBXGroup;
+			children = (
+				CA7656FF205EB62100751B9F /* BaseTBV.h */,
+				CA765700205EB62100751B9F /* BaseTBV.m */,
+			);
+			path = BaseTbv;
+			sourceTree = "<group>";
+		};
+		CA765701205EB62100751B9F /* BaseNV */ = {
+			isa = PBXGroup;
+			children = (
+				CA765702205EB62100751B9F /* BaseNV.h */,
+				CA765703205EB62100751B9F /* BaseNV.m */,
+			);
+			path = BaseNV;
+			sourceTree = "<group>";
+		};
+		CA765704205EB62100751B9F /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA765705205EB62100751B9F /* BaseVC.h */,
+				CA765706205EB62100751B9F /* BaseVC.m */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		CA76570B205EB64E00751B9F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D819B205E510E005C23E6 /* BaseDto */,
+				CA7656FB205EB62000751B9F /* BaseCell */,
+				CA765701205EB62100751B9F /* BaseNV */,
+				CA7656FE205EB62100751B9F /* BaseTbv */,
+				CA765704205EB62100751B9F /* BaseVC */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CA76570F205EB72500751B9F /* MenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA765710205EB72500751B9F /* MenuVC.h */,
+				CA765711205EB72500751B9F /* MenuVC.m */,
+			);
+			path = MenuVC;
+			sourceTree = "<group>";
+		};
+		CA765713205EB72C00751B9F /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA765714205EB72C00751B9F /* SignInVC */,
+				CA765717205EB72C00751B9F /* SignUpVC */,
+				CA76571A205EB72C00751B9F /* WelcomeVC */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		CA765714205EB72C00751B9F /* SignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA765715205EB72C00751B9F /* SignInVC.h */,
+				CA765716205EB72C00751B9F /* SignInVC.m */,
+			);
+			path = SignInVC;
+			sourceTree = "<group>";
+		};
+		CA765717205EB72C00751B9F /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA765718205EB72C00751B9F /* SignUpVC.h */,
+				CA765719205EB72C00751B9F /* SignUpVC.m */,
+			);
+			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		CA76571A205EB72C00751B9F /* WelcomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA76571B205EB72C00751B9F /* WelcomeVC.h */,
+				CA76571C205EB72C00751B9F /* WelcomeVC.m */,
+			);
+			path = WelcomeVC;
 			sourceTree = "<group>";
 		};
 		CAAE458F205CB14D00090152 = {
@@ -358,6 +429,15 @@
 				CAAE45B6205CB14D00090152 /* Info.plist */,
 			);
 			path = FinacialManager_iOSUITests;
+			sourceTree = "<group>";
+		};
+		CACAA6A2205EBDFB0096DB80 /* MenuDto */ = {
+			isa = PBXGroup;
+			children = (
+				CACAA6A3205EBDFB0096DB80 /* MenuDto.h */,
+				CACAA6A4205EBDFB0096DB80 /* MenuDto.m */,
+			);
+			path = MenuDto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +528,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA76570E205EB70300751B9F /* Login.storyboard in Resources */,
 				CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */,
 				CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */,
 				CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */,
@@ -567,22 +648,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA5D8178205E4FEF005C23E6 /* BaseTBV.m in Sources */,
 				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				CA76571D205EB72C00751B9F /* SignInVC.m in Sources */,
 				CA5D8196205E5049005C23E6 /* Configure.m in Sources */,
+				CA765708205EB62100751B9F /* BaseTBV.m in Sources */,
 				CAAE45AB205CB14D00090152 /* main.m in Sources */,
+				CA765707205EB62100751B9F /* BaseCell.m in Sources */,
 				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				CA76570A205EB62100751B9F /* BaseVC.m in Sources */,
 				CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				CA765712205EB72500751B9F /* MenuVC.m in Sources */,
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
 				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
-				CA5D8176205E4FEF005C23E6 /* BaseNV.m in Sources */,
-				CA5D8179205E4FEF005C23E6 /* BaseCell.m in Sources */,
-				CA5D8177205E4FEF005C23E6 /* BaseVC.m in Sources */,
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
+				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
+				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,
 				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
+				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,
+				CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

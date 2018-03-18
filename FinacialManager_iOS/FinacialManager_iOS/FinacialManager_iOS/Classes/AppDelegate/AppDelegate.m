@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MenuVC.h"
+#import "WelcomeVC.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    //
+    _configure = [[Configure alloc] init];
+    
+    //Init SlideNav
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    MenuVC *leftMenu = (MenuVC*)[mainStoryboard
+                                 instantiateViewControllerWithIdentifier: @"MenuVC"];
+    
+    
+    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+    [SlideNavigationController sharedInstance].menuRevealAnimationDuration = 0.3;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = 100;
+    [SlideNavigationController sharedInstance].enableShadow = YES;
+    
+    
+    WelcomeVC *vc = VCFromSB(WelcomeVC, SB_Login);
+    [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
+                                 andCompletion:nil];
+    
     return YES;
 }
 
@@ -49,23 +73,23 @@
 
 #pragma mark - Loading
 
-//- (void)showLoading{
-//    [self showLoadingAction];
-//}
+- (void)showLoading{
+    [self showLoadingAction];
+}
 
-//- (void)showLoadingAction {
-//    if(![MBProgressHUD HUDForView:_window]) {
-//        [MBProgressHUD showHUDAddedTo:_window animated:YES];
-//    }
-//}
-//
-//- (void)hideLoading {
-//    [self performSelector:@selector(hideLoadingAction) withObject:nil afterDelay:0.25];
-//}
-//
-//- (void) hideLoadingAction {
-//    [MBProgressHUD hideHUDForView:_window animated:YES];
-//}
+- (void)showLoadingAction {
+    if(![MBProgressHUD HUDForView:_window]) {
+        [MBProgressHUD showHUDAddedTo:_window animated:YES];
+    }
+}
+
+- (void)hideLoading {
+    [self performSelector:@selector(hideLoadingAction) withObject:nil afterDelay:0.25];
+}
+
+- (void) hideLoadingAction {
+    [MBProgressHUD hideHUDForView:_window animated:YES];
+}
 
 
 @end
