@@ -7,8 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA5D8176205E4FEF005C23E6 /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816B205E4FEE005C23E6 /* BaseNV.m */; };
+		CA5D8177205E4FEF005C23E6 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D816E205E4FEE005C23E6 /* BaseVC.m */; };
+		CA5D8178205E4FEF005C23E6 /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8171205E4FEE005C23E6 /* BaseTBV.m */; };
+		CA5D8179205E4FEF005C23E6 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8174205E4FEF005C23E6 /* BaseCell.m */; };
+		CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */; };
+		CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */; };
+		CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8181205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8183205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m */; };
+		CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8185205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8188205E5038005C23E6 /* SlideNavigationController.m */; };
+		CA5D8195205E5049005C23E6 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8191205E5049005C23E6 /* API.m */; };
+		CA5D8196205E5049005C23E6 /* Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8194205E5049005C23E6 /* Configure.m */; };
+		CA5D819A205E508B005C23E6 /* UserDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8199205E508B005C23E6 /* UserDto.m */; };
+		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
 		CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE459C205CB14D00090152 /* AppDelegate.m */; };
-		CAAE45A0205CB14D00090152 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE459F205CB14D00090152 /* ViewController.m */; };
 		CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A1205CB14D00090152 /* Main.storyboard */; };
 		CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A4205CB14D00090152 /* Assets.xcassets */; };
 		CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */; };
@@ -27,11 +40,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA5D816A205E4FEE005C23E6 /* BaseNV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNV.h; sourceTree = "<group>"; };
+		CA5D816B205E4FEE005C23E6 /* BaseNV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNV.m; sourceTree = "<group>"; };
+		CA5D816D205E4FEE005C23E6 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		CA5D816E205E4FEE005C23E6 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		CA5D8170205E4FEE005C23E6 /* BaseTBV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTBV.h; sourceTree = "<group>"; };
+		CA5D8171205E4FEE005C23E6 /* BaseTBV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTBV.m; sourceTree = "<group>"; };
+		CA5D8173205E4FEF005C23E6 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		CA5D8174205E4FEF005C23E6 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		CA5D8175205E4FEF005C23E6 /* define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = define.h; path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/define.h; sourceTree = "<group>"; };
+		CA5D817B205E5038005C23E6 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		CA5D817C205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
+		CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
+		CA5D817E205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScale.h; sourceTree = "<group>"; };
+		CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScale.m; sourceTree = "<group>"; };
+		CA5D8180205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScaleAndFade.h; sourceTree = "<group>"; };
+		CA5D8181205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScaleAndFade.m; sourceTree = "<group>"; };
+		CA5D8182205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		CA5D8183205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		CA5D8184205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
+		CA5D8185205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
+		CA5D8187205E5038005C23E6 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		CA5D8188205E5038005C23E6 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
+		CA5D8190205E5049005C23E6 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		CA5D8191205E5049005C23E6 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		CA5D8193205E5049005C23E6 /* Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
+		CA5D8194205E5049005C23E6 /* Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configure.m; sourceTree = "<group>"; };
+		CA5D8198205E508B005C23E6 /* UserDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDto.h; sourceTree = "<group>"; };
+		CA5D8199205E508B005C23E6 /* UserDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDto.m; sourceTree = "<group>"; };
+		CA5D819C205E510E005C23E6 /* BaseDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDto.h; sourceTree = "<group>"; };
+		CA5D819D205E510E005C23E6 /* BaseDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDto.m; sourceTree = "<group>"; };
 		CAAE4598205CB14D00090152 /* FinacialManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinacialManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE459B205CB14D00090152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAAE459C205CB14D00090152 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CAAE459E205CB14D00090152 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CAAE459F205CB14D00090152 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CAAE45A2205CB14D00090152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAAE45A4205CB14D00090152 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAAE45A7205CB14D00090152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +101,195 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA5D8163205E4F91005C23E6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8168205E4FB8005C23E6 /* AppDelegate */,
+				CA5D8164205E4F99005C23E6 /* Manager */,
+				CA5D8167205E4FB1005C23E6 /* Models */,
+				CA5D8166205E4FA8005C23E6 /* Controllers */,
+				CA5D8165205E4FA3005C23E6 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CA5D8164205E4F99005C23E6 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D818F205E5049005C23E6 /* API */,
+				CA5D8192205E5049005C23E6 /* Configure */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CA5D8165205E4FA3005C23E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D817A205E5038005C23E6 /* AnimationsSlideNav */,
+				CA5D8186205E5038005C23E6 /* SlideNavigationController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA5D8166205E4FA8005C23E6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8175205E4FEF005C23E6 /* define.h */,
+				CA5D8169205E4FEE005C23E6 /* BaseNV */,
+				CA5D816F205E4FEE005C23E6 /* BaseTbv */,
+				CA5D8172205E4FEF005C23E6 /* BaseCell */,
+				CA5D816C205E4FEE005C23E6 /* BaseVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CA5D8167205E4FB1005C23E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D819B205E510E005C23E6 /* BaseDto */,
+				CA5D8197205E508B005C23E6 /* UserDto */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CA5D8168205E4FB8005C23E6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				CAAE459B205CB14D00090152 /* AppDelegate.h */,
+				CAAE459C205CB14D00090152 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		CA5D8169205E4FEE005C23E6 /* BaseNV */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D816A205E4FEE005C23E6 /* BaseNV.h */,
+				CA5D816B205E4FEE005C23E6 /* BaseNV.m */,
+			);
+			name = BaseNV;
+			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseNV;
+			sourceTree = "<group>";
+		};
+		CA5D816C205E4FEE005C23E6 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D816D205E4FEE005C23E6 /* BaseVC.h */,
+				CA5D816E205E4FEE005C23E6 /* BaseVC.m */,
+			);
+			name = BaseVC;
+			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseVC;
+			sourceTree = "<group>";
+		};
+		CA5D816F205E4FEE005C23E6 /* BaseTbv */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8170205E4FEE005C23E6 /* BaseTBV.h */,
+				CA5D8171205E4FEE005C23E6 /* BaseTBV.m */,
+			);
+			name = BaseTbv;
+			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseTbv;
+			sourceTree = "<group>";
+		};
+		CA5D8172205E4FEF005C23E6 /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8173205E4FEF005C23E6 /* BaseCell.h */,
+				CA5D8174205E4FEF005C23E6 /* BaseCell.m */,
+			);
+			name = BaseCell;
+			path = ../../../../../../../AppFood/AppFood/AppFood/Classes/Controllers/BaseCell;
+			sourceTree = "<group>";
+		};
+		CA5D817A205E5038005C23E6 /* AnimationsSlideNav */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D817B205E5038005C23E6 /* SlideNavigationContorllerAnimator.h */,
+				CA5D817C205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.h */,
+				CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */,
+				CA5D817E205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.h */,
+				CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */,
+				CA5D8180205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				CA5D8181205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				CA5D8182205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.h */,
+				CA5D8183205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m */,
+				CA5D8184205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				CA5D8185205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			path = AnimationsSlideNav;
+			sourceTree = "<group>";
+		};
+		CA5D8186205E5038005C23E6 /* SlideNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8187205E5038005C23E6 /* SlideNavigationController.h */,
+				CA5D8188205E5038005C23E6 /* SlideNavigationController.m */,
+			);
+			path = SlideNavigationController;
+			sourceTree = "<group>";
+		};
+		CA5D818F205E5049005C23E6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8190205E5049005C23E6 /* API.h */,
+				CA5D8191205E5049005C23E6 /* API.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CA5D8192205E5049005C23E6 /* Configure */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8193205E5049005C23E6 /* Configure.h */,
+				CA5D8194205E5049005C23E6 /* Configure.m */,
+			);
+			path = Configure;
+			sourceTree = "<group>";
+		};
+		CA5D8197205E508B005C23E6 /* UserDto */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D8198205E508B005C23E6 /* UserDto.h */,
+				CA5D8199205E508B005C23E6 /* UserDto.m */,
+			);
+			path = UserDto;
+			sourceTree = "<group>";
+		};
+		CA5D819B205E510E005C23E6 /* BaseDto */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D819C205E510E005C23E6 /* BaseDto.h */,
+				CA5D819D205E510E005C23E6 /* BaseDto.m */,
+			);
+			path = BaseDto;
+			sourceTree = "<group>";
+		};
+		CA5D819F205E5204005C23E6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D81A1205E5226005C23E6 /* Storyboard */,
+				CA5D81A0205E5210005C23E6 /* Image */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA5D81A0205E5210005C23E6 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				CAAE45A4205CB14D00090152 /* Assets.xcassets */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		CA5D81A1205E5226005C23E6 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CAAE45A1205CB14D00090152 /* Main.storyboard */,
+				CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		CAAE458F205CB14D00090152 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +311,8 @@
 		CAAE459A205CB14D00090152 /* FinacialManager_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CAAE459B205CB14D00090152 /* AppDelegate.h */,
-				CAAE459C205CB14D00090152 /* AppDelegate.m */,
-				CAAE459E205CB14D00090152 /* ViewController.h */,
-				CAAE459F205CB14D00090152 /* ViewController.m */,
-				CAAE45A1205CB14D00090152 /* Main.storyboard */,
-				CAAE45A4205CB14D00090152 /* Assets.xcassets */,
-				CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */,
+				CA5D8163205E4F91005C23E6 /* Classes */,
+				CA5D819F205E5204005C23E6 /* Resources */,
 				CAAE45A9205CB14D00090152 /* Info.plist */,
 				CAAE45AA205CB14D00090152 /* main.m */,
 			);
@@ -205,8 +430,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAAE45A0205CB14D00090152 /* ViewController.m in Sources */,
+				CA5D8178205E4FEF005C23E6 /* BaseTBV.m in Sources */,
+				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				CA5D8196205E5049005C23E6 /* Configure.m in Sources */,
 				CAAE45AB205CB14D00090152 /* main.m in Sources */,
+				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
+				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
+				CA5D8176205E4FEF005C23E6 /* BaseNV.m in Sources */,
+				CA5D8179205E4FEF005C23E6 /* BaseCell.m in Sources */,
+				CA5D8177205E4FEF005C23E6 /* BaseVC.m in Sources */,
+				CA5D8195205E5049005C23E6 /* API.m in Sources */,
+				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

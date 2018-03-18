@@ -47,5 +47,25 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Loading
+
+//- (void)showLoading{
+//    [self showLoadingAction];
+//}
+
+//- (void)showLoadingAction {
+//    if(![MBProgressHUD HUDForView:_window]) {
+//        [MBProgressHUD showHUDAddedTo:_window animated:YES];
+//    }
+//}
+//
+//- (void)hideLoading {
+//    [self performSelector:@selector(hideLoadingAction) withObject:nil afterDelay:0.25];
+//}
+//
+//- (void) hideLoadingAction {
+//    [MBProgressHUD hideHUDForView:_window animated:YES];
+//}
+
 
 @end
