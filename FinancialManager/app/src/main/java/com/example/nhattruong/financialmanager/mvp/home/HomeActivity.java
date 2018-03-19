@@ -68,8 +68,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
-                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
             }
         });
         rcvJar.setAdapter(mJarAdapter);
@@ -84,10 +83,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
-//                switch (item.getItemId()){
-//                    case R.id.jar1:
-//                        break;
-//                }
+                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
                 return true;
             }
         });
