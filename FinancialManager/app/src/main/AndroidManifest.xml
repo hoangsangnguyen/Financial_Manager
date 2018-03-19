@@ -16,14 +16,15 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
         <activity android:name=".mvp.login.LoginActivity">
-        </activity>
-        <activity android:name=".mvp.login.detail.DetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mvp.detail.DetailActivity"/>
+        <activity android:name=".mvp.home.HomeActivity" />
+        <activity android:name=".mvp.signup.SignUpActivity"/>
     </application>
 
 </manifest>

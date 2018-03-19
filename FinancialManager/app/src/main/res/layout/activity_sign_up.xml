@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    tools:context="com.example.nhattruong.financialmanager.mvp.signup.SignUpActivity">
+
+    <FrameLayout
+        android:id="@+id/frm_top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/app_color"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:textColor="@color/white_color"
+            android:textSize="24sp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_14dp"
+        android:layout_marginTop="@dimen/small_14dp"
+        android:text="@string/first_name"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_first_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frm_top" />
+
+    <EditText
+        android:textSize="@dimen/default_text_size"
+        android:id="@+id/edt_first_name"
+        style="@style/edt_sign_up"
+        android:layout_marginStart="@dimen/small_10dp"
+        android:layout_marginEnd="@dimen/large"
+        android:inputType="textNoSuggestions|text"
+        app:layout_constraintLeft_toRightOf="@+id/tv_first_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frm_top"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/tv_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_last_name"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_first_name" />
+
+    <EditText
+        android:id="@+id/edt_last_name"
+        style="@style/edt_sign_up"
+        android:inputType="text|textNoSuggestions"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_first_name"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_email"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_last_name" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        style="@style/edt_sign_up"
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_last_name"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_phone"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+    <EditText
+        android:id="@+id/edt_phone"
+        style="@style/edt_sign_up"
+        android:inputType="phone"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_username"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_phone" />
+
+    <EditText
+        android:id="@+id/edt_username"
+        style="@style/edt_sign_up"
+        android:inputType="text|textNoSuggestions"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_phone"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edt_password"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+
+    <EditText
+        android:id="@+id/edt_password"
+        style="@style/edt_sign_up"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_username"
+        android:imeOptions="actionNext"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_password"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_confirm_password"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
+        app:layout_constraintTop_toTopOf="@+id/edt_confirm_password" />
+
+    <EditText
+        android:id="@+id/edt_confirm_password"
+        style="@style/edt_sign_up"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
+        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/edt_password"
+        android:imeOptions="actionDone"
+        tools:ignore="LabelFor" />
+
+    <ImageView
+        android:id="@+id/iv_tick"
+        android:contentDescription="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_tick"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toTopOf="@+id/edt_confirm_password"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_confirm_password"
+        app:layout_constraintLeft_toRightOf="@+id/edt_confirm_password"
+        android:layout_marginStart="@dimen/small_8dp"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large"
+        android:background="@drawable/border_btn_blue_grey"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@drawable/color_grey_white_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_confirm_password" />
+</android.support.constraint.ConstraintLayout>
