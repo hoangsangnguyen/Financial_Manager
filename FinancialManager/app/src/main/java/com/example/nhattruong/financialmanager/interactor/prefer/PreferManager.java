@@ -2,6 +2,9 @@ package com.example.nhattruong.financialmanager.interactor.prefer;
 
 import android.content.SharedPreferences;
 
+import com.example.nhattruong.financialmanager.model.User;
+import com.google.gson.Gson;
+
 public class PreferManager {
 
     private SharedPreferences mPreferences;
@@ -26,7 +29,7 @@ public class PreferManager {
     //User
     private static final String KEY_USER = "KEY_USER";
 
-   /* public void setUser(User user) {
+    public void setUser(User user) {
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putString(KEY_USER, new Gson().toJson(user));
         editor.apply();
@@ -45,7 +48,7 @@ public class PreferManager {
     public void resetUser() {
         setToken(null);
         setUser(null);
-    }*/
+    }
 
     //url
     private static final String KEY_BASE_URL = "KEY_BASE_URL";

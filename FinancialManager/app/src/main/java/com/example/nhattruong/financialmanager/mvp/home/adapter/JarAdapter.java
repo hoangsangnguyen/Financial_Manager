@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
+import com.example.nhattruong.financialmanager.model.Jar;
 
 import java.util.List;
 
@@ -18,10 +19,10 @@ import butterknife.ButterKnife;
 public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<String> mItems;
+    private List<Jar> mItems;
     private Listener mCallback;
 
-    public JarAdapter(Context mContext, List<String> mItems, Listener listener) {
+    public JarAdapter(Context mContext, List<Jar> mItems, Listener listener) {
         this.mContext = mContext;
         this.mItems = mItems;
         this.mCallback = listener;
@@ -35,7 +36,12 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(JarAdapter.ViewHolder holder, int position) {
-
+        Jar jar = mItems.get(position);
+        if (jar != null && position != 6) { // type "Tổng hợp"
+            double rest = jar.getInCome() - jar.getSpend() - jar.getDebt();
+            holder.tvQuantity.setText(String.valueOf(rest));
+            holder.tvType.setText(mContext.getResources().getStringArray(R.array.types)[position]);
+        }
     }
 
     @Override
@@ -50,6 +56,9 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
 
         @BindView(R.id.tv_quantity_money)
         TextView tvQuantity;
+
+        @BindView(R.id.tv_type)
+        TextView tvType;
 
         ViewHolder(View itemView) {
             super(itemView);
