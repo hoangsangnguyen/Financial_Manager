@@ -1,5 +1,6 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 
 import java.util.ArrayList;
@@ -66,6 +68,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
+                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+                startActivity(intent);
             }
         });
         rcvJar.setAdapter(mJarAdapter);

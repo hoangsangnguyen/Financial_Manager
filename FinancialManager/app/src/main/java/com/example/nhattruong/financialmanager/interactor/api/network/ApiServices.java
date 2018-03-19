@@ -43,7 +43,12 @@ public interface ApiServices {
             @Query("userName") String userName
     );
 
-
+    @GET("jar/getJarByID/{typeId}/{userName}")
+    Call<JarResponse> getJarByID(
+            @Header("token") String token,
+            @Query("typeId") int typeId,
+            @Query("userName") String userName
+    );
 
 
 }

@@ -114,6 +114,19 @@ public class ApiManager {
                 });
     }
 
+    public void getJarByID(String token, int typeID, String userName, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJarByID(token, typeID, userName)
+                .enqueue(new RestCallback<JarResponse>() {
+                    @Override
+                    public void success(JarResponse res) {
+                        callback.success(res);
+                    }
 
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
 
 }
