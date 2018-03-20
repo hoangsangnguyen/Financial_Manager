@@ -1,5 +1,6 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
+import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 
 import java.util.ArrayList;
@@ -35,6 +38,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
 
+    List<Jar> mJarLists;
+    JarAdapter mJarAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setPresenter(new HomePresenter());
@@ -56,28 +62,28 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        List<String> list = new ArrayList<>(Arrays.asList("aa", "bb", "cc", "dd", "ee", "ff"));
-
         rcvJar.setLayoutManager(new GridLayoutManager(this, 2));
-        rcvJar.setAdapter(new JarAdapter(this, list, new JarAdapter.Listener() {
+        mJarLists = new ArrayList<>();
+        mJarAdapter = new JarAdapter(this, mJarLists, new JarAdapter.Listener() {
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
+                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
             }
-        }));
+        });
+        rcvJar.setAdapter(mJarAdapter);
+
     }
 
     @Override
     public void onInitListener() {
+        getPresenter().getTypes();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
-//                switch (item.getItemId()){
-//                    case R.id.jar1:
-//                        break;
-//                }
+                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
                 return true;
             }
         });
@@ -95,6 +101,28 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         }
 
         return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void onLoadJarsSuccess() {
+        List<Jar> jars = getPresenter().getJarList();
+        if (mJarLists != null && !jars.isEmpty()) {
+            mJarLists.clear();
+            mJarLists.addAll(jars);
+        } else {
+            mJarLists = new ArrayList<>();
+        }
+
+        if (mJarLists.size() > 6)
+            mJarLists.remove(6);
+
+        mJarAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onLoadJarsFailed() {
 
     }
 }

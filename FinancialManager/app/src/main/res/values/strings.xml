@@ -19,4 +19,21 @@
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
     <string name="register">Register</string>
+
+    <string-array name="types">
+        <item>Nhu cầu thiết yếu</item>
+        <item>Tiết kiệm dài hạn</item>
+        <item>Đầu tư giáo dục</item>
+        <item>Thụ hưởng</item>
+        <item>Cho đi</item>
+        <item>Tự do tài chính</item>
+        <item>Tổng hợp</item>
+    </string-array>
+
+    <string-array name="states">
+        <item>Done</item>
+        <item>Ready</item>
+        <item>Waitting</item>
+    </string-array>
+
 </resources>

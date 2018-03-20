@@ -7,6 +7,9 @@ import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
@@ -31,11 +34,11 @@ public class ApiManager {
     }
 
     //======================== Login ==========================
-    public void login(final LoginRequest request, final ApiCallback<BaseResponse> callback) {
+    public void login(final LoginRequest request, final ApiCallback<UserResponse> callback) {
         mApiServices.login(request)
-                .enqueue(new RestCallback<BaseResponse>() {
+                .enqueue(new RestCallback<UserResponse>() {
                     @Override
-                    public void success(BaseResponse res) {
+                    public void success(UserResponse res) {
                         callback.success(res);
                     }
 
@@ -62,4 +65,68 @@ public class ApiManager {
                     }
                 });
     }
+
+    //======================== get Types ==========================
+    public void getTypes(final ApiCallback<TypeResponse> callback) {
+        mApiServices.getTypes()
+                .enqueue(new RestCallback<TypeResponse>() {
+                    @Override
+                    public void success(TypeResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    //======================== get States ==========================
+    public void getStates(final ApiCallback<StateResponse> callback) {
+        mApiServices.getStates()
+                .enqueue(new RestCallback<StateResponse>() {
+                    @Override
+                    public void success(StateResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    //======================== get Jars ==========================
+    public void getJars(String token, String userName, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJars(token, userName)
+                .enqueue(new RestCallback<JarResponse>() {
+                    @Override
+                    public void success(JarResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getJarByID(String token, int typeID, String userName, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJarByID(token, typeID, userName)
+                .enqueue(new RestCallback<JarResponse>() {
+                    @Override
+                    public void success(JarResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
 }
