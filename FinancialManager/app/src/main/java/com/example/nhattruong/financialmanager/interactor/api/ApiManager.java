@@ -13,6 +13,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.TypeRespo
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
+import com.example.nhattruong.financialmanager.model.Jar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,6 +117,21 @@ public class ApiManager {
 
     public void getJarByID(String token, int typeID, String userName, final ApiCallback<JarResponse> callback) {
         mApiServices.getJarByID(token, typeID, userName)
+                .enqueue(new RestCallback<JarResponse>() {
+                    @Override
+                    public void success(JarResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void updateJars(String token, Jar jar, final ApiCallback<JarResponse> callback) {
+        mApiServices.updateJars(token, jar)
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {

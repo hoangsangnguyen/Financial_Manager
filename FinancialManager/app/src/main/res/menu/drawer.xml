@@ -5,21 +5,21 @@
         <item
             android:id="@+id/jar1"
             android:checked="true"
-            android:title="Lọ 1" />
+            android:title="Nhu cầu thiết yếu" />
         <item
             android:id="@+id/jar2"
-            android:title="Lọ 2" />
+            android:title="Tiết kiệm dài hạn" />
         <item
             android:id="@+id/jar3"
-            android:title="Lọ 3" />
+            android:title="Đầu tư giáo dục" />
         <item
             android:id="@+id/jar4"
-            android:title="Lọ 4" />
+            android:title="Thụ hưởng" />
         <item
             android:id="@+id/jar5"
-            android:title="Lọ 5" />
+            android:title="Cho đi" />
         <item
             android:id="@+id/jar6"
-            android:title="Lọ 6" />
+            android:title="Tự do tài chính" />
     </group>
 </menu>
