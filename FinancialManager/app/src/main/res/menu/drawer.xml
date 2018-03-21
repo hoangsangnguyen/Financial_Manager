@@ -5,21 +5,28 @@
         <item
             android:id="@+id/jar1"
             android:checked="true"
-            android:title="Nhu cầu thiết yếu" />
+            android:title="Nhu cầu thiết yếu"
+            android:icon="@drawable/ic_small_jar"/>
+
         <item
             android:id="@+id/jar2"
+            android:icon="@drawable/ic_small_jar"
             android:title="Tiết kiệm dài hạn" />
         <item
             android:id="@+id/jar3"
+            android:icon="@drawable/ic_small_jar"
             android:title="Đầu tư giáo dục" />
         <item
             android:id="@+id/jar4"
+            android:icon="@drawable/ic_small_jar"
             android:title="Thụ hưởng" />
         <item
             android:id="@+id/jar5"
+            android:icon="@drawable/ic_small_jar"
             android:title="Cho đi" />
         <item
             android:id="@+id/jar6"
+            android:icon="@drawable/ic_small_jar"
             android:title="Tự do tài chính" />
     </group>
 </menu>

@@ -16,4 +16,6 @@
     <color name="semi_black">#80000000</color>
     <color name="white_color">#ffffff</color>
     <color name="blue_color2">#00adf7</color>
+    <color name="black_opacity_10">#1A000000</color>
+
 </resources>

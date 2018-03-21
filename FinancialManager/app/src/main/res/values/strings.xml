@@ -19,6 +19,7 @@
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
     <string name="register">Register</string>
+    <string name="logout">Logout</string>
 
     <string-array name="types">
         <item>Nhu cầu thiết yếu</item>

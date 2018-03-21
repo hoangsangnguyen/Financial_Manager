@@ -29,6 +29,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
     @Override
     public void getTypes() {
+        if (!isViewAttached()) return;
         getView().showLoading();
         getApiManager().getTypes(new ApiCallback<TypeResponse>() {
             @Override
@@ -37,12 +38,14 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                     Log.d("TYPES : ", res.result.size() + "\n" + new Gson().toJson(res.result));
                     getStates();
                 } else {
+                    if (!isViewAttached()) return;
                     getView().hideLoading();
                 }
             }
 
             @Override
             public void failure(RestError error) {
+                if (!isViewAttached()) return;
                 getView().hideLoading();
             }
         });
@@ -58,6 +61,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                     Log.d("STATES : ", res.result.size() + "\n" + new Gson().toJson(res.result));
                     getJars();
                 } else {
+                    if (!isViewAttached()) return;
                     getView().hideLoading();
 
                 }
@@ -81,6 +85,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                 @Override
                 public void success(JarResponse res) {
                     Log.d("JARS : ", res.result.size() + " : " + new Gson().toJson(res.result));
+                    if (!isViewAttached()) return;
                     getView().hideLoading();
                     if (res.result != null) {
                         jarList = res.result;
@@ -90,11 +95,13 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
                 @Override
                 public void failure(RestError error) {
+                    if (!isViewAttached()) return;
                     getView().hideLoading();
                     getView().onLoadJarsFailed();
                 }
             });
         } else {
+            if (!isViewAttached()) return;
             getView().hideLoading();
         }
     }

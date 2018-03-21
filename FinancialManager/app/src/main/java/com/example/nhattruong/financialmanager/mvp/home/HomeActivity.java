@@ -11,15 +11,18 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
+import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.model.Jar;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
+import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,6 +37,15 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @BindView(R.id.tb_home)
     Toolbar toolbar;
+
+    @BindView(R.id.tv_user_name)
+    TextView tvUserName;
+
+    @BindView(R.id.tv_user_email)
+    TextView tvUserEmail;
+
+    @BindView(R.id.tv_logout)
+    TextView tvLogout;
 
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
@@ -72,12 +84,11 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             }
         });
         rcvJar.setAdapter(mJarAdapter);
-
+        getPresenter().getTypes();
     }
 
     @Override
     public void onInitListener() {
-        getPresenter().getTypes();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -85,6 +96,27 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
                 drawerLayout.closeDrawers();
                 startActivity(new Intent(HomeActivity.this, DetailActivity.class));
                 return true;
+            }
+        });
+
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showConfirmDialog("Are you sure to logout?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                        intent.putExtra(LoginActivity.USER_NAME, "hoangsang1");
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerNegative(DialogPositiveNegative dialog) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }

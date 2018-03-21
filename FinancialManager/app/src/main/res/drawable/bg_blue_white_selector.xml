@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape>
+            <solid android:color="@color/app_color" />
+        </shape>
+    </item>
+
+    <item android:state_pressed="false" android:state_selected="false">
+        <shape>
+            <solid android:color="@color/white_color" />
+        </shape>
+    </item>
+
+    <item android:state_pressed="true" android:state_selected="false">
+        <shape>
+            <solid android:color="@color/black_opacity_10" />
+        </shape>
+    </item>
+</selector>
