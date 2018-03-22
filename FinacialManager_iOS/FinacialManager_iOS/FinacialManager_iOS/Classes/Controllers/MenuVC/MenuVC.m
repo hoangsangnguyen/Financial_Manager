@@ -77,7 +77,6 @@ typedef enum : NSUInteger {
     if (indexPath.row == User) {
         BaseCell *cell = [_tbvMenu dequeueReusableCellWithIdentifier:@"UserCell"];
         //[cell.btnAvatar setStyleAvatar];
-        cell.lblFullName.text = App.configure.userDto.fullName;
         cell.userInteractionEnabled = NO;
         
         return cell;

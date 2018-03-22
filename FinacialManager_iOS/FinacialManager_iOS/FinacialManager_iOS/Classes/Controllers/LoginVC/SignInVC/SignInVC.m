@@ -10,6 +10,7 @@
 #import "SignUpVC.h"
 #import "WelcomeVC.h"
 #import "Configure.h"
+#import "OverViewVC.h"
 
 @interface SignInVC () <UITextFieldDelegate, UIGestureRecognizerDelegate> {
     
@@ -29,8 +30,8 @@
     
     _tfEmail.returnKeyType = UIReturnKeyNext;
     _tfPassword.returnKeyType = UIReturnKeyGo;
-    _tfEmail.text = @"phananh123qqq@gmail.com";
-    _tfPassword.text =@"123123qqq";
+    _tfEmail.text = @"hoangsang1";
+    _tfPassword.text =@"123";
     
 }
 
@@ -72,20 +73,20 @@
 
 #pragma mark Login
 - (IBAction)onBtnLoginClicked:(UIButton*)btn {
-//    
-//    [App showLoading];
-//    UserDto *user = [[UserDto alloc] init];
-//    user.email = _tfEmail.text;
-//    user.password = _tfPassword.text;
-//    
-//    [API login:user callback:^(BOOL success, id data) {
-//        [App hideLoading];
-//        if (success) {
-//            DishTypeListVC *vc = VCFromSB(DishTypeListVC, SB_ListFood);
-//            [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
-//                                         andCompletion:nil];
-//        }
-//    }];
+    [App showLoading];
+    UserDto *user = [[UserDto alloc] init];
+    user.userName = _tfEmail.text;
+    user.password = _tfPassword.text;
+    
+    [API login:user callback:^(BOOL success, UserDto *data) {
+        [App hideLoading];
+        if (success) {
+            App.configure.userDto = data;
+            OverViewVC *vc = VCFromSB(OverViewVC, SB_Overview);
+            [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
+                                         andCompletion:nil];
+        }
+    }];
 }
 
 - (IBAction)onBtnBackClicked:(UIButton *)btn {

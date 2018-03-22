@@ -10,9 +10,12 @@
 
 @interface UserDto : BaseDto
 
+@property (nonatomic, strong) NSString *_id;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *fullName;
-@property (nonatomic, strong) NSString *created;
 
 @end

@@ -118,20 +118,23 @@
     void (^successCallback)(id data) = ^(id data) {
         NSMutableDictionary *respondData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         if(respondData) {
-            
             // Print Track Log
             NSString *strLog = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"[API] [%@] [%@] SERVER RESPONSE: \n==>\n %@ \n\n<==\n\n", method, route, strLog);
-            if ([respondData isKindOfClass:[NSDictionary class]]) {
-                NSString *token = [respondData objectForKey:@"token"];
-                if (![token isEqualToString:@""]) {
-                    NSString *fullName = [respondData objectForKey:@"fullName"];
-                    App.configure.token = token;
-                    App.configure.userDto = body;
-                    App.configure.userDto.fullName = fullName;
-                    cb(YES, data);
+            
+            bool success = [respondData objectForKey:@"success"];
+            if (success) {
+                NSDictionary *results = [respondData objectForKey:@"results"];
+                if ([results isKindOfClass:[NSDictionary class]]) {
+                    NSString *token = [results objectForKey:@"token"];
+                    if (![token isEqualToString:@""]) {
+                        App.configure.token = token;
+                        cb(YES, successClass ? [[successClass alloc] initWithData:results] : nil);
+                    } else {
+                        cb (YES,successClass ? [[successClass alloc] initWithData:results] : nil);
+                    }
                 } else {
-                    cb (YES,data);
+                    
                 }
             } else {
                 if(cb) {
@@ -140,7 +143,6 @@
                     return;
                 }
             }
-             
         }
     };
 
@@ -195,7 +197,7 @@
 #pragma mark - Login
 
 - (void)login:(UserDto*)user callback:(APICallback)callback {
-    [self processAPI:@"users/sign_in"
+    [self processAPI:@"user/login"
               method:METHOD_POST
               header:nil
                 body:user

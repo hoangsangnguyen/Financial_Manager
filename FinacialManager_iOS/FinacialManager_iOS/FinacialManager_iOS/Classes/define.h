@@ -6,7 +6,7 @@
 //  Copyright © 2018 ThanhSon. All rights reserved.
 //
 
-#define ServerURL @"https://cookbook-server.herokuapp.com"
+#define ServerURL @"http://ptit.somee.com"
 
 // Method Index
 #define NUM_METHOD          5
@@ -493,7 +493,7 @@ for (NSInteger i = 0; i< _##Key.count; i++) { \
 
 // Storyboard
 #define SB_ListFood       @"ListFood"
-#define SB_Support        @"Support"
+#define SB_Overview       @"Overview"
 #define SB_Main           @"Main"
 #define SB_Login          @"Login"
 

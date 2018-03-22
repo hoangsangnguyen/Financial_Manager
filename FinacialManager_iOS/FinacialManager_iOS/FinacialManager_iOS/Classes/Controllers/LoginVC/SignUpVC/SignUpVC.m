@@ -97,7 +97,6 @@
     [App showLoading];
     
     UserDto *user = [[UserDto alloc] init];
-    user.fullName = _tfFullName.text;
     user.email = _tfEmail.text;
     user.password = _tfPassword.text;
     

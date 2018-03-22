@@ -14,10 +14,13 @@
     self = [super init];
     if (dic) {
         if ([dic isKindOfClass:[NSDictionary class]]) {
+            IO(_id);
+            IO(firstName);
+            IO(lastName);
             IO(email);
+            IO(phone);
+            IO(userName);
             IO(password);
-            IO(fullName);
-            IO(created);
         }
     }
     return self;
@@ -25,7 +28,7 @@
 
 - (NSMutableDictionary *)getJSONObject {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    JO(email);
+    JO(userName);
     JO(password);
     return dic;
 }
@@ -33,15 +36,13 @@
 - (id )getJSONObjectWithMethod:(NSInteger)method{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     if (method == METHOD_POST) {
-        JO(email);
+        JO(userName);
         JO(password);
     } else if (method == METHOD_POST_2) {
-        JO(email);
+        JO(userName);
         JO(password);
-        JO(fullName);
     }
     return dic;
 }
-
 
 @end
