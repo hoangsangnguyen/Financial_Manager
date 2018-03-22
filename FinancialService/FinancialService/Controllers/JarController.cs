@@ -33,7 +33,7 @@ namespace FinancialService.Controllers
                         db.sp_CreateJarLists(userName);
                     }
 
-                    var userId = db.Users.Where(x => x.userName.Equals(userName)).First().ID;
+                    var userId = db.Users.Where(x => x.userName.Equals(userName)).First()._id;
                     var jarLists = db.JARs.Where(x => x.userID == userId).ToList();
 
                     result.results = jarLists;
@@ -70,7 +70,7 @@ namespace FinancialService.Controllers
                         db.sp_CreateJarLists(userName);
                     }
 
-                    var userId = db.Users.Where(x => x.userName.Equals(userName)).First().ID;
+                    var userId = db.Users.Where(x => x.userName.Equals(userName)).First()._id;
                     var jarLists = db.JARs.Where(x => x.userID == userId && x.typeID == typeId).ToList();
 
                     result.results = jarLists;
@@ -97,7 +97,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == inCome.userID).First().userName;
+                userName = db.Users.Where(x => x._id == inCome.userID).First().userName;
             }
             catch
             {
@@ -142,7 +142,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == userID).First().userName;
+                userName = db.Users.Where(x => x._id == userID).First().userName;
             }
             catch
             {

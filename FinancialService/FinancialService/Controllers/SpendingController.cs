@@ -27,7 +27,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == userID).First().userName;
+                userName = db.Users.Where(x => x._id == userID).First().userName;
             }
             catch
             {
@@ -74,7 +74,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == spending.userID).First().userName;
+                userName = db.Users.Where(x => x._id == spending.userID).First().userName;
             }
             catch
             {

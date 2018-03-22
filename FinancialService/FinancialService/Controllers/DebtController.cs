@@ -25,7 +25,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == userID).First().userName;
+                userName = db.Users.Where(x => x._id == userID).First().userName;
             }
             catch
             {
@@ -72,7 +72,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == debt.userID).First().userName;
+                userName = db.Users.Where(x => x._id == debt.userID).First().userName;
 
             }
             catch
@@ -130,7 +130,7 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                userName = db.Users.Where(x => x.ID == debt.userID).First().userName;
+                userName = db.Users.Where(x => x._id == debt.userID).First().userName;
 
             }
             catch
@@ -148,13 +148,13 @@ namespace FinancialService.Controllers
             {
                 try
                 {
-                    var response = db.sp_UpdateDebt(debt.ID, debt.date, debt.detail, debt.amount,
+                    var response = db.sp_UpdateDebt(debt._id, debt.date, debt.detail, debt.amount,
                         debt.origin, debt.stateID, debt.jarID, debt.userID, debt.isPositive);
                     if (response == 0)
                     {
                         result.success = true;
                         result.message = "Update debt success !";
-                        result.results = db.Debts.Where(x => x.ID == debt.ID);
+                        result.results = db.Debts.Where(x => x._id == debt._id);
                     } else
                     {
                         result.success = false;
@@ -182,8 +182,8 @@ namespace FinancialService.Controllers
             var userName = "";
             try
             {
-                var userID = db.Debts.Where(x => x.ID == debt.ID).First().userID;
-                userName = db.Users.Where(x => x.ID == userID).First().userName;
+                var userID = db.Debts.Where(x => x._id == debt._id).First().userID;
+                userName = db.Users.Where(x => x._id == userID).First().userName;
 
             } catch
             {
@@ -200,7 +200,7 @@ namespace FinancialService.Controllers
             {
                 try
                 {
-                    var response = db.sp_DeleteDebt(debt.ID);
+                    var response = db.sp_DeleteDebt(debt._id);
                     if (response == 0)
                     {
                         result.success = true;
