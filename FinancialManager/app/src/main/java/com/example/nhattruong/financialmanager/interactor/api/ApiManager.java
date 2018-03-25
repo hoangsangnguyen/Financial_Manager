@@ -34,6 +34,12 @@ public class ApiManager {
         mEventManager = eventManager;
     }
 
+    // ==== GET TOKEN == //
+    public String getToken() {
+        if (mPreferManager.getToken() == null) return null;
+        return mPreferManager.getToken();
+    }
+
     //======================== Login ==========================
     public void login(final LoginRequest request, final ApiCallback<UserResponse> callback) {
         mApiServices.login(request)
@@ -100,8 +106,8 @@ public class ApiManager {
     }
 
     //======================== get Jars ==========================
-    public void getJars(String token, String userName, final ApiCallback<JarResponse> callback) {
-        mApiServices.getJars(token, userName)
+    public void getJars(String userName, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJars(getToken(), userName)
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {
@@ -115,8 +121,8 @@ public class ApiManager {
                 });
     }
 
-    public void getJarByID(String token, int typeID, String userName, final ApiCallback<JarResponse> callback) {
-        mApiServices.getJarByID(token, typeID, userName)
+    public void getJarByID(int typeID, String userName, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJarByID(getToken(), typeID, userName)
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {
@@ -130,8 +136,8 @@ public class ApiManager {
                 });
     }
 
-    public void updateJars(String token, Jar jar, final ApiCallback<JarResponse> callback) {
-        mApiServices.updateJars(token, jar)
+    public void updateJars(Jar jar, final ApiCallback<JarResponse> callback) {
+        mApiServices.updateJars(getToken(), jar)
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {

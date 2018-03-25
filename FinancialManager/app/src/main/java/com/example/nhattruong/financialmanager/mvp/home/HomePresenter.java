@@ -81,7 +81,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
         if (user != null) {
             String userName = user.getUserName();
             String token = getPreferManager().getToken();
-            getApiManager().getJars(token, userName, new ApiCallback<JarResponse>() {
+            getApiManager().getJars(userName, new ApiCallback<JarResponse>() {
                 @Override
                 public void success(JarResponse res) {
                     Log.d("JARS : ", res.result.size() + " : " + new Gson().toJson(res.result));

@@ -37,4 +37,6 @@
         <item>Waitting</item>
     </string-array>
 
+    <string name="provider_name">com.example.nhattruong.financialmanager.MyProvider</string>
+
 </resources>

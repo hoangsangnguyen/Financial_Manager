@@ -3,6 +3,8 @@ package com.example.nhattruong.financialmanager.interactor.prefer;
 import android.content.SharedPreferences;
 
 import com.example.nhattruong.financialmanager.model.User;
+import com.example.nhattruong.financialmanager.sqlite.Config;
+import com.example.nhattruong.financialmanager.sqlite.MyProvider;
 import com.google.gson.Gson;
 
 public class PreferManager {
@@ -13,35 +15,24 @@ public class PreferManager {
         mPreferences = sharedPreferences;
     }
 
-    // Token
-    private static final String KEY_TOKEN = "TOKEN";
-
     public String getToken() {
-        return mPreferences.getString(KEY_TOKEN, null);
+        Config config = MyProvider.load(Config.USER_TOKEN);
+        if (config != null) {
+            String token = config.get(Config.USER_TOKEN);
+            if (token == null) return null;
+            if (token.equals("")) return null;
+            return token;
+        }
+        return null;
     }
 
     public void setToken(String token) {
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putString(KEY_TOKEN, token);
-        editor.apply();
+        MyProvider.save(Config.USER_TOKEN, token);
     }
 
-    //User
-    private static final String KEY_USER = "KEY_USER";
-
-    public void setUser(User user) {
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putString(KEY_USER, new Gson().toJson(user));
-        editor.apply();
-    }
-
-    public User getUser() {
-        User user = null;
-        try {
-            user = new Gson().fromJson(mPreferences.getString(KEY_USER, new Gson().toJson(new User())), User.class);
-        } catch (Exception ignored) {
-        }
-        return user;
+    // login
+    public boolean isLogin() {
+        return getToken() != null;
     }
 
     // logout
@@ -50,19 +41,28 @@ public class PreferManager {
         setUser(null);
     }
 
-    //url
-    private static final String KEY_BASE_URL = "KEY_BASE_URL";
-
-    public String getBaseUrl() {
-        return mPreferences.getString(KEY_BASE_URL, null);
+    //User
+    public void setUser(String user) {
+        Config config = MyProvider.load(Config.USER_DATA);
+        if (config != null) {
+            String oldUser = config.get(Config.USER_DATA);
+            if (oldUser == null || oldUser.equals("")) oldUser = user;
+            SharedPreferences.Editor editor = mPreferences.edit();
+            editor.putString(Config.USER_DATA, oldUser);
+            editor.apply();
+            editor.commit();
+        }
+        MyProvider.save(Config.USER_DATA, user);
     }
 
-    public void setBaseUrl(String baseUrl) {
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putString(KEY_BASE_URL, baseUrl);
-        editor.apply();
+    public User getUser() {
+        Config config = MyProvider.load(Config.USER_DATA);
+        if (config == null) return new User();
+        try {
+            return new Gson().fromJson(config.get(Config.USER_DATA), User.class);
+        } catch (Exception e) {
+            return new User();
+        }
     }
-
-    // ======== [END] HELPER ========
 
 }

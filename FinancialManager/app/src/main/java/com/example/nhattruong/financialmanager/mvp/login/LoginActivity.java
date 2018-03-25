@@ -2,7 +2,10 @@ package com.example.nhattruong.financialmanager.mvp.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import com.example.nhattruong.financialmanager.dialog.DialogOk;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.signup.SignUpActivity;
+import com.example.nhattruong.financialmanager.utils.CommonUtils;
 
 import butterknife.BindView;
 
@@ -57,6 +61,32 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     public void onInitListener() {
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
+
+        edtUsername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                checkValidEmail(edtUsername.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private void checkValidEmail(String text) {
+        if (!CommonUtils.isEmailValid(text)){
+            edtUsername.setTextColor(ContextCompat.getColor(this, R.color.red));
+        }
+        edtUsername.setTextColor(
+                CommonUtils.isEmailValid(text)?
+                        ContextCompat.getColor(this, R.color.app_color): ContextCompat.getColor(this, R.color.red));
     }
 
     @Override

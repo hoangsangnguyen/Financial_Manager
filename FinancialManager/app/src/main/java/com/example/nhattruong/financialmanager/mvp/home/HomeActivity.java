@@ -107,7 +107,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
                     public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
                         dialog.dismiss();
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                        intent.putExtra(LoginActivity.USER_NAME, "hoangsang1");
+                        intent.putExtra(LoginActivity.USER_NAME, getPresenter().getPreferManager().getUser().getId());
+                        getPresenter().getPreferManager().resetUser();
                         startActivity(intent);
                         finish();
                     }

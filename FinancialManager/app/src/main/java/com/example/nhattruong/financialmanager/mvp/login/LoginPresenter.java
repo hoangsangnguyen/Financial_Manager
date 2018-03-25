@@ -5,8 +5,8 @@ import com.example.nhattruong.financialmanager.base.IBaseView;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
-import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
+import com.google.gson.Gson;
 
 import butterknife.Unbinder;
 
@@ -29,7 +29,7 @@ class LoginPresenter extends BasePresenter implements LoginContract.IPresenter{
             @Override
             public void success(UserResponse res) {
                 if (res.result != null) {
-                    getPreferManager().setUser(res.result);
+                    getPreferManager().setUser(new Gson().toJson(res.result));
                     getPreferManager().setToken(res.result.getToken());
                 }
 

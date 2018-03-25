@@ -76,5 +76,6 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
 
     public interface Listener {
         void onItemClicked(int position);
+
     }
 }
