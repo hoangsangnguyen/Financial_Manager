@@ -103,6 +103,11 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
         }
     }
 
+    @OnClick(R.id.iv_back)
+    public void onBack(){
+        onBackPressed();
+    }
+
     private SignUpRequest getInfoSignUp(){
         return new SignUpRequest.SignUpRequestBuilder()
                 .setFirstName(edtFirstName.getText().toString())

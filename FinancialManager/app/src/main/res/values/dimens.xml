@@ -20,5 +20,6 @@
 
     <dimen name="icon_mini_size">18dp</dimen>
     <dimen name="super_large_70dp">70dp</dimen>
+    <dimen name="icon_default_size">32dp</dimen>
 
 </resources>

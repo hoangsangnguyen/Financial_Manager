@@ -152,6 +152,19 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
         mJarAdapter.notifyDataSetChanged();
 
+        if (getIntent().getBooleanExtra(LoginActivity.IS_FIRST_LOGIN, false)){
+            showConfirmDialog("Do you want to set data?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
+                @Override
+                public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onIPositiveNegativeDialogAnswerNegative(DialogPositiveNegative dialog) {
+                    dialog.dismiss();
+                }
+            });
+        }
     }
 
     @Override

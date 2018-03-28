@@ -24,6 +24,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     public static final int REQUEST_CODE_SIGN_UP = 11;
     public static final String USER_NAME = "USER_NAME";
+    public static final String IS_FIRST_LOGIN = "IS_FIRST_LOGIN";
 
     @BindView(R.id.edt_username)
     EditText edtUsername;
@@ -52,7 +53,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void onInitData() {
         String username = getIntent().getStringExtra(USER_NAME);
-        if (!TextUtils.isEmpty(username)){
+        if (!TextUtils.isEmpty(username)) {
             edtUsername.setText(username);
         }
     }
@@ -81,12 +82,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     }
 
     private void checkValidEmail(String text) {
-        if (!CommonUtils.isEmailValid(text)){
+        if (!CommonUtils.isEmailValid(text)) {
             edtUsername.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
         edtUsername.setTextColor(
-                CommonUtils.isEmailValid(text)?
-                        ContextCompat.getColor(this, R.color.app_color): ContextCompat.getColor(this, R.color.red));
+                CommonUtils.isEmailValid(text) ?
+                        ContextCompat.getColor(this, R.color.app_color) : ContextCompat.getColor(this, R.color.red));
     }
 
     @Override
@@ -96,9 +97,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void onClick(View view) {
-        if (view == btnLogin){
+        if (view == btnLogin) {
             getPresenter().login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim());
-        } else if (view == btnSignUp){
+        } else if (view == btnSignUp) {
             Intent intent = new Intent(this, SignUpActivity.class);
             startActivityForResult(intent, REQUEST_CODE_SIGN_UP);
         }
@@ -106,14 +107,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void onSuccess() {
-        showOkDialog(getString(R.string.login), getString(R.string.success), new DialogOk.IOkDialogListener() {
-            @Override
-            public void onIOkDialogAnswerOk(DialogOk dialog) {
-                dialog.dismiss();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
-            }
-        });
+
+        Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intentHome);
+        finish();
     }
 
     @Override
@@ -123,7 +120,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_SIGN_UP && resultCode == SignUpActivity.RESULT_CODE_SIGN_UP){
+        if (requestCode == REQUEST_CODE_SIGN_UP && resultCode == SignUpActivity.RESULT_CODE_SIGN_UP) {
             User userResponse = (User) data.getSerializableExtra(SignUpActivity.RESULT_SIGN_UP_DATA);
             edtUsername.setText(userResponse.getUserName());
             edtPassword.setText(userResponse.getPassword());

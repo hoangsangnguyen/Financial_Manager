@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "587876530898",
+    "firebase_url": "https://financialmanager-ptit.firebaseio.com",
+    "project_id": "financialmanager-ptit",
+    "storage_bucket": "financialmanager-ptit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587876530898:android:499e6e2f07fc892a",
+        "android_client_info": {
+          "package_name": "com.example.nhattruong.financialmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587876530898-bvmnqcvg7qnnola5e7kjthkpqflk8udf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjtD8Ag1JJfiHF2VMG5GGFcm9eC5ItAuU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
