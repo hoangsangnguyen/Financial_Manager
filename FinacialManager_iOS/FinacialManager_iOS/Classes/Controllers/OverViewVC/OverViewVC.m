@@ -35,7 +35,7 @@
 
 - (IBAction)btnCaculator:(id)sender {
     CaculatorVC *vc = VCFromSB(CaculatorVC, SB_Overview);
-    [self presentViewController:vc animated:YES completion:nil];
+    [AppNav presentViewController:vc animated:YES completion:nil];
 }
 
 @end

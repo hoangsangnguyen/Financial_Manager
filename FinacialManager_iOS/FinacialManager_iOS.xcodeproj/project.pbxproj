@@ -21,6 +21,7 @@
 		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
 		CA61B99020635DC00022A097 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA61B98F20635DC00022A097 /* Overview.storyboard */; };
 		CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* OverViewVC.m */; };
+		CA6CFE3A206C94E5001314AB /* HButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE39206C94E5001314AB /* HButton.m */; };
 		CA765707205EB62100751B9F /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7656FD205EB62000751B9F /* BaseCell.m */; };
 		CA765708205EB62100751B9F /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765700205EB62100751B9F /* BaseTBV.m */; };
 		CA765709205EB62100751B9F /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765703205EB62100751B9F /* BaseNV.m */; };
@@ -36,6 +37,9 @@
 		CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */; };
 		CAAE45AB205CB14D00090152 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45AA205CB14D00090152 /* main.m */; };
 		CAAE45B5205CB14D00090152 /* FinacialManager_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */; };
+		CABBA12C206A164600254F95 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CABBA12B206A164600254F95 /* NSString+Util.m */; };
+		CABBA15D206A166700254F95 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CABBA151206A166700254F95 /* UIView+Util.m */; };
+		CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CABBA160206A169C00254F95 /* UIButton+Button.m */; };
 		CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CACAA6A4205EBDFB0096DB80 /* MenuDto.m */; };
 		D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */; };
 /* End PBXBuildFile section */
@@ -81,6 +85,8 @@
 		CA61B98F20635DC00022A097 /* Overview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
 		CA61B99220635E0C0022A097 /* OverViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverViewVC.h; sourceTree = "<group>"; };
 		CA61B99320635E0C0022A097 /* OverViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverViewVC.m; sourceTree = "<group>"; };
+		CA6CFE38206C94E5001314AB /* HButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HButton.h; sourceTree = "<group>"; };
+		CA6CFE39206C94E5001314AB /* HButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HButton.m; sourceTree = "<group>"; };
 		CA7656FC205EB62000751B9F /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		CA7656FD205EB62000751B9F /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 		CA7656FF205EB62100751B9F /* BaseTBV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTBV.h; sourceTree = "<group>"; };
@@ -110,6 +116,12 @@
 		CAAE45B0205CB14D00090152 /* FinacialManager_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinacialManager_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE45B4205CB14D00090152 /* FinacialManager_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinacialManager_iOSUITests.m; sourceTree = "<group>"; };
 		CAAE45B6205CB14D00090152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CABBA12A206A164600254F95 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		CABBA12B206A164600254F95 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
+		CABBA150206A166700254F95 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		CABBA151206A166700254F95 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		CABBA15F206A169C00254F95 /* UIButton+Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Button.h"; sourceTree = "<group>"; };
+		CABBA160206A169C00254F95 /* UIButton+Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Button.m"; sourceTree = "<group>"; };
 		CACAA6A3205EBDFB0096DB80 /* MenuDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDto.h; sourceTree = "<group>"; };
 		CACAA6A4205EBDFB0096DB80 /* MenuDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDto.m; sourceTree = "<group>"; };
 		D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +187,7 @@
 				CA5D8167205E4FB1005C23E6 /* Models */,
 				CA5D8166205E4FA8005C23E6 /* Controllers */,
 				CA5D8165205E4FA3005C23E6 /* View */,
+				CABBA128206A161E00254F95 /* Category */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -326,6 +339,15 @@
 			path = OverViewVC;
 			sourceTree = "<group>";
 		};
+		CA6CFE37206C94E5001314AB /* HButton */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CFE38206C94E5001314AB /* HButton.h */,
+				CA6CFE39206C94E5001314AB /* HButton.m */,
+			);
+			path = HButton;
+			sourceTree = "<group>";
+		};
 		CA7656FB205EB62000751B9F /* BaseCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +480,45 @@
 				CAAE45B6205CB14D00090152 /* Info.plist */,
 			);
 			path = FinacialManager_iOSUITests;
+			sourceTree = "<group>";
+		};
+		CABBA128206A161E00254F95 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CFE37206C94E5001314AB /* HButton */,
+				CABBA14F206A166700254F95 /* View */,
+				CABBA15E206A167B00254F95 /* Button */,
+				CABBA129206A164600254F95 /* NSString */,
+			);
+			name = Category;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CABBA129206A164600254F95 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				CABBA12A206A164600254F95 /* NSString+Util.h */,
+				CABBA12B206A164600254F95 /* NSString+Util.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		CABBA14F206A166700254F95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CABBA150206A166700254F95 /* UIView+Util.h */,
+				CABBA151206A166700254F95 /* UIView+Util.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CABBA15E206A167B00254F95 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				CABBA15F206A169C00254F95 /* UIButton+Button.h */,
+				CABBA160206A169C00254F95 /* UIButton+Button.m */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		CACAA6A2205EBDFB0096DB80 /* MenuDto */ = {
@@ -688,15 +749,19 @@
 				CA765707205EB62100751B9F /* BaseCell.m in Sources */,
 				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				CA76570A205EB62100751B9F /* BaseVC.m in Sources */,
+				CABBA15D206A166700254F95 /* UIView+Util.m in Sources */,
 				CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				CA765712205EB72500751B9F /* MenuVC.m in Sources */,
+				CA6CFE3A206C94E5001314AB /* HButton.m in Sources */,
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
 				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
 				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
+				CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */,
 				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,
 				CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */,
+				CABBA12C206A164600254F95 /* NSString+Util.m in Sources */,
 				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
 				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,

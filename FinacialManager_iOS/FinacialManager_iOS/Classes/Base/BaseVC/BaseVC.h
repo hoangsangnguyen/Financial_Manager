@@ -13,6 +13,7 @@
 #import "API.h"
 #import "AppDelegate.h"
 #import "BaseTBV.h"
+#import "UIView+Util.h"
 
 @interface BaseVC : UIViewController
 

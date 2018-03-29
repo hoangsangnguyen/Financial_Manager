@@ -35,7 +35,7 @@
                                 <rect key="frame" x="215" y="567" width="120" height="50"/>
                                 <state key="normal" title="Sign Up"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Blue"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Login"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Sign Up"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -50,7 +50,7 @@
                                 </constraints>
                                 <state key="normal" title="Login"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Blue"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Login"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Login"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -146,7 +146,7 @@
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <state key="normal" title="Login"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Blue"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Login"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Login"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -274,7 +274,7 @@
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <state key="normal" title="Sign Up"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="White"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleName" value="Login"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="Sign Up"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>

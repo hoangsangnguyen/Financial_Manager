@@ -232,6 +232,7 @@ UIViewController *vc = (UIViewController*)self;\
 #define BLUE_BUTTON RGB(0x009DF7)
 #define SHADOW_COLOR RGB(0X4C4C4C)
 #define PASSED_COLOR RGB(0x00C79B)
+#define WHITE_COLOR RGB(0xFFFFFF)
 
 #define Caculator_INCOME RGB(0x4AD5B9)
 #define Caculator_OUTCOME RGB(0xF6587B)

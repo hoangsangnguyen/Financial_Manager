@@ -13,10 +13,11 @@
 @property (nonatomic, strong) IBOutlet UIButton *btnIncome;
 @property (nonatomic, strong) IBOutlet UIButton *btnOutCome;
 
-@property (nonatomic, strong) IBOutlet UILabel *lblNumber;
+@property (nonatomic, strong) IBOutlet UIButton *btnNumber;
 
 @property (nonatomic, strong) IBOutlet UIView *vConent;
 @property (nonatomic, strong) IBOutlet UIView *vBackground;
+@property (nonatomic, strong) IBOutlet UIView *vNext;
 
 
 

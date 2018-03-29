@@ -15,4 +15,12 @@
 
 @property (nonatomic, weak) IBOutlet BaseTBV *tbvMenu;
 
+@property (nonatomic, weak) IBOutlet UIView *vLineMenu;
+@property (nonatomic, weak) IBOutlet UIView *vLineUser;
+
+// User
+@property (nonatomic, weak) IBOutlet UILabel *lblUserName;
+@property (nonatomic, weak) IBOutlet UILabel *lblEmail;
+@property (nonatomic, weak) IBOutlet UIButton *btnAvatar;
+
 @end
