@@ -38,7 +38,7 @@
     [SlideNavigationController sharedInstance].enableShadow = YES;
     
     
-    WelcomeVC *vc = VCFromSB(WelcomeVC, SB_Login);
+    OverViewVC*vc = VCFromSB(OverViewVC, SB_Overview);
     [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
                                  andCompletion:nil];
     

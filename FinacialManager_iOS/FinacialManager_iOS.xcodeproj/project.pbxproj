@@ -22,6 +22,10 @@
 		CA61B99020635DC00022A097 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA61B98F20635DC00022A097 /* Overview.storyboard */; };
 		CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* OverViewVC.m */; };
 		CA6CFE3A206C94E5001314AB /* HButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE39206C94E5001314AB /* HButton.m */; };
+		CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */; };
+		CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE3F206CF20B001314AB /* ChosseCategory.m */; };
+		CA7300D6206E1A640085E616 /* BaseColCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7300D5206E1A640085E616 /* BaseColCell.m */; };
+		CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7300D8206E1A770085E616 /* CategoryCell.m */; };
 		CA765707205EB62100751B9F /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7656FD205EB62000751B9F /* BaseCell.m */; };
 		CA765708205EB62100751B9F /* BaseTBV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765700205EB62100751B9F /* BaseTBV.m */; };
 		CA765709205EB62100751B9F /* BaseNV.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765703205EB62100751B9F /* BaseNV.m */; };
@@ -87,6 +91,13 @@
 		CA61B99320635E0C0022A097 /* OverViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverViewVC.m; sourceTree = "<group>"; };
 		CA6CFE38206C94E5001314AB /* HButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HButton.h; sourceTree = "<group>"; };
 		CA6CFE39206C94E5001314AB /* HButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HButton.m; sourceTree = "<group>"; };
+		CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChosseCategory.xib; sourceTree = "<group>"; };
+		CA6CFE3E206CF20B001314AB /* ChosseCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChosseCategory.h; sourceTree = "<group>"; };
+		CA6CFE3F206CF20B001314AB /* ChosseCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChosseCategory.m; sourceTree = "<group>"; };
+		CA7300D4206E1A640085E616 /* BaseColCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseColCell.h; sourceTree = "<group>"; };
+		CA7300D5206E1A640085E616 /* BaseColCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseColCell.m; sourceTree = "<group>"; };
+		CA7300D7206E1A770085E616 /* CategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		CA7300D8206E1A770085E616 /* CategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		CA7656FC205EB62000751B9F /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
 		CA7656FD205EB62000751B9F /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 		CA7656FF205EB62100751B9F /* BaseTBV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTBV.h; sourceTree = "<group>"; };
@@ -171,6 +182,7 @@
 		CA4BECB420692EBD00BA89C9 /* CaculatorVC */ = {
 			isa = PBXGroup;
 			children = (
+				CA7300D2206E1A180085E616 /* CategoryCell */,
 				CA4BECB520692EDE00BA89C9 /* CaculatorVC.h */,
 				CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */,
 			);
@@ -204,6 +216,7 @@
 		CA5D8165205E4FA3005C23E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA6CFE3B206CF1BD001314AB /* ChosseCategory */,
 				CA5D817A205E5038005C23E6 /* AnimationsSlideNav */,
 				CA5D8186205E5038005C23E6 /* SlideNavigationController */,
 			);
@@ -348,6 +361,34 @@
 			path = HButton;
 			sourceTree = "<group>";
 		};
+		CA6CFE3B206CF1BD001314AB /* ChosseCategory */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */,
+				CA6CFE3E206CF20B001314AB /* ChosseCategory.h */,
+				CA6CFE3F206CF20B001314AB /* ChosseCategory.m */,
+			);
+			path = ChosseCategory;
+			sourceTree = "<group>";
+		};
+		CA7300D2206E1A180085E616 /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA7300D7206E1A770085E616 /* CategoryCell.h */,
+				CA7300D8206E1A770085E616 /* CategoryCell.m */,
+			);
+			path = CategoryCell;
+			sourceTree = "<group>";
+		};
+		CA7300D3206E1A520085E616 /* BaseColCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA7300D4206E1A640085E616 /* BaseColCell.h */,
+				CA7300D5206E1A640085E616 /* BaseColCell.m */,
+			);
+			path = BaseColCell;
+			sourceTree = "<group>";
+		};
 		CA7656FB205EB62000751B9F /* BaseCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +428,7 @@
 		CA76570B205EB64E00751B9F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CA7300D3206E1A520085E616 /* BaseColCell */,
 				CA5D819B205E510E005C23E6 /* BaseDto */,
 				CA7656FB205EB62000751B9F /* BaseCell */,
 				CA765701205EB62100751B9F /* BaseNV */,
@@ -622,6 +664,7 @@
 				CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */,
 				CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */,
 				CA61B99020635DC00022A097 /* Overview.storyboard in Resources */,
+				CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */,
 				CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */,
 				CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */,
 				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				CA76571D205EB72C00751B9F /* SignInVC.m in Sources */,
@@ -749,6 +793,7 @@
 				CA765707205EB62100751B9F /* BaseCell.m in Sources */,
 				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				CA76570A205EB62100751B9F /* BaseVC.m in Sources */,
+				CA7300D6206E1A640085E616 /* BaseColCell.m in Sources */,
 				CABBA15D206A166700254F95 /* UIView+Util.m in Sources */,
 				CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				CA765712205EB72500751B9F /* MenuVC.m in Sources */,
@@ -765,6 +810,7 @@
 				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
 				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,
+				CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */,
 				CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

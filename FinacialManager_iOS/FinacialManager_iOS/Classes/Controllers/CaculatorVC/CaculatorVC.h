@@ -18,7 +18,14 @@
 @property (nonatomic, strong) IBOutlet UIView *vConent;
 @property (nonatomic, strong) IBOutlet UIView *vBackground;
 @property (nonatomic, strong) IBOutlet UIView *vNext;
+@property (nonatomic, strong) IBOutlet UIView *vCategory;
+@property (nonatomic, strong) IBOutlet UIView *vCategoryHeader;
 
+@property (nonatomic, strong) IBOutlet UICollectionView *clvCategory;
+
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *contTopClvCategory;
+
+@property (nonatomic, strong) IBOutlet UIPageControl *pageCategory;
 
 
 @end
