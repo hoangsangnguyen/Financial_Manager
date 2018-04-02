@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
+		CA2B86FA20729C8E000FF7FC /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */; };
+		CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F920729C8E000FF7FC /* UserNotifications.framework */; };
 		CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */; };
 		CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */; };
 		CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */; };
@@ -45,6 +47,9 @@
 		CABBA15D206A166700254F95 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CABBA151206A166700254F95 /* UIView+Util.m */; };
 		CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CABBA160206A169C00254F95 /* UIButton+Button.m */; };
 		CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CACAA6A4205EBDFB0096DB80 /* MenuDto.m */; };
+		CAFB8F7420720B35009EA2B3 /* MView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFB8F7320720B35009EA2B3 /* MView.m */; };
+		CAFB8F7620721C46009EA2B3 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFB8F7520721C46009EA2B3 /* Common.storyboard */; };
+		CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFB8F7A20721D24009EA2B3 /* AlertVC.m */; };
 		D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +68,8 @@
 		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		CA2B86F920729C8E000FF7FC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CA4BECB520692EDE00BA89C9 /* CaculatorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaculatorVC.h; sourceTree = "<group>"; };
 		CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaculatorVC.m; sourceTree = "<group>"; };
 		CA5D817B205E5038005C23E6 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
@@ -135,6 +142,11 @@
 		CABBA160206A169C00254F95 /* UIButton+Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Button.m"; sourceTree = "<group>"; };
 		CACAA6A3205EBDFB0096DB80 /* MenuDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuDto.h; sourceTree = "<group>"; };
 		CACAA6A4205EBDFB0096DB80 /* MenuDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuDto.m; sourceTree = "<group>"; };
+		CAFB8F7220720B35009EA2B3 /* MView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MView.h; sourceTree = "<group>"; };
+		CAFB8F7320720B35009EA2B3 /* MView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MView.m; sourceTree = "<group>"; };
+		CAFB8F7520721C46009EA2B3 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
+		CAFB8F7920721D24009EA2B3 /* AlertVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertVC.h; sourceTree = "<group>"; };
+		CAFB8F7A20721D24009EA2B3 /* AlertVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertVC.m; sourceTree = "<group>"; };
 		D588D0FF675FE055EA9BC3EB /* Pods-FinacialManager_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E119DCAFB56F754334F1C8B2 /* Pods-FinacialManager_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +156,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA2B86FA20729C8E000FF7FC /* UserNotificationsUI.framework in Frameworks */,
+				CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */,
 				D86EC0AB6B01FFB544B22433 /* libPods-FinacialManager_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +176,8 @@
 		49B80F489F95FDCAA352B663 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA2B86F920729C8E000FF7FC /* UserNotifications.framework */,
+				CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */,
 				A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */,
 				888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */,
 			);
@@ -216,6 +232,7 @@
 		CA5D8165205E4FA3005C23E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CAFB8F7120720B21009EA2B3 /* MView */,
 				CA6CFE3B206CF1BD001314AB /* ChosseCategory */,
 				CA5D817A205E5038005C23E6 /* AnimationsSlideNav */,
 				CA5D8186205E5038005C23E6 /* SlideNavigationController */,
@@ -226,6 +243,7 @@
 		CA5D8166205E4FA8005C23E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CAFB8F7720721D06009EA2B3 /* Common */,
 				CA4BECB420692EBD00BA89C9 /* CaculatorVC */,
 				CA61B99120635DF20022A097 /* OverViewVC */,
 				CA765713205EB72C00751B9F /* LoginVC */,
@@ -339,6 +357,7 @@
 				CAAE45A6205CB14D00090152 /* LaunchScreen.storyboard */,
 				CA76570D205EB70300751B9F /* Login.storyboard */,
 				CA61B98F20635DC00022A097 /* Overview.storyboard */,
+				CAFB8F7520721C46009EA2B3 /* Common.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -572,6 +591,32 @@
 			path = MenuDto;
 			sourceTree = "<group>";
 		};
+		CAFB8F7120720B21009EA2B3 /* MView */ = {
+			isa = PBXGroup;
+			children = (
+				CAFB8F7220720B35009EA2B3 /* MView.h */,
+				CAFB8F7320720B35009EA2B3 /* MView.m */,
+			);
+			path = MView;
+			sourceTree = "<group>";
+		};
+		CAFB8F7720721D06009EA2B3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CAFB8F7820721D0E009EA2B3 /* AlertVC */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CAFB8F7820721D0E009EA2B3 /* AlertVC */ = {
+			isa = PBXGroup;
+			children = (
+				CAFB8F7920721D24009EA2B3 /* AlertVC.h */,
+				CAFB8F7A20721D24009EA2B3 /* AlertVC.m */,
+			);
+			path = AlertVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -663,6 +708,7 @@
 				CA76570E205EB70300751B9F /* Login.storyboard in Resources */,
 				CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */,
 				CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */,
+				CAFB8F7620721C46009EA2B3 /* Common.storyboard in Resources */,
 				CA61B99020635DC00022A097 /* Overview.storyboard in Resources */,
 				CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */,
 				CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */,
@@ -799,9 +845,11 @@
 				CA765712205EB72500751B9F /* MenuVC.m in Sources */,
 				CA6CFE3A206C94E5001314AB /* HButton.m in Sources */,
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				CAFB8F7420720B35009EA2B3 /* MView.m in Sources */,
 				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
 				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
+				CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */,
 				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
 				CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */,
 				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,

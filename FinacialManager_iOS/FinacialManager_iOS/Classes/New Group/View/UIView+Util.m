@@ -66,8 +66,27 @@
         CAShapeLayer *maskLayer = [CAShapeLayer layer];
         maskLayer.frame = roundedView.bounds;
         maskLayer.path = maskPath.CGPath;
-        //maskLayer.masksToBounds = YES;
         roundedView.layer.mask = maskLayer;
+    }
+}
+
+- (void) roundCornersOnTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius andShadow:(float)shadow {
+    
+    if (tl || tr || bl || br) {
+        UIRectCorner corner = 0;
+        if (tl) corner = corner | UIRectCornerTopLeft;
+        if (tr) corner = corner | UIRectCornerTopRight;
+        if (bl) corner = corner | UIRectCornerBottomLeft;
+        if (br) corner = corner | UIRectCornerBottomRight;
+        
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corner cornerRadii:CGSizeMake(radius, radius)];
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.frame = self.bounds;
+        maskLayer.path = maskPath.CGPath;
+        maskLayer.shadowRadius = shadow;
+        maskLayer.shadowColor = GRAY_COLOR.CGColor;
+        maskLayer.shadowOffset = CGSizeMake(0, 1);
+        self.layer.mask = maskLayer;
     }
 }
 

@@ -10,6 +10,7 @@
 #import "MenuVC.h"
 #import "WelcomeVC.h"
 #import "OverViewVC.h"
+@import UserNotifications;
 
 @interface AppDelegate ()
 
@@ -19,6 +20,35 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    if( SYSTEM_VERSION_LESS_THAN( @"10.0" ) )
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound |    UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+        if( optind != nil )
+        {
+            NSLog( @"registerForPushWithOptions:" );
+        }
+    }
+    else
+    {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error)
+         {
+             if( !error )
+             {
+
+                 NSLog( @"Push registration success." );
+             }
+             else
+             {
+                NSLog(@"Something went wrong");
+             }
+         }];
+    }
     
     //
     _configure = [[Configure alloc] init];

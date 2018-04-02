@@ -21,6 +21,8 @@
 
 - (void) roundCornersOnTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius;
 
+- (void) roundCornersOnTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius andShadow:(float)shadow;
+
 - (void) moveTo:(CGPoint)destination duration:(float)secs option:(UIViewAnimationOptions)option;
 
 //Add constraints

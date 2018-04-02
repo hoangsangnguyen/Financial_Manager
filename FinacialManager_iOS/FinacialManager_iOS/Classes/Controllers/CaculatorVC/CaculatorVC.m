@@ -9,19 +9,28 @@
 #import "CaculatorVC.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CategoryCell.h"
-
-#define Height 150;
-
+#import "AlertVC.h"
 
 typedef enum : NSUInteger {
     Income = 0,
     OutCome,
 } typeInput;
+
+typedef enum : NSUInteger {
+    Category = 0,
+    Detail,
+    Final,
+} stepIndex;
+
 @interface CaculatorVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate> {
     NSInteger _typeButton;
     NSString *_strNumber;
     NSString *_strNumberPoint;
     Boolean _typePoint;
+    NSInteger _stepIndex;
+    CGRect _frameShowViewCategory;
+    CGRect _frameShowViewDetail;
+    CGRect _frameBeforShowView;
 }
 
 @end
@@ -40,38 +49,39 @@ typedef enum : NSUInteger {
 
 #pragma mark - InitUI
 - (void)initUI {
-    
-    // Category
-    _contTopClvCategory.constant = Height;
-    [_vCategory setHidden:YES];
-    [self.view layoutIfNeeded];
-    
+
     // default OutCome
     _typeButton = OutCome;
     [_vBackground setBackgroundColor:Caculator_OUTCOME];
     _btnNumber.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     
-    // UIButton Next
-    _vNext.layer.borderWidth = 1;
-    _vNext.layer.borderColor = GRAY_COLOR.CGColor;
-    _vNext.layer.cornerRadius = 5;
-    _vNext.layer.shadowColor = GRAY_COLOR.CGColor;
-    _vNext.layer.shadowOpacity = 1;
-    _vNext.layer.shadowOffset = CGSizeZero;
-    _vNext.layer.shadowRadius = 5;
-    
-    // UICategory
-    [_vCategory roundCornersOnTopLeft:YES topRight:YES bottomLeft:NO bottomRight:NO radius:10.0f];
-    _vCategory.layer.shadowColor = GRAY_COLOR.CGColor;
-    _vCategory.layer.shadowOpacity = 1;
-    _vCategory.layer.shadowOffset = CGSizeZero;
-    _vCategory.layer.shadowRadius = 3;
-
-
+    _stepIndex = 0;
     _strNumber = @"0";
     _strNumberPoint = @"0";
     _typePoint = NO;
     [self updateNumber];
+    [self initUIViewShow];
+}
+
+- (void)initUIViewShow {
+    // UICategory
+    _vCategory.layer.cornerRadius = 10;
+    _vDetail.layer.cornerRadius = 10;
+    
+    _vDetail.layer.shadowColor = GRAY_COLOR.CGColor;
+    _vDetail.layer.shadowOpacity = 1;
+    _vDetail.layer.shadowOffset = CGSizeZero;
+    _vDetail.layer.shadowRadius = 5;
+    
+    _vCategory.layer.shadowColor = GRAY_COLOR.CGColor;
+    _vCategory.layer.shadowOpacity = 1;
+    _vCategory.layer.shadowOffset = CGSizeZero;
+    _vCategory.layer.shadowRadius = 5;
+    
+    
+    _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
+    _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
+    _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
 }
 
 - (void)updateNumber:(NSInteger)number {
@@ -104,11 +114,18 @@ typedef enum : NSUInteger {
 
 
 -(IBAction)selectedBtnNext:(id)sender {
-    _contTopClvCategory.constant = SHEIGHT - 50;
-    [self.view layoutIfNeeded];
-    [_vCategory setHidden:NO];
-    [_clvCategory reloadData];
-    [self animationNext];
+    [self animationNextCategory];
+    _stepIndex++;
+}
+
+-(IBAction)selectedBtnDetail:(id)sender {
+    [self animationDetail];
+    _stepIndex++;
+}
+
+-(IBAction)selectedBtnFinal:(id)sender {
+    [self animationFinal];
+    _stepIndex++;
 }
 
 - (IBAction)selectedNumber:(UIButton *)btn {
@@ -170,11 +187,15 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)animationNext {
+- (void)animationNextCategory {
+    [self.view addSubview:_vCategory];
+    [_vCategory setFrame:_frameBeforShowView];
+    [_clvCategory reloadData];
+    
     CGRect rectBtnIncome = _btnIncome.frame;
     CGRect rectBtnOutCome = _btnOutCome.frame;
     CGRect rectBtnNumber = _btnNumber.frame;
-    _contTopClvCategory.constant = 150;
+    
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
         if (_typeButton == OutCome) {
             [_btnOutCome setFrame:CGRectMake(SWIDTH/2 - rectBtnOutCome.size.width/2 +5, 0, rectBtnOutCome.size.width, rectBtnOutCome.size.height)];
@@ -189,10 +210,36 @@ typedef enum : NSUInteger {
         [_btnNumber setFrame:CGRectMake(rectBtnNumber.origin.x,0, rectBtnNumber.size.width, rectBtnNumber.size.height)];
         _btnNumber.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         _btnNumber.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8, 0.8);
+        
+        [_vCategory setFrame:_frameShowViewCategory];
+
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
     }];
+}
+
+- (void)animationDetail {
+    [self.view addSubview:_vDetail];
+    [_vDetail setFrame:_frameBeforShowView];
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
+        [_vDetail setFrame:_frameShowViewDetail];
+        _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)animationFinal {
+    [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
+//        [self dismissViewControllerAnimated:YES completion:^{
+//
+//        }];
+    }];
     
+//    [AlertVC showAlert:@"AAA" title:@"AAA" callback:^(BOOL hasPressOK) {
+//
+//    }];
 }
 
 
@@ -239,6 +286,7 @@ typedef enum : NSUInteger {
 #pragma mark UIScrollView
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updatePageWithScrollView:scrollView];
+        NSLog(@"x= %f,y =%f",scrollView.contentOffset.x,scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

@@ -8,6 +8,7 @@
 
 #import "OverViewVC.h"
 #import "CaculatorVC.h"
+#import "AlertVC.h"
 
 @interface OverViewVC ()
 
@@ -36,6 +37,15 @@
 - (IBAction)btnCaculator:(id)sender {
     CaculatorVC *vc = VCFromSB(CaculatorVC, SB_Overview);
     [AppNav presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)btnAlert:(id)sender {
+    [AlertVC showAlert:@"AAA" title:@"AAA" callback:^(BOOL hasPressOK) {
+
+    }];
+//    [AlertVC show:self content:@"AAA" title:@"AAA" callback:^(BOOL hasPressOK) {
+//
+//    }];
 }
 
 @end
