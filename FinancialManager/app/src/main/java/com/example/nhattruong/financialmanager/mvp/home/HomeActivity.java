@@ -18,6 +18,7 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
@@ -73,6 +74,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        User user = getPresenter().getPreferManager().getUser();
+        tvUserName.setText(user.getUserName());
+        tvUserEmail.setText(user.getEmail());
 
         rcvJar.setLayoutManager(new GridLayoutManager(this, 2));
         mJarLists = new ArrayList<>();
