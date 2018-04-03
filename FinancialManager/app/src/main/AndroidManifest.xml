@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".mvp.flash.SplashActivity">
+        <activity android:name=".mvp.overlap.OverlapLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,6 +27,7 @@
         <activity android:name=".mvp.home.HomeActivity" />
         <activity android:name=".mvp.signup.SignUpActivity" />
         <activity android:name=".mvp.profile.ProfileActivity" />
+        <!--<activity android:name=".mvp.overlap.OverlapLayoutActivity"/>-->
 
         <provider
             android:name=".sqlite.MyProvider"

@@ -20,6 +20,7 @@
     <string name="first_name">First name</string>
     <string name="register">Register</string>
     <string name="logout">Logout</string>
+    <string name="position_number">+%d</string>
 
     <string-array name="types">
         <item>Nhu cầu thiết yếu</item>
