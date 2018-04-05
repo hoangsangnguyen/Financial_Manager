@@ -6,10 +6,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 19/03/2018.
- */
-
 public class JarResponse extends BaseResponse {
     @SerializedName("results")
     @Expose

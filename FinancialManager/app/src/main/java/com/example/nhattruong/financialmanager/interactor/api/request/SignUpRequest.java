@@ -20,9 +20,9 @@ public class SignUpRequest {
     @Expose
     private String phone;
 
-    @SerializedName("userName")
+    @SerializedName("username")
     @Expose
-    private String userName;
+    private String username;
 
     @SerializedName("password")
     @Expose
@@ -33,7 +33,7 @@ public class SignUpRequest {
         this.lastName = builder.lastName;
         this.email = builder.email;
         this.phone = builder.phone;
-        this.userName = builder.userName;
+        this.username = builder.userName;
         this.password = builder.password;
     }
 

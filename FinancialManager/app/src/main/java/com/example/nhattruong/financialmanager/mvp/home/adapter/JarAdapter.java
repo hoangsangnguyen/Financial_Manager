@@ -38,7 +38,7 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
     public void onBindViewHolder(JarAdapter.ViewHolder holder, int position) {
         Jar jar = mItems.get(position);
         if (jar != null && position != 6) { // type "Tổng hợp"
-            double rest = jar.getInCome() - jar.getSpend() - jar.getDebt();
+            double rest = jar.getIncomes() - jar.getSpending() - jar.getDebts();
             holder.tvQuantity.setText(String.valueOf(rest));
             holder.tvType.setText(mContext.getResources().getStringArray(R.array.types)[position]);
         }

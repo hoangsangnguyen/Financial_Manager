@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class User implements Serializable{
-    @SerializedName("ID")
+    @SerializedName("_id")
     @Expose
-    private Integer id;
+    private String id;
 
     @SerializedName("firstName")
     @Expose
@@ -38,11 +38,11 @@ public class User implements Serializable{
     @Expose
     private String token;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

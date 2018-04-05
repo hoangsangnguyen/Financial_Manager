@@ -23,7 +23,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
     private List<Jar> jarList = new ArrayList<>();
 
-    public List<Jar> getJarList() {
+    List<Jar> getJarList() {
         return jarList;
     }
 
@@ -35,8 +35,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
             @Override
             public void success(TypeResponse res) {
                 if (res != null) {
-                    Log.d("TYPES : ", res.result.size() + "\n" + new Gson().toJson(res.result));
-                    getStates();
+                   getJars();
                 } else {
                     if (!isViewAttached()) return;
                     getView().hideLoading();
@@ -79,11 +78,9 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 //        getView().showLoading();
         User user = getPreferManager().getUser();
         if (user != null) {
-            String userName = user.getUserName();
-            getApiManager().getJars(userName, new ApiCallback<JarResponse>() {
+            getApiManager().getJars(user.getId(), new ApiCallback<JarResponse>() {
                 @Override
                 public void success(JarResponse res) {
-                    Log.d("JARS : ", res.result.size() + " : " + new Gson().toJson(res.result));
                     if (!isViewAttached()) return;
                     getView().hideLoading();
                     if (res.result != null) {

@@ -15,7 +15,7 @@ public class HeadersInterceptor implements Interceptor {
 
     private Request processRequest(Request request) {
         Request.Builder newBuilder = request.newBuilder();
-        HttpUrl newUrl = HttpUrl.parse("http://ptit.somee.com/");
+        HttpUrl newUrl = HttpUrl.parse("http://financialmanagerptit.azurewebsites.net/8");
         if (null != newUrl) {
             newUrl = request.url().newBuilder()
                     .scheme(newUrl.scheme())

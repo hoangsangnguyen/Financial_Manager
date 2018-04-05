@@ -5,80 +5,64 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by Administrator on 19/03/2018.
- */
-
 public class Jar implements Serializable {
-    @SerializedName("ID")
+    @SerializedName("_id")
     @Expose
-    private Integer id;
+    private String id;
 
-    @SerializedName("typeID")
+    @SerializedName("type")
     @Expose
-    private Integer typeID;
+    private String type;
 
-    @SerializedName("inCome")
+    @SerializedName("incomes")
     @Expose
-    private double inCome;
+    private int incomes;
 
-    @SerializedName("debt")
+    @SerializedName("debts")
     @Expose
-    private double debt;
+    private int debts;
 
-    @SerializedName("spend")
+    @SerializedName("spendings")
     @Expose
-    private double spend;
+    private int spendings;
 
-    @SerializedName("userID")
-    @Expose
-    private Integer userID;
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getTypeID() {
-        return typeID;
+    public String getType() {
+        return type;
     }
 
-    public void setTypeID(Integer typeID) {
-        this.typeID = typeID;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public double getInCome() {
-        return inCome;
+    public int getIncomes() {
+        return incomes;
     }
 
-    public void setInCome(double inCome) {
-        this.inCome = inCome;
+    public void setIncomes(int incomes) {
+        this.incomes = incomes;
     }
 
-    public double getDebt() {
-        return debt;
+    public int getDebts() {
+        return debts;
     }
 
-    public void setDebt(double debt) {
-        this.debt = debt;
+    public void setDebts(int debts) {
+        this.debts = debts;
     }
 
-    public double getSpend() {
-        return spend;
+    public int getSpending() {
+        return spendings;
     }
 
-    public void setSpend(double spend) {
-        this.spend = spend;
-    }
-
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setSpending(int spendings) {
+        this.spendings = spendings;
     }
 }

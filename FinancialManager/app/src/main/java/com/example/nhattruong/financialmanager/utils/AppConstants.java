@@ -32,5 +32,5 @@ public class AppConstants {
     public static final String YESTERDAY = "Yesterday";
     public static final String TODAY = "Today";
 
-    public static final String BASE_URL = "http://ptit.somee.com/";
+    public static final String BASE_URL = "http://financialmanagerptit.azurewebsites.net/";
 }

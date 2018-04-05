@@ -106,8 +106,8 @@ public class ApiManager {
     }
 
     //======================== get Jars ==========================
-    public void getJars(String userName, final ApiCallback<JarResponse> callback) {
-        mApiServices.getJars(getToken(), userName)
+    public void getJars(String id, final ApiCallback<JarResponse> callback) {
+        mApiServices.getJars(getToken(), id)
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {

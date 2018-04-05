@@ -5,24 +5,24 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by Administrator on 19/03/2018.
- */
-
 public class Type implements Serializable {
-    @SerializedName("ID")
+    @SerializedName("_id")
     @Expose
-    private Integer id;
+    private String id;
 
     @SerializedName("name")
     @Expose
     private String name;
 
-    public Integer getId() {
+    @SerializedName("percent")
+    @Expose
+    private double percent;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -32,5 +32,13 @@ public class Type implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getPercent() {
+        return percent;
+    }
+
+    public void setPercent(double percent) {
+        this.percent = percent;
     }
 }
