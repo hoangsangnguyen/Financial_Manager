@@ -12,8 +12,7 @@
 #import "OverViewVC.h"
 @import UserNotifications;
 
-@interface AppDelegate ()
-
+@interface AppDelegate () <UNUserNotificationCenterDelegate>
 @end
 
 @implementation AppDelegate
