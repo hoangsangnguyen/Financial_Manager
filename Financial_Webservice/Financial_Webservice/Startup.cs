@@ -53,9 +53,7 @@ namespace Financial_Webservice
             
             app.SeedData();
             IEnumerable<Entities.Type> types = context.Types.ToList();
-            IEnumerable<InCome> inComes = context.Incomes.ToList();
-            IEnumerable<Debt> debts = context.Debts.ToList();
-            IEnumerable<SpendingDetail> spendings = context.SpendingsDetail.ToList();
+            IEnumerable<State> states = context.States.ToList();
 
             AutoMapper.Mapper.Initialize(cfg =>
             {
@@ -68,8 +66,12 @@ namespace Financial_Webservice
                 cfg.CreateMap<Entities.Jar, Models.JarDto>()
                     .ForMember(dest => dest.type, opt => opt.MapFrom(scr => scr.GetTypeNameFromID(types)))
                     .ForMember(dest => dest.incomes, opt => opt.MapFrom(scr => scr.GetIncomeAmount()))
-                    .ForMember(dest => dest.debts, opt => opt.MapFrom(scr => scr.GetDebtAmount(debts)))
-                    .ForMember(dest => dest.spendings, opt => opt.MapFrom(scr => scr.GetSpendingAmount(spendings)));
+                    .ForMember(dest => dest.posDebts, opt => opt.MapFrom(scr => scr.GetPosDebtAmount()))
+                    .ForMember(dest => dest.negWaittingDebts, opt => opt.MapFrom(scr => scr.GetNegWaittingDebtAmount(states)))
+                    .ForMember(dest => dest.negReadyDebts, opt => opt.MapFrom(scr => scr.GetNegReadyDebtAmount(states)))
+                    .ForMember(dest => dest.negDoneDebts, opt => opt.MapFrom(scr => scr.GetNegDoneDebtAmount(states)))
+                    .ForMember(dest => dest.avaiableAmount, opt => opt.MapFrom(scr => scr.GetAvaiableAmount(states)))
+                    .ForMember(dest => dest.spendings, opt => opt.MapFrom(scr => scr.GetSpendingAmount()));
 
                 cfg.CreateMap<Models.JarCreationDto, Entities.Jar>()
                     .ForMember(dest => dest.type, opt => opt.Ignore())
@@ -81,7 +83,11 @@ namespace Financial_Webservice
                 cfg.CreateMap<IEnumerable<InCome>, Models.JarDto>()
                     .ForMember(dest => dest.incomes, opt => opt.MapFrom(scr => scr.GetIncomeAmount()))
                     .ForMember(dest => dest.type, opt => opt.Ignore())
-                    .ForMember(dest => dest.debts, opt => opt.Ignore())
+                    .ForMember(dest => dest.posDebts, opt => opt.Ignore())
+                    .ForMember(dest => dest.negWaittingDebts, opt => opt.Ignore())
+                    .ForMember(dest => dest.negReadyDebts, opt => opt.Ignore())
+                    .ForMember(dest => dest.negDoneDebts, opt => opt.Ignore())
+                    .ForMember(dest => dest.avaiableAmount, opt => opt.Ignore())
                     .ForMember(dest => dest.spendings, opt => opt.Ignore());
 
                 #endregion
@@ -93,7 +99,13 @@ namespace Financial_Webservice
 
                 #region Debt
                 cfg.CreateMap<Entities.Debt, Models.DebtDto>()
-                    .ForMember(dest => dest.state, opt => opt.MapFrom(scr => scr.state.name));
+                    .ForMember(dest => dest.state, opt => opt.MapFrom(scr => scr.GetStateNameFromID(states)));
+                cfg.CreateMap<Models.DebtCreationDto, Entities.Debt>()
+                    .ForMember(dest => dest.state, opt => opt.Ignore())
+                    .ForMember(dest => dest.stateID, opt => opt.MapFrom(scr => scr.GetStateIdFromName(states)));
+                cfg.CreateMap<Models.DebtUpdationDto, Entities.Debt>()
+                    .ForMember(dest => dest.state, opt => opt.Ignore())
+                    .ForMember(dest => dest.stateID, opt => opt.MapFrom(scr => scr.GetStateIdFromName(states)));
                 #endregion
 
                 #region State
@@ -106,6 +118,7 @@ namespace Financial_Webservice
 
                 #region Spending
                 cfg.CreateMap<Entities.SpendingDetail, Models.SpendingDetailDto>();
+                cfg.CreateMap<Models.SpendingCreationDto, Entities.SpendingDetail>();
                 #endregion
 
             });

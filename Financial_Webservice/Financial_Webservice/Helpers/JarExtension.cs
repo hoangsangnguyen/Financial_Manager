@@ -26,15 +26,15 @@ namespace Financial_Webservice.Helpers
         }
 
 
-        public static double GetDebtAmount(this Jar jar, IEnumerable<Debt> debts)
+        public static double GetPosDebtAmount(this Jar jar)
         {
             double sum = 0;
 
-            if (debts != null)
+            if (jar.debts != null)
             {
-                foreach (var debt in debts)
+                foreach (var debt in jar.debts)
                 {
-                    if (debt.jarID == jar._id)
+                    if (debt.jarID == jar._id && debt.isPositive)
                         sum += debt.amount;
                 }
             }
@@ -42,13 +42,75 @@ namespace Financial_Webservice.Helpers
             return sum;
         }
 
-        public static double GetSpendingAmount(this Jar jar, IEnumerable<SpendingDetail> spendings)
+        public static double GetNegWaittingDebtAmount(this Jar jar, IEnumerable<State> states)
         {
             double sum = 0;
 
-            if (spendings != null)
+            var waittingStateId = states.Where(s => s.name.ToLowerInvariant() == StateEnum.WATING.getStateDescription().ToLowerInvariant())
+                .FirstOrDefault()._id;
+
+            if (jar.debts != null)
             {
-                foreach (var spending in spendings)
+                foreach (var debt in jar.debts)
+                {
+                    if (debt.jarID == jar._id && !debt.isPositive && debt.stateID == waittingStateId)
+                        sum += debt.amount;
+                }
+            }
+
+            return sum;
+        }
+
+        public static double GetNegReadyDebtAmount(this Jar jar, IEnumerable<State> states)
+        {
+            double sum = 0;
+
+            var readyStateId = states.Where(s => s.name.ToLowerInvariant() == StateEnum.READY.getStateDescription().ToLowerInvariant())
+                .FirstOrDefault()._id;
+
+            if (jar.debts != null)
+            {
+                foreach (var debt in jar.debts)
+                {
+                    if (debt.jarID == jar._id && !debt.isPositive && debt.stateID == readyStateId)
+                        sum += debt.amount;
+                }
+            }
+
+            return sum;
+        }
+
+        public static double GetNegDoneDebtAmount(this Jar jar, IEnumerable<State> states)
+        {
+            double sum = 0;
+
+            var doneStateId = states.Where(s => s.name.ToLowerInvariant() == StateEnum.DONE.getStateDescription().ToLowerInvariant())
+                .FirstOrDefault()._id;
+
+            if (jar.debts != null)
+            {
+                foreach (var debt in jar.debts)
+                {
+                    if (debt.jarID == jar._id && !debt.isPositive && debt.stateID == doneStateId)
+                        sum += debt.amount;
+                }
+            }
+
+            return sum;
+        }
+
+        public static double GetAvaiableAmount(this Jar jar, IEnumerable<State> states)
+        {
+            return jar.GetIncomeAmount() - jar.GetNegReadyDebtAmount(states) - jar.GetSpendingAmount();
+        }
+
+        public static double GetSpendingAmount(this Jar jar)
+        {
+            double sum = 0;
+
+            if (jar.spendings != null)
+            {
+                foreach (var spending in jar.spendings)
                 {
                     if (spending.jarID == jar._id)
                         sum += spending.amount;
@@ -57,6 +119,8 @@ namespace Financial_Webservice.Helpers
 
             return sum;
         }
+
+
         public static Entities.Type GetTypeFromName(this JarCreationDto jar, IEnumerable<Entities.Type> types)
         {
             var type = types.Where(t => t.name.ToLowerInvariant() == jar.type.ToLowerInvariant()).First();

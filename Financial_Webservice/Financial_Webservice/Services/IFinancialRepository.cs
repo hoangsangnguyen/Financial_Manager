@@ -1,8 +1,7 @@
 ﻿using Financial_Webservice.Entities;
+using Financial_Webservice.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Financial_Webservice.Services
 {
@@ -25,7 +24,7 @@ namespace Financial_Webservice.Services
         Jar GetJar(Guid id);
         bool DeleteJar(Jar jar);
         bool AddJar(Guid userID, Jar jar);
-        bool JarExists(Guid id);
+        bool JarExists(Guid userID, Guid id);
 
         #endregion
 
@@ -34,13 +33,32 @@ namespace Financial_Webservice.Services
         #endregion
 
         #region Incomes
-        IEnumerable<InCome> GetIncomesForJar( Guid jarID);
+        IEnumerable<InCome> GetIncomesForJar( Guid jarID, IncomeResourceParameters incomeResourceParameters);
         InCome GetIncome( Guid jarID, Guid id);
         bool AddIncomeForJar(Guid jarID, InCome income);
         bool AddIncome(Guid userID, InCome inCome);
         bool DeleteIncome(InCome inCome);
         void UpdateIncome(InCome inCome);
 
+        #endregion
+        #region state
+        IEnumerable<State> GetStates();
+        #endregion
+
+        #region Spending
+        IEnumerable<SpendingDetail> GetSpendings(Guid jarID, SpendingResourceParameters spendingResourceParameters );
+        SpendingDetail GetSpendingByID(Guid id);
+        bool AddSpending(Guid jarID, SpendingDetail spending);
+        bool DeleteSpending(SpendingDetail spending);
+        bool DeleteSpendingsList(Guid jarID, IEnumerable<Guid> spendingsID);
+        #endregion
+
+        #region Debt
+        IEnumerable<Debt> GetDebtForJar(Guid jarID, DebtResourceParameters debtResourceParameters);
+        Debt GetDebtByID(Guid jarID, Guid id);
+        bool AddDebt(Guid jarID, Debt debt);
+        bool UpdateDebt(Guid jarID, Debt debt);
+        bool DeleteDebt(Guid jarID, Debt debt);
         #endregion
         bool Save();
     }

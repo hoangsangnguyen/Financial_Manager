@@ -29,17 +29,18 @@ namespace Financial_Webservice.Controllers
         {
             ResultDto result = new ResultDto();
 
-            if(!_financialRepository.checkAuthenticated(token, userID))
-            {
-                result.message = "Token failed";
-                return BadRequest(result);
-            }
-
             if (!_financialRepository.UserExists(userID))
             {
                 result.message = "User not found";
                 return NotFound(result);
             }
+
+            if (!_financialRepository.checkAuthenticated(token, userID))
+            {
+                result.message = "Token failed";
+                return BadRequest(result);
+            }
+
 
             var jarsFromRepo = _financialRepository.GetJars(userID);
             if (jarsFromRepo == null || jarsFromRepo.Count() == 0) // user hasn't created jar
@@ -90,7 +91,7 @@ namespace Financial_Webservice.Controllers
                 return NotFound(result);
             }
 
-            if (!_financialRepository.JarExists(id))
+            if (!_financialRepository.JarExists(userID, id))
             {
                 result.message = "Jar not found";
                 return NotFound(result);

@@ -8,6 +8,7 @@ using Financial_Webservice.Services;
 using Financial_Webservice.Entities;
 using Financial_Webservice.Models;
 using AutoMapper;
+using Financial_Webservice.Helpers;
 
 namespace Financial_Webservice.Controllers
 {
@@ -23,22 +24,29 @@ namespace Financial_Webservice.Controllers
         }
 
         [HttpGet("api/users/{userID}/jars/{jarID}/Incomes")]
-        public IActionResult GetIncomesForJars([FromHeader] string token, Guid userID, Guid jarID)
+        public IActionResult GetIncomesForJars([FromHeader] string token, Guid userID, Guid jarID,
+            IncomeResourceParameters incomeResourceParameters )
         {
             ResultDto result = new ResultDto();
-            if (!_financialRepository.checkAuthenticated(token, userID))
-            {
-                result.message = "Token failed";
-                return BadRequest(result);
-            }
-
             if (!_financialRepository.UserExists(userID))
             {
                 result.message = "User not found";
                 return BadRequest(result);
             }
 
-            var incomesFromRepo = _financialRepository.GetIncomesForJar(jarID);
+            if (!_financialRepository.checkAuthenticated(token, userID))
+            {
+                result.message = "Token failed";
+                return BadRequest(result);
+            }
+
+            if (!_financialRepository.JarExists(userID, jarID))
+            {
+                result.message = "Jar not found";
+                return BadRequest(result);
+            }
+
+            var incomesFromRepo = _financialRepository.GetIncomesForJar(jarID, incomeResourceParameters);
             if (incomesFromRepo == null)
             {
                 result.message = "Incomes not found";

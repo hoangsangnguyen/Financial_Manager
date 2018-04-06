@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <None Remove="Properties\PublishProfiles\FinancialWebservice20180404050020 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\FinancialWebservice20180405035028 - Web Deploy.pubxml" />
     <None Remove="Properties\PublishProfiles\FinancialWebservice20180405093841 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\FinancialWebservice20180405094401 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\quanlytaichinheie - Web Deploy.pubxml" />
   </ItemGroup>
 
   <ItemGroup>

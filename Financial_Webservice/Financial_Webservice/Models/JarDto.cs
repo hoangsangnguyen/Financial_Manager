@@ -13,8 +13,14 @@ namespace Financial_Webservice.Models
 
         public double incomes { get; set; }
 
-        public double debts { get; set; }
+        public double posDebts { get; set; }
+        public double negWaittingDebts{ get; set; }
+        public double negReadyDebts { get; set; }
+        public double negDoneDebts { get; set; }
 
         public double spendings { get; set; }
+        public double avaiableAmount{ get; set; }
+
+
     }
 }

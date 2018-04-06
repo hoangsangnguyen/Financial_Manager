@@ -1,0 +1,11 @@
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.API.deps.json
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.API.runtimeconfig.json
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.API.runtimeconfig.dev.json
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.API.dll
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.API.pdb
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.csprojResolveAssemblyReference.cache
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.csproj.CoreCompileInputs.cache
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.AssemblyInfoInputs.cache
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.AssemblyInfo.cs
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.dll
+C:\Users\nguye\Documents\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.API.pdb
