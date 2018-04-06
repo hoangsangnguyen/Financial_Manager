@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AlertVC-->
+        <scene sceneID="WdZ-B1-Ihn">
+            <objects>
+                <viewController storyboardIdentifier="AlertVC" modalPresentationStyle="overCurrentContext" id="zyo-gA-VD0" customClass="AlertVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dyw-cg-a20">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-2U-3c2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bKz-v0-Zb7">
+                                <rect key="frame" x="60" y="241" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYr-lF-psG">
+                                        <rect key="frame" x="97" y="81" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="btnOk:" destination="zyo-gA-VD0" eventType="touchUpInside" id="TeW-hr-u01"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oA-Ee-emW">
+                                        <rect key="frame" x="97" y="43" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4648237824" green="0.76317775249999997" blue="0.76290422680000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UYD-FE-h5E" firstAttribute="trailing" secondItem="Bqi-2U-3c2" secondAttribute="trailing" id="6gC-g1-Tea"/>
+                            <constraint firstItem="Bqi-2U-3c2" firstAttribute="top" secondItem="UYD-FE-h5E" secondAttribute="top" constant="-20" id="BXk-72-TSR"/>
+                            <constraint firstItem="UYD-FE-h5E" firstAttribute="bottom" secondItem="Bqi-2U-3c2" secondAttribute="bottom" id="bGv-GV-JAL"/>
+                            <constraint firstItem="Bqi-2U-3c2" firstAttribute="leading" secondItem="UYD-FE-h5E" secondAttribute="leading" id="lKp-Ey-414"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UYD-FE-h5E"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblTitile" destination="4oA-Ee-emW" id="1My-06-Irr"/>
+                        <outlet property="vContent" destination="bKz-v0-Zb7" id="PXq-Ky-dFF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSJ-00-wqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.599999999999994" y="174.96251874062969"/>
+        </scene>
+    </scenes>
+</document>
