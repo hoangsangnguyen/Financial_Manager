@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42F72D9C2077B4000014173E /* TypeDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F72D9B2077B4000014173E /* TypeDto.m */; };
 		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
 		CA2B86FA20729C8E000FF7FC /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */; };
 		CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F920729C8E000FF7FC /* UserNotifications.framework */; };
@@ -28,7 +29,6 @@
 		CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */; };
 		CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE3F206CF20B001314AB /* ChosseCategory.m */; };
 		CA7013802076136700962831 /* CategoryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA70137F2076136700962831 /* CategoryDto.m */; };
-		CA7013852076139C00962831 /* DetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7013842076139C00962831 /* DetailDto.m */; };
 		CA701388207613A900962831 /* JarDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA701387207613A900962831 /* JarDto.m */; };
 		CA7300D6206E1A640085E616 /* BaseColCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7300D5206E1A640085E616 /* BaseColCell.m */; };
 		CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7300D8206E1A770085E616 /* CategoryCell.m */; };
@@ -69,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		289502364A49E235EF2CD79C /* Pods-FinacialManager_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOS/Pods-FinacialManager_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		42F72D9A2077B4000014173E /* TypeDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeDto.h; sourceTree = "<group>"; };
+		42F72D9B2077B4000014173E /* TypeDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeDto.m; sourceTree = "<group>"; };
 		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,8 +111,6 @@
 		CA6CFE3F206CF20B001314AB /* ChosseCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChosseCategory.m; sourceTree = "<group>"; };
 		CA70137E2076136700962831 /* CategoryDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDto.h; sourceTree = "<group>"; };
 		CA70137F2076136700962831 /* CategoryDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDto.m; sourceTree = "<group>"; };
-		CA7013832076139C00962831 /* DetailDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailDto.h; sourceTree = "<group>"; };
-		CA7013842076139C00962831 /* DetailDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailDto.m; sourceTree = "<group>"; };
 		CA701386207613A900962831 /* JarDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JarDto.h; sourceTree = "<group>"; };
 		CA701387207613A900962831 /* JarDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JarDto.m; sourceTree = "<group>"; };
 		CA7300D4206E1A640085E616 /* BaseColCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseColCell.h; sourceTree = "<group>"; };
@@ -185,6 +185,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42F72D992077B3B40014173E /* TypesDto */ = {
+			isa = PBXGroup;
+			children = (
+				42F72D9A2077B4000014173E /* TypeDto.h */,
+				42F72D9B2077B4000014173E /* TypeDto.m */,
+			);
+			path = TypesDto;
+			sourceTree = "<group>";
+		};
 		49B80F489F95FDCAA352B663 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,8 +286,8 @@
 		CA5D8167205E4FB1005C23E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				42F72D992077B3B40014173E /* TypesDto */,
 				CA701389207613AC00962831 /* JarDto */,
-				CA7013822076138B00962831 /* DetailDto */,
 				CACAA6A2205EBDFB0096DB80 /* MenuDto */,
 				CA5D8197205E508B005C23E6 /* UserDto */,
 				CA7013812076137300962831 /* CategoryDto */,
@@ -422,15 +431,6 @@
 				CA70137F2076136700962831 /* CategoryDto.m */,
 			);
 			path = CategoryDto;
-			sourceTree = "<group>";
-		};
-		CA7013822076138B00962831 /* DetailDto */ = {
-			isa = PBXGroup;
-			children = (
-				CA7013832076139C00962831 /* DetailDto.h */,
-				CA7013842076139C00962831 /* DetailDto.m */,
-			);
-			path = DetailDto;
 			sourceTree = "<group>";
 		};
 		CA701389207613AC00962831 /* JarDto */ = {
@@ -900,7 +900,6 @@
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				CAFB8F7420720B35009EA2B3 /* MView.m in Sources */,
 				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
-				CA7013852076139C00962831 /* DetailDto.m in Sources */,
 				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
 				CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */,
@@ -914,6 +913,7 @@
 				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,
 				CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */,
+				42F72D9C2077B4000014173E /* TypeDto.m in Sources */,
 				CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */,
 				CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */,
 			);

@@ -6,7 +6,7 @@
 //  Copyright © 2018 ThanhSon. All rights reserved.
 //
 
-#define ServerURL @"http://ptit.somee.com"
+#define ServerURL @"http://financialmanagerptit.azurewebsites.net/api"
 
 // Method Index
 #define NUM_METHOD          5
@@ -45,14 +45,8 @@
 #define App ((AppDelegate*)AppShare.delegate)
 #define AppNav [SlideNavigationController sharedInstance]
 
-// ImagePicker
-#define IMAGE_PICKER     [ImagePicker shared]
-
-#define Config  App.config
+#define Config  App.configure
 #define Socket  App.socket
-
-#define ProjectRole Config.projectDetailDto.roleProject
-#define CompanyRole Config.user.roleCompany
 
 #define KEY_INFO_DEVICE @"DIC_INFOR_CURRENT_DEVICE"
 

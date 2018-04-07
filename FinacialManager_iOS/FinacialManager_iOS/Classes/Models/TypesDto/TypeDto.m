@@ -1,24 +1,22 @@
 //
-//  JarDto.m
+//  TypeDto.m
 //  FinacialManager_iOS
 //
-//  Created by ThanhSon on 4/5/18.
+//  Created by HHumorous on 4/6/18.
 //  Copyright © 2018 ThanhSon. All rights reserved.
 //
 
-#import "JarDto.h"
+#import "TypeDto.h"
 
-@implementation JarDto
+@implementation TypeDto
 
 -(id)initWithData:(NSDictionary *)dic {
     self = [super init];
     if (dic) {
         if ([dic isKindOfClass:[NSDictionary class]]) {
             IO(_id);
-            IO(type);
-            ID(income);
-            ID(debts);
-            ID(spendings);
+            IO(name);
+            IF(percent);
         }
     }
     return self;
@@ -27,10 +25,8 @@
 - (NSMutableDictionary *)getJSONObject {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     JO(_id);
-    JO(type);
-    JD(income);
-    JD(debts);
-    JD(spendings);
+    JO(name);
+    JN(percent);
     
     return dic;
 }
@@ -43,7 +39,7 @@
 
 @end
 
-@implementation ListJarDto
+@implementation ListTypeDto
 
 - (instancetype)init {
     self = [super init];
@@ -53,8 +49,9 @@
 
 - (id)initWithData:(NSDictionary *)dic {
     self = [super init];
-    IAObj(list, dic, JarDto);
+    IAObj(list, dic, TypeDto);
     return self;
 }
+
 
 @end

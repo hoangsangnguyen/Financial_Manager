@@ -10,6 +10,8 @@
 #import "UserDto.h"
 #import "Configure.h"
 #import "AppDelegate.h"
+#import "JarDto.h"
+#import "TypeDto.h"
 
 @interface _API ()
 @property (nonatomic, assign) NSInteger _countRequest;
@@ -197,7 +199,7 @@
 #pragma mark - Login
 
 - (void)login:(UserDto*)user callback:(APICallback)callback {
-    [self processAPI:@"user/login"
+    [self processAPI:@"users/login"
               method:METHOD_POST
               header:nil
                 body:user
@@ -211,6 +213,37 @@
               header:nil
                 body:user
         successClass:nil
+            callback:callback];
+}
+
+#pragma mark - Jar
+
+- (void)getAllJars: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars", Config.userDto._id)
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListJarDto class]
+            callback:callback];
+}
+
+- (void)getJarDetail: (JarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@", Config.userDto._id, data._id)
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[JarDto class]
+            callback:callback];
+}
+
+#pragma mark - Type
+
+- (void)getAllTypes: (APICallback)callback {
+    [self processAPI:@"/types"
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListTypeDto class]
             callback:callback];
 }
 

@@ -17,6 +17,7 @@
 @class DetailDishDto;
 @class ListDishDto;
 @class DishTypeDto;
+@class JarDto;
 
 typedef void (^APICallback)(BOOL success, id data);
 
@@ -42,6 +43,15 @@ typedef void (^APICallback)(BOOL success, id data);
 #pragma mark - Login
 - (void)login:(UserDto*)user callback:(APICallback)callback;
 - (void)registerAccount:(UserDto*)user callback:(APICallback)callback;
+
+#pragma mark - Jar
+
+- (void)getAllJars: (APICallback)callback;
+- (void)getJarDetail: (JarDto *)data callback: (APICallback)callback;
+
+#pragma mark - Type
+
+- (void)getAllTypes: (APICallback)callback;
 
 @end
 
