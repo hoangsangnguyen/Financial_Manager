@@ -28,6 +28,11 @@
 
 - (NSMutableDictionary *)getJSONObject {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    JO(_id);
+    JO(firstName);
+    JO(lastName);
+    JO(email);
+    JO(phone);
     JO(userName);
     JO(password);
     return dic;

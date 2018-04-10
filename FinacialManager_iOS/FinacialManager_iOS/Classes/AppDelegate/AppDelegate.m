@@ -20,6 +20,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // regedister
+    [self registerNotification];
+    
+    //
+    _configure = [[Configure alloc] init];
+    BOOL isLogin = [_configure checkLogin];
+    
+    //Init SlideNav
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    MenuVC *leftMenu = (MenuVC*)[mainStoryboard
+                                 instantiateViewControllerWithIdentifier: @"MenuVC"];
+    
+    
+    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+    [SlideNavigationController sharedInstance].menuRevealAnimationDuration = 0.3;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = 100;
+    [SlideNavigationController sharedInstance].enableShadow = YES;
+    
+    
+    BaseVC *vc;
+    if (isLogin) {
+        vc = VCFromSB(OverViewVC, SB_Overview);
+    } else {
+        vc = VCFromSB(WelcomeVC, SB_Login);
+    }
+    [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO
+                                 andCompletion:nil];
+
+    return YES;
+}
+
+- (void)registerNotification {
     if( SYSTEM_VERSION_LESS_THAN( @"10.0" ) )
     {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound |    UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
@@ -39,39 +74,15 @@
          {
              if( !error )
              {
-
+                 
                  NSLog( @"Push registration success." );
              }
              else
              {
-                NSLog(@"Something went wrong");
+                 NSLog(@"Something went wrong");
              }
          }];
     }
-    
-    //
-    _configure = [[Configure alloc] init];
-    
-    //Init SlideNav
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
-    
-    MenuVC *leftMenu = (MenuVC*)[mainStoryboard
-                                 instantiateViewControllerWithIdentifier: @"MenuVC"];
-    
-    
-    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
-    [SlideNavigationController sharedInstance].menuRevealAnimationDuration = 0.3;
-    [SlideNavigationController sharedInstance].portraitSlideOffset = 100;
-    [SlideNavigationController sharedInstance].enableShadow = YES;
-    
-    
-    OverViewVC*vc = VCFromSB(OverViewVC, SB_Overview);
-    [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
-                                 andCompletion:nil];
-    
-    return YES;
 }
 
 

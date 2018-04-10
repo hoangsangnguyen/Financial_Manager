@@ -53,6 +53,10 @@ typedef void (^APICallback)(BOOL success, id data);
 
 - (void)getAllTypes: (APICallback)callback;
 
+#pragma mark - State
+
+- (void)getAllState: (APICallback)callback;
+
 @end
 
 

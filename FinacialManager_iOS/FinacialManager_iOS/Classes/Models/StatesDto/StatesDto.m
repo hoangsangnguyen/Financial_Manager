@@ -1,24 +1,21 @@
 //
-//  JarDto.m
+//  StatesDto.m
 //  FinacialManager_iOS
 //
-//  Created by ThanhSon on 4/5/18.
+//  Created by ThanhSon on 4/10/18.
 //  Copyright © 2018 ThanhSon. All rights reserved.
 //
 
-#import "JarDto.h"
+#import "StatesDto.h"
 
-@implementation JarDto
+@implementation StatesDto
 
 -(id)initWithData:(NSDictionary *)dic {
     self = [super init];
     if (dic) {
         if ([dic isKindOfClass:[NSDictionary class]]) {
             IO(_id);
-            IO(type);
-            ID(incomes);
-            ID(debts);
-            ID(spendings);
+            IO(name);
         }
     }
     return self;
@@ -27,10 +24,7 @@
 - (NSMutableDictionary *)getJSONObject {
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     JO(_id);
-    JO(type);
-    JD(incomes);
-    JD(debts);
-    JD(spendings);
+    JO(name);
     
     return dic;
 }
@@ -43,7 +37,7 @@
 
 @end
 
-@implementation ListJarDto
+@implementation ListStatesDto
 
 - (instancetype)init {
     self = [super init];
@@ -53,7 +47,7 @@
 
 - (id)initWithData:(NSDictionary *)dic {
     self = [super init];
-    IAObj(list, dic, JarDto);
+    IAObj(list, dic, StatesDto);
     return self;
 }
 

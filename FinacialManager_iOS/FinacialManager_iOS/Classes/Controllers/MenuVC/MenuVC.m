@@ -43,6 +43,8 @@ typedef enum : NSUInteger {
 - (void)initUI {
     [UIView addShadowWithRadius:2.0 withShadowOpacity:0.8 withShadowOffset:CGSizeMake(0, 0) withShadowColor:GRAY_COLOR withCornerRadius:1 forView:_vLineMenu];
     [UIView addShadowWithRadius:2.0 withShadowOpacity:0.8 withShadowOffset:CGSizeMake(0, 0) withShadowColor:GRAY_COLOR withCornerRadius:1 forView:_vLineUser];
+    _lblEmail.text = Config.userDto.email;
+    _lblUserName.text= Config.userDto.userName;
 }
 
 #pragma mark initListMenu

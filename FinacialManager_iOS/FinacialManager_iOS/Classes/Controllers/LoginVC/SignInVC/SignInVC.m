@@ -81,7 +81,7 @@
     [API login:user callback:^(BOOL success, UserDto *data) {
         [App hideLoading];
         if (success) {
-            App.configure.userDto = data;
+            [Config updateUser:data];
             OverViewVC *vc = VCFromSB(OverViewVC, SB_Overview);
             [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
                                          andCompletion:nil];

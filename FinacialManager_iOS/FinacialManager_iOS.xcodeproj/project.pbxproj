@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		42F72D9C2077B4000014173E /* TypeDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F72D9B2077B4000014173E /* TypeDto.m */; };
 		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
+		CA23AF30207CFEB9001662D8 /* StatesDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA23AF2F207CFEB9001662D8 /* StatesDto.m */; };
 		CA2B86FA20729C8E000FF7FC /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */; };
 		CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F920729C8E000FF7FC /* UserNotifications.framework */; };
+		CA2D6329207D110700CEA328 /* BaseClv.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6318207D110700CEA328 /* BaseClv.m */; };
 		CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2EC1C3207355E600312C91 /* CalendarVC.m */; };
 		CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */; };
 		CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */; };
@@ -24,7 +26,7 @@
 		CA5D819A205E508B005C23E6 /* UserDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8199205E508B005C23E6 /* UserDto.m */; };
 		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
 		CA61B99020635DC00022A097 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA61B98F20635DC00022A097 /* Overview.storyboard */; };
-		CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* OverViewVC.m */; };
+		CA61B99420635E0C0022A097 /* incomesincomes.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* incomesincomes.m */; };
 		CA6CFE3A206C94E5001314AB /* HButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE39206C94E5001314AB /* HButton.m */; };
 		CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */; };
 		CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE3F206CF20B001314AB /* ChosseCategory.m */; };
@@ -74,8 +76,12 @@
 		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA23AF2E207CFEB9001662D8 /* StatesDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatesDto.h; sourceTree = "<group>"; };
+		CA23AF2F207CFEB9001662D8 /* StatesDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatesDto.m; sourceTree = "<group>"; };
 		CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		CA2B86F920729C8E000FF7FC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		CA2D6317207D110700CEA328 /* BaseClv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClv.h; sourceTree = "<group>"; };
+		CA2D6318207D110700CEA328 /* BaseClv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClv.m; sourceTree = "<group>"; };
 		CA2EC1C2207355E600312C91 /* CalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarVC.h; sourceTree = "<group>"; };
 		CA2EC1C3207355E600312C91 /* CalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
 		CA4BECB520692EDE00BA89C9 /* CaculatorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaculatorVC.h; sourceTree = "<group>"; };
@@ -103,7 +109,7 @@
 		CA5D819D205E510E005C23E6 /* BaseDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDto.m; sourceTree = "<group>"; };
 		CA61B98F20635DC00022A097 /* Overview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
 		CA61B99220635E0C0022A097 /* OverViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverViewVC.h; sourceTree = "<group>"; };
-		CA61B99320635E0C0022A097 /* OverViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverViewVC.m; sourceTree = "<group>"; };
+		CA61B99320635E0C0022A097 /* incomesincomes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = incomesincomes.m; sourceTree = "<group>"; };
 		CA6CFE38206C94E5001314AB /* HButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HButton.h; sourceTree = "<group>"; };
 		CA6CFE39206C94E5001314AB /* HButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HButton.m; sourceTree = "<group>"; };
 		CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChosseCategory.xib; sourceTree = "<group>"; };
@@ -216,6 +222,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CA23AF2D207CFE97001662D8 /* StatesDto */ = {
+			isa = PBXGroup;
+			children = (
+				CA23AF2E207CFEB9001662D8 /* StatesDto.h */,
+				CA23AF2F207CFEB9001662D8 /* StatesDto.m */,
+			);
+			path = StatesDto;
+			sourceTree = "<group>";
+		};
+		CA2D6316207D110700CEA328 /* BaseClv */ = {
+			isa = PBXGroup;
+			children = (
+				CA2D6317207D110700CEA328 /* BaseClv.h */,
+				CA2D6318207D110700CEA328 /* BaseClv.m */,
+			);
+			path = BaseClv;
+			sourceTree = "<group>";
+		};
 		CA2EC1C0207355C700312C91 /* CalendarVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +310,7 @@
 		CA5D8167205E4FB1005C23E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA23AF2D207CFE97001662D8 /* StatesDto */,
 				42F72D992077B3B40014173E /* TypesDto */,
 				CA701389207613AC00962831 /* JarDto */,
 				CACAA6A2205EBDFB0096DB80 /* MenuDto */,
@@ -400,7 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				CA61B99220635E0C0022A097 /* OverViewVC.h */,
-				CA61B99320635E0C0022A097 /* OverViewVC.m */,
+				CA61B99320635E0C0022A097 /* incomesincomes.m */,
 			);
 			path = OverViewVC;
 			sourceTree = "<group>";
@@ -499,6 +524,7 @@
 		CA76570B205EB64E00751B9F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CA2D6316207D110700CEA328 /* BaseClv */,
 				CA7300D3206E1A520085E616 /* BaseColCell */,
 				CA5D819B205E510E005C23E6 /* BaseDto */,
 				CA7656FB205EB62000751B9F /* BaseCell */,
@@ -882,7 +908,8 @@
 			files = (
 				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */,
-				CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */,
+				CA23AF30207CFEB9001662D8 /* StatesDto.m in Sources */,
+				CA61B99420635E0C0022A097 /* incomesincomes.m in Sources */,
 				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				CA76571D205EB72C00751B9F /* SignInVC.m in Sources */,
 				CA5D8196205E5049005C23E6 /* Configure.m in Sources */,
@@ -909,6 +936,7 @@
 				CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */,
 				CABBA12C206A164600254F95 /* NSString+Util.m in Sources */,
 				CA7013802076136700962831 /* CategoryDto.m in Sources */,
+				CA2D6329207D110700CEA328 /* BaseClv.m in Sources */,
 				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
 				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,

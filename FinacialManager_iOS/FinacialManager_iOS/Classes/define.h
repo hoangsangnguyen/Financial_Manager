@@ -6,7 +6,7 @@
 //  Copyright © 2018 ThanhSon. All rights reserved.
 //
 
-#define ServerURL @"http://financialmanagerptit.azurewebsites.net/api"
+#define ServerURL @"http://sixfinancialboxs.azurewebsites.net/api"
 
 // Method Index
 #define NUM_METHOD          5

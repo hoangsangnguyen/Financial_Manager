@@ -7,7 +7,10 @@
 //
 
 #import "BaseVC.h"
+#import "BaseClv.h"
 
 @interface OverViewVC : BaseVC
+
+@property (nonatomic, weak) IBOutlet BaseClv *clvContent;
 
 @end

@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "JarDto.h"
 #import "TypeDto.h"
+#import "StatesDto.h"
 
 @interface _API ()
 @property (nonatomic, assign) NSInteger _countRequest;
@@ -136,7 +137,7 @@
                         cb (YES,successClass ? [[successClass alloc] initWithData:results] : nil);
                     }
                 } else {
-                    
+                    cb (YES,successClass ? [[successClass alloc] initWithData:results] : nil);
                 }
             } else {
                 if(cb) {
@@ -244,6 +245,15 @@
               header:nil
                 body:nil
         successClass:[ListTypeDto class]
+            callback:callback];
+}
+
+- (void)getAllState: (APICallback)callback {
+    [self processAPI:@"/states"
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListStatesDto class]
             callback:callback];
 }
 

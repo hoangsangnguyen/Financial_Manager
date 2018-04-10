@@ -13,9 +13,11 @@
 
 @property (nonatomic, strong) NSString *_id;
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, assign) double income;
+@property (nonatomic, strong) NSString *image;
+@property (nonatomic, assign) double incomes;
 @property (nonatomic, assign) double debts;
 @property (nonatomic, assign) double spendings;
+
 
 @end
 
