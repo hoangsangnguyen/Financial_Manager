@@ -2,22 +2,15 @@ package com.example.nhattruong.financialmanager.mvp.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.support.design.widget.TextInputLayout;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogOk;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
-import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
-
-import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,28 +21,28 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
     public final static String RESULT_SIGN_UP_DATA = "RESULT_SIGN_UP_DATA";
 
     @BindView(R.id.edt_first_name)
-    EditText edtFirstName;
+    TextInputLayout edtFirstName;
 
     @BindView(R.id.edt_last_name)
-    EditText edtLastName;
+    TextInputLayout edtLastName;
 
     @BindView(R.id.edt_email)
-    EditText edtEmail;
+    TextInputLayout edtEmail;
 
     @BindView(R.id.edt_phone)
-    EditText edtPhone;
+    TextInputLayout edtPhone;
 
     @BindView(R.id.edt_username)
-    EditText edtUsername;
+    TextInputLayout edtUsername;
 
     @BindView(R.id.edt_password)
-    EditText edtPassword;
+    TextInputLayout edtPassword;
 
-    @BindView(R.id.edt_confirm_password)
-    EditText edtConfirmPassword;
+    /*@BindView(R.id.edt_confirm_password)
+    TextInputLayout edtConfirmPassword;
 
     @BindView(R.id.iv_tick)
-    ImageView ivTick;
+    ImageView ivTick;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +63,7 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
 
     @Override
     public void onInitListener() {
-        edtConfirmPassword.addTextChangedListener(new TextWatcher() {
+        /*edtConfirmPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -87,35 +80,56 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
             public void afterTextChanged(Editable editable) {
 
             }
-        });
+        });*/
     }
 
-    @OnClick(R.id.btn_sign_up)
+    @OnClick(R.id.tv_sign_up)
     public void signUp() {
-        if (missingInfo()){
-            showOkDialog("", "Vui long dien day du thong tin!", null);
+        if (missingInfo()) {
+            showOkDialog("", "Please, fill full information!", null);
         } else {
-            if (ivTick.getVisibility() == View.GONE){
-                showOkDialog("", "Xac nhan mat khau chua khop!", null);
-            } else {
-                getPresenter().signUp(getInfoSignUp());
-            }
+            getPresenter().signUp(getInfoSignUp());
         }
     }
 
     @OnClick(R.id.iv_back)
-    public void onBack(){
+    public void onBack() {
         onBackPressed();
     }
 
-    private SignUpRequest getInfoSignUp(){
+    private SignUpRequest getInfoSignUp() {
+        String firstName = "";
+        String lastName= "";
+        String email= "";
+        String phone = "";
+        String password = "";
+        String username = "";
+        if (edtFirstName.getEditText() != null){
+           firstName =  edtFirstName.getEditText().getText().toString();
+        }
+        if (edtLastName.getEditText() != null){
+            lastName = edtLastName.getEditText().getText().toString();
+        }
+        if (edtEmail.getEditText() != null){
+            email = edtEmail.getEditText().getText().toString();
+        }
+        if (edtPhone.getEditText()!=null){
+            phone = edtPhone.getEditText().getText().toString();
+        }
+        if (edtUsername.getEditText()!= null){
+            username = edtUsername.getEditText().getText().toString();
+        }
+        if (edtPassword.getEditText()!= null){
+            password = edtPassword.getEditText().getText().toString();
+        }
+
         return new SignUpRequest.SignUpRequestBuilder()
-                .setFirstName(edtFirstName.getText().toString())
-                .setLastName(edtLastName.getText().toString())
-                .setEmail(edtEmail.getText().toString())
-                .setPhone(edtPhone.getText().toString())
-                .setUserName(edtUsername.getText().toString())
-                .setPassword(edtPassword.getText().toString())
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setPhone(phone)
+                .setUserName(username)
+                .setPassword(password)
                 .build();
     }
 
@@ -128,8 +142,8 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
                 && isTextEmpty(edtPassword);
     }
 
-    private boolean isTextEmpty(EditText editText) {
-        return editText.getText().toString().trim().isEmpty();
+    private boolean isTextEmpty(TextInputLayout textInputLayout) {
+        return textInputLayout.getEditText() != null && textInputLayout.getEditText().getText().toString().trim().isEmpty();
     }
 
     @Override

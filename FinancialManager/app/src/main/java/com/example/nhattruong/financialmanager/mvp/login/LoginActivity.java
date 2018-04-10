@@ -15,6 +15,7 @@ import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogOk;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
+import com.example.nhattruong.financialmanager.mvp.setting.SettingActivity;
 import com.example.nhattruong.financialmanager.mvp.signup.SignUpActivity;
 import com.example.nhattruong.financialmanager.utils.CommonUtils;
 
@@ -110,7 +111,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
     @Override
     public void onSuccess() {
 
-        Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
+        Intent intentHome = new Intent(LoginActivity.this, SettingActivity.class);
         startActivity(intentHome);
         finish();
     }

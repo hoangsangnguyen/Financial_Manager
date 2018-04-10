@@ -32,5 +32,14 @@ public class AppConstants {
     public static final String YESTERDAY = "Yesterday";
     public static final String TODAY = "Today";
 
-    public static final String BASE_URL = "http://financialmanagerptit.azurewebsites.net/";
+    // start of week day
+    public static final int DAY_SUNDAY = 0;
+    public static final int DAY_MONDAY = 1;
+    public static final int DAY_TUESDAY = 2;
+    public static final int DAY_WEDNESDAY = 3;
+    public static final int DAY_THURSDAY = 4;
+    public static final int DAY_FRIDAY = 5;
+    public static final int DAY_SATURDAY = 6;
+
+    public static final String BASE_URL = "http://sixfinancialboxs.azurewebsites.net/";
 }

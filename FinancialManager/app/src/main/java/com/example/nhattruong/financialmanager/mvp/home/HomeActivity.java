@@ -30,6 +30,8 @@ import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View {
 
+    public static final String JAR= "JAR";
+
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
@@ -84,7 +86,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
-                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
+                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+                intent.putExtra(JAR, mJarLists.get(position));
+                startActivity(intent);
             }
         });
         rcvJar.setAdapter(mJarAdapter);

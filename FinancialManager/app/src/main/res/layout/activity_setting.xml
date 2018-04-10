@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg_login"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_currency" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/super_large_70dp"
+        android:layout_marginRight="@dimen/super_large_70dp"
+        android:layout_marginTop="@dimen/small_6dp"
+        android:indeterminateOnly="false"
+        android:maxHeight="2dp"
+        android:minHeight="2dp"
+        android:progressDrawable="@drawable/blue_white_progress_bar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/super_large_70dp"
+        android:layout_marginRight="@dimen/super_large_70dp">
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/small_8dp"
+            android:paddingTop="@dimen/small_8dp"
+            android:text="@string/logout"
+            android:textColor="@color/white_color"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingBottom="@dimen/small_8dp"
+            android:paddingTop="@dimen/small_8dp"
+            android:text="@string/retry"
+            android:textColor="@color/white_color"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+</LinearLayout>

@@ -73,6 +73,22 @@ public class ApiManager {
                 });
     }
 
+    //======================== Get User ==========================
+    public void getUser(String userId, final ApiCallback<UserResponse> callback){
+        mApiServices.getUser(getToken(), userId)
+                .enqueue(new RestCallback<UserResponse>() {
+                    @Override
+                    public void success(UserResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
     //======================== get Types ==========================
     public void getTypes(final ApiCallback<TypeResponse> callback) {
         mApiServices.getTypes()

@@ -15,25 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".mvp.login.LoginActivity">
+        <activity android:name=".mvp.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".mvp.login.LoginActivity"/>-->
         <activity android:name=".mvp.detail.DetailActivity" />
         <activity android:name=".mvp.home.HomeActivity" />
         <activity android:name=".mvp.signup.SignUpActivity" />
         <activity android:name=".mvp.profile.ProfileActivity" />
-        <activity android:name=".mvp.overlap.OverlapLayoutActivity"/>
+        <activity android:name=".mvp.login.LoginActivity" />
+        <activity android:name=".mvp.setting.SettingActivity"/>
+
+        <!-- <activity android:name=".mvp.overlap.OverlapLayoutActivity"/> -->
 
         <provider
             android:name=".sqlite.MyProvider"
             android:authorities="com.example.nhattruong.financialmanager.MyProvider"
             android:exported="true"
-            android:multiprocess="true"/>
+            android:multiprocess="true" />
 
     </application>
 

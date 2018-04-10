@@ -1,7 +1,5 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
-import android.util.Log;
-
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
@@ -10,7 +8,6 @@ import com.example.nhattruong.financialmanager.interactor.api.response.StateResp
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
 import com.example.nhattruong.financialmanager.model.User;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +49,10 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
     @Override
     public void getStates() {
-//        getView().showLoading();
         getApiManager().getStates(new ApiCallback<StateResponse>() {
             @Override
             public void success(StateResponse res) {
                 if (res != null) {
-                    Log.d("STATES : ", res.result.size() + "\n" + new Gson().toJson(res.result));
                     getJars();
                 } else {
                     if (!isViewAttached()) return;
@@ -75,7 +70,6 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
     @Override
     public void getJars() {
-//        getView().showLoading();
         User user = getPreferManager().getUser();
         if (user != null) {
             getApiManager().getJars(user.getId(), new ApiCallback<JarResponse>() {

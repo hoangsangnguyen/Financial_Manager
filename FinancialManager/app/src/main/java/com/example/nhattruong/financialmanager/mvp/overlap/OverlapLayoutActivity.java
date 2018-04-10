@@ -2,7 +2,8 @@ package com.example.nhattruong.financialmanager.mvp.overlap;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -16,45 +17,78 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
+import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.model.Category;
 import com.example.nhattruong.financialmanager.mvp.overlap.adapter.CalculatorAdapter;
 import com.example.nhattruong.financialmanager.mvp.overlap.adapter.CategoryAdapter;
+import com.example.nhattruong.financialmanager.mvp.overlap.fragment.CalendarFragment;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class OverlapLayoutActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
 
+public class OverlapLayoutActivity extends BaseActivity implements View.OnClickListener, CalendarFragment.ICalendarListener {
+
+    @BindView(R.id.iv_back_left)
     ImageView ivLeftBack;
 
+    @BindView(R.id.frm_header)
     FrameLayout frmHeader;
+
+    @BindView(R.id.frm_body)
     FrameLayout frmBody;
 
+    @BindView(R.id.ll_main)
     LinearLayout llMain;
+
+    @BindView(R.id.ll_header)
     LinearLayout llHeader;
+
+    @BindView(R.id.ll_in_out_come)
     LinearLayout llInOutCome;
+
+    @BindView(R.id.ll_calculator)
     LinearLayout llCalculator;
+
+    @BindView(R.id.ll_category)
     LinearLayout llCategory;
-    LinearLayout llDetails;
 
+    @BindView(R.id.ll_details)
+    LinearLayout llDetail;
+
+    @BindView(R.id.tv_title)
     TextView tvTitle;
-    TextView tvCurrency;
-    TextView tvIncome;
-    TextView tvOutcome;
-    TextView tvNext;
-    TextView tvDetail;
-    TextView tvFinish;
 
+    @BindView(R.id.tv_currency_income_outcome)
+    TextView tvCurrency;
+
+    @BindView(R.id.tv_income)
+    TextView tvIncome;
+
+    @BindView(R.id.tv_outcome)
+    TextView tvOutcome;
+
+    @BindView(R.id.tv_next)
+    TextView tvNext;
+
+    @BindView(R.id.tv_details)
+    TextView tvDetail;
+
+    @BindView(R.id.rcv_calculator)
     RecyclerView rcvCalculator;
+
+    @BindView(R.id.rcv_category)
     RecyclerView rcvCategory;
-    RecyclerView rcvDetails;
 
     private boolean isFirstInput = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overlap_layout);
+        super.onCreate(savedInstanceState);
 
         initData();
         initListener();
@@ -85,27 +119,6 @@ public class OverlapLayoutActivity extends AppCompatActivity implements View.OnC
         categories.add(new Category("Travel", R.drawable.ic_travel));
         categories.add(new Category("Food", R.drawable.ic_food));
 
-        ivLeftBack = findViewById(R.id.iv_back_left);
-
-        frmHeader = findViewById(R.id.frm_header);
-        frmBody = findViewById(R.id.frm_body);
-
-        llMain = findViewById(R.id.ll_main);
-        llHeader = findViewById(R.id.ll_header);
-        llInOutCome = findViewById(R.id.ll_in_out_come);
-        llCalculator = findViewById(R.id.ll_calculator);
-        llCategory = findViewById(R.id.ll_category);
-        llDetails = findViewById(R.id.ll_details);
-
-        tvTitle = findViewById(R.id.tv_title);
-        tvIncome = findViewById(R.id.tv_income);
-        tvOutcome = findViewById(R.id.tv_outcome);
-        tvCurrency = findViewById(R.id.tv_currency_income_outcome);
-        tvNext = findViewById(R.id.tv_next);
-        tvDetail = findViewById(R.id.tv_details);
-        tvFinish = findViewById(R.id.tv_finish);
-
-        rcvCalculator = findViewById(R.id.rcv_calculator);
         rcvCalculator.setLayoutManager(new GridLayoutManager(this, 3));
         rcvCalculator.setHasFixedSize(true);
         rcvCalculator.setAdapter(new CalculatorAdapter(this, numberList, new CalculatorAdapter.OnItemClickedListener() {
@@ -139,13 +152,21 @@ public class OverlapLayoutActivity extends AppCompatActivity implements View.OnC
             }
         }));
 
-        rcvCategory = findViewById(R.id.rcv_category);
         rcvCategory.setLayoutManager(new GridLayoutManager(this, 3));
         rcvCategory.setAdapter(new CategoryAdapter(this, categories));
 
-        rcvDetails = findViewById(R.id.rcv_details);
-
         tvOutcome.setSelected(true);
+
+        initFragmentDatail();
+    }
+
+    private void initFragmentDatail() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        CalendarFragment calendarFragment = CalendarFragment.newInstance();
+        fragmentTransaction.add(R.id.ll_details, calendarFragment);
+        fragmentTransaction.commit();
+
     }
 
     private void initListener() {
@@ -188,7 +209,7 @@ public class OverlapLayoutActivity extends AppCompatActivity implements View.OnC
             tvIncome.setSelected(false);
             tvOutcome.setSelected(true);
         } else if (view == tvDetail){
-            llDetails.setVisibility(View.VISIBLE);
+            llDetail.setVisibility(View.VISIBLE);
             rcvCategory.setVisibility(View.INVISIBLE);
             tvDetail.setOnClickListener(null);
             animation(llCategory);
@@ -255,5 +276,10 @@ public class OverlapLayoutActivity extends AppCompatActivity implements View.OnC
             }
         });
         va.start();
+    }
+
+    @Override
+    public void onFinishClicked(Date date) {
+        showOkDialog("", DateUtils.formatFullDatePeriods(date), null);
     }
 }

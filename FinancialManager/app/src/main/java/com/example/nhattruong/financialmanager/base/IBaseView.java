@@ -11,5 +11,4 @@ public interface IBaseView {
 
     void showErrorNormal(String error);
 
-    void onEventSocket(String error);
 }

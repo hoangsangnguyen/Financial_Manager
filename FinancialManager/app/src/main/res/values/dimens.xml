@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="small_4dp">4dp</dimen>
     <dimen name="small_8dp">8dp</dimen>
     <dimen name="large_64dp">64dp</dimen>
     <dimen name="large_60dp">60dp</dimen>
@@ -25,5 +26,6 @@
 
 
     <dimen name="icon_medium_size">64dp</dimen>
+    <dimen name="small_6dp">6dp</dimen>
 
 </resources>

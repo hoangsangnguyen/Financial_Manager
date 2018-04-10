@@ -29,6 +29,12 @@ public interface ApiServices {
             @Body SignUpRequest request
     );
 
+    @GET("api/users/{userId}")
+    Call<UserResponse> getUser(
+            @Header("token") String token,
+            @Path("userId") String userId
+    );
+
     @GET("api/types")
     Call<TypeResponse> getTypes(
     );

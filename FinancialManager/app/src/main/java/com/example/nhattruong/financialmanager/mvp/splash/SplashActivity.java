@@ -1,4 +1,4 @@
-package com.example.nhattruong.financialmanager.mvp.flash;
+package com.example.nhattruong.financialmanager.mvp.splash;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +9,7 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
+import com.example.nhattruong.financialmanager.mvp.setting.SettingActivity;
 
 public class SplashActivity
         extends BaseActivity {
@@ -28,7 +29,7 @@ public class SplashActivity
                     return;
                 }
                 if (MainApplication.getAppComponent().getPreferManager().isLogin()) {
-                    Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, SettingActivity.class);
                     intent.setData(getIntent().getData());
                     startActivity(intent);
                 } else {

@@ -24,6 +24,7 @@ import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.dialog.DialogProgress;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
+import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.example.nhattruong.financialmanager.utils.DialogUtils;
 
 import javax.inject.Inject;
@@ -241,41 +242,17 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
         dismissDialogLoading();
     }
 
-    /*@Override
-    public void onFail(final RestError error) {
-        if (isDestroyed()) {
-            return;
-        }
-        dismissDialogLoading();
-        showRestErrorDialog(error, new IRestErrorListener() {
-            @Override
-            public void onListener() {
-                if (handleSpecialCode(error))
-                    logoutUser();
-            }
-        });
-    }*/
-
     @Override
     public void showErrorNormal(String error) {
         dismissDialogLoading();
         showErrorDialog(error);
     }
 
-    @Override
-    public void onEventSocket(final String error) {
-        if (!error.equalsIgnoreCase(Socket.EVENT_CONNECT)) {
-            hideLoading();
-        }
-        Log.d("EVENT SOCKET", error);
-//        Toast.makeText(BaseActivity.this, error, Toast.LENGTH_SHORT).show();
-    }
-
-   /* private boolean handleSpecialCode(RestError error) {
+    private boolean handleSpecialCode(RestError error) {
         return error.code == AppConstants.ERROR_CODE_USER_NOT_FOUND
                 || error.code == AppConstants.ERROR_CODE_TOKEN_FAILED
                 || error.code == AppConstants.ERROR_CODE_RELOGIN
                 || error.code == AppConstants.ERROR_CODE_IP_ACCESS;
-    }*/
+    }
 
 }

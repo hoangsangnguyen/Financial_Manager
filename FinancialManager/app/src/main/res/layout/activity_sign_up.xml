@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_color"
+    android:orientation="vertical"
     tools:context="com.example.nhattruong.financialmanager.mvp.signup.SignUpActivity">
 
     <FrameLayout
@@ -34,176 +35,89 @@
             android:textSize="24sp" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/tv_first_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_14dp"
-        android:layout_marginTop="@dimen/small_14dp"
-        android:text="@string/first_name"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_first_name"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frm_top" />
-
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_first_name"
-        style="@style/edt_sign_up"
-        android:layout_marginEnd="@dimen/large_32dp"
-        android:layout_marginStart="@dimen/small_10dp"
-        android:imeOptions="actionNext"
-        android:inputType="textNoSuggestions|text"
-        android:textSize="@dimen/default_text_size"
-        app:layout_constraintLeft_toRightOf="@+id/tv_first_name"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frm_top"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
 
-    <TextView
-        android:id="@+id/tv_last_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/last_name"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_last_name"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_first_name" />
+        <EditText
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions|text"
+            android:hint="@string/first_name"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_last_name"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionNext"
-        android:inputType="text|textNoSuggestions"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_first_name"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_email"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_last_name" />
+        <EditText
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions|text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_name"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_email"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_last_name"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/phone"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_phone"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+        <EditText
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_phone"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionNext"
-        android:inputType="phone"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/username"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_username"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_phone" />
+        <EditText
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/phone"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_username"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionNext"
-        android:inputType="text|textNoSuggestions"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_phone"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/password"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_password"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+        <EditText
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textNoSuggestions|text"
+            android:hint="@string/username"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_password"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionNext"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username"
-        tools:ignore="LabelFor" />
+        style="@style/input_edt_layout">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password"/>
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm_password"
-        android:textColor="@color/black_color"
-        android:textSize="@dimen/text_size_18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_confirm_password"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_first_name"
-        app:layout_constraintTop_toTopOf="@+id/edt_confirm_password" />
-
-    <EditText
-        android:id="@+id/edt_confirm_password"
-        style="@style/edt_sign_up"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="@+id/edt_first_name"
-        app:layout_constraintRight_toRightOf="@+id/edt_first_name"
-        app:layout_constraintTop_toBottomOf="@+id/edt_password"
-        tools:ignore="LabelFor" />
-
-    <ImageView
-        android:id="@+id/iv_tick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/small_8dp"
-        android:background="@color/transparent"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_tick"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_confirm_password"
-        app:layout_constraintLeft_toRightOf="@+id/edt_confirm_password"
-        app:layout_constraintTop_toTopOf="@+id/edt_confirm_password" />
-
-    <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/tv_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_32dp"
         android:background="@drawable/border_btn_blue_grey"
         android:text="@string/sign_up"
+        android:paddingTop="@dimen/small_8dp"
+        android:paddingStart="@dimen/large_32dp"
+        android:paddingBottom="@dimen/small_8dp"
+        android:paddingEnd="@dimen/large_32dp"
         android:textAllCaps="false"
-        android:textColor="@drawable/color_grey_white_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_confirm_password" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_gravity="center"
+        android:textColor="@color/color_grey_white_text" />
+</LinearLayout>

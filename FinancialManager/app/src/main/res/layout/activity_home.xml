@@ -57,9 +57,9 @@
         android:layout_gravity="start"
         android:background="@color/white_color"
         app:headerLayout="@layout/drawer_header"
-        app:itemBackground="@drawable/bg_grey_white"
-        app:itemIconTint="@drawable/color_white_black"
-        app:itemTextColor="@drawable/color_white_black"
+        app:itemBackground="@drawable/bg_blue_white"
+        app:itemIconTint="@color/color_white_black_checked"
+        app:itemTextColor="@color/color_white_black_checked"
         app:menu="@menu/drawer">
 
         <LinearLayout

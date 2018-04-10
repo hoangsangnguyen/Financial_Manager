@@ -115,7 +115,8 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
 
-    //pdf
-    compile 'com.github.barteksc:android-pdf-viewer:2.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile 'com.github.amarjain07:StickyScrollView:1.0.2'
+
 }

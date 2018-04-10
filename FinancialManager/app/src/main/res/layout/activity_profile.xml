@@ -83,10 +83,6 @@
             android:layout_height="wrap_content"
             android:text="Logout"
             android:textAllCaps="false"
-            android:layout_marginStart="@dimen/small_10dp"
-            />
-
+            android:layout_marginStart="@dimen/small_10dp" />
     </LinearLayout>
-
-
 </LinearLayout>

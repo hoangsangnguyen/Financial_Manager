@@ -40,4 +40,17 @@
 
     <string name="provider_name">com.example.nhattruong.financialmanager.MyProvider</string>
 
+    <string name="mo">Mo</string>
+    <string name="tu">Tu</string>
+    <string name="we">We</string>
+    <string name="th">Th</string>
+    <string name="fr">Fr</string>
+    <string name="sa">Sa</string>
+    <string name="su">Su</string>
+    <string name="details">Details</string>
+    <string name="finish">Finish</string>
+    <string name="retry">Retry</string>
+
+    <string name="confirm_logout">Are you sure want to logout?</string>
+
 </resources>

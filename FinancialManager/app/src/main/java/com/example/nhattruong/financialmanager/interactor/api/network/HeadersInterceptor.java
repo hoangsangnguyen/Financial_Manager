@@ -1,5 +1,7 @@
 package com.example.nhattruong.financialmanager.interactor.api.network;
 
+import com.example.nhattruong.financialmanager.utils.AppConstants;
+
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -15,7 +17,7 @@ public class HeadersInterceptor implements Interceptor {
 
     private Request processRequest(Request request) {
         Request.Builder newBuilder = request.newBuilder();
-        HttpUrl newUrl = HttpUrl.parse("http://financialmanagerptit.azurewebsites.net/8");
+        HttpUrl newUrl = HttpUrl.parse(AppConstants.BASE_URL);
         if (null != newUrl) {
             newUrl = request.url().newBuilder()
                     .scheme(newUrl.scheme())
