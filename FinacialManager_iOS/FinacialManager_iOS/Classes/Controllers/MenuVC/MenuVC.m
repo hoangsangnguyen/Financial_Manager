@@ -52,6 +52,7 @@ typedef enum : NSUInteger {
 - (void)initMenu {
     _listMenu = [[MenuListDto alloc] init];
     // ListMenu
+    [_listMenu.list addObject:[[MenuDto alloc] initWithTitle:@"OverView" andImage:@"ic_jar"]];
     [_listMenu.list addObject:[[MenuDto alloc] initWithTitle:@"Nhu Cầu Thiết Yếu" andImage:@"ic_jar"]];
     [_listMenu.list addObject:[[MenuDto alloc] initWithTitle:@"Tiết Kiệm Dài Hạn" andImage:@"ic_jar"]];
     [_listMenu.list addObject:[[MenuDto alloc] initWithTitle:@"Đầu Tư Giáo Dục" andImage:@"ic_jar"]];
@@ -96,11 +97,17 @@ typedef enum : NSUInteger {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BaseCell *cell = (BaseCell*)[tableView cellForRowAtIndexPath:indexPath];
-    UIView *cellBg = [[UIView alloc] initWithFrame:cell.frame];
-    cellBg.backgroundColor = MAINCOLOR;
-    cell.selectedBackgroundView = cellBg;
-    cell.lblTitle.textColor = WHITE_COLOR;
     
+    UIView *cellBg = [[UIView alloc] initWithFrame:cell.frame];
+
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        cellBg.backgroundColor = MAINCOLOR;
+        cell.selectedBackgroundView = cellBg;
+        cell.lblTitle.textColor = WHITE_COLOR;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

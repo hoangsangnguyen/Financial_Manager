@@ -13,6 +13,7 @@
 #import "StatesDto.h"
 #import "JarDto.h"
 #import "BaseColCell.h"
+#import "JarDetailVC.h"
 
 @interface OverViewVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     ListJarDto *_listData;
@@ -47,8 +48,8 @@
 
 #pragma mark - API
 - (void)getDataFromServer {
-    [self getAllStage];
-    [self getAllJar];
+    //[self getAllStage];
+    //[self getAllJar];
 }
 
 - (void)getAllStage {
@@ -76,8 +77,6 @@
 
 #pragma mark - SlideNavigationController Methods -
 
-
-
 - (IBAction)btnCaculator:(id)sender {
     CaculatorVC *vc = VCFromSB(CaculatorVC, SB_Overview);
     [AppNav presentViewController:vc animated:YES completion:nil];
@@ -90,11 +89,7 @@
 }
 
 - (IBAction)btnAPI:(id)sender {
-    [API getAllJars:^(BOOL success, id data) {
-        if (success) {
-            
-        }
-    }];
+    [self getAllJar];
 }
 
 #pragma mark - CollectionView
@@ -131,18 +126,19 @@
     BaseColCell *cell = [_clvContent dequeueReusableCellWithReuseIdentifier:@"jarCol" forIndexPath:indexPath];
     cell.lblTitle.text = data.type;
     cell.lblSubTitle.text = SF(@"%0.f",data.incomes);
-    [cell.imgIcon sd_setImageWithURL:[NSURL URLWithString:data.image]
-                    placeholderImage:[UIImage imageNamed:@"none.9"]];
+    cell.imgIcon.image = IM(@"ic_jarr");
+    
+//    [cell.imgIcon sd_setImageWithURL:[NSURL URLWithString:data.image]
+//                    placeholderImage:[UIImage imageNamed:@"ic_jarr"]];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    DishListVC * vc = VCFromSB(DishListVC,SB_ListFood);
-//    DishTypeDto *dto = _arrDishType.list[indexPath.row];
-//    vc.typeDto = dto;
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
+    JarDetailVC * vc = VCFromSB(JarDetailVC,SB_Overview);
+    JarDto *data = _listData.list[indexPath.row];
+    vc.jarDto = data;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

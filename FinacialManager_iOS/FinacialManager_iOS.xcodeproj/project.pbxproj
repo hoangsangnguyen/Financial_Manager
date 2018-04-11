@@ -26,10 +26,12 @@
 		CA5D819A205E508B005C23E6 /* UserDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D8199205E508B005C23E6 /* UserDto.m */; };
 		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
 		CA61B99020635DC00022A097 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA61B98F20635DC00022A097 /* Overview.storyboard */; };
-		CA61B99420635E0C0022A097 /* incomesincomes.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* incomesincomes.m */; };
+		CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* OverViewVC.m */; };
 		CA6CFE3A206C94E5001314AB /* HButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE39206C94E5001314AB /* HButton.m */; };
 		CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */; };
 		CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE3F206CF20B001314AB /* ChosseCategory.m */; };
+		CA6F055A207E5F500049C615 /* JarDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6F0559207E5F500049C615 /* JarDetailVC.m */; };
+		CA6F055E207E621D0049C615 /* JarDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6F055D207E621D0049C615 /* JarDetailCell.m */; };
 		CA7013802076136700962831 /* CategoryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA70137F2076136700962831 /* CategoryDto.m */; };
 		CA701388207613A900962831 /* JarDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA701387207613A900962831 /* JarDto.m */; };
 		CA7300D6206E1A640085E616 /* BaseColCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7300D5206E1A640085E616 /* BaseColCell.m */; };
@@ -109,12 +111,16 @@
 		CA5D819D205E510E005C23E6 /* BaseDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDto.m; sourceTree = "<group>"; };
 		CA61B98F20635DC00022A097 /* Overview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
 		CA61B99220635E0C0022A097 /* OverViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverViewVC.h; sourceTree = "<group>"; };
-		CA61B99320635E0C0022A097 /* incomesincomes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = incomesincomes.m; sourceTree = "<group>"; };
+		CA61B99320635E0C0022A097 /* OverViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverViewVC.m; sourceTree = "<group>"; };
 		CA6CFE38206C94E5001314AB /* HButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HButton.h; sourceTree = "<group>"; };
 		CA6CFE39206C94E5001314AB /* HButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HButton.m; sourceTree = "<group>"; };
 		CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChosseCategory.xib; sourceTree = "<group>"; };
 		CA6CFE3E206CF20B001314AB /* ChosseCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChosseCategory.h; sourceTree = "<group>"; };
 		CA6CFE3F206CF20B001314AB /* ChosseCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChosseCategory.m; sourceTree = "<group>"; };
+		CA6F0558207E5F500049C615 /* JarDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JarDetailVC.h; sourceTree = "<group>"; };
+		CA6F0559207E5F500049C615 /* JarDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JarDetailVC.m; sourceTree = "<group>"; };
+		CA6F055C207E621D0049C615 /* JarDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JarDetailCell.h; sourceTree = "<group>"; };
+		CA6F055D207E621D0049C615 /* JarDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JarDetailCell.m; sourceTree = "<group>"; };
 		CA70137E2076136700962831 /* CategoryDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDto.h; sourceTree = "<group>"; };
 		CA70137F2076136700962831 /* CategoryDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDto.m; sourceTree = "<group>"; };
 		CA701386207613A900962831 /* JarDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JarDto.h; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 		CA5D8166205E4FA8005C23E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA6F0557207E5F380049C615 /* JarDetailVC */,
 				CA2EC1C0207355C700312C91 /* CalendarVC */,
 				CAFB8F7720721D06009EA2B3 /* Common */,
 				CA4BECB420692EBD00BA89C9 /* CaculatorVC */,
@@ -425,7 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				CA61B99220635E0C0022A097 /* OverViewVC.h */,
-				CA61B99320635E0C0022A097 /* incomesincomes.m */,
+				CA61B99320635E0C0022A097 /* OverViewVC.m */,
 			);
 			path = OverViewVC;
 			sourceTree = "<group>";
@@ -447,6 +454,25 @@
 				CA6CFE3F206CF20B001314AB /* ChosseCategory.m */,
 			);
 			path = ChosseCategory;
+			sourceTree = "<group>";
+		};
+		CA6F0557207E5F380049C615 /* JarDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA6F055B207E620E0049C615 /* JarDetailCell */,
+				CA6F0558207E5F500049C615 /* JarDetailVC.h */,
+				CA6F0559207E5F500049C615 /* JarDetailVC.m */,
+			);
+			path = JarDetailVC;
+			sourceTree = "<group>";
+		};
+		CA6F055B207E620E0049C615 /* JarDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA6F055C207E621D0049C615 /* JarDetailCell.h */,
+				CA6F055D207E621D0049C615 /* JarDetailCell.m */,
+			);
+			path = JarDetailCell;
 			sourceTree = "<group>";
 		};
 		CA7013812076137300962831 /* CategoryDto */ = {
@@ -909,7 +935,7 @@
 				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */,
 				CA23AF30207CFEB9001662D8 /* StatesDto.m in Sources */,
-				CA61B99420635E0C0022A097 /* incomesincomes.m in Sources */,
+				CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */,
 				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				CA76571D205EB72C00751B9F /* SignInVC.m in Sources */,
 				CA5D8196205E5049005C23E6 /* Configure.m in Sources */,
@@ -920,9 +946,11 @@
 				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				CA76570A205EB62100751B9F /* BaseVC.m in Sources */,
 				CA7300D6206E1A640085E616 /* BaseColCell.m in Sources */,
+				CA6F055A207E5F500049C615 /* JarDetailVC.m in Sources */,
 				CABBA15D206A166700254F95 /* UIView+Util.m in Sources */,
 				CA5D818B205E5038005C23E6 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				CA765712205EB72500751B9F /* MenuVC.m in Sources */,
+				CA6F055E207E621D0049C615 /* JarDetailCell.m in Sources */,
 				CA6CFE3A206C94E5001314AB /* HButton.m in Sources */,
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				CAFB8F7420720B35009EA2B3 /* MView.m in Sources */,
