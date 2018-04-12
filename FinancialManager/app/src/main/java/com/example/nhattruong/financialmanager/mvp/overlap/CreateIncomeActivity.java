@@ -18,10 +18,9 @@ import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
-import com.example.nhattruong.financialmanager.model.Category;
 import com.example.nhattruong.financialmanager.mvp.overlap.adapter.CalculatorAdapter;
 import com.example.nhattruong.financialmanager.mvp.overlap.adapter.CategoryAdapter;
-import com.example.nhattruong.financialmanager.mvp.overlap.fragment.CalendarFragment;
+import com.example.nhattruong.financialmanager.mvp.overlap.fragment.DetailsFragment;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class OverlapLayoutActivity extends BaseActivity implements View.OnClickListener, CalendarFragment.ICalendarListener {
+public class CreateIncomeActivity extends BaseActivity implements View.OnClickListener, CreateIncomeContract.View, DetailsFragment.ICalendarListener {
 
     @BindView(R.id.iv_back_left)
     ImageView ivLeftBack;
@@ -83,15 +82,22 @@ public class OverlapLayoutActivity extends BaseActivity implements View.OnClickL
     @BindView(R.id.rcv_category)
     RecyclerView rcvCategory;
 
+    private CategoryAdapter categoryAdapter;
     private boolean isFirstInput = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_overlap_layout);
+        setPresenter(new CreateIncomePresenter());
+        setContentView(R.layout.activity_create_income_layout);
         super.onCreate(savedInstanceState);
 
         initData();
         initListener();
+    }
+
+    @Override
+    public CreateIncomePresenter getPresenter() {
+        return (CreateIncomePresenter) super.getPresenter();
     }
 
     private void initData() {
@@ -110,21 +116,21 @@ public class OverlapLayoutActivity extends BaseActivity implements View.OnClickL
         numberList.add(0);
         numberList.add(R.drawable.ic_keyboard_delete);
 
-        List<Category> categories = new ArrayList<>();
+        /*List<Category> categories = new ArrayList<>();
         categories.add(new Category("Transport", R.drawable.ic_transport));
         categories.add(new Category("Bills", R.drawable.ic_bills));
         categories.add(new Category("Sport", R.drawable.ic_dumbbell));
         categories.add(new Category("Education", R.drawable.ic_education));
         categories.add(new Category("Home", R.drawable.ic_home));
         categories.add(new Category("Travel", R.drawable.ic_travel));
-        categories.add(new Category("Food", R.drawable.ic_food));
+        categories.add(new Category("Food", R.drawable.ic_food));*/
 
         rcvCalculator.setLayoutManager(new GridLayoutManager(this, 3));
         rcvCalculator.setHasFixedSize(true);
         rcvCalculator.setAdapter(new CalculatorAdapter(this, numberList, new CalculatorAdapter.OnItemClickedListener() {
             @Override
             public void onItemClicked(int position) {
-                Toast.makeText(OverlapLayoutActivity.this, String.valueOf(position), Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateIncomeActivity.this, String.valueOf(position), Toast.LENGTH_LONG).show();
                 String currency = tvCurrency.getText().toString();
                 if (position >= numberList.size() - 1 && position != 9) {
                     if (!TextUtils.isEmpty(currency)) {
@@ -152,8 +158,14 @@ public class OverlapLayoutActivity extends BaseActivity implements View.OnClickL
             }
         }));
 
+        categoryAdapter = new CategoryAdapter(this, getPresenter().getJarList(), new CategoryAdapter.OnItemClickedListener() {
+            @Override
+            public void onItemClicked(String id) {
+                getPresenter().setCurrentJarId(id);
+            }
+        });
         rcvCategory.setLayoutManager(new GridLayoutManager(this, 3));
-        rcvCategory.setAdapter(new CategoryAdapter(this, categories));
+        rcvCategory.setAdapter(categoryAdapter);
 
         tvOutcome.setSelected(true);
 
@@ -163,8 +175,8 @@ public class OverlapLayoutActivity extends BaseActivity implements View.OnClickL
     private void initFragmentDatail() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        CalendarFragment calendarFragment = CalendarFragment.newInstance();
-        fragmentTransaction.add(R.id.ll_details, calendarFragment);
+        DetailsFragment detailsFragment = DetailsFragment.newInstance();
+        fragmentTransaction.add(R.id.ll_details, detailsFragment);
         fragmentTransaction.commit();
 
     }
@@ -281,5 +293,10 @@ public class OverlapLayoutActivity extends BaseActivity implements View.OnClickL
     @Override
     public void onFinishClicked(Date date) {
         showOkDialog("", DateUtils.formatFullDatePeriods(date), null);
+    }
+
+    @Override
+    public void getAllJarSuccess() {
+        categoryAdapter.notifyDataSetChanged();
     }
 }

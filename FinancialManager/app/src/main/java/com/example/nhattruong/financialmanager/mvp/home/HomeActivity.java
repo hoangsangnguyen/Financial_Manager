@@ -92,7 +92,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
             }
         });
         rcvJar.setAdapter(mJarAdapter);
-        getPresenter().getTypes();
+        getPresenter().getJars();
     }
 
     @Override

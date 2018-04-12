@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".mvp.splash.SplashActivity">
+        <activity android:name=".mvp.overlap.CreateIncomeActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,7 @@
         <activity android:name=".mvp.login.LoginActivity" />
         <activity android:name=".mvp.setting.SettingActivity"/>
 
-        <!-- <activity android:name=".mvp.overlap.OverlapLayoutActivity"/> -->
+        <!-- <activity android:name=".mvp.overCreateIncomeActivityvity"/> -->
 
         <provider
             android:name=".sqlite.MyProvider"

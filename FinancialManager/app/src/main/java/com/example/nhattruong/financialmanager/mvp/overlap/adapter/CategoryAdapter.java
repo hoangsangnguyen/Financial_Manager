@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.model.Category;
+import com.example.nhattruong.financialmanager.model.Jar;
 
 import java.util.List;
 
@@ -16,12 +17,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Category> items;
+    private List<Jar> items;
     private Context context;
+    private OnItemClickedListener mCallback;
 
-    public CategoryAdapter(Context context, List<Category> items) {
+    public CategoryAdapter(Context context, List<Jar> items, OnItemClickedListener callback) {
         this.items = items;
         this.context = context;
+        this.mCallback = callback;
     }
 
     @Override
@@ -54,14 +57,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    if (mCallback != null){
+                        mCallback.onItemClicked(items.get(getAdapterPosition()).getId());
+                    }
                 }
             });
         }
 
-        void bind(Category category) {
-            ivCategory.setImageResource(category.getImage());
-            tvCategory.setText(category.getLabel());
+        void bind(Jar category) {
+            ivCategory.setImageResource(R.drawable.ic_transport);
+            tvCategory.setText(category.getType());
         }
+    }
+
+    public interface OnItemClickedListener {
+        void onItemClicked(String id);
     }
 }

@@ -135,4 +135,92 @@ public class DateUtils {
         dateResultFormat.setTimeZone(TimeZone.getDefault());
         return dateResultFormat.format(date);
     }
+
+    // get current day in month as number
+    public static int getCurrentDayInMonth() {
+        Date date = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    // get current month as number
+    public static int getCurrentMonth() {
+        Date date = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
+    }
+
+    // get current year as number
+    public static int getCurrentYear() {
+        Date date = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.YEAR);
+    }
+
+    public static boolean isValidDate(int day, int month, int year) {
+        if (day < 1 || day > 31) {
+            return false;
+        }
+        if (month < 0 || month > 11) {
+            return false;
+        }
+        if (year < 0) {
+            return false;
+        }
+        if (day < 29) {
+            return true;
+        }
+        switch (month) {
+            case 1:
+                return day == 29 && isLeapYear(year);
+            case 3:
+            case 5:
+            case 8:
+            case 10:
+                return day != 31;
+            default:
+                return true;
+        }
+    }
+
+    public static boolean isLeapYear(int year) {
+        return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+    }
+
+    // get year of date as number
+    public static int getYearOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.YEAR);
+    }
+
+    // get month of date as number
+    public static int getMonthOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
+    }
+
+    // get day of date as number
+    public static int getDayOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    // get first date of date
+    public static Date getFirstDateOfDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        // reset time
+        cal.set(Calendar.AM_PM, Calendar.AM);
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
 }

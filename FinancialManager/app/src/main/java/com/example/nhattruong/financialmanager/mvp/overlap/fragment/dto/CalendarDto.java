@@ -1,11 +1,5 @@
 package com.example.nhattruong.financialmanager.mvp.overlap.fragment.dto;
 
-
-import com.example.nhattruong.financialmanager.utils.DateUtils;
-
-import java.util.Calendar;
-import java.util.Date;
-
 public class CalendarDto {
 
     private int date;

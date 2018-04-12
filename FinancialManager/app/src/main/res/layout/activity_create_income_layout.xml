@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient_color_pink_blue"
     android:orientation="vertical"
-    tools:context=".mvp.overlap.OverlapLayoutActivity">
+    tools:context=".mvp.overlap.CreateIncomeActivity">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -44,7 +44,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_weight="2"
+            android:layout_weight="1.7"
             android:gravity="bottom"
             android:orientation="horizontal">
 
@@ -76,7 +76,7 @@
             android:id="@+id/tv_currency_income_outcome"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:gravity="center"
             android:textColor="@color/white_color"
             android:textSize="40sp" />
@@ -107,8 +107,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_white_border_top_grey"
                 android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:paddingBottom="@dimen/small_14dp"
+                android:paddingTop="@dimen/small_14dp"
                 android:text="Next"
                 android:textColor="@color/black_color" />
         </LinearLayout>
@@ -130,7 +130,7 @@
                 android:text="Choose category"
                 android:textAllCaps="true"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rcv_category"
@@ -145,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_white_border_top_grey"
                 android:gravity="center"
-                android:paddingBottom="@dimen/small_10dp"
-                android:paddingTop="@dimen/small_10dp"
+                android:paddingBottom="@dimen/small_14dp"
+                android:paddingTop="@dimen/small_14dp"
                 android:text="Details"
                 android:textColor="@color/black_color" />
 
@@ -156,7 +156,7 @@
             android:id="@+id/ll_details"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/bg_white_border_top_grey_corner"
             android:orientation="vertical"
             android:visibility="gone">

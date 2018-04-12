@@ -52,5 +52,8 @@
     <string name="retry">Retry</string>
 
     <string name="confirm_logout">Are you sure want to logout?</string>
+    <string name="add_note">Add note</string>
+    <string name="date">Date</string>
+    <string name="done">Done</string>
 
 </resources>

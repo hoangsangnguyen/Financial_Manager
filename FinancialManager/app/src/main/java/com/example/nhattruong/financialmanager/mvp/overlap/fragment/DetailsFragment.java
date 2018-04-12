@@ -2,7 +2,6 @@ package com.example.nhattruong.financialmanager.mvp.overlap.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseFragment;
+import com.example.nhattruong.financialmanager.dialog.dialogDayMonthYearPicker.DayMonthYearPickerDialog;
 import com.example.nhattruong.financialmanager.mvp.overlap.fragment.dto.CalendarDto;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
@@ -22,9 +22,9 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class CalendarFragment extends BaseFragment implements View.OnClickListener {
+public class DetailsFragment extends BaseFragment implements View.OnClickListener, DayMonthYearPickerDialog.OnClickDoneListener {
 
-    @BindView(R.id.ll_month_year_view)
+   /* @BindView(R.id.ll_month_year_view)
     LinearLayout llMonthYearView;
 
     @BindView(R.id.rcv_month)
@@ -40,10 +40,16 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
     TextView tvMonth;
 
     @BindView(R.id.tv_year)
-    TextView tvYear;
+    TextView tvYear; */
 
     @BindView(R.id.tv_finish)
     TextView tvFinish;
+
+   @BindView(R.id.tv_date)
+   TextView tvDate;
+
+    @BindView(R.id.iv_calendar)
+    ImageView ivCalendar;
 
     private CalendarAdapter adapter;
     private int month, year;
@@ -52,9 +58,9 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
 
     private ICalendarListener mListener;
 
-    public static CalendarFragment newInstance() {
+    public static DetailsFragment newInstance() {
         Bundle args = new Bundle();
-        CalendarFragment fragment = new CalendarFragment();
+        DetailsFragment fragment = new DetailsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,7 +77,7 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_calendar;
+        return R.layout.fragment_calendar_2;
     }
 
     @Override
@@ -80,7 +86,11 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
 
-        calendarList = new ArrayList<>();
+        chooseDate = calendar.getTime();
+
+        tvDate.setText(DateUtils.formatFullDatePeriods(calendar.getTime()));
+
+  /*      calendarList = new ArrayList<>();
 
         rvMonth.setHasFixedSize(true);
 //        final GridLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 7);
@@ -96,20 +106,22 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
         });
         rvMonth.setAdapter(adapter);
         changeListCalendar();
-
+*/
         updateHeader();
     }
 
     @Override
     protected void onInitListener() {
-        imvNext.setOnClickListener(this);
+      /*  imvNext.setOnClickListener(this);
         imvPrevious.setOnClickListener(this);
+        */
         tvFinish.setOnClickListener(this);
+      ivCalendar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view == imvPrevious) {
+       /* if (view == imvPrevious) {
             showPreviousMonth();
         } else if (view == imvNext) {
             showNextMonth();
@@ -117,7 +129,15 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
             if (mListener != null) {
                 mListener.onFinishClicked(chooseDate);
             }
-        }
+        }*/
+       if (view == ivCalendar){
+           DayMonthYearPickerDialog dialog = new DayMonthYearPickerDialog(getActivity(), chooseDate, this);
+           dialog.show();
+       } else if (view == tvFinish){
+           if (mListener!=null){
+               mListener.onFinishClicked(chooseDate);
+           }
+       }
     }
 
     private void showPreviousMonth() {
@@ -189,8 +209,14 @@ public class CalendarFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void updateHeader() {
-        tvMonth.setText(DateUtils.getDisplayNameOfMonth(month));
-        tvYear.setText(String.valueOf(year));
+      /*  tvMonth.setText(DateUtils.getDisplayNameOfMonth(month));
+        tvYear.setText(String.valueOf(year));*/
+    }
+
+    @Override
+    public void onDoneClick(Date date) {
+        chooseDate = date;
+        tvDate.setText(DateUtils.formatFullDatePeriods(date));
     }
 
     public interface ICalendarListener {

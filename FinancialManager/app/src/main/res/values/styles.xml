@@ -60,4 +60,9 @@
         <item name="android:layout_marginBottom">@dimen/small_4dp</item>
     </style>
 
+    <declare-styleable name="StickyScrollView">
+        <attr name="shadowHeight" format="dimension" />
+        <attr name="shadowDrawable" format="reference" />
+    </declare-styleable>
+
 </resources>
