@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
-        <activity android:name=".mvp.overlap.CreateIncomeActivity"
+        <activity android:name=".mvp.splash.SplashActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,5 +39,4 @@
             android:multiprocess="true" />
 
     </application>
-
 </manifest>

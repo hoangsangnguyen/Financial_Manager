@@ -22,15 +22,16 @@ import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
+import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class HomeActivity extends BaseActivity implements HomeContract.View {
+public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
-    public static final String JAR= "JAR";
+    public static final String JAR = "JAR";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -97,6 +98,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     public void onInitListener() {
+        tvUserName.setOnClickListener(this);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -160,7 +163,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
         mJarAdapter.notifyDataSetChanged();
 
-        if (getIntent().getBooleanExtra(LoginActivity.IS_FIRST_LOGIN, false)){
+        if (getIntent().getBooleanExtra(LoginActivity.IS_FIRST_LOGIN, false)) {
             showConfirmDialog("Do you want to set data?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
                 @Override
                 public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
@@ -178,5 +181,12 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     @Override
     public void onLoadJarsFailed() {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == tvUserName) {
+            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+        }
     }
 }

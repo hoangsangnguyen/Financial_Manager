@@ -71,6 +71,8 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
     @Override
     public void getJars() {
         User user = getPreferManager().getUser();
+        if (!isViewAttached()) return;
+        getView().showLoading();
         if (user != null) {
             getApiManager().getJars(user.getId(), new ApiCallback<JarResponse>() {
                 @Override

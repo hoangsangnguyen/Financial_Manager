@@ -2,7 +2,6 @@ package com.example.nhattruong.financialmanager.mvp.profile;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,16 +36,18 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
     @BindView(R.id.edt_phone)
     EditText edtPhone;
 
-    @BindView(R.id.btn_Save)
-    Button btnSave;
-
-    @BindView(R.id.btn_Logout)
-    Button btnLogout;
+    @Override
+    public ProfilePresenter getPresenter() {
+        return (ProfilePresenter)super.getPresenter();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setPresenter(new ProfilePresenter());
         setContentView(R.layout.activity_profile);
         super.onCreate(savedInstanceState);
+
+        getPresenter().getUserInfo();
     }
 
     @Override
