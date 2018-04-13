@@ -1,88 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity">
 
-    <LinearLayout
+    <FrameLayout
+        android:background="@color/app_color"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_gravity="start|center_vertical"
+            android:contentDescription="@null"
+            android:layout_width="@dimen/large_32dp"
+            android:layout_height="@dimen/large_32dp"
+            android:src="@drawable/ic_back_white"
+            android:layout_marginStart="@dimen/small_8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name :" />
+            android:textColor="@color/white_color"
+            android:text="@string/profile"
+            android:textSize="24sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color"
+            android:text="@string/save"
+            android:layout_gravity="end|center_vertical"
+            android:textSize="20sp"
+            android:layout_marginEnd="@dimen/small_8dp"/>
+    </FrameLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginTop="@dimen/large"
+        android:src="@drawable/ic_user"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/edt_name"
-            android:layout_width="match_parent"
+            android:inputType="text|textNoSuggestions"
+            android:imeOptions="actionNext"
+            android:id="@+id/edt_first_name"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_height="wrap_content"
-            android:text="" />
-
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Email :" />
+            android:text="@string/last_name"
+            android:layout_weight="1"/>
 
         <EditText
+            android:inputType="text|textNoSuggestions"
+            android:imeOptions="actionNext"
+            android:id="@+id/edt_last_name"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            tools:ignore="LabelFor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:inputType="text|textNoSuggestions"
+            android:imeOptions="actionNext"
+            android:id="@+id/edt_username"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            tools:ignore="LabelFor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/email" />
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
             android:id="@+id/edt_email"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
             android:layout_height="wrap_content"
-            android:text="" />
-
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/large"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Password :" />
+            android:text="@string/phone"
+            android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
+            android:inputType="phone"
+            android:imeOptions="actionNext"
+            android:id="@+id/edt_phone"
+            android:layout_width="0dp"
+            android:layout_weight="3.5"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_height="wrap_content"
-            android:text=""
-            android:inputType="textPassword"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
-
-        <Button
-            android:id="@+id/btn_Save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:textAllCaps="false"
-            android:layout_marginEnd="10dp"
-            />
-
-        <Button
-            android:id="@+id/btn_Logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:layout_marginStart="@dimen/small_10dp" />
+            tools:ignore="LabelFor" />
     </LinearLayout>
 </LinearLayout>

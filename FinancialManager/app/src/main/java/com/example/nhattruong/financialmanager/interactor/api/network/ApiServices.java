@@ -7,6 +7,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.StateResp
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -60,6 +61,6 @@ public interface ApiServices {
     Call<JarResponse> updateJars(
             @Header("token") String token,
             @Body Jar jar
-            );
+    );
 
 }

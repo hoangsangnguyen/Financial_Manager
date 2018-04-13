@@ -1,43 +1,45 @@
-package com.example.nhattruong.financialmanager.mvp.setting;
+package com.example.nhattruong.financialmanager.mvp.profile;
 
 import com.example.nhattruong.financialmanager.base.BasePresenter;
-import com.example.nhattruong.financialmanager.base.IBaseView;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
-import com.google.gson.Gson;
+import com.example.nhattruong.financialmanager.model.User;
 
-/**
- * Created by nhattruong on 4/10/2018.
- */
+public class ProfilePresenter extends BasePresenter implements ProfileContract.Presenter{
 
-public class SettingPresenter extends BasePresenter implements SettingContract.Presenter {
+    private User mUser;
+
+    public User getUser() {
+        if (mUser == null){
+            mUser = new User();
+        }
+        return mUser;
+    }
 
     @Override
-    public SettingContract.View getView() {
-        return (SettingContract.View)super.getView();
+    public ProfileContract.View getView() {
+        return (ProfileContract.View)super.getView();
     }
 
     @Override
     public void getUserInfo() {
+        if (!isViewAttached()) return;
+        getView().showLoading();
         getApiManager().getUser(getPreferManager().getUser().getId(), new ApiCallback<UserResponse>() {
             @Override
             public void success(UserResponse res) {
+                mUser = res.result;
                 if (!isViewAttached()) return;
-                getPreferManager().setUser(new Gson().toJson(res.result));
-                getView().getUserInfoSuccess();
+                getView().hideLoading();
+                getView().getUserSuccess(res.result);
             }
 
             @Override
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
-                getView().getUserInfoError(error);
+                getView().getUserFailed(error);
             }
         });
-    }
-
-    @Override
-    public void logout() {
-
     }
 }

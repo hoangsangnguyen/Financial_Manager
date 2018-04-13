@@ -55,5 +55,8 @@
     <string name="add_note">Add note</string>
     <string name="date">Date</string>
     <string name="done">Done</string>
+    <string name="save">Save</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
 
 </resources>

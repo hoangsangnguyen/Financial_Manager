@@ -1,29 +1,41 @@
 package com.example.nhattruong.financialmanager.mvp.profile;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
+import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.model.User;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
-public class ProfileActivity extends BaseActivity {
+public class ProfileActivity extends BaseActivity implements ProfileContract.View, View.OnClickListener {
 
-    @BindView(R.id.edt_name)
-    EditText edtName;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+
+    @BindView(R.id.tv_save)
+    TextView tvSave;
+
+    @BindView(R.id.edt_first_name)
+    EditText edtFirstName;
+
+    @BindView(R.id.edt_last_name)
+    EditText edtLastName;
+
+    @BindView(R.id.edt_username)
+    EditText edtUsername;
 
     @BindView(R.id.edt_email)
     EditText edtEmail;
 
-    @BindView(R.id.edt_password)
-    EditText edtPassword;
+    @BindView(R.id.edt_phone)
+    EditText edtPhone;
 
     @BindView(R.id.btn_Save)
     Button btnSave;
@@ -39,32 +51,35 @@ public class ProfileActivity extends BaseActivity {
 
     @Override
     public void onInitData() {
-        edtEmail.setText("A");
+
     }
 
     @Override
     public void onInitListener() {
-        edtName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        ivBack.setOnClickListener(this);
+        tvSave.setOnClickListener(this);
     }
 
+    @Override
+    public void getUserSuccess(User user) {
+        edtFirstName.setText(user.getFirstName());
+        edtLastName.setText(user.getLastName());
+        edtUsername.setText(user.getUserName());
+        edtEmail.setText(user.getEmail());
+        edtPhone.setText(user.getPhone());
+    }
 
-    @OnClick(R.id.btn_Save)
-    public void onSave() {
-        Toast.makeText(this,edtEmail.getText(),Toast.LENGTH_LONG).show();
+    @Override
+    public void getUserFailed(RestError error) {
+        showRestErrorDialog(error, null);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == ivBack){
+            onBackPressed();
+        } else if (view == tvSave){
+            //save user
+        }
     }
 }
