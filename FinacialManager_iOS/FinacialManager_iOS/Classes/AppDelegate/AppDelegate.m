@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MenuVC.h"
 #import "WelcomeVC.h"
+#import "GateVC.h"
 #import "OverViewVC.h"
 @import UserNotifications;
 
@@ -29,13 +30,8 @@
     
     //Init SlideNav
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
-    
-    MenuVC *leftMenu = (MenuVC*)[mainStoryboard
-                                 instantiateViewControllerWithIdentifier: @"MenuVC"];
-    
-    
+    MenuVC *leftMenu = VCFromSB(MenuVC, SB_Main);
+
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     [SlideNavigationController sharedInstance].menuRevealAnimationDuration = 0.3;
     [SlideNavigationController sharedInstance].portraitSlideOffset = 100;
@@ -44,7 +40,7 @@
     
     BaseVC *vc;
     if (isLogin) {
-        vc = VCFromSB(OverViewVC, SB_Overview);
+        vc = VCFromSB(GateVC, SB_Login);
     } else {
         vc = VCFromSB(WelcomeVC, SB_Login);
     }

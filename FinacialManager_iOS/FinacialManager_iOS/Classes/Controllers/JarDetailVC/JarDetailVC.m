@@ -15,8 +15,14 @@
 #define offset_B_LabelHeader 160
 #define distance_W_LabelHeader 50
 
+typedef enum : NSUInteger {
+    Income = 0,
+    Debt,
+    Spending,
+} Segment;
+
 @interface JarDetailVC () <UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
-    
+    BOOL isSelected;
 }
 
 @end
@@ -25,10 +31,16 @@
 
 - (void)viewDidLoad
 {
+    [self.navigationController setNavigationBarHidden:YES];
     [self initUIHeader];
     [super viewDidLoad];
     
     [self initVar];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)initUIHeader {
@@ -41,14 +53,17 @@
     _lblHeader.text = _jarDto.type;
 
     _vHeaderView.clipsToBounds = YES;
-    [self.navigationController setNavigationBarHidden:YES];
 }
 - (void)initVar {
     
     [_tbvContent reloadData];
 }
 
-#pragma mark -
+#pragma mark - NAV
+-(IBAction)backBtn:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark Tableview data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -83,6 +98,78 @@
 }
 
 #pragma mark - Action
+
+- (IBAction)selectedSegment:(UIButton *)btn {
+    isSelected = !isSelected;
+    if (!isSelected) {
+        [UIView animateWithDuration:0.5 animations:^{
+            btn.backgroundColor = [UIColor blueColor];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } completion:nil];
+        //[self animationButtonWithBotTop:btn];
+    } else {
+        [UIView animateWithDuration:0.5 animations:^{
+            btn.backgroundColor = [UIColor whiteColor];
+            [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        } completion:nil];
+        //[self animationButtonWithTopBot:btn];
+    }
+    
+    switch (btn.tag) {
+        case Income:
+        {
+
+        }
+            break;
+        
+        case Debt:
+        {
+
+        }
+            break;
+            
+        case Spending:
+        {
+            
+        }
+            break;
+    }
+}
+
+- (void)animationButtonWithTopBot:(UIButton *)btn {
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(0, 0, btn.bounds.size.width, btn.bounds.size.height);
+    layer.backgroundColor = [UIColor whiteColor].CGColor;
+    [btn.layer addSublayer:layer];
+    
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = @"position.y";
+    animation.byValue = @(0);
+    animation.duration = 0.3;
+    
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    
+    [layer addAnimation:animation forKey:@"Splash"];
+}
+
+- (void)animationButtonWithBotTop:(UIButton *)btn {
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(0, 0, btn.bounds.size.width, btn.bounds.size.height);
+    layer.backgroundColor = [UIColor blueColor].CGColor;
+    [btn.layer addSublayer:layer];
+    
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = @"position.y";
+    animation.byValue = @(btn.bounds.size.height);
+
+    animation.duration = 0.3;
+    
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    
+    [layer addAnimation:animation forKey:@"Splash"];
+}
 
 
 #pragma mark - ScrollDeletage

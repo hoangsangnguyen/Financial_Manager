@@ -31,6 +31,10 @@
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *vEff;
 
+@property (nonatomic, weak) IBOutlet UIButton *btnIncomes;
+@property (nonatomic, weak) IBOutlet UIButton *btnDebts;
+@property (nonatomic, weak) IBOutlet UIButton *btnSpendings;
+
 
 @property (nonatomic, strong) JarDto *jarDto;
 

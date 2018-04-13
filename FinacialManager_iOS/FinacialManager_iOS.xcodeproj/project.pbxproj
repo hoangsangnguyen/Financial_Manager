@@ -14,6 +14,9 @@
 		CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F920729C8E000FF7FC /* UserNotifications.framework */; };
 		CA2D6329207D110700CEA328 /* BaseClv.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6318207D110700CEA328 /* BaseClv.m */; };
 		CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2EC1C3207355E600312C91 /* CalendarVC.m */; };
+		CA4530D820810B9500B71BCC /* Caculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4530D720810B9500B71BCC /* Caculator.storyboard */; };
+		CA4530DC2081104A00B71BCC /* GateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4530DB2081104A00B71BCC /* GateVC.m */; };
+		CA4530E02081120200B71BCC /* GateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4530DF2081120200B71BCC /* GateView.m */; };
 		CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */; };
 		CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817D205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m */; };
 		CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D817F205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m */; };
@@ -86,6 +89,11 @@
 		CA2D6318207D110700CEA328 /* BaseClv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClv.m; sourceTree = "<group>"; };
 		CA2EC1C2207355E600312C91 /* CalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarVC.h; sourceTree = "<group>"; };
 		CA2EC1C3207355E600312C91 /* CalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
+		CA4530D720810B9500B71BCC /* Caculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Caculator.storyboard; sourceTree = "<group>"; };
+		CA4530DA2081104A00B71BCC /* GateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GateVC.h; sourceTree = "<group>"; };
+		CA4530DB2081104A00B71BCC /* GateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GateVC.m; sourceTree = "<group>"; };
+		CA4530DE2081120200B71BCC /* GateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateView.h; sourceTree = "<group>"; };
+		CA4530DF2081120200B71BCC /* GateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateView.m; sourceTree = "<group>"; };
 		CA4BECB520692EDE00BA89C9 /* CaculatorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaculatorVC.h; sourceTree = "<group>"; };
 		CA4BECB620692EDE00BA89C9 /* CaculatorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaculatorVC.m; sourceTree = "<group>"; };
 		CA5D817B205E5038005C23E6 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
@@ -253,6 +261,25 @@
 				CA2EC1C3207355E600312C91 /* CalendarVC.m */,
 			);
 			path = CalendarVC;
+			sourceTree = "<group>";
+		};
+		CA4530D92081102300B71BCC /* GateVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA4530DD2081120200B71BCC /* GateView */,
+				CA4530DA2081104A00B71BCC /* GateVC.h */,
+				CA4530DB2081104A00B71BCC /* GateVC.m */,
+			);
+			path = GateVC;
+			sourceTree = "<group>";
+		};
+		CA4530DD2081120200B71BCC /* GateView */ = {
+			isa = PBXGroup;
+			children = (
+				CA4530DE2081120200B71BCC /* GateView.h */,
+				CA4530DF2081120200B71BCC /* GateView.m */,
+			);
+			path = GateView;
 			sourceTree = "<group>";
 		};
 		CA4BECB420692EBD00BA89C9 /* CaculatorVC */ = {
@@ -424,6 +451,7 @@
 				CA76570D205EB70300751B9F /* Login.storyboard */,
 				CA61B98F20635DC00022A097 /* Overview.storyboard */,
 				CAFB8F7520721C46009EA2B3 /* Common.storyboard */,
+				CA4530D720810B9500B71BCC /* Caculator.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -573,6 +601,7 @@
 		CA765713205EB72C00751B9F /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
+				CA4530D92081102300B71BCC /* GateVC */,
 				CA765714205EB72C00751B9F /* SignInVC */,
 				CA765717205EB72C00751B9F /* SignUpVC */,
 				CA76571A205EB72C00751B9F /* WelcomeVC */,
@@ -810,6 +839,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA76570E205EB70300751B9F /* Login.storyboard in Resources */,
+				CA4530D820810B9500B71BCC /* Caculator.storyboard in Resources */,
 				CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */,
 				CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */,
 				CAFB8F7620721C46009EA2B3 /* Common.storyboard in Resources */,
@@ -959,6 +989,7 @@
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
 				CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */,
 				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
+				CA4530E02081120200B71BCC /* GateView.m in Sources */,
 				CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */,
 				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,
 				CA4BECB720692EDE00BA89C9 /* CaculatorVC.m in Sources */,
@@ -971,6 +1002,7 @@
 				CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */,
 				42F72D9C2077B4000014173E /* TypeDto.m in Sources */,
 				CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */,
+				CA4530DC2081104A00B71BCC /* GateVC.m in Sources */,
 				CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

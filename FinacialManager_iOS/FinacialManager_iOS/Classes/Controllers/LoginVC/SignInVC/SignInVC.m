@@ -10,7 +10,7 @@
 #import "SignUpVC.h"
 #import "WelcomeVC.h"
 #import "Configure.h"
-#import "OverViewVC.h"
+#import "GateVC.h"
 
 @interface SignInVC () <UITextFieldDelegate, UIGestureRecognizerDelegate> {
     
@@ -82,7 +82,7 @@
         [App hideLoading];
         if (success) {
             [Config updateUser:data];
-            OverViewVC *vc = VCFromSB(OverViewVC, SB_Overview);
+            GateVC *vc = VCFromSB(GateVC, SB_Login);
             [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
                                          andCompletion:nil];
         }

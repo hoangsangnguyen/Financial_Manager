@@ -464,6 +464,7 @@ for (NSInteger i = 0; i< _##Key.count; i++) { \
 #define SB_Main           @"Main"
 #define SB_Login          @"Login"
 #define SB_Common         @"Common"
+#define SB_Caculator      @"Caculator"
 
 #define COMPANY_PLACEHODER_ICON @"CompanyLogo"
 #define USER_PLACEHOLDER_ICON @"avatarCandidate"

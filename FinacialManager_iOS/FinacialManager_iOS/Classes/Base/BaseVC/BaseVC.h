@@ -14,7 +14,9 @@
 #import "AppDelegate.h"
 #import "BaseTBV.h"
 #import "UIView+Util.h"
+#import "SlideNavigationController.h"
 
 @interface BaseVC : UIViewController
+
 
 @end

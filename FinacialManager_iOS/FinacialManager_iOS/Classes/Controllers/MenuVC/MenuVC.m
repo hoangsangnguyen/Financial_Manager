@@ -65,7 +65,7 @@ typedef enum : NSUInteger {
 - (IBAction)btnLogout:(id)sender {
     App.configure.userDto = nil;
     WelcomeVC *vc = VCFromSB(WelcomeVC, SB_Login);
-    [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:YES
+    [AppNav popToRootAndSwitchToViewController:vc withSlideOutAnimation:NO
                                  andCompletion:nil];
 }
 

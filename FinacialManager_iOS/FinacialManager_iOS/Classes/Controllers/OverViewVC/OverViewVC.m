@@ -15,7 +15,7 @@
 #import "BaseColCell.h"
 #import "JarDetailVC.h"
 
-@interface OverViewVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
+@interface OverViewVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SlideNavigationControllerDelegate> {
     ListJarDto *_listData;
 }
 
@@ -25,10 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     // Do any additional setup after loading the view.
     [self initUI];
-    [self getDataFromServer];
+//    [_clvContent addPullRefreshAtVC:self toReloadAction:@selector(getAllJar)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,22 +48,11 @@
 
 #pragma mark - InitUI
 - (void)initUI {
-    
+    _listData = Config.listJar;
+    [_clvContent reloadData];
 }
 
 #pragma mark - API
-- (void)getDataFromServer {
-    //[self getAllStage];
-    //[self getAllJar];
-}
-
-- (void)getAllStage {
-    [API getAllState:^(BOOL success, ListStatesDto *data) {
-        //[App hideLoading];
-        Config.listState = data;
-    }];
-}
-
 - (void)getAllJar {
     if (![_clvContent.refreshCtrl isRefreshing]) {
         [App showLoading];
@@ -78,7 +72,7 @@
 #pragma mark - SlideNavigationController Methods -
 
 - (IBAction)btnCaculator:(id)sender {
-    CaculatorVC *vc = VCFromSB(CaculatorVC, SB_Overview);
+    CaculatorVC *vc = VCFromSB(CaculatorVC,SB_Caculator);
     [AppNav presentViewController:vc animated:YES completion:nil];
 }
 
