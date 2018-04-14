@@ -74,7 +74,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkValidEmail(edtUsername.getText().toString());
+//                checkValidEmail(edtUsername.getText().toString());
             }
 
             @Override
@@ -84,14 +84,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         });
     }
 
-    private void checkValidEmail(String text) {
+    /*private void checkValidEmail(String text) {
         if (!CommonUtils.isEmailValid(text)) {
             edtUsername.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
         edtUsername.setTextColor(
                 CommonUtils.isEmailValid(text) ?
                         ContextCompat.getColor(this, R.color.app_color) : ContextCompat.getColor(this, R.color.red));
-    }
+    }*/
 
     @Override
     public LoginPresenter getPresenter() {
