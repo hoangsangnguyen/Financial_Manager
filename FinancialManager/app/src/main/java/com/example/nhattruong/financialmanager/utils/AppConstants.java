@@ -41,5 +41,5 @@ public class AppConstants {
     public static final int DAY_FRIDAY = 5;
     public static final int DAY_SATURDAY = 6;
 
-    public static final String BASE_URL = "http://sixfinancialboxs.azurewebsites.net/";
+    public static final String BASE_URL = "http://sixfinancialbox.azurewebsites.net/api/";
 }

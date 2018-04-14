@@ -18,9 +18,12 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
         return (HomeContract.View) super.getView();
     }
 
-    private List<Jar> jarList = new ArrayList<>();
+    private List<Jar> jarList;
 
     List<Jar> getJarList() {
+        if (jarList == null){
+            jarList = new ArrayList<>();
+        }
         return jarList;
     }
 
@@ -80,7 +83,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                     if (!isViewAttached()) return;
                     getView().hideLoading();
                     if (res.result != null) {
-                        jarList = res.result;
+                        jarList.addAll(res.result);
                         getView().onLoadJarsSuccess();
                     }
                 }

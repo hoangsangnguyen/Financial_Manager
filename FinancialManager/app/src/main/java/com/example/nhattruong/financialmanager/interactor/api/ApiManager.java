@@ -4,6 +4,7 @@ import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallbac
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeForJarRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
@@ -15,9 +16,6 @@ import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.model.Jar;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ApiManager {
@@ -157,6 +155,21 @@ public class ApiManager {
                 .enqueue(new RestCallback<JarResponse>() {
                     @Override
                     public void success(JarResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void createIncomeForJar(String userId, String jarId, CreateIncomeForJarRequest request, final ApiCallback<BaseResponse> callback){
+        mApiServices.createIncomeForJar(getToken(), userId, jarId, request)
+                .enqueue(new RestCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
                         callback.success(res);
                     }
 

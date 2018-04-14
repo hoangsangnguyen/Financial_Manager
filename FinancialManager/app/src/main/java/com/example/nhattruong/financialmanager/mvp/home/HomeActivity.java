@@ -12,20 +12,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
-import com.example.nhattruong.financialmanager.model.Jar;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
+import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -42,6 +40,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.tb_home)
     Toolbar toolbar;
 
+    @BindView(R.id.iv_add)
+    ImageView ivAdd;
+
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
 
@@ -54,7 +55,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
 
-    List<Jar> mJarLists;
     JarAdapter mJarAdapter;
 
     @Override
@@ -82,13 +82,12 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         tvUserEmail.setText(user.getEmail());
 
         rcvJar.setLayoutManager(new GridLayoutManager(this, 2));
-        mJarLists = new ArrayList<>();
-        mJarAdapter = new JarAdapter(this, mJarLists, new JarAdapter.Listener() {
+        mJarAdapter = new JarAdapter(this, getPresenter().getJarList(), new JarAdapter.Listener() {
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
                 Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                intent.putExtra(JAR, mJarLists.get(position));
+                intent.putExtra(JAR, getPresenter().getJarList().get(position));
                 startActivity(intent);
             }
         });
@@ -99,6 +98,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @Override
     public void onInitListener() {
         tvUserName.setOnClickListener(this);
+        ivAdd.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -150,32 +150,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onLoadJarsSuccess() {
-        List<Jar> jars = getPresenter().getJarList();
-        if (mJarLists != null && !jars.isEmpty()) {
-            mJarLists.clear();
-            mJarLists.addAll(jars);
-        } else {
-            mJarLists = new ArrayList<>();
-        }
-
-        if (mJarLists.size() > 6)
-            mJarLists.remove(6);
-
         mJarAdapter.notifyDataSetChanged();
-
-        if (getIntent().getBooleanExtra(LoginActivity.IS_FIRST_LOGIN, false)) {
-            showConfirmDialog("Do you want to set data?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
-                @Override
-                public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
-                    dialog.dismiss();
-                }
-
-                @Override
-                public void onIPositiveNegativeDialogAnswerNegative(DialogPositiveNegative dialog) {
-                    dialog.dismiss();
-                }
-            });
-        }
     }
 
     @Override
@@ -187,6 +162,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onClick(View view) {
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+        } else if (view == ivAdd){
+            startActivity(new Intent(HomeActivity.this, CreateIncomeActivity.class));
         }
     }
 }

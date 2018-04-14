@@ -1,7 +1,9 @@
 package com.example.nhattruong.financialmanager.interactor.api.network;
 
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeForJarRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
+import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
@@ -22,49 +24,58 @@ import retrofit2.http.Query;
 
 public interface ApiServices {
 
-    @POST("api/users/login")
+    @POST("users/login")
     Call<UserResponse> login(
             @Body LoginRequest request
     );
 
-    @POST("api/users")
+    @POST("users")
     Call<UserResponse> signUp(
             @Body SignUpRequest request
     );
 
-    @GET("api/users/{userId}")
+    @GET("users/{userId}")
     Call<UserResponse> getUser(
             @Header("token") String token,
             @Path("userId") String userId
     );
 
-    @GET("api/types")
+    @GET("types")
     Call<TypeResponse> getTypes(
     );
 
-    @GET("api/state/getStateLists")
+    @GET("state/getStateLists")
     Call<StateResponse> getStates(
     );
 
-    @GET("api/users/{userId}/jars")
+    @GET("users/{userId}/jars")
     Call<JarResponse> getJars(
             @Header("token") String token,
             @Path("userId") String userId
     );
 
-    @GET("api/jar/getJarByID/{typeId}/{userName}")
+    @GET("jar/getJarByID/{typeId}/{userName}")
     Call<JarResponse> getJarByID(
             @Header("token") String token,
             @Query("typeId") int typeId,
             @Query("userName") String userName
     );
 
-    @PUT("api/jar/updateJars")
+    @PUT("jar/updateJars")
     Call<JarResponse> updateJars(
             @Header("token") String token,
             @Body Jar jar
     );
 
+    @POST("users/{userId}/jars/{jarId}/incomes")
+    Call<BaseResponse> createIncomeForJar(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Body CreateIncomeForJarRequest request
+    );
+
+    String URL = "http://sixfinancialboxs.azurewebsites.net/";
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 
     @GET("users/{userId}/jars/{jarId}/spendings")
