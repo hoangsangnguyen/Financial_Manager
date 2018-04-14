@@ -2,7 +2,10 @@ package com.example.nhattruong.financialmanager.interactor.api.network;
 
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
+import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -61,4 +64,19 @@ public interface ApiServices {
             @Header("token") String token,
             @Body Jar jar
     );
+
+    String URL = "http://sixfinancialboxs.azurewebsites.net/api/";
+
+    @GET("users/{userId}/jars/{jarId}/spendings")
+    Call<SpendingResponse> getSpendingResponse(@Header("token") String token, @Path("userId") String userId,
+                                               @Path("jarId") String jarId);
+
+    @GET("users/{userId}/jars/{jarId}/incomes")
+    Call<IncomeResponse> getIncomeResponse(@Header("token") String token, @Path("userId") String userId,
+                                           @Path("jarId") String jarId);
+
+    @GET("users/{userId}/jars/{jarId}/debts")
+    Call<DebtResponse> getDebtResponse(@Header("token") String token, @Path("userId") String userId,
+                                       @Path("jarId") String jarId);
+
 }
