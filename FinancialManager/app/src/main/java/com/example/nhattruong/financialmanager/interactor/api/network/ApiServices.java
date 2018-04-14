@@ -75,7 +75,6 @@ public interface ApiServices {
             @Body CreateIncomeForJarRequest request
     );
 
-    String URL = "http://sixfinancialboxs.azurewebsites.net/";
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 
     @GET("users/{userId}/jars/{jarId}/spendings")
