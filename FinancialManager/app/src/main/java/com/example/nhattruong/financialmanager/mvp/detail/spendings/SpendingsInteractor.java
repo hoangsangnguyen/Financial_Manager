@@ -2,6 +2,7 @@ package com.example.nhattruong.financialmanager.mvp.detail.spendings;
 
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
+import com.example.nhattruong.financialmanager.model.DateSpendings;
 import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 
@@ -12,14 +13,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SpendingsInteractor {
+public class SpendingsInteractor implements IDetailInteractor.IChangeListData<DateSpendings, Spending> {
 
     private IDetailInteractor.IViewSpendingsInteractor iViewInteractor;
     private List<Spending> spendingList;
+    private List<DateSpendings> dateSpendingsList;
 
     SpendingsInteractor(IDetailInteractor.IViewSpendingsInteractor iViewInteractor) {
         this.iViewInteractor = iViewInteractor;
         spendingList = new ArrayList<>();
+        dateSpendingsList = new ArrayList<>();
     }
 
     public void getSpendingsData(ApiServices apiServices) {
@@ -32,7 +35,8 @@ public class SpendingsInteractor {
             public void onResponse(Call<SpendingResponse> call, Response<SpendingResponse> response) {
                 if (response.body() != null) {
                     spendingList.addAll(response.body().getSpendings());
-                    iViewInteractor.sendSuccess(spendingList);
+                    dateSpendingsList = changeListData(dateSpendingsList, spendingList);
+                    iViewInteractor.sendSuccess(dateSpendingsList);
                 } else {
                     iViewInteractor.sendFailure();
                 }
@@ -43,5 +47,47 @@ public class SpendingsInteractor {
                 iViewInteractor.sendFailure();
             }
         });
+    }
+
+    @Override
+    public boolean checkDate(List<DateSpendings> dateList, String date) {
+        for (DateSpendings dateSpendings : dateList) {
+            if (dateSpendings.getDate().equals(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<DateSpendings> changeListData(List<DateSpendings> dateList, List<Spending> list) {
+        if (list.size() != 0) {
+            for (Spending spending : list) {
+                DateSpendings dateSpendings = new DateSpendings();
+                List<Spending> tempSpendingList = new ArrayList<>();
+                dateSpendings.setDate(spending.getDate());
+                if (dateList.size() != 0) {
+                    if (!checkDate(dateList, dateSpendings.getDate())) {
+                        for (Spending itemSpending : list) {
+                            if (itemSpending.getDate().equals(dateSpendings.getDate())) {
+                                tempSpendingList.add(itemSpending);
+                            }
+                        }
+                        dateSpendings.setSpendingList(tempSpendingList);
+                        dateList.add(dateSpendings);
+                    }
+                } else {
+                    dateList = new ArrayList<>();
+                    for (Spending itemSpending : list) {
+                        if (itemSpending.getDate().equals(dateSpendings.getDate())) {
+                            tempSpendingList.add(itemSpending);
+                        }
+                    }
+                    dateSpendings.setSpendingList(tempSpendingList);
+                    dateList.add(dateSpendings);
+                }
+            }
+        }
+        return dateList;
     }
 }

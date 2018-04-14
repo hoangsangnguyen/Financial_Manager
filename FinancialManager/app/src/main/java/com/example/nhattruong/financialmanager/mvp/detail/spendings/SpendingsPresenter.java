@@ -1,7 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.detail.spendings;
 
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
-import com.example.nhattruong.financialmanager.model.Spending;
+import com.example.nhattruong.financialmanager.model.DateSpendings;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class SpendingsPresenter implements IDetailInteractor.IViewSpendingsInter
     }
 
     @Override
-    public void sendSuccess(List<Spending> spendingList) {
-        iView.showSuccess(spendingList);
+    public void sendSuccess(List<DateSpendings> dateSpendingsList) {
+        iView.showSuccess(dateSpendingsList);
     }
 
     @Override

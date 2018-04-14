@@ -18,17 +18,13 @@
         <activity
             android:name=".mvp.splash.SplashActivity"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".mvp.detail.DetailActivity">
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-        </activity>
+        <activity android:name=".mvp.detail.DetailActivity"></activity>
         <activity android:name=".mvp.home.HomeActivity" />
         <activity android:name=".mvp.signup.SignUpActivity" />
         <activity android:name=".mvp.profile.ProfileActivity" />

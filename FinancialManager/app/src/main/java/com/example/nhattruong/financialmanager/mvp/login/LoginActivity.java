@@ -110,7 +110,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
 
     @Override
     public void onSuccess() {
-
         Intent intentHome = new Intent(LoginActivity.this, SettingActivity.class);
         startActivity(intentHome);
         finish();

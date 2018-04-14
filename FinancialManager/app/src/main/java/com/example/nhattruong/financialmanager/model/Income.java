@@ -3,7 +3,7 @@ package com.example.nhattruong.financialmanager.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Income {
+public class  Income {
 
     @SerializedName("_id")
     @Expose

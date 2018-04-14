@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
+import com.example.nhattruong.financialmanager.model.DateDebts;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 import com.example.nhattruong.financialmanager.mvp.detail.MainDetailApplication;
@@ -28,8 +30,8 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
 
     @BindView(R.id.pb_waitDebts)
     ProgressBar pbWaitDebts;
-    @BindView(R.id.rcv_debts)
-    RecyclerView rcvDebts;
+    @BindView(R.id.elv_debts)
+    ExpandableListView elvDebts;
 
     private DebtsPresenter debtsPresenter;
     private ApiServices apiServices;
@@ -47,7 +49,6 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
         Retrofit retrofit = MainDetailApplication.getRetrofit();
         debtsPresenter = new DebtsPresenter(this);
         apiServices = retrofit.create(ApiServices.class);
-        rcvDebts.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL, false));
 
         pbWaitDebts.setVisibility(View.VISIBLE);
 
@@ -56,9 +57,9 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
     }
 
     @Override
-    public void showSuccess(List<Debt> debtList) {
+    public void showSuccess(List<DateDebts> dateDebtsList) {
         pbWaitDebts.setVisibility(View.GONE);
-        showDebtsData(debtList);
+        showDebtsData(dateDebtsList);
     }
 
     @Override
@@ -71,9 +72,9 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
         debtsPresenter.callDebtsData(apiServices);
     }
 
-    private void showDebtsData(List<Debt> debtList) {
-        DebtsRecyclerViewAdapter debtsRecyclerViewAdapter = new DebtsRecyclerViewAdapter(getActivity(), debtList);
-        rcvDebts.setAdapter(debtsRecyclerViewAdapter);
-        debtsRecyclerViewAdapter.notifyDataSetChanged();
+    private void showDebtsData(List<DateDebts> dateDebtsList) {
+        DebtsExpandableListViewAdapter debtsExpandableListViewAdapter = new DebtsExpandableListViewAdapter(getActivity(), dateDebtsList);
+        elvDebts.setAdapter(debtsExpandableListViewAdapter);
+        debtsExpandableListViewAdapter.notifyDataSetChanged();
     }
 }

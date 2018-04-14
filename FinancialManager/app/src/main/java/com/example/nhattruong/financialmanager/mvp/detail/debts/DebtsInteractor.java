@@ -2,6 +2,7 @@ package com.example.nhattruong.financialmanager.mvp.detail.debts;
 
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
+import com.example.nhattruong.financialmanager.model.DateDebts;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 
@@ -12,14 +13,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DebtsInteractor {
+public class DebtsInteractor implements IDetailInteractor.IChangeListData<DateDebts, Debt> {
 
     private IDetailInteractor.IViewDebtsInteractor iViewDebtsInteractor;
     private List<Debt> debtList;
+    private List<DateDebts> dateDebtsList;
 
     DebtsInteractor(IDetailInteractor.IViewDebtsInteractor iViewDebtsInteractor) {
         this.iViewDebtsInteractor = iViewDebtsInteractor;
         debtList = new ArrayList<>();
+        dateDebtsList = new ArrayList<>();
     }
 
     public void getDebtsData(ApiServices apiServices) {
@@ -32,7 +35,8 @@ public class DebtsInteractor {
             public void onResponse(Call<DebtResponse> call, Response<DebtResponse> response) {
                 if (response.body() != null) {
                     debtList.addAll(response.body().getDebts());
-                    iViewDebtsInteractor.sendSuccess(debtList);
+                    dateDebtsList = changeListData(dateDebtsList, debtList);
+                    iViewDebtsInteractor.sendSuccess(dateDebtsList);
                 } else {
                     iViewDebtsInteractor.sendFailure();
                 }
@@ -43,5 +47,47 @@ public class DebtsInteractor {
                 iViewDebtsInteractor.sendFailure();
             }
         });
+    }
+
+    @Override
+    public boolean checkDate(List<DateDebts> dateList, String date) {
+        for (DateDebts dateDebts : dateList) {
+            if (dateDebts.getDate().equals(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<DateDebts> changeListData(List<DateDebts> dateList, List<Debt> list) {
+        if (list.size() != 0) {
+            for (Debt debt : list) {
+                DateDebts dateDebts = new DateDebts();
+                List<Debt> tempDebtList = new ArrayList<>();
+                dateDebts.setDate(debt.getDate());
+                if (dateList.size() != 0) {
+                    if (!checkDate(dateList, dateDebts.getDate())) {
+                        for (Debt itemDebt : list) {
+                            if (itemDebt.getDate().equals(dateDebts.getDate())) {
+                                tempDebtList.add(itemDebt);
+                            }
+                        }
+                        dateDebts.setDebtList(tempDebtList);
+                        dateList.add(dateDebts);
+                    }
+                } else {
+                    dateList = new ArrayList<>();
+                    for (Debt itemDebt : list) {
+                        if (itemDebt.getDate().equals(dateDebts.getDate())) {
+                            tempDebtList.add(itemDebt);
+                        }
+                    }
+                    dateDebts.setDebtList(tempDebtList);
+                    dateList.add(dateDebts);
+                }
+            }
+        }
+        return dateList;
     }
 }

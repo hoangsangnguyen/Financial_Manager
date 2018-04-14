@@ -9,11 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
+import com.example.nhattruong.financialmanager.model.DateSpendings;
 import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 import com.example.nhattruong.financialmanager.mvp.detail.MainDetailApplication;
@@ -26,8 +28,8 @@ import retrofit2.Retrofit;
 
 public class SpendingsFragment extends Fragment implements IDetailInteractor.IViewSpendings {
 
-    @BindView(R.id.rcv_spendings)
-    RecyclerView rcvSpendings;
+    @BindView(R.id.elv_spendings)
+    ExpandableListView elvSpendings;
     @BindView(R.id.pb_waitSpendings)
     ProgressBar pbWaitSpendings;
 
@@ -45,21 +47,21 @@ public class SpendingsFragment extends Fragment implements IDetailInteractor.IVi
         View view = inflater.inflate(R.layout.fragment_spendings, container, false);
         ButterKnife.bind(this, view);
 
-         Retrofit retrofit = MainDetailApplication.getRetrofit();
+        Retrofit retrofit = MainDetailApplication.getRetrofit();
         apiServices = retrofit.create(ApiServices.class);
         spendingsPresenter = new SpendingsPresenter(this);
-        rcvSpendings.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        pbWaitSpendings.setVisibility(View.VISIBLE);
 
         loadSpendingsData();
-        pbWaitSpendings.setVisibility(View.VISIBLE);
 
         return view;
     }
 
     @Override
-    public void showSuccess(List<Spending> spendingList) {
+    public void showSuccess(List<DateSpendings> dateSpendingsList) {
         pbWaitSpendings.setVisibility(View.GONE);
-        showSpendingsData(spendingList);
+        showSpendingsData(dateSpendingsList);
     }
 
     @Override
@@ -67,16 +69,15 @@ public class SpendingsFragment extends Fragment implements IDetailInteractor.IVi
         pbWaitSpendings.setVisibility(View.GONE);
         Toast.makeText(getActivity(), "Show Failure", Toast.LENGTH_SHORT).show();
         Log.d("Spendings", "false");
-
     }
 
     private void loadSpendingsData() {
         spendingsPresenter.callSpendingsData(apiServices);
     }
 
-    private void showSpendingsData(List<Spending> spendingList) {
-        SpendingsRecyclerViewAdapter spendingsRecyclerViewAdapter = new SpendingsRecyclerViewAdapter(getActivity(), spendingList);
-        rcvSpendings.setAdapter(spendingsRecyclerViewAdapter);
-        spendingsRecyclerViewAdapter.notifyDataSetChanged();
+    private void showSpendingsData(List<DateSpendings> dateSpendingsList) {
+        SpendingsExpandableListViewAdapter spendingsExpandableListViewAdapter = new SpendingsExpandableListViewAdapter(getActivity(), dateSpendingsList);
+        elvSpendings.setAdapter(spendingsExpandableListViewAdapter);
+        spendingsExpandableListViewAdapter.notifyDataSetChanged();
     }
 }

@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
+import com.example.nhattruong.financialmanager.model.DateIncomes;
 import com.example.nhattruong.financialmanager.model.Income;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 import com.example.nhattruong.financialmanager.mvp.detail.MainDetailApplication;
@@ -28,8 +30,8 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
 
     @BindView(R.id.pb_waitIncomes)
     ProgressBar pbWaitIncomes;
-    @BindView(R.id.rcv_incomes)
-    RecyclerView rcvIncomes;
+    @BindView(R.id.elv_incomes)
+    ExpandableListView elvIncomes;
 
     private IncomesPresenter incomesPresenter;
     private ApiServices apiServices;
@@ -47,7 +49,6 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
         Retrofit retrofit = MainDetailApplication.getRetrofit();
         apiServices = retrofit.create(ApiServices.class);
         incomesPresenter = new IncomesPresenter(this);
-        rcvIncomes.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL, false));
 
         pbWaitIncomes.setVisibility(View.VISIBLE);
         loadIncomesData();
@@ -55,9 +56,9 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
     }
 
     @Override
-    public void showSuccess(List<Income> incomeList) {
+    public void showSuccess(List<DateIncomes> dateIncomesList) {
         pbWaitIncomes.setVisibility(View.GONE);
-        showIncomesData(incomeList);
+        showIncomesData(dateIncomesList);
     }
 
     @Override
@@ -70,10 +71,10 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
         incomesPresenter.callIncomesData(apiServices);
     }
 
-    private void showIncomesData(List<Income> incomeList) {
-        IncomesRecyclerViewAdapter incomesRecyclerViewAdapter = new IncomesRecyclerViewAdapter(getActivity(), incomeList);
-        rcvIncomes.setAdapter(incomesRecyclerViewAdapter);
-        incomesRecyclerViewAdapter.notifyDataSetChanged();
+    private void showIncomesData(List<DateIncomes> dateIncomesList) {
+        IncomesExpandableListViewAdapter incomesExpandableListViewAdapter = new IncomesExpandableListViewAdapter(getActivity(), dateIncomesList);
+        elvIncomes.setAdapter(incomesExpandableListViewAdapter);
+        incomesExpandableListViewAdapter.notifyDataSetChanged();
     }
 
 }

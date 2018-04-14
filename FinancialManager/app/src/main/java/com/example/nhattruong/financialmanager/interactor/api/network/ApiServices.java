@@ -65,7 +65,7 @@ public interface ApiServices {
             @Body Jar jar
     );
 
-    String URL = "http://sixfinancialboxs.azurewebsites.net/api/";
+    String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 
     @GET("users/{userId}/jars/{jarId}/spendings")
     Call<SpendingResponse> getSpendingResponse(@Header("token") String token, @Path("userId") String userId,

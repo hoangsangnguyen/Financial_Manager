@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.detail.debts;
 
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
+import com.example.nhattruong.financialmanager.model.DateDebts;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 
@@ -21,8 +22,8 @@ public class DebtsPresenter implements IDetailInteractor.IViewDebtsInteractor {
     }
 
     @Override
-    public void sendSuccess(List<Debt> debtList) {
-        iViewDebts.showSuccess(debtList);
+    public void sendSuccess(List<DateDebts> dateDebtsList) {
+        iViewDebts.showSuccess(dateDebtsList);
     }
 
     @Override
