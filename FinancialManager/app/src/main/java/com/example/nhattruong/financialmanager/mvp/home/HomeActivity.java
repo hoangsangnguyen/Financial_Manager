@@ -24,6 +24,12 @@ import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import butterknife.BindView;
 
@@ -54,6 +60,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
+
+    @BindView(R.id.bmb)
+    BoomMenuButton bmb;
 
     JarAdapter mJarAdapter;
 
@@ -150,6 +159,18 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onLoadJarsSuccess() {
+
+        bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
+        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
+        bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_6);
+
+        for (int i=0; i<getPresenter().getJarList().size(); i++){
+            TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
+                    .normalText(getPresenter().getJarList().get(i).getType())
+                    .normalImageRes(R.drawable.ic_small_jar);
+            bmb.addBuilder(builder);
+        }
+
         mJarAdapter.notifyDataSetChanged();
     }
 
