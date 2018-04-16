@@ -30,7 +30,7 @@
     
     _tfEmail.returnKeyType = UIReturnKeyNext;
     _tfPassword.returnKeyType = UIReturnKeyGo;
-    _tfEmail.text = @"sangnguyen1";
+    _tfEmail.text = @"thanhson";
     _tfPassword.text =@"123";
     
 }
