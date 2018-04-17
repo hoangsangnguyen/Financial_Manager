@@ -1,15 +1,19 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +30,7 @@ import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
@@ -36,6 +41,7 @@ import butterknife.BindView;
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
     public static final String JAR = "JAR";
+    public static final String JAR_ID = "JAR_ID";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -80,11 +86,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onInitData() {
+
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         User user = getPresenter().getPreferManager().getUser();
         tvUserName.setText(user.getUserName());
@@ -114,7 +122,33 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
-                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
+
+                String jarId = "";
+
+                switch (item.getItemId()){
+                    case R.id.jar1:
+                        jarId = getPresenter().getJarList().get(0).getId();
+                        break;
+                    case R.id.jar2:
+                        jarId = getPresenter().getJarList().get(1).getId();
+                        break;
+                    case R.id.jar3:
+                        jarId = getPresenter().getJarList().get(2).getId();
+                        break;
+                    case R.id.jar4:
+                        jarId = getPresenter().getJarList().get(3).getId();
+                        break;
+                    case R.id.jar5:
+                        jarId = getPresenter().getJarList().get(4).getId();
+                        break;
+                    case R.id.jar6:
+                        jarId = getPresenter().getJarList().get(5).getId();
+                        break;
+                }
+
+                Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
+                intentDetail.putExtra(JAR_ID, jarId);
+                startActivity(intentDetail);
                 return true;
             }
         });
@@ -144,10 +178,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
@@ -167,7 +198,15 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         for (int i=0; i<getPresenter().getJarList().size(); i++){
             TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
                     .normalText(getPresenter().getJarList().get(i).getType())
-                    .normalImageRes(R.drawable.ic_small_jar);
+                    .normalImageRes(R.drawable.ic_small_jar)
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
+                            intentDetail.putExtra(JAR_ID, getPresenter().getJarList().get(index).getId());
+                            startActivity(intentDetail);
+                        }
+                    });
             bmb.addBuilder(builder);
         }
 
