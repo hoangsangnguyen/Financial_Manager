@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
+import com.example.nhattruong.financialmanager.dialog.dialogAddIncome.DialogAddIncome;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
@@ -42,6 +43,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     public static final String JAR = "JAR";
     public static final String JAR_ID = "JAR_ID";
+    public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -223,7 +225,23 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
         } else if (view == ivAdd){
-            startActivity(new Intent(HomeActivity.this, CreateIncomeActivity.class));
+
+            DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
+                @Override
+                public void onAddIncomeForJar() {
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
+                    startActivity(intentAddIncome);
+                }
+
+                @Override
+                public void onAddTotalIncome() {
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
+                    startActivity(intentAddIncome);
+                }
+            });
+            dialogAddIncome.show();
         }
     }
 }
