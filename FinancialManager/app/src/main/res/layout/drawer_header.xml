@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white_color"
+    android:background="@color/app_color"
     android:orientation="vertical">
 
     <LinearLayout
         android:paddingTop="@dimen/large_32dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/menu_imv_avatar_company"
@@ -17,28 +17,27 @@
             android:layout_height="@dimen/icon_large_size"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="@dimen/small_10dp"
-            android:layout_marginStart="@dimen/large_32dp"
+            android:layout_marginStart="@dimen/large"
             android:layout_marginTop="@dimen/small_10dp"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_currency" />
+            android:src="@drawable/ic_circle_currency"/>
 
         <TextView
             android:text="Financial Manager"
             android:id="@+id/menu_tv_name_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/small_10dp"
+            android:layout_marginLeft="@dimen/large"
             android:layout_marginRight="@dimen/small_10dp"
             android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:gravity="center"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textColor="@color/black_color"
+            android:layout_marginBottom="@dimen/large"
+            android:textColor="@color/white_color"
             android:textSize="@dimen/default_header_text_size" />
     </LinearLayout>
 

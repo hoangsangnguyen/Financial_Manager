@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CalculatorAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CategoryAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.fragment.DetailsFragment;
@@ -84,6 +85,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     private CategoryAdapter categoryAdapter;
     private boolean isFirstInput = true;
+    private boolean isAddIncomeForJar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,8 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initData() {
+
+        isAddIncomeForJar = getIntent().getBooleanExtra(HomeActivity.ADD_INCOME_FOR_JAR,false);
 
         final List<Integer> numberList = new ArrayList<>();
         numberList.add(1);
@@ -183,10 +187,15 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view == tvNext) {
-
-            llCalculator.setVisibility(View.GONE);
-            llCategory.setVisibility(View.VISIBLE);
-            llInOutCome.setVisibility(View.GONE);
+            if (isAddIncomeForJar){
+                llCalculator.setVisibility(View.GONE);
+                llCategory.setVisibility(View.VISIBLE);
+                llInOutCome.setVisibility(View.GONE);
+            } else {
+                llDetail.setVisibility(View.VISIBLE);
+                llInOutCome.setVisibility(View.GONE);
+                llCalculator.setVisibility(View.GONE);
+            }
             showCategoryView();
 
         } else if (view == ivLeftBack) {

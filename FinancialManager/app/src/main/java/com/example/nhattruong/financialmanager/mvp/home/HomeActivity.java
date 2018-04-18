@@ -18,18 +18,28 @@ import android.widget.TextView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
+import com.example.nhattruong.financialmanager.dialog.dialogAddIncome.DialogAddIncome;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.HamButton;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
     public static final String JAR = "JAR";
+    public static final String JAR_ID = "JAR_ID";
+    public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -55,6 +65,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
 
+    @BindView(R.id.bmb)
+    BoomMenuButton bmb;
+
     JarAdapter mJarAdapter;
 
     @Override
@@ -71,11 +84,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onInitData() {
+
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         User user = getPresenter().getPreferManager().getUser();
         tvUserName.setText(user.getUserName());
@@ -105,7 +120,33 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
-                startActivity(new Intent(HomeActivity.this, DetailActivity.class));
+
+                String jarId = "";
+
+                switch (item.getItemId()){
+                    case R.id.jar1:
+                        jarId = getPresenter().getJarList().get(0).getId();
+                        break;
+                    case R.id.jar2:
+                        jarId = getPresenter().getJarList().get(1).getId();
+                        break;
+                    case R.id.jar3:
+                        jarId = getPresenter().getJarList().get(2).getId();
+                        break;
+                    case R.id.jar4:
+                        jarId = getPresenter().getJarList().get(3).getId();
+                        break;
+                    case R.id.jar5:
+                        jarId = getPresenter().getJarList().get(4).getId();
+                        break;
+                    case R.id.jar6:
+                        jarId = getPresenter().getJarList().get(5).getId();
+                        break;
+                }
+
+                Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
+                intentDetail.putExtra(JAR_ID, jarId);
+                startActivity(intentDetail);
                 return true;
             }
         });
@@ -135,10 +176,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
@@ -150,6 +188,26 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onLoadJarsSuccess() {
+
+        bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
+        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
+        bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_6);
+
+        for (int i=0; i<getPresenter().getJarList().size(); i++){
+            TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
+                    .normalText(getPresenter().getJarList().get(i).getType())
+                    .normalImageRes(R.drawable.ic_small_jar)
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
+                            intentDetail.putExtra(JAR_ID, getPresenter().getJarList().get(index).getId());
+                            startActivity(intentDetail);
+                        }
+                    });
+            bmb.addBuilder(builder);
+        }
+
         mJarAdapter.notifyDataSetChanged();
     }
 
@@ -163,7 +221,23 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
         } else if (view == ivAdd){
-            startActivity(new Intent(HomeActivity.this, CreateIncomeActivity.class));
+
+            DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
+                @Override
+                public void onAddIncomeForJar() {
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
+                    startActivity(intentAddIncome);
+                }
+
+                @Override
+                public void onAddTotalIncome() {
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
+                    startActivity(intentAddIncome);
+                }
+            });
+            dialogAddIncome.show();
         }
     }
 }

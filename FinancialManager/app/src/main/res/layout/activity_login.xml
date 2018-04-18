@@ -21,7 +21,7 @@
             android:inputType="text|textNoSuggestions"
             android:maxLines="1"
             android:padding="@dimen/small_10dp"
-            android:text="sangnguyen1"
+            android:text="truong"
             android:textColor="@color/app_color"
             android:textSize="@dimen/default_text_size" />
 
@@ -38,7 +38,7 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:padding="@dimen/small_10dp"
-            android:text="123"
+            android:text="123456"
             android:textColor="@color/app_color"
             android:textSize="@dimen/default_text_size" />
 

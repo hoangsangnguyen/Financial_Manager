@@ -30,5 +30,6 @@
 
     <!-- Dialog -->
     <dimen name="dialog_title_text_size">18sp</dimen>
+    <dimen name="super_large">40dp</dimen>
 
 </resources>

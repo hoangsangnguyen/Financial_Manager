@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_view">
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end"
+        android:background="@drawable/bg_white_grey_border"
+        android:layout_marginEnd="@dimen/large_x"
+        android:layout_marginTop="@dimen/super_large">
+        <TextView
+            android:id="@+id/tv_income_for_jar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Income for jar"
+            android:padding="@dimen/small_10dp"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="@color/black_color"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_divider"/>
+
+        <TextView
+            android:id="@+id/tv_total_income"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Total incomes"
+            android:padding="@dimen/small_10dp"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="@color/black_color"/>
+    </LinearLayout>
+</LinearLayout>
