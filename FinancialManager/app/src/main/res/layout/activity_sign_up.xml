@@ -88,7 +88,7 @@
         style="@style/input_edt_layout">
 
         <EditText
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textNoSuggestions|text"
@@ -100,6 +100,7 @@
         style="@style/input_edt_layout">
 
         <EditText
+            android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

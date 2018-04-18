@@ -16,8 +16,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".mvp.splash.SplashActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:name=".mvp.splash.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +26,13 @@
 
         </activity>
         <activity android:name=".mvp.detail.DetailActivity" />
-
         <activity android:name=".mvp.home.HomeActivity" />
         <activity android:name=".mvp.signup.SignUpActivity" />
         <activity android:name=".mvp.profile.ProfileActivity" />
         <activity android:name=".mvp.login.LoginActivity" />
         <activity android:name=".mvp.setting.SettingActivity" />
-        <activity android:name=".mvp.income.CreateIncomeActivity" />
+        <activity android:name=".mvp.income.CreateIncomeActivity"
+            android:windowSoftInputMode="adjustPan"/>
 
         <provider
             android:name=".sqlite.MyProvider"

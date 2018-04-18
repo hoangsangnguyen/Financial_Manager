@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
 import com.example.nhattruong.financialmanager.base.IBaseView;
+import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 
 public interface HomeContract {
 
@@ -8,7 +9,7 @@ public interface HomeContract {
 
         void onLoadJarsSuccess();
 
-        void onLoadJarsFailed();
+        void onLoadJarsFailed(RestError error);
 
     }
 

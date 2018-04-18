@@ -178,6 +178,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initListener() {
+        ivLeftBack.setOnClickListener(this);
         tvIncome.setOnClickListener(this);
         tvOutcome.setOnClickListener(this);
         tvNext.setOnClickListener(this);
@@ -293,7 +294,11 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onFinishClicked(Date date, String note) {
-        getPresenter().createIncomeForJar(date, note, Integer.parseInt(tvCurrency.getText().toString()));
+        if (isAddIncomeForJar){
+            getPresenter().createIncomeForJar(date, note, Double.parseDouble(tvCurrency.getText().toString()));
+        } else {
+            getPresenter().createGeneralIncome(date, note, Double.parseDouble(tvCurrency.getText().toString()));
+        }
     }
 
     @Override
@@ -302,12 +307,13 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    public void createIncomeForJarFailed(RestError error) {
+    public void createIncomeJarFailed(RestError error) {
         showErrorDialog(error.message);
     }
 
     @Override
-    public void createIncomeForJarSuccess() {
-        onBackPressed();
+    public void createIncomeJarSuccess() {
+        setResult(RESULT_OK);
+        finish();
     }
 }

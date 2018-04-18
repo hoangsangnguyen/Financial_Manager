@@ -1,6 +1,6 @@
 package com.example.nhattruong.financialmanager.interactor.api.network;
 
-import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeForJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
@@ -72,7 +72,14 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId,
-            @Body CreateIncomeForJarRequest request
+            @Body CreateIncomeJarRequest request
+    );
+
+    @POST("users/{userId}/incomes")
+    Call<BaseResponse> createGeneralIncome(
+            @Header("token") String token,
+            @Path("userId") String user,
+            @Body CreateIncomeJarRequest request
     );
 
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";

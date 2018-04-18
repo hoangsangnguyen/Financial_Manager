@@ -83,6 +83,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                     if (!isViewAttached()) return;
                     getView().hideLoading();
                     if (res.result != null) {
+                        getJarList().clear();
                         jarList.addAll(res.result);
                         getView().onLoadJarsSuccess();
                     }
@@ -92,7 +93,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                 public void failure(RestError error) {
                     if (!isViewAttached()) return;
                     getView().hideLoading();
-                    getView().onLoadJarsFailed();
+                    getView().onLoadJarsFailed(error);
                 }
             });
         } else {

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.dialog.dialogAddIncome.DialogAddIncome;
+import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
@@ -38,9 +40,9 @@ import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
-    public static final String JAR = "JAR";
     public static final String JAR_ID = "JAR_ID";
     public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
+    public static final int REQUEST_CODE_ADD_INCOME = 22;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -62,6 +64,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @BindView(R.id.tv_logout)
     TextView tvLogout;
+
+    @BindView(R.id.refresh_jar)
+    SwipeRefreshLayout mRefresh;
 
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
@@ -103,7 +108,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
                 Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                intent.putExtra(JAR_ID, getPresenter().getJarList().get(position).getId());
+                intent.putExtra(JAR_ID, getPresenter().getJarList().get(position));
                 startActivity(intent);
             }
         });
@@ -173,6 +178,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                 });
             }
         });
+
+        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getPresenter().getJars();
+            }
+        });
     }
 
     @Override
@@ -189,6 +201,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onLoadJarsSuccess() {
+        mRefresh.setRefreshing(false);
+
+        bmb.clearBuilders();
 
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
@@ -201,6 +216,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                     .listener(new OnBMClickListener() {
                         @Override
                         public void onBoomButtonClick(int index) {
+                            navigationView.getMenu().getItem(index).setChecked(true);
                             Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
                             intentDetail.putExtra(JAR_ID, getPresenter().getJarList().get(index).getId());
                             Log.d("JAR HOME", String.valueOf(index));
@@ -214,8 +230,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     }
 
     @Override
-    public void onLoadJarsFailed() {
-
+    public void onLoadJarsFailed(RestError error) {
+        mRefresh.setRefreshing(false);
+        showErrorDialog(error.message);
     }
 
     @Override
@@ -229,17 +246,24 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                 public void onAddIncomeForJar() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
-                    startActivity(intentAddIncome);
+                    startActivityForResult(intentAddIncome, REQUEST_CODE_ADD_INCOME);
                 }
 
                 @Override
-                public void onAddTotalIncome() {
+                public void onAddGeneralIncome() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
-                    startActivity(intentAddIncome);
+                    startActivityForResult(intentAddIncome, REQUEST_CODE_ADD_INCOME);
                 }
             });
             dialogAddIncome.show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_ADD_INCOME){
+            getPresenter().getJars();
         }
     }
 }

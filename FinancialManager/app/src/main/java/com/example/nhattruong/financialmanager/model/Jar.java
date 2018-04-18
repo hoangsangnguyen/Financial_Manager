@@ -16,15 +16,15 @@ public class Jar implements Serializable {
 
     @SerializedName("incomes")
     @Expose
-    private int incomes;
+    private double incomes;
 
     @SerializedName("debts")
     @Expose
-    private int debts;
+    private double debts;
 
     @SerializedName("spendings")
     @Expose
-    private int spendings;
+    private double spendings;
 
     public String getId() {
         return id;
@@ -42,7 +42,7 @@ public class Jar implements Serializable {
         this.type = type;
     }
 
-    public int getIncomes() {
+    public double getIncomes() {
         return incomes;
     }
 
@@ -50,7 +50,7 @@ public class Jar implements Serializable {
         this.incomes = incomes;
     }
 
-    public int getDebts() {
+    public double getDebts() {
         return debts;
     }
 
@@ -58,7 +58,7 @@ public class Jar implements Serializable {
         this.debts = debts;
     }
 
-    public int getSpending() {
+    public double getSpending() {
         return spendings;
     }
 

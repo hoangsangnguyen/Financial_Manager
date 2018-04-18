@@ -7,10 +7,6 @@ import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.google.gson.Gson;
 
-/**
- * Created by nhattruong on 4/10/2018.
- */
-
 public class SettingPresenter extends BasePresenter implements SettingContract.Presenter {
 
     @Override

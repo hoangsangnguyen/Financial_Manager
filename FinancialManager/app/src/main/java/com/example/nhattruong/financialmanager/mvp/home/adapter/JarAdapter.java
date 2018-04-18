@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.utils.CommonUtils;
 
 import java.util.List;
 
@@ -38,8 +39,8 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
     public void onBindViewHolder(JarAdapter.ViewHolder holder, int position) {
         Jar jar = mItems.get(position);
         if (jar != null && position != 6) { // type "Tổng hợp"
-            double rest = jar.getIncomes() - jar.getSpending() - jar.getDebts();
-            holder.tvQuantity.setText(String.valueOf(rest));
+            Double rest = jar.getIncomes() - jar.getSpending() - jar.getDebts();
+            holder.tvQuantity.setText(mContext.getString(R.string.currency_USD, rest.intValue()));
             holder.tvType.setText(jar.getType());
         }
     }

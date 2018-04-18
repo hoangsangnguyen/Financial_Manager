@@ -5,24 +5,22 @@ import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 
 import java.util.Date;
 
-/**
- * Created by nhattruong on 4/11/2018.
- */
-
 public interface CreateIncomeContract {
     interface View extends IBaseView{
 
         void getAllJarSuccess();
 
-        void createIncomeForJarFailed(RestError error);
+        void createIncomeJarFailed(RestError error);
 
-        void createIncomeForJarSuccess();
+        void createIncomeJarSuccess();
     }
 
     interface Presenter {
         void getAllJar();
 
-        void createIncomeForJar(Date date, String detail, int amount);
+        void createIncomeForJar(Date date, String detail, double amount);
+
+        void createGeneralIncome(Date date, String detail, double amount);
 
         void setJarId(String jarId);
     }

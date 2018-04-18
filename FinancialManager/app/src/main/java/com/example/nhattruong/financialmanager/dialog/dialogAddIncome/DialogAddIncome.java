@@ -19,8 +19,8 @@ public class DialogAddIncome extends BaseDialog implements View.OnClickListener 
     @BindView(R.id.tv_income_for_jar)
     TextView tvIncomeForJar;
 
-    @BindView(R.id.tv_total_income)
-    TextView tvTotalIncome;
+    @BindView(R.id.tv_general_income)
+    TextView tvGeneralIncome;
 
     public DialogAddIncome(Context context, onClickItemListener callBack) {
         super(context);
@@ -41,7 +41,7 @@ public class DialogAddIncome extends BaseDialog implements View.OnClickListener 
     protected void initListener() {
         llView.setOnClickListener(this);
         tvIncomeForJar.setOnClickListener(this);
-        tvTotalIncome.setOnClickListener(this);
+        tvGeneralIncome.setOnClickListener(this);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class DialogAddIncome extends BaseDialog implements View.OnClickListener 
         } else if (view == tvIncomeForJar){
             callBack.onAddIncomeForJar();
             dismiss();
-        } else if (view == tvTotalIncome){
-            callBack.onAddTotalIncome();
+        } else if (view == tvGeneralIncome){
+            callBack.onAddGeneralIncome();
             dismiss();
         }
     }
@@ -60,7 +60,7 @@ public class DialogAddIncome extends BaseDialog implements View.OnClickListener 
     public interface onClickItemListener{
         void onAddIncomeForJar();
 
-        void onAddTotalIncome();
+        void onAddGeneralIncome();
     }
 
     private onClickItemListener callBack;

@@ -3,7 +3,7 @@ package com.example.nhattruong.financialmanager.mvp.income;
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeForJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
@@ -59,26 +59,48 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
     }
 
     @Override
-    public void createIncomeForJar(Date date, String detail, int amount) {
+    public void createIncomeForJar(Date date, String detail, double amount) {
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        CreateIncomeForJarRequest request =
-                new CreateIncomeForJarRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
-        String userId = getPreferManager().getUser().getId();
-        getApiManager().createIncomeForJar(userId, mJarId, request, new ApiCallback<BaseResponse>() {
+        CreateIncomeJarRequest request =
+                new CreateIncomeJarRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
+        getApiManager().createIncomeForJar(getPreferManager().getUser().getId(), mJarId, request, new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().createIncomeForJarSuccess();
+                getView().createIncomeJarSuccess();
             }
 
             @Override
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().createIncomeForJarFailed(error);
+                getView().createIncomeJarFailed(error);
+            }
+        });
+    }
+
+    @Override
+    public void createGeneralIncome(Date date, String detail, double amount) {
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        CreateIncomeJarRequest request =
+                new CreateIncomeJarRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
+        getApiManager().createGeneralIncome(getPreferManager().getUser().getId(), request, new ApiCallback<BaseResponse>() {
+            @Override
+            public void success(BaseResponse res) {
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().createIncomeJarSuccess();
+            }
+
+            @Override
+            public void failure(RestError error) {
+                if (!isViewAttached()) return;
+                getView().createIncomeJarFailed(error);
             }
         });
     }
