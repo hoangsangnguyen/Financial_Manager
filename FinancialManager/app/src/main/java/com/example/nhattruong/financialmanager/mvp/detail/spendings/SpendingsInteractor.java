@@ -51,7 +51,7 @@ public class SpendingsInteractor extends BasePresenter implements IDetailInterac
 
     public void getInfoId(Bundle bundle) {
         if (bundle != null) {
-            String jarId = bundle.getString("JAR");
+            String jarId = bundle.getString("JAR_ID");
             String token = getPreferManager().getToken();
             String userId = getPreferManager().getUser().getId();
             iViewInteractor.sendIdSuccess(token, userId, jarId);

@@ -3,9 +3,6 @@ package com.example.nhattruong.financialmanager.mvp.detail.spendings;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,6 @@ import android.widget.Toast;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.model.DateSpendings;
-import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 import com.example.nhattruong.financialmanager.mvp.detail.MainDetailApplication;
 
@@ -74,7 +70,11 @@ public class SpendingsFragment extends Fragment implements IDetailInteractor.IVi
     @Override
     public void showSuccess(List<DateSpendings> dateSpendingsList) {
         pbWaitSpendings.setVisibility(View.GONE);
-        showSpendingsData(dateSpendingsList);
+        if (dateSpendingsList.isEmpty()) {
+            Toast.makeText(getActivity(), "NOT DATA", Toast.LENGTH_SHORT).show();
+        } else {
+            showSpendingsData(dateSpendingsList);
+        }
     }
 
     @Override

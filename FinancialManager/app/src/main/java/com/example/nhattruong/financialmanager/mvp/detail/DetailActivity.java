@@ -1,5 +1,6 @@
 package com.example.nhattruong.financialmanager.mvp.detail;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,8 +41,8 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         tvSpendingsDetail.setOnClickListener(this);
         tvIncomesDetail.setOnClickListener(this);
         tvDebtsDetail.setOnClickListener(this);
-        replaceFragmentContent(SpendingsFragment.newInstance());
 
+        replaceFragmentContent(SpendingsFragment.newInstance());
     }
 
     @Override
@@ -67,6 +68,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void setTextColor(int color) {
         switch (color) {
             case 1:

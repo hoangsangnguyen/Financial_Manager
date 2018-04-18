@@ -69,7 +69,11 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
     @Override
     public void showSuccess(List<DateDebts> dateDebtsList) {
         pbWaitDebts.setVisibility(View.GONE);
-        showDebtsData(dateDebtsList);
+        if (dateDebtsList.isEmpty()) {
+            showDebtsData(dateDebtsList);
+        } else {
+            Toast.makeText(getActivity(), "NOT DATA", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

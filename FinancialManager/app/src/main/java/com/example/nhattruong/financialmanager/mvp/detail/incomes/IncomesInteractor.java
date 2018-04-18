@@ -37,6 +37,7 @@ public class IncomesInteractor extends BasePresenter implements IDetailInteracto
                     incomeList.addAll(response.body().getIncomes());
                     dateIncomesList = changeListData(dateIncomesList, incomeList);
                     iViewInteractor.sendSuccess(dateIncomesList);
+
                 } else {
                     iViewInteractor.sendFailure();
                 }
@@ -51,7 +52,7 @@ public class IncomesInteractor extends BasePresenter implements IDetailInteracto
 
     public void getInfoId(Bundle bundle) {
         if (bundle != null) {
-            String jarId = bundle.getString("JAR");
+            String jarId = bundle.getString("JAR_ID");
             String token = getPreferManager().getToken();
             String userId = getPreferManager().getUser().getId();
             iViewInteractor.sendIdSuccess(token, userId, jarId);

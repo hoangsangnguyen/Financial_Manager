@@ -3,8 +3,6 @@ package com.example.nhattruong.financialmanager.mvp.detail;
 import com.example.nhattruong.financialmanager.model.DateDebts;
 import com.example.nhattruong.financialmanager.model.DateIncomes;
 import com.example.nhattruong.financialmanager.model.DateSpendings;
-import com.example.nhattruong.financialmanager.model.Income;
-import com.example.nhattruong.financialmanager.model.Spending;
 
 import java.util.List;
 

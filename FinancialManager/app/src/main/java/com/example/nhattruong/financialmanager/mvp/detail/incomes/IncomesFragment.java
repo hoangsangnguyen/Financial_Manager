@@ -73,7 +73,11 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
     @Override
     public void showSuccess(List<DateIncomes> dateIncomesList) {
         pbWaitIncomes.setVisibility(View.GONE);
-        showIncomesData(dateIncomesList);
+        if (dateIncomesList.isEmpty()) {
+            Toast.makeText(getActivity(), "NOT DATA", Toast.LENGTH_SHORT).show();
+        } else {
+            showIncomesData(dateIncomesList);
+        }
     }
 
     @Override

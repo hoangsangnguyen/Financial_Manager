@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -102,7 +103,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
                 Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                intent.putExtra(JAR, getPresenter().getJarList().get(position));
+                intent.putExtra(JAR_ID, getPresenter().getJarList().get(position).getId());
                 startActivity(intent);
             }
         });
@@ -202,6 +203,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         public void onBoomButtonClick(int index) {
                             Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
                             intentDetail.putExtra(JAR_ID, getPresenter().getJarList().get(index).getId());
+                            Log.d("JAR HOME", String.valueOf(index));
                             startActivity(intentDetail);
                         }
                     });
