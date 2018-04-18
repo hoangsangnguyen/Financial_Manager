@@ -1,5 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.detail.incomes;
 
+import android.os.Bundle;
+
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.model.DateIncomes;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
@@ -16,8 +18,22 @@ public class IncomesPresenter implements IDetailInteractor.IViewIncomesInteracto
         incomesInteractor = new IncomesInteractor(this);
     }
 
-    public void callIncomesData(ApiServices apiServices) {
-        incomesInteractor.getIncomesData(apiServices);
+    public void callIncomesData(ApiServices apiServices, String token, String userId, String jarId) {
+        incomesInteractor.getIncomesData(apiServices, token, userId, jarId);
+    }
+
+    public void callInfoId(Bundle bundle){
+        incomesInteractor.getInfoId(bundle);
+    }
+
+    @Override
+    public void sendIdSuccess(String token, String useId, String jarId) {
+        iViewIncomes.getIdSuccess(token, useId, jarId);
+    }
+
+    @Override
+    public void sendIdFailure() {
+        iViewIncomes.getIdFailure();
     }
 
     @Override

@@ -11,36 +11,60 @@ import java.util.List;
 public interface IDetailInteractor {
 
     interface IViewSpendings {
-        void showSuccess(List<DateSpendings> dateSpendingsList);
+        void getIdSuccess(String token, String userId, String jarId);
+
+        void getIdFailure();
+
+        void showSuccess(List<DateSpendings> dateDebtsList);
 
         void showFailed();
     }
 
     interface IViewSpendingsInteractor {
-        void sendSuccess(List<DateSpendings> dateSpendingsList);
+        void sendIdSuccess(String token, String useId, String jarId);
+
+        void sendIdFailure();
+
+        void sendSuccess(List<DateSpendings> dateDebtsList);
 
         void sendFailure();
     }
 
     interface IViewIncomes {
-        void showSuccess(List<DateIncomes> dateIncomesList);
+        void getIdSuccess(String token, String userId, String jarId);
+
+        void getIdFailure();
+
+        void showSuccess(List<DateIncomes> dateDebtsList);
 
         void showFailed();
     }
 
     interface IViewIncomesInteractor {
-        void sendSuccess(List<DateIncomes> dateIncomesList);
+        void sendIdSuccess(String token, String useId, String jarId);
+
+        void sendIdFailure();
+
+        void sendSuccess(List<DateIncomes> dateDebtsList);
 
         void sendFailure();
     }
 
     interface IViewDebts {
+        void getIdSuccess(String token, String userId, String jarId);
+
+        void getIdFailure();
+
         void showSuccess(List<DateDebts> dateDebtsList);
 
         void showFailed();
     }
 
     interface IViewDebtsInteractor {
+        void sendIdSuccess(String token, String useId, String jarId);
+
+        void sendIdFailure();
+
         void sendSuccess(List<DateDebts> dateDebtsList);
 
         void sendFailure();

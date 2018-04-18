@@ -53,9 +53,22 @@ public class SpendingsFragment extends Fragment implements IDetailInteractor.IVi
 
         pbWaitSpendings.setVisibility(View.VISIBLE);
 
-        loadSpendingsData();
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        getInfoId(bundle);
 
         return view;
+    }
+
+    @Override
+    public void getIdSuccess(String token, String userId, String jarId) {
+        spendingsPresenter.callSpendingsData(apiServices, token, userId, jarId);
+    }
+
+    @Override
+    public void getIdFailure() {
+        pbWaitSpendings.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "Show Failure", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -68,16 +81,15 @@ public class SpendingsFragment extends Fragment implements IDetailInteractor.IVi
     public void showFailed() {
         pbWaitSpendings.setVisibility(View.GONE);
         Toast.makeText(getActivity(), "Show Failure", Toast.LENGTH_SHORT).show();
-        Log.d("Spendings", "false");
-    }
-
-    private void loadSpendingsData() {
-        spendingsPresenter.callSpendingsData(apiServices);
     }
 
     private void showSpendingsData(List<DateSpendings> dateSpendingsList) {
         SpendingsExpandableListViewAdapter spendingsExpandableListViewAdapter = new SpendingsExpandableListViewAdapter(getActivity(), dateSpendingsList);
         elvSpendings.setAdapter(spendingsExpandableListViewAdapter);
         spendingsExpandableListViewAdapter.notifyDataSetChanged();
+    }
+
+    private void getInfoId(Bundle bundle) {
+        spendingsPresenter.callInfoId(bundle);
     }
 }

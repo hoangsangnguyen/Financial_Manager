@@ -1,5 +1,8 @@
 package com.example.nhattruong.financialmanager.mvp.detail.debts;
 
+import android.os.Bundle;
+
+import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.model.DateDebts;
@@ -13,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DebtsInteractor implements IDetailInteractor.IChangeListData<DateDebts, Debt> {
+public class DebtsInteractor extends BasePresenter implements IDetailInteractor.IChangeListData<DateDebts, Debt> {
 
     private IDetailInteractor.IViewDebtsInteractor iViewDebtsInteractor;
     private List<Debt> debtList;
@@ -25,10 +28,7 @@ public class DebtsInteractor implements IDetailInteractor.IChangeListData<DateDe
         dateDebtsList = new ArrayList<>();
     }
 
-    public void getDebtsData(ApiServices apiServices) {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNhbmduZ3V5ZW4xIiwibmJmIjoxNTIzMjc4ODk3LCJleHAiOjE1MjM4ODM2OTcsImlhdCI6MTUyMzI3ODg5NywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDE5MSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAxOTEifQ.dIqupPJOs7h1LMAT2SetGyXeMTnMbQ-MPc65SalnYl8";
-        String userId = "5f180dd6-2c2c-4df3-989e-846e960a67d5";
-        String jarId = "cf4d6a28-24dd-4740-8bd3-0f703833315d";
+    public void getDebtsData(ApiServices apiServices, String token, String userId, String jarId) {
         Call<DebtResponse> call = apiServices.getDebtResponse(token, userId, jarId);
         call.enqueue(new Callback<DebtResponse>() {
             @Override
@@ -47,6 +47,17 @@ public class DebtsInteractor implements IDetailInteractor.IChangeListData<DateDe
                 iViewDebtsInteractor.sendFailure();
             }
         });
+    }
+
+    public void getInfoId(Bundle bundle) {
+        if (bundle != null) {
+            String jarId = bundle.getString("JAR");
+            String token = getPreferManager().getToken();
+            String userId = getPreferManager().getUser().getId();
+            iViewDebtsInteractor.sendIdSuccess(token, userId, jarId);
+        } else {
+            iViewDebtsInteractor.sendIdFailure();
+        }
     }
 
     @Override

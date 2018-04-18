@@ -3,20 +3,16 @@ package com.example.nhattruong.financialmanager.mvp.detail.debts;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiServices;
 import com.example.nhattruong.financialmanager.model.DateDebts;
-import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.detail.IDetailInteractor;
 import com.example.nhattruong.financialmanager.mvp.detail.MainDetailApplication;
 
@@ -52,8 +48,22 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
 
         pbWaitDebts.setVisibility(View.VISIBLE);
 
-        loadDebtsData();
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        getInfoId(bundle);
+
         return view;
+    }
+
+    @Override
+    public void getIdSuccess(String token, String userId, String jarId) {
+        debtsPresenter.callDebtsData(apiServices, token, userId, jarId);
+    }
+
+    @Override
+    public void getIdFailure() {
+        pbWaitDebts.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "Show failure", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -68,13 +78,13 @@ public class DebtsFragment extends Fragment implements IDetailInteractor.IViewDe
         Toast.makeText(getActivity(), "Show failure", Toast.LENGTH_SHORT).show();
     }
 
-    private void loadDebtsData() {
-        debtsPresenter.callDebtsData(apiServices);
-    }
-
     private void showDebtsData(List<DateDebts> dateDebtsList) {
         DebtsExpandableListViewAdapter debtsExpandableListViewAdapter = new DebtsExpandableListViewAdapter(getActivity(), dateDebtsList);
         elvDebts.setAdapter(debtsExpandableListViewAdapter);
         debtsExpandableListViewAdapter.notifyDataSetChanged();
+    }
+
+    private void getInfoId(Bundle bundle) {
+        debtsPresenter.callInfoId(bundle);
     }
 }

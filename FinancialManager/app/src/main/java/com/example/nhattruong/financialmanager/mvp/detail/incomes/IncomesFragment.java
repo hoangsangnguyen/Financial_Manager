@@ -51,8 +51,23 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
         incomesPresenter = new IncomesPresenter(this);
 
         pbWaitIncomes.setVisibility(View.VISIBLE);
-        loadIncomesData();
+
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        getInfoId(bundle);
+
         return view;
+    }
+
+    @Override
+    public void getIdSuccess(String token, String userId, String jarId) {
+        incomesPresenter.callIncomesData(apiServices, token, userId, jarId);
+    }
+
+    @Override
+    public void getIdFailure() {
+        pbWaitIncomes.setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "Show failure", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -67,14 +82,14 @@ public class IncomesFragment extends Fragment implements IDetailInteractor.IView
         Toast.makeText(getActivity(), "Show failure", Toast.LENGTH_SHORT).show();
     }
 
-    private void loadIncomesData() {
-        incomesPresenter.callIncomesData(apiServices);
-    }
-
     private void showIncomesData(List<DateIncomes> dateIncomesList) {
         IncomesExpandableListViewAdapter incomesExpandableListViewAdapter = new IncomesExpandableListViewAdapter(getActivity(), dateIncomesList);
         elvIncomes.setAdapter(incomesExpandableListViewAdapter);
         incomesExpandableListViewAdapter.notifyDataSetChanged();
+    }
+
+    private void getInfoId(Bundle bundle) {
+        incomesPresenter.callInfoId(bundle);
     }
 
 }
