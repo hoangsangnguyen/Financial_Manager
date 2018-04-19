@@ -4,6 +4,7 @@ import com.example.nhattruong.financialmanager.model.DateDebts;
 import com.example.nhattruong.financialmanager.model.DateIncomes;
 import com.example.nhattruong.financialmanager.model.DateSpendings;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IDetailInteractor {

@@ -3,22 +3,27 @@ package com.example.nhattruong.financialmanager.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Spending {
 
     @SerializedName("_id")
     @Expose
     private String id;
+
     @SerializedName("date")
     @Expose
     private String date;
+
     @SerializedName("detail")
     @Expose
     private String detail;
+
     @SerializedName("amount")
     @Expose
-    private int amount;
+    private double amount;
 
-    public Spending(String id, String date, String detail, int amount) {
+    public Spending(String id, String date, String detail, double amount) {
         this.id = id;
         this.date = date;
         this.detail = detail;
@@ -49,11 +54,11 @@ public class Spending {
         this.detail = detail;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 }

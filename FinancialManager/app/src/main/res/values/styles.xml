@@ -65,4 +65,22 @@
         <attr name="shadowDrawable" format="reference" />
     </declare-styleable>
 
+    <style name="common_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+
+    <style name="btnDelete">
+        <item name="android:layout_height">@dimen/icon_default_size</item>
+        <item name="android:layout_width">@dimen/icon_default_size</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:src">@drawable/bg_btn_delete</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 </resources>

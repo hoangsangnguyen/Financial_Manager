@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.model.DateSpendings;
 import com.example.nhattruong.financialmanager.model.Spending;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.List;
 

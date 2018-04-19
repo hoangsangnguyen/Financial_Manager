@@ -2,7 +2,12 @@ package com.example.nhattruong.financialmanager.interactor.resources;
 
 import android.content.Context;
 
+import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
+import com.example.nhattruong.financialmanager.model.TabHeader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResourcesManager {
 
@@ -16,6 +21,18 @@ public class ResourcesManager {
 
     public Context getContext() {
         return mContext;
+    }
+
+    public String getString(int resourceId) {
+        return mContext.getString(resourceId);
+    }
+
+    public List<TabHeader> getListTabHeaderJarDetail() {
+        List<TabHeader> tabHeaders = new ArrayList<>();
+        tabHeaders.add(new TabHeader("  " + getString(R.string.spending) + "  "));
+        tabHeaders.add(new TabHeader("  " + getString(R.string.incomes) + "  "));
+//        tabHeaders.add(new TabHeader("  " + getString(R.string.debts) + "  "));
+        return tabHeaders;
     }
 
    /* public List<String> getListDialogBottomUser() {

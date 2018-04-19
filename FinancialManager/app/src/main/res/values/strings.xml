@@ -65,4 +65,10 @@
     <string name="currency_VND">%d VND</string>
     <string name="currency_USD">%d USD</string>
 
+    <string name="spending">Spending</string>
+    <string name="incomes">Incomes</string>
+    <string name="debts">Debts</string>
+    <string name="amount_2_dot">Amount:</string>
+    <string name="detail_2_dot">Detail:</string>
+
 </resources>

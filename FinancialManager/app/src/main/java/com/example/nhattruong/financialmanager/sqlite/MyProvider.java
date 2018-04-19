@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 import com.example.nhattruong.financialmanager.R;
 
 public class MyProvider extends ContentProvider {
-    private static final String PATH = "gito_shared";
+    private static final String PATH = "financial_manager_shared";
     private static final String TYPE_VALID = "TYPE_VALID";
     private static final int NUM_OF_ARGS = 1;
     private static Context sContext;

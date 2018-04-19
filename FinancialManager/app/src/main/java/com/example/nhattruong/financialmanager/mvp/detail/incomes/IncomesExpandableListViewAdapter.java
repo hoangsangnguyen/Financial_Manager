@@ -62,7 +62,7 @@ public class IncomesExpandableListViewAdapter extends BaseExpandableListAdapter 
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(context).inflate(R.layout.items_detail_header, viewGroup, false);
         TextView tvDateItemsDetail = view.findViewById(R.id.tv_date_items_detail);
-        tvDateItemsDetail.setText(dateIncomesList.get(i).getDate());
+        tvDateItemsDetail.setText(String.valueOf(dateIncomesList.get(i).getDate()));
         return view;
     }
 

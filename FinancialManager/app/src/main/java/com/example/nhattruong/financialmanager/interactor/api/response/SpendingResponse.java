@@ -11,9 +11,12 @@ public class SpendingResponse extends BaseResponse{
 
     @SerializedName("results")
     @Expose
-    private List<Spending> spendings;
+    private List<Spending> mList;
 
     public List<Spending> getSpendings() {
-        return spendings;
+        if (mList == null){
+            mList = new ArrayList<>();
+        }
+        return mList;
     }
 }

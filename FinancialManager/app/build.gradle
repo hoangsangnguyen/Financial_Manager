@@ -121,4 +121,7 @@ dependencies {
 
     implementation 'com.nightonke:boommenu:2.1.1'
 
+    // indicator view pager
+    implementation "me.relex:circleindicator:1.2.2@aar"
+
 }

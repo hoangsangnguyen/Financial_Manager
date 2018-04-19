@@ -1,5 +1,6 @@
 package com.example.nhattruong.financialmanager.model;
 
+import java.util.Date;
 import java.util.List;
 
 public class DateSpendings {

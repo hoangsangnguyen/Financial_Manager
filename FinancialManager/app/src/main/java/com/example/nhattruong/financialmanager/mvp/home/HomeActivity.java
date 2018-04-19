@@ -23,11 +23,12 @@ import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.dialog.dialogAddIncome.DialogAddIncome;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.model.User;
-import com.example.nhattruong.financialmanager.mvp.detail.DetailActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
+import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -40,7 +41,6 @@ import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
-    public static final String JAR_ID = "JAR_ID";
     public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
     public static final int REQUEST_CODE_ADD_INCOME = 22;
 
@@ -107,8 +107,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             @Override
             public void onItemClicked(int position) {
                 navigationView.getMenu().getItem(position).setChecked(true);
-                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-                intent.putExtra(JAR_ID, getPresenter().getJarList().get(position));
+                Intent intent = new Intent(HomeActivity.this, JarDetailActivity.class);
+                intent.putExtra(AppConstants.JAR_ID, getPresenter().getJarList().get(position).getId());
                 startActivity(intent);
             }
         });
@@ -150,8 +150,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         break;
                 }
 
-                Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
-                intentDetail.putExtra(JAR_ID, jarId);
+                Intent intentDetail = new Intent(HomeActivity.this, JarDetailActivity.class);
+                intentDetail.putExtra(AppConstants.JAR_ID, jarId);
                 startActivity(intentDetail);
                 return true;
             }
@@ -217,8 +217,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         @Override
                         public void onBoomButtonClick(int index) {
                             navigationView.getMenu().getItem(index).setChecked(true);
-                            Intent intentDetail = new Intent(HomeActivity.this, DetailActivity.class);
-                            intentDetail.putExtra(JAR_ID, getPresenter().getJarList().get(index).getId());
+                            Intent intentDetail = new Intent(HomeActivity.this, JarDetailActivity.class);
+                            intentDetail.putExtra(AppConstants.JAR_ID, getPresenter().getJarList().get(index).getId());
                             Log.d("JAR HOME", String.valueOf(index));
                             startActivity(intentDetail);
                         }

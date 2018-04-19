@@ -8,7 +8,9 @@ import com.example.nhattruong.financialmanager.interactor.api.request.CreateInco
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -185,6 +187,36 @@ public class ApiManager {
                 .enqueue(new RestCallback<BaseResponse>() {
                     @Override
                     public void success(BaseResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getAllSpending(String userId, String jarId, final ApiCallback<SpendingResponse> callback){
+        mApiServices.getAllSpending(getToken(), userId, jarId)
+                .enqueue(new RestCallback<SpendingResponse>() {
+                    @Override
+                    public void success(SpendingResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getAllIncome(String userId, String jarId, final ApiCallback<IncomeResponse> callback){
+        mApiServices.getAllIncome(getToken(), userId, jarId)
+                .enqueue(new RestCallback<IncomeResponse>() {
+                    @Override
+                    public void success(IncomeResponse res) {
                         callback.success(res);
                     }
 

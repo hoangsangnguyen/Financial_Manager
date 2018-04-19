@@ -13,6 +13,8 @@ import com.example.nhattruong.financialmanager.interactor.api.response.TypeRespo
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -80,6 +82,20 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String user,
             @Body CreateIncomeJarRequest request
+    );
+
+    @GET("users/{userId}/jars/{jarId}/spendings")
+    Call<SpendingResponse> getAllSpending(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId
+    );
+
+    @GET("users/{userId}/jars/{jarId}/incomes")
+    Call<IncomeResponse> getAllIncome(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId
     );
 
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
