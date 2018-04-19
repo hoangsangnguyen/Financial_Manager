@@ -10,7 +10,9 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.adapter.JarDetailPagerAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 
 import butterknife.BindView;
@@ -18,10 +20,12 @@ import butterknife.BindView;
 public class SpendingFragment extends BaseJarDetailFragment implements SpendingContract.View{
 
     @BindView(R.id.lv_detail_jar)
-    ExpandableListView rcvDetail;
+    ExpandableListView lvDetail;
 
     @BindView(R.id.refresh_detail)
     SwipeRefreshLayout mRefresh;
+
+    private JarDetailExpandableAdapter adapter;
 
     public static SpendingFragment newInstance(String jarId) {
         Bundle args = new Bundle();
@@ -45,6 +49,11 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
     @Override
     protected void onInitData() {
         getPresenter().setJarId(getArguments().getString(AppConstants.JAR_ID));
+
+        adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListSpending());
+        lvDetail.setAdapter(adapter);
+
+        getPresenter().getAllSpending();
     }
 
     @Override
@@ -65,7 +74,7 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
 
     @Override
     public void getSpendingSuccess() {
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override

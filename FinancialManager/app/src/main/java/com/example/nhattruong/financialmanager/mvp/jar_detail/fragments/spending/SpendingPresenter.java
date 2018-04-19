@@ -75,13 +75,6 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             SpendingDTO newSpendingDTO = spendingDTOS.get(0);
             spendingDTOS.remove(0);
 
-           /* for (SpendingDTO spendingDTO : spendingDTOS){
-                if (newSpendingDTO.getDate().equalsIgnoreCase(spendingDTO.getDate())){
-                    listChildSpendingDTO.add(spendingDTO);
-                    spendingDTOS.remove(spendingDTO);
-                }
-            }*/
-
             for (int i = spendingDTOS.size() - 1; i >=0; i--) {
                 if (newSpendingDTO.getDate().equalsIgnoreCase(spendingDTOS.get(i).getDate())) {
                     listChildSpendingDTO.add(spendingDTOS.get(i));

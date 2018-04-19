@@ -21,7 +21,7 @@ public class JarDetailDTO {
         return date;
     }
 
-    public List<IJarDetail> getmList() {
+    public List<IJarDetail> getList() {
         return mList;
     }
 }

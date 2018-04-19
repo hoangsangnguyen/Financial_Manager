@@ -62,13 +62,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="add">Add</string>
 
-    <string name="currency_VND">%d VND</string>
-    <string name="currency_USD">%d USD</string>
+    <string name="currency_VND">%s VND</string>
+    <string name="currency_USD">%s USD</string>
 
     <string name="spending">Spending</string>
     <string name="incomes">Incomes</string>
     <string name="debts">Debts</string>
     <string name="amount_2_dot">Amount:</string>
     <string name="detail_2_dot">Detail:</string>
+    <string name="origin_2_dot">Origin:</string>
+    <string name="state_2_dot">State:</string>
+    <string name="positive">Positive</string>
+    <string name="negative">Negative</string>
 
 </resources>
