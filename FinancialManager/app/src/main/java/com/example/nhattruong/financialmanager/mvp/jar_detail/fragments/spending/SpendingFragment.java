@@ -3,14 +3,10 @@ package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spendin
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.widget.ExpandableListView;
 
 import com.example.nhattruong.financialmanager.R;
-import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
-import com.example.nhattruong.financialmanager.mvp.jar_detail.adapter.JarDetailPagerAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
@@ -58,6 +54,13 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
 
     @Override
     protected void onInitListener() {
+        adapter.setItemSpendingListener(new JarDetailExpandableAdapter.OnItemSpendingListener() {
+            @Override
+            public void onDeleteClicked(int position) {
+                // delete spending
+            }
+        });
+
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

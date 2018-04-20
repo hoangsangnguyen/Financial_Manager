@@ -29,9 +29,9 @@ public class ResourcesManager {
 
     public List<TabHeader> getListTabHeaderJarDetail() {
         List<TabHeader> tabHeaders = new ArrayList<>();
-        tabHeaders.add(new TabHeader("  " + getString(R.string.spending) + "  "));
         tabHeaders.add(new TabHeader("  " + getString(R.string.incomes) + "  "));
-//        tabHeaders.add(new TabHeader("  " + getString(R.string.debts) + "  "));
+        tabHeaders.add(new TabHeader("  " + getString(R.string.spending) + "  "));
+        tabHeaders.add(new TabHeader("  " + getString(R.string.debts) + "  "));
         return tabHeaders;
     }
 

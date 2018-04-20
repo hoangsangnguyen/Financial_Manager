@@ -8,6 +8,7 @@ import com.example.nhattruong.financialmanager.interactor.api.request.CreateInco
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
@@ -74,7 +75,7 @@ public class ApiManager {
     }
 
     //======================== Get User ==========================
-    public void getUser(String userId, final ApiCallback<UserResponse> callback){
+    public void getUser(String userId, final ApiCallback<UserResponse> callback) {
         mApiServices.getUser(getToken(), userId)
                 .enqueue(new RestCallback<UserResponse>() {
                     @Override
@@ -167,7 +168,7 @@ public class ApiManager {
                 });
     }
 
-    public void createIncomeForJar(String userId, String jarId, CreateIncomeJarRequest request, final ApiCallback<BaseResponse> callback){
+    public void createIncomeForJar(String userId, String jarId, CreateIncomeJarRequest request, final ApiCallback<BaseResponse> callback) {
         mApiServices.createIncomeForJar(getToken(), userId, jarId, request)
                 .enqueue(new RestCallback<BaseResponse>() {
                     @Override
@@ -182,7 +183,7 @@ public class ApiManager {
                 });
     }
 
-    public void createGeneralIncome(String userId, CreateIncomeJarRequest request, final ApiCallback<BaseResponse> callback){
+    public void createGeneralIncome(String userId, CreateIncomeJarRequest request, final ApiCallback<BaseResponse> callback) {
         mApiServices.createGeneralIncome(getToken(), userId, request)
                 .enqueue(new RestCallback<BaseResponse>() {
                     @Override
@@ -197,7 +198,7 @@ public class ApiManager {
                 });
     }
 
-    public void getAllSpending(String userId, String jarId, final ApiCallback<SpendingResponse> callback){
+    public void getAllSpending(String userId, String jarId, final ApiCallback<SpendingResponse> callback) {
         mApiServices.getAllSpending(getToken(), userId, jarId)
                 .enqueue(new RestCallback<SpendingResponse>() {
                     @Override
@@ -212,11 +213,26 @@ public class ApiManager {
                 });
     }
 
-    public void getAllIncome(String userId, String jarId, final ApiCallback<IncomeResponse> callback){
+    public void getAllIncome(String userId, String jarId, final ApiCallback<IncomeResponse> callback) {
         mApiServices.getAllIncome(getToken(), userId, jarId)
                 .enqueue(new RestCallback<IncomeResponse>() {
                     @Override
                     public void success(IncomeResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getAllDebt(String userId, String jarId, final ApiCallback<DebtResponse> callback) {
+        mApiServices.getAllDebt(getToken(), userId, jarId)
+                .enqueue(new RestCallback<DebtResponse>() {
+                    @Override
+                    public void success(DebtResponse res) {
                         callback.success(res);
                     }
 

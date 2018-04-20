@@ -63,9 +63,9 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
         });
     }
 
-    private void parseToJarDetailDTO(List<Income> spending) {
+    private void parseToJarDetailDTO(List<Income> listSpending) {
         List<IncomeDTO> incomeDTOs = new ArrayList<>();
-        for (Income item : spending) {
+        for (Income item : listSpending) {
             incomeDTOs.add(new IncomeDTO(item));
         }
 
@@ -73,16 +73,24 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
             List<IJarDetail> listChildIncomeDTO = new ArrayList<>();
             listChildIncomeDTO.add(incomeDTOs.get(0));
 
-            IncomeDTO newSpendingDTO = incomeDTOs.get(0);
+            IncomeDTO startIncomeDTO = incomeDTOs.get(0);
+            incomeDTOs.remove(0);
 
-            for (int i = 1; i <= incomeDTOs.size() - 1; i++) {
-                if (newSpendingDTO.getDate().compareTo(incomeDTOs.get(i).getDate()) == 0) {
+            for (int i = incomeDTOs.size() - 1; i >=0; i--) {
+                if (compareDate(startIncomeDTO.getDate(), incomeDTOs.get(i).getDate())) {
                     listChildIncomeDTO.add(incomeDTOs.get(i));
-                    i--;
+                    incomeDTOs.remove(i);
                 }
             }
 
-            mList.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildIncomeDTO));
+            mList.add(new JarDetailDTO(startIncomeDTO.getDate(), listChildIncomeDTO));
         }
+    }
+
+    private boolean compareDate(String date1, String date2){
+        date1 = date1.substring(0, date1.indexOf("T"));
+        date2 = date2.substring(0, date2.indexOf("T"));
+
+        return date1.equalsIgnoreCase(date2);
     }
 }

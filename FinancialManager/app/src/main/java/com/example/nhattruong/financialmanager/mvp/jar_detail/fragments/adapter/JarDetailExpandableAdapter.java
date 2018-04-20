@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -30,6 +30,8 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
 
     private Context mContext;
     private List<JarDetailDTO> mItems;
+    private OnItemDebtListener mCallbackDebt;
+    private OnItemSpendingListener mCallbackDetail;
 
     public JarDetailExpandableAdapter(Context mContext, List<JarDetailDTO> mItems) {
         this.mContext = mContext;
@@ -43,7 +45,7 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int i) {
-        return mItems.get(i).getList() != null ? mItems.get(i).getList().size() : 0;
+        return mItems.get(i).getList().size();
     }
 
     @Override
@@ -75,8 +77,13 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(mContext).inflate(R.layout.item_detail_header_row, viewGroup, false);
         TextView tvTitle = view.findViewById(R.id.tv_detail_header);
-        tvTitle.setText(mItems.get(i).getDate());
+        tvTitle.setText(mItems.get(i).getDate().substring(0, mItems.get(i).getDate().indexOf("T")));
         return view;
+    }
+
+    @Override
+    public int getChildTypeCount() {
+        return 3;
     }
 
     @Override
@@ -89,13 +96,13 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
             case TYPE_INCOME:
                 view = LayoutInflater.from(mContext).inflate(R.layout.item_detail_body_row, viewGroup, false);
                 DetailBodyHolder viewHolder = new DetailBodyHolder(view);
-                viewHolder.bind((IJarDetail) obj);
+                viewHolder.bind((IJarDetail) obj, i, i1);
                 view.setTag(viewHolder);
                 break;
             case TYPE_DEBT:
                 view = LayoutInflater.from(mContext).inflate(R.layout.item_detail_debt_body_row, viewGroup, false);
                 DebtBodyHolder debtBodyHolder = new DebtBodyHolder(view);
-                debtBodyHolder.bind((DebtDTO) obj);
+                debtBodyHolder.bind((DebtDTO) obj, i, i1);
                 view.setTag(debtBodyHolder);
                 break;
         }
@@ -129,24 +136,43 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         @BindView(R.id.tv_detail_amount)
         TextView tvAmount;
 
+        @BindView(R.id.iv_detail_delete)
+        ImageView ivDelete;
+
         DetailBodyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mCallbackDetail != null){
+                        mCallbackDetail.onDeleteClicked(getAdapterPosition());
+                    }
+                }
+            });
         }
 
-        public void bind(IJarDetail dto) {
+        public void bind(IJarDetail dto, int i, int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf(dto.getAmount())));
+            ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
+            itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1) ? R.drawable.bg_white_grey_bottom : R.color.white_color);
         }
     }
 
-    class DebtBodyHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
+    class DebtBodyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.tv_detail_body)
         TextView tvDetail;
 
         @BindView(R.id.tv_detail_amount)
         TextView tvAmount;
+
+        @BindView(R.id.iv_detail_edit)
+        ImageView ivEdit;
+
+        @BindView(R.id.iv_detail_delete)
+        ImageView ivDelete;
 
         @BindView(R.id.tv_detail_origin)
         TextView tvOrigin;
@@ -164,21 +190,48 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-            rdNegative.setOnCheckedChangeListener(this);
-            rdPositive.setOnCheckedChangeListener(this);
+            ivEdit.setOnClickListener(this);
+            ivDelete.setOnClickListener(this);
         }
 
-        public void bind(DebtDTO dto) {
+        public void bind(DebtDTO dto, int i, int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf(dto.getAmount())));
             tvOrigin.setText(dto.getOrigin());
             tvState.setText(dto.getState());
             rdPositive.setChecked(dto.isPositive());
+            rdNegative.setChecked(!dto.isPositive());
+            itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1)? R.drawable.bg_white_grey_bottom : R.color.white_color);
         }
 
         @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        public void onClick(View view) {
+            if (mCallbackDebt != null){
+                if (view == ivEdit){
+                    mCallbackDebt.onEditClicked(getAdapterPosition());
+                } else if (view == ivDelete){
+                    mCallbackDebt.onDeleteClicked(getAdapterPosition());
+                }
+            }
 
         }
+    }
+
+    public void setItemDebtListener(OnItemDebtListener callback){
+        this.mCallbackDebt = callback;
+    }
+
+    public void setItemSpendingListener(OnItemSpendingListener callback){
+        this.mCallbackDetail = callback;
+    }
+
+    public interface OnItemDebtListener{
+        void onEditClicked(int position);
+
+        void onDeleteClicked(int position);
+    }
+
+    public interface OnItemSpendingListener {
+        void onDeleteClicked(int position);
     }
 }

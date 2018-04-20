@@ -83,4 +83,11 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <style name="btnEdit">
+        <item name="android:layout_height">@dimen/icon_default_size</item>
+        <item name="android:layout_width">@dimen/icon_default_size</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:src">@drawable/bg_btn_edit</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
 </resources>

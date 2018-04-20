@@ -1,12 +1,13 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto;
 
+import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
 public class DebtDTO implements IJarDetail {
 
-    private DebtDTO dto;
+    private Debt dto;
 
-    public DebtDTO(DebtDTO dto) {
+    public DebtDTO(Debt dto) {
         this.dto = dto;
     }
 

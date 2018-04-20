@@ -8,6 +8,7 @@ import android.widget.ExpandableListView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 
 import butterknife.BindView;
@@ -19,6 +20,8 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
 
     @BindView(R.id.refresh_detail)
     SwipeRefreshLayout mRefresh;
+
+    private JarDetailExpandableAdapter adapter;
 
     public static IncomeFragment newInstance(String jarId) {
         Bundle args = new Bundle();
@@ -42,6 +45,11 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
     @Override
     protected void onInitData() {
         getPresenter().setJarId(getArguments().getString(AppConstants.JAR_ID));
+
+        adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListIncome());
+        rcvDetail.setAdapter(adapter);
+
+        getPresenter().getAllIncome();
     }
 
     @Override
@@ -62,7 +70,7 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
 
     @Override
     public void getIncomeSuccess() {
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override

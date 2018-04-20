@@ -98,6 +98,13 @@ public interface ApiServices {
             @Path("jarId") String jarId
     );
 
+    @GET("users/{userId}/jars/{jarId}/debts")
+    Call<DebtResponse> getAllDebt(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId
+    );
+
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 
     @GET("users/{userId}/jars/{jarId}/spendings")

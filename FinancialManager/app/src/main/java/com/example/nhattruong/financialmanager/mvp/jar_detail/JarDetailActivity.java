@@ -17,6 +17,7 @@ import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.adapter.JarDetailPagerAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.adapter.JarDetailTabHeaderAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.DebtFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.IncomeFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.SpendingFragment;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
@@ -28,6 +29,10 @@ import butterknife.BindView;
 import me.relex.circleindicator.CircleIndicator;
 
 public class JarDetailActivity extends BaseActivity implements JarDetailTabHeaderAdapter.HeaderAdapterListener {
+
+    private static final int TYPE_INCOME = 0;
+    private static final int TYPE_SPENDING = 1;
+    private static final int TYPE_DEBT = 2;
 
     @BindView(R.id.ln_left)
     LinearLayout lnLeft;
@@ -66,8 +71,9 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
         jarId = getIntent().getStringExtra(AppConstants.JAR_ID);
 
         // init fragments
-        mFragments.add(SpendingFragment.newInstance(jarId));
         mFragments.add(IncomeFragment.newInstance(jarId));
+        mFragments.add(SpendingFragment.newInstance(jarId));
+        mFragments.add(DebtFragment.newInstance(jarId));
 
         mTabAdapter = new JarDetailTabHeaderAdapter(this, getPresenter().getListTabHeader(), this);
         rcvHeader.setAdapter(mTabAdapter);
@@ -91,6 +97,7 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
                 mTabAdapter.setSelectedTab(position);
                 mTabAdapter.notifyDataSetChanged();
                 rcvHeader.smoothScrollToPosition(position);
+                loadData(position);
             }
 
             @Override
@@ -113,23 +120,32 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
         mTabAdapter.notifyDataSetChanged();
         vpDetail.setCurrentItem(position);
         updateTabHeader(position);
+        loadData(position);
+    }
+
+    private void loadData(int position){
         switch (position) {
-            case 0:
-                ((SpendingFragment) mFragments.get(0)).getAllSpending(jarId);
+            case TYPE_SPENDING:
+                ((SpendingFragment) mFragments.get(TYPE_SPENDING)).getAllSpending(jarId);
                 break;
-            case 1:
-                ((IncomeFragment) mFragments.get(1)).getAllIncome(jarId);
+            case TYPE_INCOME:
+                ((IncomeFragment) mFragments.get(TYPE_INCOME)).getAllIncome(jarId);
                 break;
+            case TYPE_DEBT:
+                ((DebtFragment) mFragments.get(TYPE_DEBT)).getAllDebt(jarId);
         }
     }
 
     private void updateTabHeader(int position) {
         switch (position) {
-            case 0:
+            case TYPE_SPENDING:
                 tvTitle.setText(getString(R.string.spending));
                 break;
-            case 1:
+            case TYPE_INCOME:
                 tvTitle.setText(getString(R.string.incomes));
+                break;
+            case TYPE_DEBT:
+                tvTitle.setText(getString(R.string.debts));
                 break;
         }
     }

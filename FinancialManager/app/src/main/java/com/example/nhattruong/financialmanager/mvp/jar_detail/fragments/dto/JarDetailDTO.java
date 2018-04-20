@@ -2,6 +2,7 @@ package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto;
 
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,9 @@ public class JarDetailDTO {
     }
 
     public List<IJarDetail> getList() {
+        if (mList == null){
+            mList = new ArrayList<>();
+        }
         return mList;
     }
 }

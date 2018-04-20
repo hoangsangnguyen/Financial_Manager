@@ -20,6 +20,21 @@ public class Debt {
     @Expose
     private double amount;
 
+    @SerializedName("origin")
+    @Expose
+    private String origin;
+
+    @SerializedName("state")
+    @Expose
+    private String state;
+
+    @SerializedName("isPositive")
+    @Expose
+    private boolean isPositive;
+
+    public Debt() {
+    }
+
     public Debt(String id, String date, String detail, double amount) {
         this.id = id;
         this.date = date;
@@ -57,5 +72,17 @@ public class Debt {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public boolean isPositive() {
+        return isPositive;
     }
 }

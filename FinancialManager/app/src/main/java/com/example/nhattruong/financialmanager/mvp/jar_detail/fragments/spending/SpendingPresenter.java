@@ -76,7 +76,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             spendingDTOS.remove(0);
 
             for (int i = spendingDTOS.size() - 1; i >=0; i--) {
-                if (newSpendingDTO.getDate().equalsIgnoreCase(spendingDTOS.get(i).getDate())) {
+                if (compareDate(newSpendingDTO.getDate(), spendingDTOS.get(i).getDate())) {
                     listChildSpendingDTO.add(spendingDTOS.get(i));
                     spendingDTOS.remove(i);
                 }
@@ -84,5 +84,12 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
 
             mList.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildSpendingDTO));
         }
+    }
+
+    private boolean compareDate(String date1, String date2){
+        date1 = date1.substring(0, date1.indexOf("T"));
+        date2 = date2.substring(0, date2.indexOf("T"));
+
+        return date1.equalsIgnoreCase(date2);
     }
 }
