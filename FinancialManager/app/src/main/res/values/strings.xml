@@ -79,5 +79,6 @@
     <string name="amount">Amount</string>
     <string name="detail">Detail</string>
     <string name="edit_debt">Edit Debt</string>
+    <string name="date_2_dot">Date:</string>
 
 </resources>

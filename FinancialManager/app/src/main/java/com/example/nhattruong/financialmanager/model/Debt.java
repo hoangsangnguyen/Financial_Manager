@@ -12,7 +12,7 @@ public class Debt {
     private String id;
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
     @SerializedName("detail")
     @Expose
     private String detail;
@@ -35,7 +35,7 @@ public class Debt {
     public Debt() {
     }
 
-    public Debt(String id, String date, String detail, double amount) {
+    public Debt(String id, Date date, String detail, double amount) {
         this.id = id;
         this.date = date;
         this.detail = detail;
@@ -50,11 +50,11 @@ public class Debt {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -110,7 +110,7 @@ public class Debt {
 
     public static class DebtBuilder {
         private String id;
-        private String date;
+        private Date date;
         private String detail;
         private double amount;
         private String origin;
@@ -122,7 +122,7 @@ public class Debt {
             return this;
         }
 
-        public DebtBuilder setDate(String date){
+        public DebtBuilder setDate(Date date){
             this.date = date;
             return this;
         }

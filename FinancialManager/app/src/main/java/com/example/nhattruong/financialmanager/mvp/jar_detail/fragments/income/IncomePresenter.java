@@ -13,6 +13,7 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.d
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class IncomePresenter extends BasePresenter implements IncomeContract.Presenter{
@@ -87,10 +88,11 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
         }
     }
 
-    private boolean compareDate(String date1, String date2){
-        date1 = date1.substring(0, date1.indexOf("T"));
+    private boolean compareDate(Date date1, Date date2){
+        /*date1 = date1.substring(0, date1.indexOf("T"));
         date2 = date2.substring(0, date2.indexOf("T"));
 
-        return date1.equalsIgnoreCase(date2);
+        return date1.equalsIgnoreCase(date2);*/
+        return date1.compareTo(date2) == 0;
     }
 }

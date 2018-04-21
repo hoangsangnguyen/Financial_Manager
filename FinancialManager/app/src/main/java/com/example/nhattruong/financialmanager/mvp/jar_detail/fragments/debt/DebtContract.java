@@ -6,15 +6,12 @@ import com.example.nhattruong.financialmanager.model.Debt;
 
 public interface DebtContract {
     interface View extends IBaseView{
-        void getAllDebtSuccess();
+        void onSuccess();
 
         void onFailure(RestError error);
 
         void getAllDebt(String jarId);
 
-        void deleteDebtSuccess();
-
-        void updateDebtSuccess();
     }
 
     interface Presenter{

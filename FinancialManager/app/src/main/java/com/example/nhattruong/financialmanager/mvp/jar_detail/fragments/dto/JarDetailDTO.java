@@ -7,18 +7,18 @@ import java.util.Date;
 import java.util.List;
 
 public class JarDetailDTO {
-    private String date;
+    private Date date;
     private List<IJarDetail> mList;
 
     public JarDetailDTO() {
     }
 
-    public JarDetailDTO(String date, List<IJarDetail> mList) {
+    public JarDetailDTO(Date date, List<IJarDetail> mList) {
         this.date = date;
         this.mList = mList;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 

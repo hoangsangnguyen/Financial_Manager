@@ -20,7 +20,7 @@ public class IncomeDTO implements IJarDetail {
     }
 
     @Override
-    public String getDate() {
+    public Date getDate() {
         return obj.getDate();
     }
 

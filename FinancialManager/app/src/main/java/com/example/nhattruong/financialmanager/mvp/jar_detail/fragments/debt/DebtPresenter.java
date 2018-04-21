@@ -6,12 +6,14 @@ import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto.DebtDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DebtPresenter extends BasePresenter implements DebtContract.Presenter {
@@ -53,7 +55,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                 parseToJarDetailDTO(res.getDebts());
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().getAllDebtSuccess();
+                getView().onSuccess();
             }
 
             @Override
@@ -80,7 +82,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                         getListDebt().get(positionGroup).getList().remove(positionChild);
                         if (!isViewAttached()) return;
                         getView().hideLoading();
-                        getView().deleteDebtSuccess();
+                        getView().onSuccess();
                     }
 
                     @Override
@@ -112,13 +114,10 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                 mJarId,
                 debt.getId(),
                 request,
-                new ApiCallback<BaseResponse>() {
+                new ApiCallback<UpdateDebtResponse>() {
                     @Override
-                    public void success(BaseResponse res) {
-                        setDebtChanged(debt);
-                        if (!isViewAttached()) return;
-                        getView().hideLoading();
-                        getView().updateDebtSuccess();
+                    public void success(UpdateDebtResponse res) {
+                        getAllDebt();
                     }
 
                     @Override
@@ -129,12 +128,6 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                     }
                 }
         );
-    }
-
-    private void setDebtChanged(Debt debt) {
-        DebtDTO debtDTO = new DebtDTO();
-        debtDTO.setDebtChanged(debt);
-        getListDebt().get(mPositionGroup).getList().set(mPositionChild, debtDTO);
     }
 
     private void parseToJarDetailDTO(List<Debt> spending) {
@@ -161,10 +154,11 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
         }
     }
 
-    private boolean compareDate(String date1, String date2){
-        date1 = date1.substring(0, date1.indexOf("T"));
+    private boolean compareDate(Date date1, Date date2){
+        return date1.compareTo(date2) == 0;
+       /* date1 = date1.substring(0, date1.indexOf("T"));
         date2 = date2.substring(0, date2.indexOf("T"));
 
-        return date1.equalsIgnoreCase(date2);
+        return date1.equalsIgnoreCase(date2);*/
     }
 }

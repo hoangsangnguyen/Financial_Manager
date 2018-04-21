@@ -3,6 +3,8 @@ package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dt
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
+import java.util.Date;
+
 public class DebtDTO implements IJarDetail {
 
     private Debt dto;
@@ -20,7 +22,7 @@ public class DebtDTO implements IJarDetail {
     }
 
     @Override
-    public String getDate() {
+    public Date getDate() {
         return dto.getDate();
     }
 
@@ -50,6 +52,7 @@ public class DebtDTO implements IJarDetail {
     }
 
     public void setDebtChanged(Debt debt){
+        dto = new Debt();
         dto.setId(debt.getId());
         dto.setDate(debt.getDate());
         dto.setDetail(debt.getDetail());

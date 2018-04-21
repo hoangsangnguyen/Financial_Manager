@@ -19,7 +19,7 @@ public class SpendingDTO implements IJarDetail{
     }
 
     @Override
-    public String getDate() {
+    public Date getDate() {
         return obj.getDate();
     }
 

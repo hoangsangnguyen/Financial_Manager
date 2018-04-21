@@ -1,9 +1,11 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments;
 
+import java.util.Date;
+
 public interface IJarDetail {
     String getId();
 
-    String getDate();
+    Date getDate();
 
     double getAmount();
 

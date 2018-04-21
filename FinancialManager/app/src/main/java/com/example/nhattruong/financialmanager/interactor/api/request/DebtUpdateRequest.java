@@ -8,7 +8,7 @@ import java.util.Date;
 public class DebtUpdateRequest {
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
 
     @SerializedName("detail")
     @Expose
@@ -40,14 +40,14 @@ public class DebtUpdateRequest {
     }
 
     public static class DebtUpdateRequestBuilder{
-        private String date;
+        private Date date;
         private String detail;
         private double amount;
         private String origin;
         private String state;
         private boolean isPositive;
 
-        public DebtUpdateRequestBuilder setDate(String date){
+        public DebtUpdateRequestBuilder setDate(Date date){
             this.date = date;
             return this;
         }

@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 public class DateDebts {
-    private String date;
+    private Date date;
     private List<Debt> debtList;
 
     public DateDebts() {
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

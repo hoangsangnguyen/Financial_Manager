@@ -80,7 +80,7 @@ public class IncomesInteractor extends BasePresenter implements IDetailInteracto
                 List<Income> tempIncomeList = new ArrayList<>();
                 dateIncomes.setDate(income.getDate());
                 if (dateList.size() != 0) {
-                    if (!checkDate(dateList, dateIncomes.getDate())) {
+                    /*if (!checkDate(dateList, dateIncomes.getDate())) {
                         for (Income itemIncome : list) {
                             if (itemIncome.getDate().equals(dateIncomes.getDate())) {
                                 tempIncomeList.add(itemIncome);
@@ -88,7 +88,7 @@ public class IncomesInteractor extends BasePresenter implements IDetailInteracto
                         }
                         dateIncomes.setIncomeList(tempIncomeList);
                         dateList.add(dateIncomes);
-                    }
+                    }*/
                 } else {
                     dateList = new ArrayList<>();
                     for (Income itemIncome : list) {

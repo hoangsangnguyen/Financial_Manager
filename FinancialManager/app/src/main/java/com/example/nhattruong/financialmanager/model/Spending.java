@@ -13,7 +13,7 @@ public class Spending {
 
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
 
     @SerializedName("detail")
     @Expose
@@ -23,7 +23,7 @@ public class Spending {
     @Expose
     private double amount;
 
-    public Spending(String id, String date, String detail, double amount) {
+    public Spending(String id, Date date, String detail, double amount) {
         this.id = id;
         this.date = date;
         this.detail = detail;
@@ -38,11 +38,11 @@ public class Spending {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

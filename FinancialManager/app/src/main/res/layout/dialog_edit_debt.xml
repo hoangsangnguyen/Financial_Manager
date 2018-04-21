@@ -1,98 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_color"
     android:orientation="vertical">
 
-    <include layout="@layout/top_bar"/>
+    <include layout="@layout/top_bar" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/large"
         android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/small_8dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_8dp"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_marginStart="@dimen/small_8dp"
+        android:layout_marginTop="@dimen/large"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/date"
             android:layout_gravity="center_vertical"
+            android:text="@string/date_2_dot"
             android:textColor="@color/black_color"
-            android:textSize="@dimen/default_text_size" />
+            android:textSize="@dimen/default_header_text_size" />
 
         <TextView
             android:id="@+id/tv_edit_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/date"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/small_8dp"
-            android:textColor="@color/black_color"
-            android:textSize="@dimen/default_text_size" />
+            android:layout_weight="1"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/default_header_text_size" />
 
         <ImageView
             android:id="@+id/iv_edit_calendar"
-            android:contentDescription="@null"
             android:layout_width="@dimen/icon_default_size"
             android:layout_height="@dimen/icon_default_size"
-            android:src="@drawable/ic_calendar_blue_white"/>
+            android:contentDescription="@null"
+            android:src="@drawable/ic_calendar_blue_white" />
     </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_8dp"
+        android:layout_marginStart="@dimen/small_8dp">
 
-        <EditText
-            android:hint="@string/detail"
-            android:inputType="textNoSuggestions|text"
-            android:imeOptions="actionNext"
+        <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/detail"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions|text" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_amount"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_8dp"
+        android:layout_marginStart="@dimen/small_8dp">
 
-        <EditText
-            android:hint="@string/amount"
-            android:inputType="textNoSuggestions|text"
-            android:imeOptions="actionNext"
+        <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/amount"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions|text" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_edit_origin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_8dp"
+        android:layout_marginStart="@dimen/small_8dp">
 
-        <EditText
-            android:hint="@string/origin"
-            android:inputType="textNoSuggestions|text"
-            android:imeOptions="actionNext"
+        <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/origin"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions|text" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/edt_edit_state"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_8dp"
+        android:layout_marginStart="@dimen/small_8dp">
 
-        <EditText
-            android:hint="@string/state"
-            android:inputType="textNoSuggestions|text"
-            android:imeOptions="actionNext"
+        <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/state"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions|text" />
     </android.support.design.widget.TextInputLayout>
 
     <RadioGroup
@@ -105,13 +111,13 @@
             android:id="@+id/rd_edit_negative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/negative"/>
+            android:text="@string/negative" />
 
         <RadioButton
             android:id="@+id/rd_edit_positive"
-            android:layout_marginStart="@dimen/large_60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/positive"/>
+            android:layout_marginStart="@dimen/large_60dp"
+            android:text="@string/positive" />
     </RadioGroup>
 </LinearLayout>

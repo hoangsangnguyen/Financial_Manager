@@ -5,17 +5,17 @@ import java.util.List;
 
 public class DateIncomes {
 
-    private String date;
+    private Date date;
     private List<Income> incomeList;
 
     public DateIncomes() {
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

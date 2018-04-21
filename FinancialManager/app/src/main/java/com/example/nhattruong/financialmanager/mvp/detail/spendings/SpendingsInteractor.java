@@ -79,7 +79,7 @@ public class SpendingsInteractor extends BasePresenter implements IDetailInterac
                 List<Spending> tempSpendingList = new ArrayList<>();
                 dateSpendings.setDate(spending.getDate());
                 if (dateList.size() != 0) {
-                    if (!checkDate(dateList, dateSpendings.getDate())) {
+                    /*if (!checkDate(dateList, dateSpendings.getDate())) {
                         for (Spending itemSpending : list) {
                             if (itemSpending.getDate().equals(dateSpendings.getDate())) {
                                 tempSpendingList.add(itemSpending);
@@ -87,7 +87,7 @@ public class SpendingsInteractor extends BasePresenter implements IDetailInterac
                         }
                         dateSpendings.setSpendingList(tempSpendingList);
                         dateList.add(dateSpendings);
-                    }
+                    }*/
                 } else {
                     dateList = new ArrayList<>();
                     for (Spending itemSpending : list) {

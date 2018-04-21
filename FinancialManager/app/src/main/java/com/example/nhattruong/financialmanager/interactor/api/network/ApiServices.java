@@ -11,6 +11,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.JarRespon
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
 
@@ -124,7 +125,7 @@ public interface ApiServices {
     );
 
     @PUT("users/{userId}/jars/{jarId}/debts/{debtId}")
-    Call<BaseResponse> updateDebt(
+    Call<UpdateDebtResponse> updateDebt(
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId,

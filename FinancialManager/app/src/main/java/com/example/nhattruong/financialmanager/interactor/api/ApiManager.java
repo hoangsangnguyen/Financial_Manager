@@ -15,6 +15,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.JarRespon
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
@@ -259,11 +260,11 @@ public class ApiManager {
                 });
     }
 
-    public void updateDebt(String userId, String jarId, String debtId, DebtUpdateRequest request, final ApiCallback<BaseResponse> callback) {
+    public void updateDebt(String userId, String jarId, String debtId, DebtUpdateRequest request, final ApiCallback<UpdateDebtResponse> callback) {
         mApiServices.updateDebt(getToken(), userId, jarId, debtId, request)
-                .enqueue(new RestCallback<BaseResponse>() {
+                .enqueue(new RestCallback<UpdateDebtResponse>() {
                     @Override
-                    public void success(BaseResponse res) {
+                    public void success(UpdateDebtResponse res) {
                         callback.success(res);
                     }
 

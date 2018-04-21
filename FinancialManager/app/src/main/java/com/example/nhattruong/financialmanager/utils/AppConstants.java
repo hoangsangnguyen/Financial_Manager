@@ -3,7 +3,7 @@ package com.example.nhattruong.financialmanager.utils;
 public class AppConstants {
 
     // SERVER_DATE_FORMAT
-    public static final String SERVER_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    public static final String SERVER_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     public static final String KEY_RESULT_PICK_USER = "KEY_RESULT_PICK_USER";
 

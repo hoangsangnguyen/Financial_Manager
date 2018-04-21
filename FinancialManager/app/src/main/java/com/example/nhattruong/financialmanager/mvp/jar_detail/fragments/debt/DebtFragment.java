@@ -67,9 +67,11 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
                 EditDebtDialog debtDialog = new EditDebtDialog(
                         getActivity(),
                         getPresenter().getListDebt().get(positionGroup).getList().get(positionChild),
+                        getPresenter().getListDebt().get(positionGroup).getDate(),
                         new EditDebtDialog.OnEditDebtListener() {
                             @Override
                             public void onSaveChange(Debt debt) {
+                                getPresenter().updateDebt(debt);
                             }
                         });
                 debtDialog.show();
@@ -96,7 +98,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
     }
 
     @Override
-    public void getAllDebtSuccess() {
+    public void onSuccess() {
         adapter.notifyDataSetChanged();
     }
 
@@ -111,13 +113,4 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
         getPresenter().getAllDebt();
     }
 
-    @Override
-    public void deleteDebtSuccess() {
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void updateDebtSuccess() {
-
-    }
 }

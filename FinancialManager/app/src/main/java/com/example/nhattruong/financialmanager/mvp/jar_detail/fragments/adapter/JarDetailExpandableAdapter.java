@@ -16,6 +16,7 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.dto.IncomeDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.List;
 
@@ -76,8 +77,9 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(mContext).inflate(R.layout.item_detail_header_row, viewGroup, false);
-        TextView tvTitle = view.findViewById(R.id.tv_detail_header);
-        tvTitle.setText(mItems.get(i).getDate().substring(0, mItems.get(i).getDate().indexOf("T")));
+        TextView tvHeader = view.findViewById(R.id.tv_detail_header);
+//        tvTitle.setText(mItems.get(i).getDate().substring(0, mItems.get(i).getDate().indexOf("T")));
+        tvHeader.setText(DateUtils.formatFullDatePeriods(mItems.get(i).getDate()));
         return view;
     }
 

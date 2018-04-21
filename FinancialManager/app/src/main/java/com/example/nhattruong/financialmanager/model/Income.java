@@ -12,7 +12,7 @@ public class  Income {
     private String id;
     @SerializedName("date")
     @Expose
-    private String date;
+    private Date date;
     @SerializedName("detail")
     @Expose
     private String detail;
@@ -20,7 +20,7 @@ public class  Income {
     @Expose
     private double amount;
 
-    public Income(String id, String date, String detail, double amount) {
+    public Income(String id, Date date, String detail, double amount) {
         this.id = id;
         this.date = date;
         this.detail = detail;
@@ -35,11 +35,11 @@ public class  Income {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

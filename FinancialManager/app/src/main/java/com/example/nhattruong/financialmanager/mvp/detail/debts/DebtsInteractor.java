@@ -79,7 +79,7 @@ public class DebtsInteractor extends BasePresenter implements IDetailInteractor.
                 List<Debt> tempDebtList = new ArrayList<>();
                 dateDebts.setDate(debt.getDate());
                 if (dateList.size() != 0) {
-                    if (!checkDate(dateList, dateDebts.getDate())) {
+                   /* if (!checkDate(dateList, dateDebts.getDate())) {
                         for (Debt itemDebt : list) {
                             if (itemDebt.getDate().equals(dateDebts.getDate())) {
                                 tempDebtList.add(itemDebt);
@@ -87,7 +87,7 @@ public class DebtsInteractor extends BasePresenter implements IDetailInteractor.
                         }
                         dateDebts.setDebtList(tempDebtList);
                         dateList.add(dateDebts);
-                    }
+                    }*/
                 } else {
                     dateList = new ArrayList<>();
                     for (Debt itemDebt : list) {
