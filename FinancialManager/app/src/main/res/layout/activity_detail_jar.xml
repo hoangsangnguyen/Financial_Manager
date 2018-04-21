@@ -10,11 +10,6 @@
 
     <include layout="@layout/top_bar"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcv_header"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/large_60dp"
-        android:layout_gravity="center" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_detail"
@@ -22,13 +17,21 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-
+<!--
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/v_indicator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/large"
-        android:layout_marginBottom="@dimen/small_8dp"
         android:background="@color/white_color"
         app:ci_drawable="@drawable/ic_circle_selected"
-        app:ci_drawable_unselected="@drawable/ic_circle_normal" />
+        app:ci_drawable_unselected="@drawable/ic_circle_normal" />-->
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/app_color"
+        app:tabTextColor="@color/black_color"
+        android:layout_marginBottom="4dp"/>
 </LinearLayout>

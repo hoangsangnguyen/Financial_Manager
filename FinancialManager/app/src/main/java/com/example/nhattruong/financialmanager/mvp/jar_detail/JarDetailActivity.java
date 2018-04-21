@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,16 +41,19 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
     @BindView(R.id.tv_title_top_bar)
     TextView tvTitle;
 
-    @BindView(R.id.rcv_header)
+   /* @BindView(R.id.rcv_header)
     RecyclerView rcvHeader;
-
+*/
     @BindView(R.id.vp_detail)
     ViewPager vpDetail;
 
-    @BindView(R.id.v_indicator)
-    CircleIndicator vIndicator;
+    @BindView(R.id.sliding_tabs)
+    TabLayout tabSliding;
 
-    private JarDetailTabHeaderAdapter mTabAdapter;
+  /*  @BindView(R.id.v_indicator)
+    CircleIndicator vIndicator;*/
+
+//    private JarDetailTabHeaderAdapter mTabAdapter;
     private List<BaseJarDetailFragment> mFragments = new ArrayList<>();
     private String jarId;
 
@@ -74,14 +78,15 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
         mFragments.add(IncomeFragment.newInstance(jarId));
         mFragments.add(SpendingFragment.newInstance(jarId));
         mFragments.add(DebtFragment.newInstance(jarId));
-
+/*
         mTabAdapter = new JarDetailTabHeaderAdapter(this, getPresenter().getListTabHeader(), this);
         rcvHeader.setAdapter(mTabAdapter);
-        rcvHeader.setLayoutManager(new CenterLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcvHeader.setLayoutManager(new CenterLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));*/
 
         // init view pager
-        vpDetail.setAdapter(new JarDetailPagerAdapter(getSupportFragmentManager(), mFragments));
-        vIndicator.setViewPager(vpDetail);
+        vpDetail.setAdapter(new JarDetailPagerAdapter(this, getSupportFragmentManager(), mFragments));
+//        vIndicator.setViewPager(vpDetail);
+        tabSliding.setupWithViewPager(vpDetail);
     }
 
     @Override
@@ -94,9 +99,9 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
 
             @Override
             public void onPageSelected(int position) {
-                mTabAdapter.setSelectedTab(position);
+              /*  mTabAdapter.setSelectedTab(position);
                 mTabAdapter.notifyDataSetChanged();
-                rcvHeader.smoothScrollToPosition(position);
+                rcvHeader.smoothScrollToPosition(position);*/
                 loadData(position);
             }
 
@@ -116,8 +121,8 @@ public class JarDetailActivity extends BaseActivity implements JarDetailTabHeade
 
     @Override
     public void onTabSelected(int position) {
-        mTabAdapter.setSelectedTab(position);
-        mTabAdapter.notifyDataSetChanged();
+       /* mTabAdapter.setSelectedTab(position);
+        mTabAdapter.notifyDataSetChanged();*/
         vpDetail.setCurrentItem(position);
         updateTabHeader(position);
         loadData(position);

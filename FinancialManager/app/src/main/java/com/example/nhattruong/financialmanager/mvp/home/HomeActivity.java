@@ -29,6 +29,8 @@ import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -71,8 +73,20 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
 
-    @BindView(R.id.bmb)
-    BoomMenuButton bmb;
+ /*   @BindView(R.id.bmb)
+    BoomMenuButton bmb;*/
+
+    @BindView(R.id.fab_add)
+    FloatingActionMenu fabAdd;
+
+    @BindView(R.id.fab_income)
+    FloatingActionButton fabIncome;
+
+    @BindView(R.id.fab_spending)
+    FloatingActionButton fabSpending;
+
+    @BindView(R.id.fab_debt)
+    FloatingActionButton fabDebt;
 
     JarAdapter mJarAdapter;
 
@@ -129,7 +143,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
                 String jarId = "";
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.jar1:
                         jarId = getPresenter().getJarList().get(0).getId();
                         break;
@@ -203,7 +217,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onLoadJarsSuccess() {
         mRefresh.setRefreshing(false);
 
-        bmb.clearBuilders();
+      /*  bmb.clearBuilders();
 
         bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
@@ -224,7 +238,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         }
                     });
             bmb.addBuilder(builder);
-        }
+        }*/
 
         mJarAdapter.notifyDataSetChanged();
     }
@@ -239,7 +253,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onClick(View view) {
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-        } else if (view == ivAdd){
+        } else if (view == ivAdd) {
 
             DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
                 @Override
@@ -262,7 +276,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_ADD_INCOME){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_ADD_INCOME) {
             getPresenter().getJars();
         }
     }

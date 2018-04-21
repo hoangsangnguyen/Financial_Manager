@@ -124,4 +124,8 @@ dependencies {
     // indicator view pager
     implementation "me.relex:circleindicator:1.2.2@aar"
 
+    // floating button
+    implementation 'com.github.clans:fab:1.6.2'
+    implementation 'com.sromku:simple-fb:4.1.1'
+
 }
