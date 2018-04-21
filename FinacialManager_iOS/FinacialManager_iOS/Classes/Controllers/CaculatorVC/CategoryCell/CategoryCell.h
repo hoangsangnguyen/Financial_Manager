@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) IBOutlet UIImageView *imgCategory;
 @property (nonatomic, strong) IBOutlet UILabel *lblCategory;
+@property (nonatomic, strong) IBOutlet UIView *vCategory;
 
 @end

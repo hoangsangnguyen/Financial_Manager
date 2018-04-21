@@ -10,6 +10,7 @@
 #import "MenuDto.h"
 #import "UserDto.h"
 #import "WelcomeVC.h"
+#import "ProfileVC.h"
 
 typedef enum : NSUInteger {
     List = 0,
@@ -113,6 +114,13 @@ typedef enum : NSUInteger {
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
         BaseCell *cell = (BaseCell*)[tableView cellForRowAtIndexPath:indexPath];
         cell.lblTitle.textColor = [UIColor blackColor];
+}
+
+#pragma mark - Action
+
+- (IBAction)onBtnProfilePressed:(UIButton *)btn {
+    ProfileVC *vc = VCFromSB(ProfileVC, SB_Login);
+    [AppNav pushViewController:vc animated:YES];
 }
 
 @end

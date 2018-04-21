@@ -134,6 +134,9 @@
                                             <constraint firstAttribute="width" constant="60" id="reI-ID-6On"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="user"/>
+                                        <connections>
+                                            <action selector="onBtnProfilePressed:" destination="4E6-31-qcs" eventType="touchUpInside" id="rV6-TX-RVt"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thanhson@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBd-Cb-m3g">
                                         <rect key="frame" x="80" y="50" width="195" height="20"/>
@@ -173,6 +176,12 @@
                                         <color key="textColor" red="0.0" green="0.61568627450000002" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a8-PZ-b7z">
+                                        <rect key="frame" x="80" y="15" width="195" height="30"/>
+                                        <connections>
+                                            <action selector="onBtnProfilePressed:" destination="4E6-31-qcs" eventType="touchUpInside" id="7aZ-b2-dlt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -182,11 +191,15 @@
                                     <constraint firstItem="KBd-Cb-m3g" firstAttribute="leading" secondItem="yWl-6t-Hr1" secondAttribute="trailing" constant="10" id="2CQ-8v-66E"/>
                                     <constraint firstAttribute="height" constant="120" id="8KS-4a-rdo"/>
                                     <constraint firstItem="KBd-Cb-m3g" firstAttribute="top" secondItem="nCa-PS-BWL" secondAttribute="bottom" constant="5" id="8Wg-6G-EMd"/>
+                                    <constraint firstItem="9a8-PZ-b7z" firstAttribute="top" secondItem="nCa-PS-BWL" secondAttribute="top" id="B9Q-19-aM7"/>
                                     <constraint firstItem="EEf-FJ-BDa" firstAttribute="top" secondItem="uHU-DR-HyQ" secondAttribute="top" constant="1" id="CkI-dh-iXk"/>
                                     <constraint firstAttribute="trailing" secondItem="nCa-PS-BWL" secondAttribute="trailing" constant="100" id="GK9-1N-dVt"/>
+                                    <constraint firstItem="9a8-PZ-b7z" firstAttribute="leading" secondItem="nCa-PS-BWL" secondAttribute="leading" id="KXB-oY-o62"/>
                                     <constraint firstItem="yWl-6t-Hr1" firstAttribute="centerY" secondItem="uHU-DR-HyQ" secondAttribute="centerY" id="Ksd-Zp-3Ps"/>
                                     <constraint firstItem="KBd-Cb-m3g" firstAttribute="centerY" secondItem="uHU-DR-HyQ" secondAttribute="centerY" id="MLU-HG-Dku"/>
+                                    <constraint firstItem="9a8-PZ-b7z" firstAttribute="width" secondItem="nCa-PS-BWL" secondAttribute="width" id="Tkr-I6-AMz"/>
                                     <constraint firstItem="Rfn-ML-OJh" firstAttribute="leading" secondItem="yWl-6t-Hr1" secondAttribute="trailing" constant="10" id="UBB-Id-XOG"/>
+                                    <constraint firstItem="9a8-PZ-b7z" firstAttribute="height" secondItem="nCa-PS-BWL" secondAttribute="height" id="erT-RT-CM6"/>
                                     <constraint firstAttribute="trailing" secondItem="EEf-FJ-BDa" secondAttribute="trailing" id="fM2-jt-Dmj"/>
                                     <constraint firstItem="yWl-6t-Hr1" firstAttribute="leading" secondItem="uHU-DR-HyQ" secondAttribute="leading" constant="10" id="gwq-1e-mId"/>
                                     <constraint firstAttribute="trailing" secondItem="KBd-Cb-m3g" secondAttribute="trailing" constant="100" id="jbs-IB-Gkx"/>

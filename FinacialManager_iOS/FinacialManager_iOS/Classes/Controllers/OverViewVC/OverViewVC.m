@@ -28,7 +28,7 @@
     [self.navigationController setNavigationBarHidden:NO];
     // Do any additional setup after loading the view.
     [self initUI];
-//    [_clvContent addPullRefreshAtVC:self toReloadAction:@selector(getAllJar)];
+    [_clvContent addPullRefreshAtVC:self toReloadAction:@selector(getAllJar)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +48,17 @@
 
 #pragma mark - InitUI
 - (void)initUI {
+    
+    UIBarButtonItem * barSave = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"ic_add"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(addIncome)];
+    self.navigationItem.rightBarButtonItem = barSave;
+    
+    
+    [_vAddIncome setFrame:CGRectMake(SWIDTH - 140, 55, 120, 81)];
+    _vAddIncome.layer.borderWidth = 1.0f;
+    _vAddIncome.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [_vAddIncome setHidden:YES];
+    [self.navigationController.view addSubview:_vAddIncome];
+    
     _listData = Config.listJar;
     [_clvContent reloadData];
 }
@@ -69,10 +80,19 @@
     }];
 }
 
-#pragma mark - SlideNavigationController Methods -
+#pragma mark - SlideNavigationController Methods
 
-- (IBAction)btnCaculator:(id)sender {
+#pragma mark - Action
+
+- (void)addIncome {
+    [_vAddIncome setHidden:NO];
+}
+
+- (IBAction)btnCaculator:(UIButton *)btn {
+    [_vAddIncome setHidden:YES];
+    
     CaculatorVC *vc = VCFromSB(CaculatorVC,SB_Caculator);
+    vc.type = btn.tag;
     [AppNav presentViewController:vc animated:YES completion:nil];
 }
 
@@ -118,12 +138,9 @@
     JarDto *data = _listData.list[indexPath.row];
     
     BaseColCell *cell = [_clvContent dequeueReusableCellWithReuseIdentifier:@"jarCol" forIndexPath:indexPath];
-    cell.lblTitle.text = data.type;
-    cell.lblSubTitle.text = SF(@"%0.f",data.incomes);
-    cell.imgIcon.image = IM(@"ic_jarr");
-    
-//    [cell.imgIcon sd_setImageWithURL:[NSURL URLWithString:data.image]
-//                    placeholderImage:[UIImage imageNamed:@"ic_jarr"]];
+    cell.lblSubTitle.text = data.type;
+    cell.lblTitle.text = SF(@"%0.f USD",data.incomes);
+    cell.imgIcon.image = [UIImage imageNamed:@"ic_jar"];
     
     return cell;
 }

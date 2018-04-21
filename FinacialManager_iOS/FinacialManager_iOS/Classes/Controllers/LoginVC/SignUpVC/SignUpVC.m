@@ -90,7 +90,7 @@
 }
 
 - (IBAction)onBtnBackClicked:(UIButton *)btn {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onbtnSignupPress:(UIButton *)sender{

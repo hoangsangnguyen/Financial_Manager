@@ -25,5 +25,7 @@
 
 @property (nonatomic, strong) IBOutlet UIPageControl *pageCategory;
 
+@property (nonatomic, assign) NSInteger type;
+
 
 @end

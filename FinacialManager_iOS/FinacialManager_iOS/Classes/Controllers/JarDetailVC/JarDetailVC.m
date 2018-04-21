@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 
 @interface JarDetailVC () <UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
     BOOL isSelected;
+    int indexSegment;
 }
 
 @end
@@ -57,6 +58,16 @@ typedef enum : NSUInteger {
 - (void)initVar {
     
     [_tbvContent reloadData];
+}
+
+- (void)initUISegment {
+    [_btnDebts setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [_btnIncomes setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [_btnSpendings setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    
+    [_vIncomes setHidden:YES];
+    [_vSpendings setHidden:YES];
+    [_vDebts setHidden:YES];
 }
 
 #pragma mark - NAV
@@ -100,37 +111,27 @@ typedef enum : NSUInteger {
 #pragma mark - Action
 
 - (IBAction)selectedSegment:(UIButton *)btn {
-    isSelected = !isSelected;
-    if (!isSelected) {
-        [UIView animateWithDuration:0.5 animations:^{
-            btn.backgroundColor = [UIColor blueColor];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        } completion:nil];
-        //[self animationButtonWithBotTop:btn];
-    } else {
-        [UIView animateWithDuration:0.5 animations:^{
-            btn.backgroundColor = [UIColor whiteColor];
-            [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        } completion:nil];
-        //[self animationButtonWithTopBot:btn];
-    }
-    
+    indexSegment = (int)btn.tag;
+    [self initUISegment];
     switch (btn.tag) {
         case Income:
         {
-
+            [_btnIncomes setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_vIncomes setHidden:NO];
         }
             break;
         
         case Debt:
         {
-
+            [_btnDebts setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_vDebts setHidden:NO];
         }
             break;
             
         case Spending:
         {
-            
+            [_btnSpendings setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_vSpendings setHidden:NO];
         }
             break;
     }

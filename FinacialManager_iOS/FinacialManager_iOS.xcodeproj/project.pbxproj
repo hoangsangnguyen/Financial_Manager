@@ -48,6 +48,7 @@
 		CA76571D205EB72C00751B9F /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765716205EB72C00751B9F /* SignInVC.m */; };
 		CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA765719205EB72C00751B9F /* SignUpVC.m */; };
 		CA76571F205EB72C00751B9F /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA76571C205EB72C00751B9F /* WelcomeVC.m */; };
+		CA81D4AF208AD9D500A35E2F /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4AE208AD9D500A35E2F /* ProfileVC.m */; };
 		CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAE459C205CB14D00090152 /* AppDelegate.m */; };
 		CAAE45A3205CB14D00090152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A1205CB14D00090152 /* Main.storyboard */; };
 		CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAAE45A4205CB14D00090152 /* Assets.xcassets */; };
@@ -155,6 +156,8 @@
 		CA765719205EB72C00751B9F /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
 		CA76571B205EB72C00751B9F /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
 		CA76571C205EB72C00751B9F /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
+		CA81D4AD208AD9D500A35E2F /* ProfileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
+		CA81D4AE208AD9D500A35E2F /* ProfileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
 		CAAE4598205CB14D00090152 /* FinacialManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinacialManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAAE459B205CB14D00090152 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAAE459C205CB14D00090152 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -330,6 +333,7 @@
 		CA5D8166205E4FA8005C23E6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA81D4AC208AD9AB00A35E2F /* ProfileVC */,
 				CA6F0557207E5F380049C615 /* JarDetailVC */,
 				CA2EC1C0207355C700312C91 /* CalendarVC */,
 				CAFB8F7720721D06009EA2B3 /* Common */,
@@ -634,6 +638,15 @@
 				CA76571C205EB72C00751B9F /* WelcomeVC.m */,
 			);
 			path = WelcomeVC;
+			sourceTree = "<group>";
+		};
+		CA81D4AC208AD9AB00A35E2F /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA81D4AD208AD9D500A35E2F /* ProfileVC.h */,
+				CA81D4AE208AD9D500A35E2F /* ProfileVC.m */,
+			);
+			path = ProfileVC;
 			sourceTree = "<group>";
 		};
 		CAAE458F205CB14D00090152 = {
@@ -989,6 +1002,7 @@
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
 				CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */,
 				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
+				CA81D4AF208AD9D500A35E2F /* ProfileVC.m in Sources */,
 				CA4530E02081120200B71BCC /* GateView.m in Sources */,
 				CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */,
 				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,

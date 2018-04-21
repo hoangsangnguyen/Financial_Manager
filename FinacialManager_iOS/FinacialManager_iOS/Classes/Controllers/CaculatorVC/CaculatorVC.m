@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CategoryCell.h"
 #import "AlertVC.h"
+#import "JarDto.h"
 
 typedef enum : NSUInteger {
     Income = 0,
@@ -22,6 +23,11 @@ typedef enum : NSUInteger {
     Final,
 } stepIndex;
 
+typedef enum : NSUInteger {
+    Jar = 0,
+    Total,
+} typeCalculator;
+
 @interface CaculatorVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate> {
     NSInteger _typeButton;
     NSString *_strNumber;
@@ -31,6 +37,10 @@ typedef enum : NSUInteger {
     CGRect _frameShowViewCategory;
     CGRect _frameShowViewDetail;
     CGRect _frameBeforShowView;
+    
+    NSInteger indexCategory;
+    
+    ListJarDto *_listJars;
 }
 
 @end
@@ -39,6 +49,7 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _listJars = Config.listJar;
     [self initUI];
 }
 
@@ -55,6 +66,7 @@ typedef enum : NSUInteger {
     [_vBackground setBackgroundColor:Caculator_OUTCOME];
     _btnNumber.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     
+    indexCategory = -1;
     _stepIndex = 0;
     _strNumber = @"0";
     _strNumberPoint = @"0";
@@ -78,10 +90,15 @@ typedef enum : NSUInteger {
     _vCategory.layer.shadowOffset = CGSizeZero;
     _vCategory.layer.shadowRadius = 5;
     
-    
-    _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
-    _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
-    _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+    if (_type == Jar) {
+        _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
+        _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
+        _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+    } else {
+        _frameShowViewDetail = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
+        _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+    }
+
 }
 
 - (void)updateNumber:(NSInteger)number {
@@ -114,8 +131,13 @@ typedef enum : NSUInteger {
 
 
 -(IBAction)selectedBtnNext:(id)sender {
-    [self animationNextCategory];
-    _stepIndex++;
+    if (_type == Jar) {
+        [self animationNextCategory];
+        _stepIndex++;
+    } else {
+        [self animationDetail];
+        _stepIndex++;
+    }
 }
 
 -(IBAction)selectedBtnDetail:(id)sender {
@@ -221,9 +243,34 @@ typedef enum : NSUInteger {
 - (void)animationDetail {
     [self.view addSubview:_vDetail];
     [_vDetail setFrame:_frameBeforShowView];
+    
+    CGRect rectBtnIncome = _btnIncome.frame;
+    CGRect rectBtnOutCome = _btnOutCome.frame;
+    CGRect rectBtnNumber = _btnNumber.frame;
+    
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
-        [_vDetail setFrame:_frameShowViewDetail];
-        _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+        
+        if (_type == Jar) {
+            [_vDetail setFrame:_frameShowViewDetail];
+            _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+        } else {
+            if (_typeButton == OutCome) {
+                [_btnOutCome setFrame:CGRectMake(SWIDTH/2 - rectBtnOutCome.size.width/2 +5, 0, rectBtnOutCome.size.width, rectBtnOutCome.size.height)];
+                _btnOutCome.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+                [_btnIncome setHidden:YES];
+            } else {
+                [_btnIncome setFrame:CGRectMake(SWIDTH/2 - rectBtnIncome.size.width/2 +5, 0, rectBtnIncome.size.width, rectBtnIncome.size.height)];
+                _btnIncome.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+                [_btnOutCome setHidden:YES];
+            }
+            
+            [_btnNumber setFrame:CGRectMake(rectBtnNumber.origin.x,0, rectBtnNumber.size.width, rectBtnNumber.size.height)];
+            _btnNumber.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+            _btnNumber.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8, 0.8);
+            
+             [_vDetail setFrame:_frameShowViewDetail];
+        }
+        
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         
@@ -236,10 +283,6 @@ typedef enum : NSUInteger {
 //
 //        }];
     }];
-    
-//    [AlertVC showAlert:@"AAA" title:@"AAA" callback:^(BOOL hasPressOK) {
-//
-//    }];
 }
 
 
@@ -247,8 +290,9 @@ typedef enum : NSUInteger {
 #pragma mark - CollectionView
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    float size = collectionView.frame.size.height/3 - 10;
-    return CGSizeMake(size, size);
+    float sizeHeight = collectionView.frame.size.height/3 - 10;
+    float sizeWidth = collectionView.frame.size.width/2 - 10;
+    return CGSizeMake(sizeWidth, sizeHeight);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -269,18 +313,26 @@ typedef enum : NSUInteger {
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return _listJars.list.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    JarDto *data = _listJars.list[indexPath.row];
     CategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CategoryCell" forIndexPath:indexPath];
-    cell.lblCategory.text = SF(@"Category %ld",indexPath.row);
+    cell.lblCategory.text = data.type;
+    
+    if (indexCategory == indexPath.row) {
+        [cell.vCategory setHidden:NO];
+    } else {
+        [cell.vCategory setHidden:YES];
+    }
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    indexCategory = indexPath.row;
+    [_clvCategory reloadData];
 }
 
 #pragma mark UIScrollView

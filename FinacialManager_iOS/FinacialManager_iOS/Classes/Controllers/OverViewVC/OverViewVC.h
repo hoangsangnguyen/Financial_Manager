@@ -12,5 +12,6 @@
 @interface OverViewVC : BaseVC
 
 @property (nonatomic, weak) IBOutlet BaseClv *clvContent;
+@property (strong, nonatomic) IBOutlet UIView *vAddIncome;
 
 @end
