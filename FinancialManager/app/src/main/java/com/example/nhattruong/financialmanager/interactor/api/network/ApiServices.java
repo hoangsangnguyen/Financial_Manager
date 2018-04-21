@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.interactor.api.network;
 
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -91,6 +93,14 @@ public interface ApiServices {
             @Path("jarId") String jarId
     );
 
+    @DELETE("users/{userId}/jars/{jarId}/spendings/{spendingId}")
+    Call<BaseResponse> deleteSpending(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Path("spendingId") String spendingId
+    );
+
     @GET("users/{userId}/jars/{jarId}/incomes")
     Call<IncomeResponse> getAllIncome(
             @Header("token") String token,
@@ -103,6 +113,23 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId
+    );
+
+    @DELETE("users/{userId}/jars/{jarId}/debts/{debtId}")
+    Call<BaseResponse> deleteDebt(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Path("debtId") String debtId
+    );
+
+    @PUT("users/{userId}/jars/{jarId}/debts/{debtId}")
+    Call<BaseResponse> updateDebt(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Path("debtId") String debtId,
+            @Body DebtUpdateRequest request
     );
 
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";

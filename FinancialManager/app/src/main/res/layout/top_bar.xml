@@ -18,17 +18,28 @@
             android:layout_width="@dimen/icon_default_size"
             android:layout_height="@dimen/icon_default_size"
             android:layout_gravity="center"
-            android:src="@drawable/ic_back_white"
             android:layout_marginStart="@dimen/small_14dp"
             android:background="@color/transparent"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:src="@drawable/ic_back_white" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_title_top_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_title_top_bar"
+        android:layout_gravity="center"
         android:textColor="@color/white_color"
-        android:textSize="@dimen/text_24sp"
-        android:layout_gravity="center"/>
+        android:textSize="@dimen/text_24sp" />
+
+    <TextView
+        android:id="@+id/tv_save_top_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:padding="@dimen/small_8dp"
+        android:text="@string/save"
+        android:textColor="@color/white_color"
+        android:textSize="20sp"
+        android:visibility="gone" />
 </FrameLayout>

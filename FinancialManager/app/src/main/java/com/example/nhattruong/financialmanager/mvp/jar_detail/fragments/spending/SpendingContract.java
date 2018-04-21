@@ -7,12 +7,17 @@ public interface SpendingContract {
     interface View extends IBaseView{
         void getSpendingSuccess();
 
-        void getSpendingFailure(RestError error);
+        void onFailure(RestError error);
 
         void getAllSpending(String jarId);
+
+        void deleteSpendingSuccess();
+
     }
 
     interface Presenter{
         void getAllSpending();
+
+        void deleteSpending(int positionGroup, int positionChild);
     }
 }

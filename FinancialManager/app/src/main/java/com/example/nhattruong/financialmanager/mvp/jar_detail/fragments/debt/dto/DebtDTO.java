@@ -7,8 +7,16 @@ public class DebtDTO implements IJarDetail {
 
     private Debt dto;
 
+    public DebtDTO() {
+    }
+
     public DebtDTO(Debt dto) {
         this.dto = dto;
+    }
+
+    @Override
+    public String getId() {
+        return dto.getId();
     }
 
     @Override
@@ -39,5 +47,15 @@ public class DebtDTO implements IJarDetail {
     @Override
     public boolean isPositive() {
         return dto.isPositive();
+    }
+
+    public void setDebtChanged(Debt debt){
+        dto.setId(debt.getId());
+        dto.setDate(debt.getDate());
+        dto.setDetail(debt.getDetail());
+        dto.setAmount(debt.getAmount());
+        dto.setOrigin(debt.getOrigin());
+        dto.setState(debt.getState());
+        dto.setPositive(debt.isPositive());
     }
 }

@@ -142,25 +142,25 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         DetailBodyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            ivDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mCallbackDetail != null){
-                        mCallbackDetail.onDeleteClicked(getAdapterPosition());
-                    }
-                }
-            });
         }
 
-        public void bind(IJarDetail dto, int i, int i1) {
+        public void bind(IJarDetail dto, final int i, final int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf(dto.getAmount())));
             ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
             itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1) ? R.drawable.bg_white_grey_bottom : R.color.white_color);
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mCallbackDetail != null){
+                        mCallbackDetail.onDeleteClicked(i, i1);
+                    }
+                }
+            });
         }
     }
 
-    class DebtBodyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class DebtBodyHolder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.tv_detail_body)
         TextView tvDetail;
@@ -186,15 +186,12 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         @BindView(R.id.rd_negative)
         RadioButton rdNegative;
 
-        public DebtBodyHolder(View itemView) {
+        DebtBodyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
-            ivEdit.setOnClickListener(this);
-            ivDelete.setOnClickListener(this);
         }
 
-        public void bind(DebtDTO dto, int i, int i1) {
+        public void bind(DebtDTO dto, final int i, final int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf(dto.getAmount())));
             tvOrigin.setText(dto.getOrigin());
@@ -202,19 +199,22 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
             rdPositive.setChecked(dto.isPositive());
             rdNegative.setChecked(!dto.isPositive());
             itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1)? R.drawable.bg_white_grey_bottom : R.color.white_color);
-        }
 
-        @Override
-        public void onClick(View view) {
-            if (mCallbackDebt != null){
-                if (view == ivEdit){
-                    mCallbackDebt.onEditClicked(getAdapterPosition());
-                } else if (view == ivDelete){
-                    mCallbackDebt.onDeleteClicked(getAdapterPosition());
+            ivEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCallbackDebt.onEditClicked(i, i1);
                 }
-            }
+            });
 
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCallbackDebt.onDeleteClicked(i, i1);
+                }
+            });
         }
+
     }
 
     public void setItemDebtListener(OnItemDebtListener callback){
@@ -226,12 +226,12 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
     }
 
     public interface OnItemDebtListener{
-        void onEditClicked(int position);
+        void onEditClicked(int positionGroup, int positionChild);
 
-        void onDeleteClicked(int position);
+        void onDeleteClicked(int positionGroup, int positionChild);
     }
 
     public interface OnItemSpendingListener {
-        void onDeleteClicked(int position);
+        void onDeleteClicked(int positionGroup, int positionChild);
     }
 }

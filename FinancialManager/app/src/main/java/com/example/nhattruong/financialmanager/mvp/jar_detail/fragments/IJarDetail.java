@@ -1,6 +1,8 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments;
 
 public interface IJarDetail {
+    String getId();
+
     String getDate();
 
     double getAmount();

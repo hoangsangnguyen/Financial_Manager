@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ExpandableListView;
 
 import com.example.nhattruong.financialmanager.R;
+import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
@@ -56,8 +57,18 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
     protected void onInitListener() {
         adapter.setItemSpendingListener(new JarDetailExpandableAdapter.OnItemSpendingListener() {
             @Override
-            public void onDeleteClicked(int position) {
+            public void onDeleteClicked(final int positionGroup, final int positionChild) {
                 // delete spending
+                showConfirmDialog("Are you sure to delete this?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
+                        getPresenter().deleteSpending(positionGroup, positionChild);
+                    }
+
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerNegative(DialogPositiveNegative dialog) {
+                    }
+                });
             }
         });
 
@@ -81,7 +92,7 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
     }
 
     @Override
-    public void getSpendingFailure(RestError error) {
+    public void onFailure(RestError error) {
         showErrorDialog(error.message);
     }
 
@@ -90,4 +101,10 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
         getPresenter().setJarId(jarId);
         getPresenter().getAllSpending();
     }
+
+    @Override
+    public void deleteSpendingSuccess() {
+        adapter.notifyDataSetChanged();
+    }
+
 }

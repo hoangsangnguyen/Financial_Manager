@@ -14,6 +14,11 @@ public class SpendingDTO implements IJarDetail{
     }
 
     @Override
+    public String getId() {
+        return obj.getId();
+    }
+
+    @Override
     public String getDate() {
         return obj.getDate();
     }

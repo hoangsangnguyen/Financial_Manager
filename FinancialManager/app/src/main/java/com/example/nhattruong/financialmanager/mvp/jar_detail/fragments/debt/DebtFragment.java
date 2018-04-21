@@ -6,7 +6,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ExpandableListView;
 
 import com.example.nhattruong.financialmanager.R;
+import com.example.nhattruong.financialmanager.dialog.detail.EditDebtDialog;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
@@ -46,7 +48,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
     protected void onInitData() {
         getPresenter().setJarId(getArguments().getString(AppConstants.JAR_ID));
 
-        adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getList());
+        adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListDebt());
         lvDetail.setAdapter(adapter);
 
         getPresenter().getAllDebt();
@@ -57,12 +59,24 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
 
         adapter.setItemDebtListener(new JarDetailExpandableAdapter.OnItemDebtListener() {
             @Override
-            public void onEditClicked(int position) {
+            public void onEditClicked(int positionGroup, int positionChild) {
+
+               getPresenter().setPositionGroupAndChild(positionGroup, positionChild);
+
                 //edit debt
+                EditDebtDialog debtDialog = new EditDebtDialog(
+                        getActivity(),
+                        getPresenter().getListDebt().get(positionGroup).getList().get(positionChild),
+                        new EditDebtDialog.OnEditDebtListener() {
+                            @Override
+                            public void onSaveChange(Debt debt) {
+                            }
+                        });
+                debtDialog.show();
             }
 
             @Override
-            public void onDeleteClicked(int position) {
+            public void onDeleteClicked(int positionGroup, int positionChild) {
                 //delete debt
             }
         });
@@ -87,7 +101,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
     }
 
     @Override
-    public void getAllDebtFailure(RestError error) {
+    public void onFailure(RestError error) {
         showErrorDialog(error.message);
     }
 
@@ -95,5 +109,15 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
     public void getAllDebt(String jarId) {
         getPresenter().setJarId(jarId);
         getPresenter().getAllDebt();
+    }
+
+    @Override
+    public void deleteDebtSuccess() {
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void updateDebtSuccess() {
+
     }
 }

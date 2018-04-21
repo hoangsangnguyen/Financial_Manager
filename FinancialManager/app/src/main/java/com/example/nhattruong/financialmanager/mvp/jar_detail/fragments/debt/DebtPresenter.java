@@ -3,6 +3,8 @@ package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt;
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
+import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
@@ -16,12 +18,18 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
 
     private List<JarDetailDTO> mList;
     private String mJarId;
+    private int mPositionGroup, mPositionChild;
 
     public void setJarId(String jarId) {
         this.mJarId = jarId;
     }
 
-    public List<JarDetailDTO> getList() {
+    public void setPositionGroupAndChild(int positionGroup, int positionChild){
+        this.mPositionGroup = positionGroup;
+        this.mPositionChild = positionChild;
+    }
+
+    public List<JarDetailDTO> getListDebt() {
         if (mList == null){
             mList = new ArrayList<>();
         }
@@ -41,7 +49,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
         getApiManager().getAllDebt(getPreferManager().getUser().getId(), mJarId, new ApiCallback<DebtResponse>() {
             @Override
             public void success(DebtResponse res) {
-                getList().clear();
+                getListDebt().clear();
                 parseToJarDetailDTO(res.getDebts());
                 if (!isViewAttached()) return;
                 getView().hideLoading();
@@ -52,9 +60,81 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().getAllDebtFailure(error);
+                getView().onFailure(error);
             }
         });
+    }
+
+    @Override
+    public void deleteDebt(final int positionGroup, final int positionChild) {
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        getApiManager().deleteDebt(
+                getPreferManager().getUser().getId(),
+                mJarId,
+                getListDebt().get(positionGroup).getList().get(positionChild).getId(),
+                new ApiCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        getListDebt().get(positionGroup).getList().remove(positionChild);
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().deleteDebtSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void updateDebt(final Debt debt) {
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        DebtUpdateRequest request = new DebtUpdateRequest.DebtUpdateRequestBuilder()
+                .setDate(debt.getDate())
+                .setDetail(debt.getDetail())
+                .setAmount(debt.getAmount())
+                .setOrigin(debt.getOrigin())
+                .setState(debt.getState())
+                .setPositive(debt.isPositive())
+                .build();
+
+        getApiManager().updateDebt(
+                getPreferManager().getUser().getId(),
+                mJarId,
+                debt.getId(),
+                request,
+                new ApiCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        setDebtChanged(debt);
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().updateDebtSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                }
+        );
+    }
+
+    private void setDebtChanged(Debt debt) {
+        DebtDTO debtDTO = new DebtDTO();
+        debtDTO.setDebtChanged(debt);
+        getListDebt().get(mPositionGroup).getList().set(mPositionChild, debtDTO);
     }
 
     private void parseToJarDetailDTO(List<Debt> spending) {

@@ -5,6 +5,7 @@ import com.example.nhattruong.financialmanager.interactor.api.network.ApiService
 import com.example.nhattruong.financialmanager.interactor.api.network.RestCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
@@ -213,11 +214,56 @@ public class ApiManager {
                 });
     }
 
-    public void getAllIncome(String userId, String jarId, final ApiCallback<IncomeResponse> callback) {
-        mApiServices.getAllIncome(getToken(), userId, jarId)
+    public void deleteSpending(String userId, String jarId, String spendingId, final ApiCallback<BaseResponse> callback) {
+        mApiServices.deleteSpending(getToken(), userId, jarId, spendingId)
+                .enqueue(new RestCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getAllIncome(String userId, String debtId, final ApiCallback<IncomeResponse> callback) {
+        mApiServices.getAllIncome(getToken(), userId, debtId)
                 .enqueue(new RestCallback<IncomeResponse>() {
                     @Override
                     public void success(IncomeResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void deleteDebt(String userId, String jarId, String debtId, final ApiCallback<BaseResponse> callback) {
+        mApiServices.deleteDebt(getToken(), userId, jarId, debtId)
+                .enqueue(new RestCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void updateDebt(String userId, String jarId, String debtId, DebtUpdateRequest request, final ApiCallback<BaseResponse> callback) {
+        mApiServices.updateDebt(getToken(), userId, jarId, debtId, request)
+                .enqueue(new RestCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
                         callback.success(res);
                     }
 

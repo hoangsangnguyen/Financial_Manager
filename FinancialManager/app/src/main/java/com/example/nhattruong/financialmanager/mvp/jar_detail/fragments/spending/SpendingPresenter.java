@@ -3,6 +3,7 @@ package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spendin
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
@@ -10,13 +11,11 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarD
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class SpendingPresenter extends BasePresenter implements SpendingContract.Presenter{
 
-    private List<JarDetailDTO> mList;
+    private List<JarDetailDTO> mListDetail;
     private String mJarId;
 
     public String getJarId() {
@@ -28,10 +27,10 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
     }
 
     public List<JarDetailDTO> getListSpending(){
-        if (mList == null){
-            mList = new ArrayList<>();
+        if (mListDetail == null){
+            mListDetail = new ArrayList<>();
         }
-        return mList;
+        return mListDetail;
     }
 
     @Override
@@ -57,9 +56,37 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().getSpendingFailure(error);
+                getView().onFailure(error);
             }
         });
+    }
+
+    @Override
+    public void deleteSpending(final int positionGroup, final int positionChild) {
+        if (!isViewAttached()) return;
+        getView().showLoading();
+        
+        getApiManager().deleteSpending(
+                getPreferManager().getUser().getId(),
+                mJarId,
+                getListSpending().get(positionGroup).getList().get(positionChild).getId(),
+                new ApiCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        getListSpending().get(positionGroup).getList().remove(positionChild);
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().deleteSpendingSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                }
+        );
     }
 
     private void parseToJarDetailDTO(List<Spending> spending) {
@@ -82,7 +109,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
                 }
             }
 
-            mList.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildSpendingDTO));
+            mListDetail.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildSpendingDTO));
         }
     }
 

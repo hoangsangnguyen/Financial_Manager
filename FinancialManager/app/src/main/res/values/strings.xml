@@ -74,5 +74,10 @@
     <string name="state_2_dot">State:</string>
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
+    <string name="origin">Origin</string>
+    <string name="state">State</string>
+    <string name="amount">Amount</string>
+    <string name="detail">Detail</string>
+    <string name="edit_debt">Edit Debt</string>
 
 </resources>
