@@ -88,14 +88,14 @@
             fab:menu_colorRipple="#C20024"
             fab:menu_labels_ellipsize="end"
             fab:menu_labels_singleLine="true"
-            fab:menu_shadowColor="#000">
+            fab:menu_shadowColor="#000"
+            app:menu_labels_colorNormal="#C20024">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_small_jar"
-                app:backgroundTint="@color/app_color"
                 fab:fab_label="@string/incomes"
                 fab:fab_size="mini" />
 
