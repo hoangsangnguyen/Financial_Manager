@@ -18,7 +18,7 @@ public class SpinnerStateAdapter extends BaseAdapter {
     private int mSelectedPosition;
     private ISpinnerCallback mCallback;
 
-    SpinnerStateAdapter(Context context, List<String> items, ISpinnerCallback callback) {
+    public SpinnerStateAdapter(Context context, List<String> items, ISpinnerCallback callback) {
         this.mContext = context;
         this.mItems = items;
         this.mCallback = callback;

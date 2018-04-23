@@ -15,18 +15,21 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
+import com.example.nhattruong.financialmanager.dialog.detail.SpinnerStateAdapter;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CalculatorAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CategoryAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.fragment.DetailsFragment;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -96,9 +99,6 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.edt_origin)
     TextInputLayout edtOrigin;
 
-    @BindView(R.id.edt_state)
-    TextInputLayout edtState;
-
     @BindView(R.id.rd_negative_debt)
     RadioButton rdNegative;
 
@@ -108,9 +108,14 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.ll_state_debt)
     LinearLayout llStateDebt;
 
+    @BindView(R.id.tv_state_display)
+    TextView tvDisplayState;
 
+    @BindView(R.id.sp_state)
+    Spinner spState;
+
+    private SpinnerStateAdapter spinnerStateAdapter;
     private CategoryAdapter categoryAdapter;
-    private boolean isFirstInput = true;
     private int mType;
 
     @Override
@@ -131,6 +136,16 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     private void initData() {
 
         mType = getIntent().getIntExtra(CREATE_TYPE, 0);
+
+        tvDisplayState.setText(getString(R.string.ready));
+        spinnerStateAdapter = new SpinnerStateAdapter(this, Arrays.asList(getResources().getStringArray(R.array.list_state_debt)), new SpinnerStateAdapter.ISpinnerCallback() {
+            @Override
+            public void onItemSelected(String state) {
+                tvDisplayState.setText(state);
+                hideSpinnerDropDown();
+            }
+        });
+        spState.setAdapter(spinnerStateAdapter);
 
         setupTextTypeCreate();
         final List<Integer> numberList = new ArrayList<>();
@@ -158,7 +173,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                     if (!TextUtils.isEmpty(currency)) {
                         if (currency.length() == 1) {
                             tvCurrency.setText("");
-                            isFirstInput = true;
+//                            isFirstInput = true;
                         } else {
                             currency = currency.substring(0, currency.length() - 1);
                             tvCurrency.setText(currency);
@@ -217,12 +232,12 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
         rcvCategory.setLayoutManager(new GridLayoutManager(this, 2));
         rcvCategory.setAdapter(categoryAdapter);
 
-        initFragmentDatail();
+        initFragmentDetail();
 
         getPresenter().getAllJar();
     }
 
-    private void initFragmentDatail() {
+    private void initFragmentDetail() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DetailsFragment detailsFragment = DetailsFragment.newInstance();
@@ -233,11 +248,20 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     private void initListener() {
         ivLeftBack.setOnClickListener(this);
-       /* tvIncome.setOnClickListener(this);
-        tvOutcome.setOnClickListener(this);*/
         tvNext.setOnClickListener(this);
         tvDetail.setOnClickListener(this);
         tvStateNext.setOnClickListener(this);
+        tvDisplayState.setOnClickListener(this);
+    }
+
+    private void hideSpinnerDropDown() {
+        try {
+            Method method = Spinner.class.getDeclaredMethod("onDetachedFromWindow");
+            method.setAccessible(true);
+            method.invoke(spState);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -295,6 +319,9 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
             llDetail.setVisibility(View.VISIBLE);
             tvStateNext.setOnClickListener(null);
             animation(llStateDebt);
+        } else if (view == tvDisplayState){
+            spinnerStateAdapter.setTextView(tvDisplayState);
+            spState.performClick();
         }
 
     }
@@ -390,7 +417,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                 break;
             case AppConstants.CREATE_DEBT:
                 String origin = edtOrigin.getEditText().getText().toString();
-                String state = edtState.getEditText().getText().toString();
+                String state = tvDisplayState.getText().toString();
                 boolean isPositive = rdPositive.isChecked();
                 getPresenter().createDebt(date, note, Double.parseDouble(tvCurrency.getText().toString()), origin, state, isPositive);
                 break;
@@ -398,11 +425,6 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                 getPresenter().createGeneralIncome(date, note, Double.parseDouble(tvCurrency.getText().toString()));
                 break;
         }
-        /*if (isAddIncomeForJar){
-            getPresenter().createIncomeForJar(date, note, Double.parseDouble(tvCurrency.getText().toString()));
-        } else {
-            getPresenter().createGeneralIncome(date, note, Double.parseDouble(tvCurrency.getText().toString()));
-        }*/
     }
 
     @Override

@@ -283,6 +283,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                 intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
             }
             startActivityForResult(intentCreate, REQUEST_CODE_CREATE);
+            fabAdd.close(true);
         }
     }
 

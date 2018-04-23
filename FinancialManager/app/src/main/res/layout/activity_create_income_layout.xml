@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content" />
                 </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <!--<android.support.design.widget.TextInputLayout
                     android:id="@+id/edt_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -183,7 +183,49 @@
                         android:inputType="text|textNoSuggestions"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-                </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large"
+                    android:layout_marginTop="@dimen/small_8dp"
+                    android:layout_marginBottom="@dimen/small_8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/state_2_dot"
+                        android:textColor="@color/black_color"
+                        android:textSize="20sp"/>
+
+                    <FrameLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/large">
+
+                        <TextView
+                            android:id="@+id/tv_state_display"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:background="@drawable/bg_btn_grey"
+                            android:gravity="center"
+                            android:textSize="@dimen/default_text_size"
+                            android:drawableEnd="@drawable/ic_drop_down_blue" />
+
+                        <Spinner
+                            android:id="@+id/sp_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:spinnerMode="dropdown"
+                            android:background="@color/white_color"
+                            android:paddingBottom="10dp"
+                            android:popupBackground="@drawable/bg_popup_window"
+                            android:layout_gravity="bottom"/>
+                    </FrameLayout>
+                </LinearLayout>
 
                 <RadioGroup
                     android:orientation="horizontal"
