@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class CreateIncomeJarRequest {
+public class CreateIncomeSpendingRequest {
     @SerializedName("date")
     @Expose
     private Date date;
@@ -16,7 +16,7 @@ public class CreateIncomeJarRequest {
     @Expose
     private double amount;
 
-    private CreateIncomeJarRequest(Builder builder) {
+    private CreateIncomeSpendingRequest(Builder builder) {
         this.date = builder.date;
         this.detail = builder.detail;
         this.amount = builder.amount;
@@ -42,8 +42,8 @@ public class CreateIncomeJarRequest {
             return this;
         }
 
-        public CreateIncomeJarRequest build(){
-           return new CreateIncomeJarRequest(this);
+        public CreateIncomeSpendingRequest build(){
+           return new CreateIncomeSpendingRequest(this);
         }
     }
 }

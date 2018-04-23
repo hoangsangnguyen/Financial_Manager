@@ -33,10 +33,14 @@ public class CalculatorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CalculatorHolder calculatorHolder = (CalculatorHolder) holder;
-        if (position == mItems.size() - 1 || position == 9){
+        if (position == mItems.size() - 1){
             calculatorHolder.ivCalculator.setVisibility(View.VISIBLE);
             calculatorHolder.tvNumber.setVisibility(View.GONE);
             calculatorHolder.ivCalculator.setImageResource(mItems.get(position));
+        } else if (position == 9){
+            calculatorHolder.ivCalculator.setVisibility(View.GONE);
+            calculatorHolder.tvNumber.setVisibility(View.VISIBLE);
+            calculatorHolder.tvNumber.setText(".");
         } else {
             calculatorHolder.ivCalculator.setVisibility(View.GONE);
             calculatorHolder.tvNumber.setVisibility(View.VISIBLE);

@@ -2,6 +2,7 @@ package com.example.nhattruong.financialmanager.mvp.income;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
@@ -22,7 +24,7 @@ import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CalculatorAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.adapter.CategoryAdapter;
 import com.example.nhattruong.financialmanager.mvp.income.fragment.DetailsFragment;
-import com.example.nhattruong.financialmanager.utils.DateUtils;
+import com.example.nhattruong.financialmanager.utils.AppConstants;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +33,8 @@ import java.util.List;
 import butterknife.BindView;
 
 public class CreateIncomeActivity extends BaseActivity implements View.OnClickListener, CreateIncomeContract.View, DetailsFragment.ICalendarListener {
+
+    public static final String CREATE_TYPE = "CREATE_TYPE";
 
     @BindView(R.id.iv_back_left)
     ImageView ivLeftBack;
@@ -47,8 +51,8 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.ll_header)
     LinearLayout llHeader;
 
-    @BindView(R.id.ll_in_out_come)
-    LinearLayout llInOutCome;
+   /* @BindView(R.id.ll_in_out_come)
+    LinearLayout llInOutCome;*/
 
     @BindView(R.id.ll_calculator)
     LinearLayout llCalculator;
@@ -62,14 +66,17 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    @BindView(R.id.tv_currency_income_outcome)
+    @BindView(R.id.tv_type_create)
+    TextView tvTypeCreate;
+
+    @BindView(R.id.tv_currency)
     TextView tvCurrency;
 
-    @BindView(R.id.tv_income)
+   /* @BindView(R.id.tv_income)
     TextView tvIncome;
 
     @BindView(R.id.tv_outcome)
-    TextView tvOutcome;
+    TextView tvOutcome;*/
 
     @BindView(R.id.tv_next)
     TextView tvNext;
@@ -83,9 +90,28 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.rcv_category)
     RecyclerView rcvCategory;
 
+    @BindView(R.id.tv_state_next)
+    TextView tvStateNext;
+
+    @BindView(R.id.edt_origin)
+    TextInputLayout edtOrigin;
+
+    @BindView(R.id.edt_state)
+    TextInputLayout edtState;
+
+    @BindView(R.id.rd_negative_debt)
+    RadioButton rdNegative;
+
+    @BindView(R.id.rd_positive_debt)
+    RadioButton rdPositive;
+
+    @BindView(R.id.ll_state_debt)
+    LinearLayout llStateDebt;
+
+
     private CategoryAdapter categoryAdapter;
     private boolean isFirstInput = true;
-    private boolean isAddIncomeForJar = false;
+    private int mType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +130,9 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     private void initData() {
 
-        isAddIncomeForJar = getIntent().getBooleanExtra(HomeActivity.ADD_INCOME_FOR_JAR,false);
+        mType = getIntent().getIntExtra(CREATE_TYPE, 0);
 
+        setupTextTypeCreate();
         final List<Integer> numberList = new ArrayList<>();
         numberList.add(1);
         numberList.add(2);
@@ -116,7 +143,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
         numberList.add(7);
         numberList.add(8);
         numberList.add(9);
-        numberList.add(R.drawable.ic_keyboard_delete);
+        numberList.add(android.R.drawable.divider_horizontal_dark);
         numberList.add(0);
         numberList.add(R.drawable.ic_keyboard_delete);
 
@@ -125,7 +152,36 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
         rcvCalculator.setAdapter(new CalculatorAdapter(this, numberList, new CalculatorAdapter.OnItemClickedListener() {
             @Override
             public void onItemClicked(int position) {
+
                 String currency = tvCurrency.getText().toString();
+                if (position >= numberList.size() - 1 && position != 9) {
+                    if (!TextUtils.isEmpty(currency)) {
+                        if (currency.length() == 1) {
+                            tvCurrency.setText("");
+                            isFirstInput = true;
+                        } else {
+                            currency = currency.substring(0, currency.length() - 1);
+                            tvCurrency.setText(currency);
+                        }
+                    }
+                } else if (position == 10 && !TextUtils.isEmpty(tvCurrency.getText())) {
+                    tvCurrency.setText(currency.concat(String.valueOf(0)));
+                } else if (position == 9) {
+                    tvCurrency.setText(currency.concat("."));
+                } else {
+                    tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
+                   /* if (isFirstInput) {
+                        tvCurrency.setText(mType != AppConstants.CREATE_SPENDING
+                                ? "+" + currency.concat(String.valueOf(position + 1))
+                                : currency.concat(String.valueOf(0 - position - 1))
+                        );
+                        isFirstInput = false;
+                    } else {
+                        tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
+                    }*/
+                }
+
+                /*String currency = tvCurrency.getText().toString();
                 if (position >= numberList.size() - 1 && position != 9) {
                     if (!TextUtils.isEmpty(currency)) {
                         if (currency.length() == 1) {
@@ -148,7 +204,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                     } else {
                         tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
                     }
-                }
+                }*/
             }
         }));
 
@@ -160,8 +216,6 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
         });
         rcvCategory.setLayoutManager(new GridLayoutManager(this, 2));
         rcvCategory.setAdapter(categoryAdapter);
-
-        tvOutcome.setSelected(true);
 
         initFragmentDatail();
 
@@ -179,33 +233,36 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     private void initListener() {
         ivLeftBack.setOnClickListener(this);
-        tvIncome.setOnClickListener(this);
-        tvOutcome.setOnClickListener(this);
+       /* tvIncome.setOnClickListener(this);
+        tvOutcome.setOnClickListener(this);*/
         tvNext.setOnClickListener(this);
         tvDetail.setOnClickListener(this);
+        tvStateNext.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (view == tvNext) {
-            if (isAddIncomeForJar){
+            if (mType != AppConstants.CREATE_GENERAL) {
                 llCalculator.setVisibility(View.GONE);
                 llCategory.setVisibility(View.VISIBLE);
-                llInOutCome.setVisibility(View.GONE);
+//                llInOutCome.setVisibility(View.GONE);
+                tvTypeCreate.setVisibility(View.GONE);
             } else {
                 llDetail.setVisibility(View.VISIBLE);
-                llInOutCome.setVisibility(View.GONE);
+//                llInOutCome.setVisibility(View.GONE);
+                tvTypeCreate.setVisibility(View.GONE);
                 llCalculator.setVisibility(View.GONE);
             }
             showCategoryView();
 
         } else if (view == ivLeftBack) {
             onBackPressed();
-        } else if (view == tvIncome) {
+        }/* else if (view == tvIncome) {
             if (!TextUtils.isEmpty(tvCurrency.getText())) {
                 String textCurrency = tvCurrency.getText().toString().substring(1);
                 int currency = Math.abs(Integer.valueOf(textCurrency));
-                tvCurrency.setText(getString(R.string.position_number, currency));
+                tvCurrency.setText(getString(R.string.positive_number, currency));
             }
 
             llMain.setSelected(true);
@@ -222,20 +279,50 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
             llMain.setSelected(false);
             tvIncome.setSelected(false);
             tvOutcome.setSelected(true);
-        } else if (view == tvDetail){
-            llDetail.setVisibility(View.VISIBLE);
+        }*/ else if (view == tvDetail) {
+            if (mType == AppConstants.CREATE_DEBT) {
+                llStateDebt.setVisibility(View.VISIBLE);
+            } else {
+                llDetail.setVisibility(View.VISIBLE);
+            }
+//            llDetail.setVisibility(View.VISIBLE);
             rcvCategory.setVisibility(View.INVISIBLE);
             tvDetail.setOnClickListener(null);
             animation(llCategory);
+        } else if (view == tvStateNext) {
+            edtOrigin.setVisibility(View.INVISIBLE);
+
+            llDetail.setVisibility(View.VISIBLE);
+            tvStateNext.setOnClickListener(null);
+            animation(llStateDebt);
         }
 
+    }
+
+    private void setupTextTypeCreate() {
+        switch (mType) {
+            case AppConstants.CREATE_INCOME:
+                tvTypeCreate.setText(getString(R.string.incomes));
+                tvTitle.setText(getString(R.string.incomes));
+                break;
+            case AppConstants.CREATE_SPENDING:
+                tvTypeCreate.setText(getString(R.string.spending));
+                tvTitle.setText(getString(R.string.spending));
+                break;
+            case AppConstants.CREATE_DEBT:
+                tvTypeCreate.setText(getString(R.string.debts));
+                tvTitle.setText(getString(R.string.debts));
+                break;
+            case AppConstants.CREATE_GENERAL:
+                tvTypeCreate.setText(getString(R.string.general));
+                tvTitle.setText(getString(R.string.general));
+                break;
+        }
     }
 
     private void showCategoryView() {
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-
-        tvTitle.setText(tvIncome.isSelected() ? "INCOME" : "OUTCOME");
 
         LinearLayout.LayoutParams lpHeader = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -285,7 +372,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                 FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) frmLayout.getLayoutParams();
                 lp.leftMargin = left + (int) animation.getAnimatedValue();
                 lp.rightMargin = right + (int) animation.getAnimatedValue();
-                lp.topMargin = top - (int) animation.getAnimatedValue()-80;
+                lp.topMargin = top - (int) animation.getAnimatedValue() - 80;
                 frmLayout.setLayoutParams(lp);
             }
         });
@@ -294,11 +381,28 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onFinishClicked(Date date, String note) {
-        if (isAddIncomeForJar){
+        switch (mType) {
+            case AppConstants.CREATE_INCOME:
+                getPresenter().createIncomeForJar(date, note, Double.parseDouble(tvCurrency.getText().toString()));
+                break;
+            case AppConstants.CREATE_SPENDING:
+                getPresenter().createSpending(date, note, 0 - Double.parseDouble(tvCurrency.getText().toString()));
+                break;
+            case AppConstants.CREATE_DEBT:
+                String origin = edtOrigin.getEditText().getText().toString();
+                String state = edtState.getEditText().getText().toString();
+                boolean isPositive = rdPositive.isChecked();
+                getPresenter().createDebt(date, note, Double.parseDouble(tvCurrency.getText().toString()), origin, state, isPositive);
+                break;
+            case AppConstants.CREATE_GENERAL:
+                getPresenter().createGeneralIncome(date, note, Double.parseDouble(tvCurrency.getText().toString()));
+                break;
+        }
+        /*if (isAddIncomeForJar){
             getPresenter().createIncomeForJar(date, note, Double.parseDouble(tvCurrency.getText().toString()));
         } else {
             getPresenter().createGeneralIncome(date, note, Double.parseDouble(tvCurrency.getText().toString()));
-        }
+        }*/
     }
 
     @Override
@@ -307,12 +411,12 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    public void createIncomeJarFailed(RestError error) {
+    public void onFailure(RestError error) {
         showErrorDialog(error.message);
     }
 
     @Override
-    public void createIncomeJarSuccess() {
+    public void createSuccess() {
         setResult(RESULT_OK);
         finish();
     }

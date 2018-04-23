@@ -10,9 +10,9 @@ public interface CreateIncomeContract {
 
         void getAllJarSuccess();
 
-        void createIncomeJarFailed(RestError error);
+        void onFailure(RestError error);
 
-        void createIncomeJarSuccess();
+        void createSuccess();
     }
 
     interface Presenter {
@@ -22,6 +22,11 @@ public interface CreateIncomeContract {
 
         void createGeneralIncome(Date date, String detail, double amount);
 
+        void createSpending(Date date, String detail, double amount);
+
+        void createDebt(Date date, String detail, double amount, String origin, String state, boolean isPositive);
+
         void setJarId(String jarId);
+
     }
 }

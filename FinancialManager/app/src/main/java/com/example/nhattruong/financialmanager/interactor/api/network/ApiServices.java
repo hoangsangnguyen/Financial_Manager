@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.interactor.api.network;
 
-import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateDebtRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeSpendingRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
@@ -14,8 +15,6 @@ import com.example.nhattruong.financialmanager.interactor.api.response.TypeRespo
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -77,14 +76,22 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId,
-            @Body CreateIncomeJarRequest request
+            @Body CreateIncomeSpendingRequest request
     );
 
     @POST("users/{userId}/incomes")
     Call<BaseResponse> createGeneralIncome(
             @Header("token") String token,
             @Path("userId") String user,
-            @Body CreateIncomeJarRequest request
+            @Body CreateIncomeSpendingRequest request
+    );
+
+    @POST("users/{userId}/jars/{jarId}/spendings")
+    Call<BaseResponse> createSpending(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Body CreateIncomeSpendingRequest request
     );
 
     @GET("users/{userId}/jars/{jarId}/spendings")
@@ -114,6 +121,14 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId
+    );
+
+    @POST("users/{userId}/jars/{jarId}/debts")
+    Call<BaseResponse> createDebt(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Body CreateDebtRequest request
     );
 
     @DELETE("users/{userId}/jars/{jarId}/debts/{debtId}")

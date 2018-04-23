@@ -3,7 +3,8 @@ package com.example.nhattruong.financialmanager.mvp.income;
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeJarRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateDebtRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeSpendingRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
@@ -63,21 +64,21 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        CreateIncomeJarRequest request =
-                new CreateIncomeJarRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
+        CreateIncomeSpendingRequest request =
+                new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
         getApiManager().createIncomeForJar(getPreferManager().getUser().getId(), mJarId, request, new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().createIncomeJarSuccess();
+                getView().createSuccess();
             }
 
             @Override
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().createIncomeJarFailed(error);
+                getView().onFailure(error);
             }
         });
     }
@@ -87,21 +88,80 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        CreateIncomeJarRequest request =
-                new CreateIncomeJarRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
+        CreateIncomeSpendingRequest request =
+                new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
         getApiManager().createGeneralIncome(getPreferManager().getUser().getId(), request, new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
                 if (!isViewAttached()) return;
                 getView().hideLoading();
-                getView().createIncomeJarSuccess();
+                getView().createSuccess();
             }
 
             @Override
             public void failure(RestError error) {
                 if (!isViewAttached()) return;
-                getView().createIncomeJarFailed(error);
+                getView().onFailure(error);
             }
         });
+    }
+
+    @Override
+    public void createSpending(Date date, String detail, double amount) {
+        if (!isViewAttached())return;
+        getView().showLoading();
+
+        CreateIncomeSpendingRequest request =
+                new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
+        getApiManager().createSpending(
+                getPreferManager().getUser().getId(),
+                mJarId,
+                request,
+                new ApiCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().createSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void createDebt(Date date, String detail, double amount, String origin, String state, boolean isPositive) {
+
+        CreateDebtRequest request = new CreateDebtRequest.Builder()
+                .setDate(date).setDetail(detail).setAmount(amount).setOrigin(origin).setState(state).setPositive(isPositive).build();
+
+        if (!isViewAttached()) return;
+        getView().showLoading();
+        getApiManager().createDebt(
+                getPreferManager().getUser().getId(),
+                mJarId,
+                request,
+                new ApiCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().createSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                }
+        );
     }
 }

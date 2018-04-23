@@ -18,7 +18,7 @@
         android:layout_height="32dp"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@drawable/ic_keyboard_delete"
+        android:src="@drawable/dot"
         android:tint="@color/grey_600"
-        android:visibility="gone" />
+        android:visibility="visible" />
 </FrameLayout>

@@ -11,7 +11,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,20 +30,13 @@ import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
-import com.nightonke.boommenu.BoomButtons.HamButton;
-import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
-import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.ButtonEnum;
-import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
     public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
-    public static final int REQUEST_CODE_ADD_INCOME = 22;
+    public static final int REQUEST_CODE_CREATE = 22;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -87,6 +79,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @BindView(R.id.fab_debt)
     FloatingActionButton fabDebt;
+
+    @BindView(R.id.fab_general)
+    FloatingActionButton fabGeneral;
 
     JarAdapter mJarAdapter;
 
@@ -134,6 +129,10 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onInitListener() {
         tvUserName.setOnClickListener(this);
         ivAdd.setOnClickListener(this);
+        fabIncome.setOnClickListener(this);
+        fabSpending.setOnClickListener(this);
+        fabDebt.setOnClickListener(this);
+        fabGeneral.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -260,23 +259,36 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                 public void onAddIncomeForJar() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
-                    startActivityForResult(intentAddIncome, REQUEST_CODE_ADD_INCOME);
+                    startActivityForResult(intentAddIncome, REQUEST_CODE_CREATE);
                 }
 
                 @Override
                 public void onAddGeneralIncome() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
-                    startActivityForResult(intentAddIncome, REQUEST_CODE_ADD_INCOME);
+                    startActivityForResult(intentAddIncome, REQUEST_CODE_CREATE);
                 }
             });
             dialogAddIncome.show();
+        } else {
+            Intent intentCreate = new Intent(this, CreateIncomeActivity.class);
+            if (view == fabIncome){
+                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
+            } else if (view == fabSpending){
+                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
+            } else if (view == fabDebt){
+                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
+            } else if (view == fabGeneral)
+            {
+                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
+            }
+            startActivityForResult(intentCreate, REQUEST_CODE_CREATE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_ADD_INCOME) {
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CREATE) {
             getPresenter().getJars();
         }
     }

@@ -47,6 +47,7 @@
                         android:layout_height="32dp"
                         android:contentDescription="@null"
                         android:scaleType="centerCrop"
+                        android:visibility="gone"
                         android:src="@drawable/ic_add_transparent" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
@@ -81,7 +82,7 @@
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_backgroundColor="@color/white_color"
             fab:menu_colorNormal="#F50057"
             fab:menu_colorPressed="#E8004A"
             fab:menu_colorRipple="#C20024"
@@ -94,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_small_jar"
+                app:backgroundTint="@color/app_color"
                 fab:fab_label="@string/incomes"
                 fab:fab_size="mini" />
 
@@ -118,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_small_jar"
-                fab:fab_label="@string/debts"
+                fab:fab_label="@string/general"
                 fab:fab_size="mini" />
         </com.github.clans.fab.FloatingActionMenu>
     </android.support.design.widget.CoordinatorLayout>

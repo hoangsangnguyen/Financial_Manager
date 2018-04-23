@@ -20,7 +20,7 @@
     <string name="first_name">First name</string>
     <string name="register">Register</string>
     <string name="logout">Logout</string>
-    <string name="position_number">+%d</string>
+    <string name="positive_number">+%d</string>
 
     <string-array name="types">
         <item>Nhu cầu thiết yếu</item>
@@ -80,5 +80,6 @@
     <string name="detail">Detail</string>
     <string name="edit_debt">Edit Debt</string>
     <string name="date_2_dot">Date:</string>
+    <string name="general">General</string>
 
 </resources>

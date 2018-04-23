@@ -45,4 +45,9 @@ public class AppConstants {
 
     public static final String JAR_ID = "JAR_ID";
 
+    public static final int CREATE_INCOME = 0;
+    public static final int CREATE_SPENDING = 1;
+    public static final int CREATE_DEBT = 2;
+    public static final int CREATE_GENERAL= 3;
+
 }
