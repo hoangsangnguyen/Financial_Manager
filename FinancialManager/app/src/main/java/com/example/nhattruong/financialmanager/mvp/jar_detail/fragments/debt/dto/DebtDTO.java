@@ -1,5 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto;
 
+import android.support.annotation.NonNull;
+
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 

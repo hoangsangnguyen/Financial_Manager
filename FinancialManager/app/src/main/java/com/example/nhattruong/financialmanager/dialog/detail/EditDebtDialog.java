@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
@@ -22,6 +23,8 @@ import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -53,8 +56,11 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
     @BindView(R.id.edt_edit_origin)
     TextInputLayout edtOrigin;
 
-    @BindView(R.id.edt_edit_state)
-    TextInputLayout edtState;
+    @BindView(R.id.tv_state_display)
+    TextView tvStateDisplay;
+
+    @BindView(R.id.sp_state)
+    Spinner spState;
 
     @BindView(R.id.rd_edit_negative)
     RadioButton rdNegative;
@@ -62,6 +68,7 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
     @BindView(R.id.rd_edit_positive)
     RadioButton rdPositive;
 
+    private SpinnerStateAdapter adapter;
     private IJarDetail mDebt;
     private Date currentDate;
     private OnEditDebtListener mCallback;
@@ -73,7 +80,7 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
                 .setDetail(edtDetail.getEditText().getText().toString())
                 .setAmount(Double.parseDouble(edtAmount.getEditText().getText().toString()))
                 .setOrigin(edtOrigin.getEditText().getText().toString())
-                .setState(edtState.getEditText().getText().toString())
+                .setState(tvStateDisplay.getText().toString())
                 .setPositive(rdPositive.isChecked())
                 .build();
     }
@@ -117,16 +124,36 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
         edtDetail.getEditText().setText(mDebt.getDetail());
         edtAmount.getEditText().setText(String.valueOf(mDebt.getAmount()));
         edtOrigin.getEditText().setText(mDebt.getOrigin());
-        edtState.getEditText().setText(mDebt.getState());
+        tvStateDisplay.setText(mDebt.getState());
         rdNegative.setChecked(!mDebt.isPositive());
         rdPositive.setChecked(mDebt.isPositive());
         tvSave.setVisibility(View.VISIBLE);
+
+        adapter = new SpinnerStateAdapter(getContext(), Arrays.asList(getContext().getResources().getStringArray(R.array.list_state_debt)), new SpinnerStateAdapter.ISpinnerCallback() {
+            @Override
+            public void onItemSelected(String state) {
+                tvStateDisplay.setText(state);
+                hideSpinnerDropDown();
+            }
+        });
+        spState.setAdapter(adapter);
+    }
+
+    private void hideSpinnerDropDown() {
+        try {
+            Method method = Spinner.class.getDeclaredMethod("onDetachedFromWindow");
+            method.setAccessible(true);
+            method.invoke(spState);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initListener() {
         llLeft.setOnClickListener(this);
         tvSave.setOnClickListener(this);
         ivCalendar.setOnClickListener(this);
+        tvStateDisplay.setOnClickListener(this);
     }
 
     @Override
@@ -141,6 +168,9 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
         } else if (view == ivCalendar){
             DayMonthYearPickerDialog dialog = new DayMonthYearPickerDialog(getContext(), currentDate, this);
             dialog.show();
+        } else if (view == tvStateDisplay){
+            adapter.setTextView(tvStateDisplay);
+            spState.performClick();
         }
     }
 

@@ -1,5 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments;
 
+import android.support.annotation.NonNull;
+
 import java.util.Date;
 
 public interface IJarDetail {
@@ -16,4 +18,5 @@ public interface IJarDetail {
     String getState();
 
     boolean isPositive();
+
 }

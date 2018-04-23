@@ -11,8 +11,11 @@ import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto.DebtDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +56,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
             public void success(DebtResponse res) {
                 getListDebt().clear();
                 parseToJarDetailDTO(res.getDebts());
+                Collections.sort(mList);
                 if (!isViewAttached()) return;
                 getView().hideLoading();
                 getView().onSuccess();
@@ -144,7 +148,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
             incomeDTOs.remove(0);
 
             for (int i = incomeDTOs.size() - 1; i >=0; i--) {
-                if (compareDate(startDebtDTO.getDate(), incomeDTOs.get(i).getDate())) {
+                if (DateUtils.compareDate(startDebtDTO.getDate(), incomeDTOs.get(i).getDate()) == 0) {
                     listChildDebtDTO.add(incomeDTOs.get(i));
                     incomeDTOs.remove(i);
                 }
@@ -152,13 +156,5 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
 
             mList.add(new JarDetailDTO(startDebtDTO.getDate(), listChildDebtDTO));
         }
-    }
-
-    private boolean compareDate(Date date1, Date date2){
-        return date1.compareTo(date2) == 0;
-       /* date1 = date1.substring(0, date1.indexOf("T"));
-        date2 = date2.substring(0, date2.indexOf("T"));
-
-        return date1.equalsIgnoreCase(date2);*/
     }
 }

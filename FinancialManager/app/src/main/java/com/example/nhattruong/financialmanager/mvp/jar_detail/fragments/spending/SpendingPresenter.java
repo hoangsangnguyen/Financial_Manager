@@ -11,12 +11,13 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarD
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 public class SpendingPresenter extends BasePresenter implements SpendingContract.Presenter{
 
-    private List<JarDetailDTO> mListDetail;
+    private List<JarDetailDTO> mList;
     private String mJarId;
 
     public String getJarId() {
@@ -28,10 +29,10 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
     }
 
     public List<JarDetailDTO> getListSpending(){
-        if (mListDetail == null){
-            mListDetail = new ArrayList<>();
+        if (mList == null){
+            mList = new ArrayList<>();
         }
-        return mListDetail;
+        return mList;
     }
 
     @Override
@@ -48,6 +49,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             public void success(SpendingResponse res) {
                 getListSpending().clear();
                 parseToJarDetailDTO(res.getSpendings());
+                Collections.sort(mList);
                 if (!isViewAttached()) return;
                 getView().hideLoading();
                 getView().getSpendingSuccess();
@@ -110,7 +112,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
                 }
             }
 
-            mListDetail.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildSpendingDTO));
+            mList.add(new JarDetailDTO(newSpendingDTO.getDate(), listChildSpendingDTO));
         }
     }
 

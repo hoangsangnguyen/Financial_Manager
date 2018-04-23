@@ -11,8 +11,10 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDeta
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.dto.IncomeDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +52,7 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
             public void success(IncomeResponse res) {
                 getListIncome().clear();
                 parseToJarDetailDTO(res.getIncomes());
+                Collections.sort(mList);
                 if (!isViewAttached()) return;
                 getView().hideLoading();
                 getView().getIncomeSuccess();
@@ -78,7 +81,7 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
             incomeDTOs.remove(0);
 
             for (int i = incomeDTOs.size() - 1; i >=0; i--) {
-                if (compareDate(startIncomeDTO.getDate(), incomeDTOs.get(i).getDate())) {
+                if (DateUtils.compareDate(startIncomeDTO.getDate(), incomeDTOs.get(i).getDate())==0) {
                     listChildIncomeDTO.add(incomeDTOs.get(i));
                     incomeDTOs.remove(i);
                 }
@@ -86,13 +89,5 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
 
             mList.add(new JarDetailDTO(startIncomeDTO.getDate(), listChildIncomeDTO));
         }
-    }
-
-    private boolean compareDate(Date date1, Date date2){
-        /*date1 = date1.substring(0, date1.indexOf("T"));
-        date2 = date2.substring(0, date2.indexOf("T"));
-
-        return date1.equalsIgnoreCase(date2);*/
-        return date1.compareTo(date2) == 0;
     }
 }

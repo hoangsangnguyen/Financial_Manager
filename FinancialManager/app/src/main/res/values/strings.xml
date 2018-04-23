@@ -35,7 +35,7 @@
     <string-array name="states">
         <item>Done</item>
         <item>Ready</item>
-        <item>Waitting</item>
+        <item>Waiting</item>
     </string-array>
 
     <string name="provider_name">com.example.nhattruong.financialmanager.MyProvider</string>
@@ -71,7 +71,6 @@
     <string name="amount_2_dot">Amount:</string>
     <string name="detail_2_dot">Detail:</string>
     <string name="origin_2_dot">Origin:</string>
-    <string name="state_2_dot">State:</string>
     <string name="positive">Positive</string>
     <string name="negative">Negative</string>
     <string name="origin">Origin</string>
@@ -81,5 +80,14 @@
     <string name="edit_debt">Edit Debt</string>
     <string name="date_2_dot">Date:</string>
     <string name="general">General</string>
+    <string name="state_2_dot">State:</string>
 
+    <string name="waiting">Waiting</string>
+    <string name="ready">Ready</string>
+
+    <array name="list_state_debt">
+        <item>@string/ready</item>
+        <item>@string/waiting</item>
+        <item>@string/done</item>
+    </array>
 </resources>

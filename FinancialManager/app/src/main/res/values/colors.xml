@@ -22,5 +22,6 @@
     <color name="grey_600">#757575</color>
     <color name="white_color">#ffffff</color>
     <color name="yellow_color">#f5dd03</color>
+    <color name="black_opacity_50">#80000000</color>
 
 </resources>

@@ -75,27 +75,25 @@
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_gravity="end|bottom"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            fab:menu_backgroundColor="@color/white_color"
-            fab:menu_colorNormal="#F50057"
-            fab:menu_colorPressed="#E8004A"
-            fab:menu_colorRipple="#C20024"
-            fab:menu_labels_ellipsize="end"
-            fab:menu_labels_singleLine="true"
-            fab:menu_shadowColor="#000"
-            app:menu_labels_colorNormal="#C20024">
+            app:menu_backgroundColor="#66080606"
+            app:menu_labels_textColor="@color/white_color"
+            app:menu_labels_colorPressed="@color/grey_600"
+            app:menu_labels_colorNormal="#F50057"
+            fab:menu_colorNormal="#F50057">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fab_income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_jar"
+                android:src="@drawable/ic_small_jar_white"
+                fab:fab_colorNormal="#F50057"
                 fab:fab_label="@string/incomes"
                 fab:fab_size="mini" />
 
@@ -103,7 +101,8 @@
                 android:id="@+id/fab_spending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_jar"
+                android:src="@drawable/ic_small_jar_white"
+                fab:fab_colorNormal="#F50057"
                 fab:fab_label="@string/spending"
                 fab:fab_size="mini" />
 
@@ -111,7 +110,8 @@
                 android:id="@+id/fab_debt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_jar"
+                android:src="@drawable/ic_small_jar_white"
+                fab:fab_colorNormal="#F50057"
                 fab:fab_label="@string/debts"
                 fab:fab_size="mini" />
 
@@ -119,7 +119,8 @@
                 android:id="@+id/fab_general"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_jar"
+                android:src="@drawable/ic_small_jar_white"
+                fab:fab_colorNormal="#F50057"
                 fab:fab_label="@string/general"
                 fab:fab_size="mini" />
         </com.github.clans.fab.FloatingActionMenu>

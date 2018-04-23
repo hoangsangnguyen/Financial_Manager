@@ -1,6 +1,7 @@
 package com.example.nhattruong.financialmanager.utils;
 
 import com.example.nhattruong.financialmanager.mvp.income.fragment.dto.CalendarDto;
+import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -222,5 +223,12 @@ public class DateUtils {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
+    }
+
+    public static int compareDate(Date date1, Date date2){
+        SimpleDateFormat math = new SimpleDateFormat("yyyyMMdd");
+        Long date1asLong = new Long(math.format(date1));
+        Long date2asLong = new Long(math.format(date2));
+        return date1asLong.compareTo(date2asLong);
     }
 }
