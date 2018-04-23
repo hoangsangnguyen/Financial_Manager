@@ -62,7 +62,11 @@ namespace Financial_Webservice.Controllers
                     jarsNew.Add(jarToReturn);
                 }
 
-                return CreatedAtRoute("GetJars", new { userID }, jarsNew);
+                result.success = true;
+                result.message = "Create jars succeed";
+                result.results = jarsNew;
+
+                return CreatedAtRoute("GetJars", new { userID }, result);
                     
             }
 
@@ -139,8 +143,12 @@ namespace Financial_Webservice.Controllers
             }
 
             var jarToReturn = Mapper.Map<JarDto>(jarEntity);
+            result.success = true;
+            result.message = "Create jar succeed";
+            result.results = jarToReturn;
+
             return CreatedAtRoute("GetJar", new { userID = userID, id = jarToReturn._id },
-                jarToReturn);
+                result);
         }
 
     }

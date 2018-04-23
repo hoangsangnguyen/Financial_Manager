@@ -93,9 +93,12 @@ namespace Financial_Webservice.Controllers
             }
 
             var userToReturn = Mapper.Map<Models.UserDto>(userEntity);
+            result.success = true;
+            result.message = "Create user succeed";
+            result.results = userToReturn;
 
             return CreatedAtRoute("GetUser", new { id = userToReturn._id, userToReturn.token },
-                userToReturn);
+                result);
 
         }
 

@@ -121,8 +121,12 @@ namespace Financial_Webservice.Controllers
             }
 
             var debtToReturn = Mapper.Map<DebtDto>(debtEntity);
+            result.success = true;
+            result.message = "Create debt succeed";
+            result.results = debtToReturn;
+
             return CreatedAtRoute("GetDebtByID", new { userID = userID, jarID = jarID, id = debtToReturn._id },
-                debtToReturn);
+                result);
         }
 
         [HttpPut("{id}")]

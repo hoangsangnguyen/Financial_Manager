@@ -116,8 +116,12 @@ namespace Financial_Webservice.Controllers
             }
 
             var inComeToReturn = Mapper.Map<Models.InComeDto>(incomeEntity);
+            result.success = true;
+            result.message = "Create income succeed";
+            result.results = inComeToReturn;
+
             return CreatedAtRoute("GetIncome", new { token, userID, jarID, id = inComeToReturn._id },
-                inComeToReturn);
+                result);
 
         }
 

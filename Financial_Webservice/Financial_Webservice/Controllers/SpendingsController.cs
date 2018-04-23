@@ -121,8 +121,11 @@ namespace Financial_Webservice.Controllers
             }
 
             var spendingToReturn = Mapper.Map<SpendingDetailDto>(spendingEntity);
+            result.success = true;
+            result.message = "Create spending succeed";
+            result.results = spendingToReturn;
 
-            return CreatedAtRoute("GetSpendingByID", new { id = spendingEntity._id }, spendingToReturn);
+            return CreatedAtRoute("GetSpendingByID", new { id = spendingEntity._id }, result);
         }
 
         [HttpDelete("{id}")]
