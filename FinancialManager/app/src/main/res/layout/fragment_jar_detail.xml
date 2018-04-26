@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh_detail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/refresh_detail">
+    android:layout_height="match_parent">
 
-    <ExpandableListView
-        android:id="@+id/lv_detail_jar"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <ExpandableListView
+            android:id="@+id/lv_detail_jar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/small_8dp"
+            android:src="@drawable/ic_add_white"
+            fab:fab_colorNormal="#F50057" />
+    </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
 

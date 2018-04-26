@@ -1,23 +1,32 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
+import com.github.clans.fab.FloatingActionButton;
 
 import butterknife.BindView;
+
+import static android.app.Activity.RESULT_OK;
 
 public class SpendingFragment extends BaseJarDetailFragment implements SpendingContract.View{
 
     @BindView(R.id.lv_detail_jar)
     ExpandableListView lvDetail;
+
+    @BindView(R.id.fab_add_item)
+    FloatingActionButton fabAdd;
 
     @BindView(R.id.refresh_detail)
     SwipeRefreshLayout mRefresh;
@@ -79,6 +88,15 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
                 getPresenter().getAllSpending();
             }
         });
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentCreate = new Intent(getActivity(), CreateIncomeActivity.class);
+                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
+                startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
+            }
+        });
     }
 
     @Override
@@ -107,4 +125,11 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK){
+            getPresenter().getAllSpending();
+        }
+    }
 }

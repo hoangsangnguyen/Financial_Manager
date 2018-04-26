@@ -36,7 +36,6 @@ import butterknife.BindView;
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
     public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
-    public static final int REQUEST_CODE_CREATE = 22;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -64,9 +63,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @BindView(R.id.rcv_jar)
     RecyclerView rcvJar;
-
- /*   @BindView(R.id.bmb)
-    BoomMenuButton bmb;*/
 
     @BindView(R.id.fab_add)
     FloatingActionMenu fabAdd;
@@ -215,30 +211,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @Override
     public void onLoadJarsSuccess() {
         mRefresh.setRefreshing(false);
-
-      /*  bmb.clearBuilders();
-
-        bmb.setButtonEnum(ButtonEnum.TextOutsideCircle);
-        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
-        bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_6);
-
-        for (int i=0; i<getPresenter().getJarList().size(); i++){
-            TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
-                    .normalText(getPresenter().getJarList().get(i).getType())
-                    .normalImageRes(R.drawable.ic_small_jar)
-                    .listener(new OnBMClickListener() {
-                        @Override
-                        public void onBoomButtonClick(int index) {
-                            navigationView.getMenu().getItem(index).setChecked(true);
-                            Intent intentDetail = new Intent(HomeActivity.this, JarDetailActivity.class);
-                            intentDetail.putExtra(AppConstants.JAR_ID, getPresenter().getJarList().get(index).getId());
-                            Log.d("JAR HOME", String.valueOf(index));
-                            startActivity(intentDetail);
-                        }
-                    });
-            bmb.addBuilder(builder);
-        }*/
-
         mJarAdapter.notifyDataSetChanged();
     }
 
@@ -252,25 +224,25 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onClick(View view) {
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-        } else if (view == ivAdd) {
+        }/* else if (view == ivAdd) {
 
             DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
                 @Override
                 public void onAddIncomeForJar() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
-                    startActivityForResult(intentAddIncome, REQUEST_CODE_CREATE);
+                    startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
                 }
 
                 @Override
                 public void onAddGeneralIncome() {
                     Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
-                    startActivityForResult(intentAddIncome, REQUEST_CODE_CREATE);
+                    startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
                 }
             });
             dialogAddIncome.show();
-        } else {
+        }*/ else {
             Intent intentCreate = new Intent(this, CreateIncomeActivity.class);
             if (view == fabIncome){
                 intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
@@ -282,14 +254,14 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             {
                 intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
             }
-            startActivityForResult(intentCreate, REQUEST_CODE_CREATE);
+            startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             fabAdd.close(true);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CREATE) {
+        if (resultCode == RESULT_OK && requestCode == AppConstants.REQUEST_CODE_CREATE) {
             getPresenter().getJars();
         }
     }

@@ -138,8 +138,8 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         @BindView(R.id.tv_detail_amount)
         TextView tvAmount;
 
-        @BindView(R.id.iv_detail_delete)
-        ImageView ivDelete;
+       /* @BindView(R.id.iv_detail_delete)
+        ImageView ivDelete;*/
 
         DetailBodyHolder(View itemView) {
             super(itemView);
@@ -149,16 +149,16 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         public void bind(IJarDetail dto, final int i, final int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf(dto.getAmount())));
-            ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
+//            ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
             itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1) ? R.drawable.bg_white_grey_bottom : R.color.white_color);
-            ivDelete.setOnClickListener(new View.OnClickListener() {
+            /*ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (mCallbackDetail != null){
                         mCallbackDetail.onDeleteClicked(i, i1);
                     }
                 }
-            });
+            });*/
         }
     }
 
@@ -173,8 +173,8 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         @BindView(R.id.iv_detail_edit)
         ImageView ivEdit;
 
-        @BindView(R.id.iv_detail_delete)
-        ImageView ivDelete;
+        /*@BindView(R.id.iv_detail_delete)
+        ImageView ivDelete;*/
 
         @BindView(R.id.tv_detail_origin)
         TextView tvOrigin;
@@ -209,12 +209,12 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
                 }
             });
 
-            ivDelete.setOnClickListener(new View.OnClickListener() {
+           /* ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mCallbackDebt.onDeleteClicked(i, i1);
                 }
-            });
+            });*/
         }
 
     }

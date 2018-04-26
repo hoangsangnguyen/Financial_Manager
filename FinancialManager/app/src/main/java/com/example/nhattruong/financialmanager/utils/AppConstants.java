@@ -50,4 +50,6 @@ public class AppConstants {
     public static final int CREATE_DEBT = 2;
     public static final int CREATE_GENERAL= 3;
 
+    public static final int REQUEST_CODE_CREATE = 22;
+
 }

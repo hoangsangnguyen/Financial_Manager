@@ -75,11 +75,11 @@
             android:layout_gravity="center"
             android:contentDescription="@null" />
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/iv_detail_delete"
             style="@style/btnDelete"
             android:layout_gravity="end|center"
-            android:contentDescription="@null" />
+            android:contentDescription="@null" />-->
     </LinearLayout>
 
     <LinearLayout
