@@ -8,10 +8,12 @@
 
 #import "BaseVC.h"
 #import "BaseClv.h"
+#import "VCFloatingActionButton.h"
 
 @interface OverViewVC : BaseVC
 
 @property (nonatomic, weak) IBOutlet BaseClv *clvContent;
-@property (strong, nonatomic) IBOutlet UIView *vAddIncome;
+
+@property (strong, nonatomic) VCFloatingActionButton *btnFloat;
 
 @end

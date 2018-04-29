@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
 
     _lblTitile.text = _strTitle;
+    _lblSub.text = _strTitleSub;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +40,7 @@
     AlertVC *vc = VCFromSB(AlertVC, SB_Common);
     [vc setCallback:callback];
     vc.strTitle = title;
+    vc.strTitleSub = content;
     [AppNav presentViewController:vc animated:NO completion:^{
         [UIView animateWithDuration:0.4 animations:^{
             vc.vContent.transform = CGAffineTransformIdentity;
@@ -51,6 +53,7 @@
     AlertVC *vc = VCFromSB(AlertVC, SB_Common);
     [vc setCallback:callback];
     vc.strTitle = title;
+    vc.strTitleSub = content;
     [controller presentViewController:vc animated:NO completion:^{
         [UIView animateWithDuration:0.4 animations:^{
             vc.vContent.transform = CGAffineTransformIdentity;
@@ -65,6 +68,7 @@
         _vContent.alpha = 0;
     } completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:NO completion:nil];
+        _callback(YES);
     }];
     
 }

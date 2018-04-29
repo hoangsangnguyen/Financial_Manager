@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "define.h"
+#import "NSDateFormatter+Util.h"
 
 @interface BaseDto : NSObject
 

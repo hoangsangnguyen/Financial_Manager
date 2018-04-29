@@ -11,6 +11,12 @@
 #import "CategoryCell.h"
 #import "AlertVC.h"
 #import "JarDto.h"
+#import "AlertPickerVC.h"
+#import "PickerPopUpVC.h"
+#import "API.h"
+#import "define.h"
+#import "Configure.h"
+#import "DetailJarDto.h"
 
 typedef enum : NSUInteger {
     Income = 0,
@@ -28,7 +34,13 @@ typedef enum : NSUInteger {
     Total,
 } typeCalculator;
 
-@interface CaculatorVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate> {
+typedef enum : NSUInteger {
+    Incomes = 0,
+    Spending,
+    Debts,
+} typeJar;
+
+@interface CaculatorVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, UITextViewDelegate, UITextFieldDelegate> {
     NSInteger _typeButton;
     NSString *_strNumber;
     NSString *_strNumberPoint;
@@ -36,9 +48,20 @@ typedef enum : NSUInteger {
     NSInteger _stepIndex;
     CGRect _frameShowViewCategory;
     CGRect _frameShowViewDetail;
+    CGRect _frameShowViewState;
     CGRect _frameBeforShowView;
     
+    NSDate *dateDetail;
+    NSDateFormatter *dfDate;
+    
     NSInteger indexCategory;
+    
+    BOOL isPositive;
+    NSInteger state;
+    NSString *origin;
+    NSMutableArray *arrState;
+    
+    DetailJarDto *data;
     
     ListJarDto *_listJars;
 }
@@ -50,6 +73,7 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     _listJars = Config.listJar;
+    data = [[DetailJarDto alloc] init];
     [self initUI];
 }
 
@@ -65,6 +89,16 @@ typedef enum : NSUInteger {
     _typeButton = OutCome;
     [_vBackground setBackgroundColor:Caculator_OUTCOME];
     _btnNumber.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    dfDate = [[NSDateFormatter alloc] init];
+    [dfDate setDateFormat:@"dd-MM-yyyy"];
+    dateDetail = [NSDate new];
+    _lblDate.text = [dfDate stringFromDate:dateDetail];
+    
+    arrState = [[NSMutableArray alloc] init];
+    for (StatesDto *data in Config.listState.list) {
+        [arrState addObject:data.name];
+    }
+    _lblTitleState.text = @"Ready";
     
     indexCategory = -1;
     _stepIndex = 0;
@@ -79,21 +113,38 @@ typedef enum : NSUInteger {
     // UICategory
     _vCategory.layer.cornerRadius = 10;
     _vDetail.layer.cornerRadius = 10;
+    _vState.layer.cornerRadius = 10;
     
     _vDetail.layer.shadowColor = GRAY_COLOR.CGColor;
     _vDetail.layer.shadowOpacity = 1;
     _vDetail.layer.shadowOffset = CGSizeZero;
     _vDetail.layer.shadowRadius = 5;
-    
+    _tvDetail.layer.cornerRadius = 10;
+    _tvDetail.layer.borderWidth =1;
+    _tvDetail.layer.borderColor = BLUE_COLOR.CGColor;
+    _tvDetail.clipsToBounds = YES;
+
     _vCategory.layer.shadowColor = GRAY_COLOR.CGColor;
     _vCategory.layer.shadowOpacity = 1;
     _vCategory.layer.shadowOffset = CGSizeZero;
     _vCategory.layer.shadowRadius = 5;
     
+    _vState.layer.shadowColor = GRAY_COLOR.CGColor;
+    _vState.layer.shadowOpacity = 1;
+    _vState.layer.shadowOffset = CGSizeZero;
+    _vState.layer.shadowRadius = 5;
+    
     if (_type == Jar) {
-        _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
-        _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
-        _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+        if (_typeJars == Debts) {
+            _frameShowViewState = CGRectMake(0, 165, SWIDTH, SHEIGHT -165);
+            _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
+            _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
+            _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+        } else {
+            _frameShowViewCategory = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
+            _frameShowViewDetail = CGRectMake(0, 180, SWIDTH, SHEIGHT -180);
+            _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
+        }
     } else {
         _frameShowViewDetail = CGRectMake(0, 150, SWIDTH, SHEIGHT -150);
         _frameBeforShowView = CGRectMake(0, SHEIGHT, SWIDTH, 0);
@@ -140,9 +191,21 @@ typedef enum : NSUInteger {
     }
 }
 
--(IBAction)selectedBtnDetail:(id)sender {
+-(IBAction)selectedBtnState:(id)sender {
     [self animationDetail];
     _stepIndex++;
+}
+
+-(IBAction)selectedBtnDetail:(id)sender {
+    if (_type == Jar) {
+        if (_typeJars == Debts) {
+            [self animationState];
+            _stepIndex++;
+        } else {
+            [self animationDetail];
+            _stepIndex++;
+        }
+    }
 }
 
 -(IBAction)selectedBtnFinal:(id)sender {
@@ -175,6 +238,33 @@ typedef enum : NSUInteger {
 
 - (IBAction)selectedBtnOutcome:(id)sender {
     [self animationSelectedBtnWith:OutCome];
+}
+
+- (IBAction)selectedCalendar:(id)sender {
+    [AlertPickerVC showAlertPickerWithshow:self CurrentDate:dateDetail Mode:AlertPickerModeDay callback:^(BOOL hasPressOK, NSString *stt, NSDate *date) {
+        dateDetail = date;
+        _lblDate.text = [dfDate stringFromDate:date];
+    }];
+}
+
+- (IBAction)selectedOrigin:(id)sender {
+
+    [PickerPopUpVC showPickerFromVC:self atView:sender arrayData:arrState oldIndex:state callback:^(NSUInteger selectedIndex, NSString *title) {
+        state = selectedIndex;
+        _lblTitleState.text = title;
+    }];
+}
+
+- (IBAction)selectedPosNeg:(UIButton *)sender {
+    if (sender.tag == 0) {
+        [_btnNev setImage:[UIImage imageNamed:@"ic-ovalChecked"] forState:UIControlStateNormal];
+        [_btnPos setImage:[UIImage imageNamed:@"ic-ovalNonCheck"] forState:UIControlStateNormal];
+        isPositive = NO;
+    } else {
+        [_btnNev setImage:[UIImage imageNamed:@"ic-ovalNonCheck"] forState:UIControlStateNormal];
+        [_btnPos setImage:[UIImage imageNamed:@"ic-ovalChecked"] forState:UIControlStateNormal];
+        isPositive = YES;
+    }
 }
 
 #pragma mark - CustomAnimation Caculator
@@ -240,6 +330,19 @@ typedef enum : NSUInteger {
     }];
 }
 
+- (void)animationState {
+    [self.view addSubview:_vState];
+    [_vState setFrame:_frameBeforShowView];
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
+            [_vState setFrame:_frameShowViewState];
+            _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 - (void)animationDetail {
     [self.view addSubview:_vDetail];
     [_vDetail setFrame:_frameBeforShowView];
@@ -251,8 +354,15 @@ typedef enum : NSUInteger {
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
         
         if (_type == Jar) {
-            [_vDetail setFrame:_frameShowViewDetail];
-            _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+            if (_typeJars == Debts) {
+                [_vDetail setFrame:_frameShowViewDetail];
+                _vState.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+                _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8, 1.2);
+            } else {
+                [_vDetail setFrame:_frameShowViewDetail];
+                _vCategory.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.9, 1.1);
+            }
+
         } else {
             if (_typeButton == OutCome) {
                 [_btnOutCome setFrame:CGRectMake(SWIDTH/2 - rectBtnOutCome.size.width/2 +5, 0, rectBtnOutCome.size.width, rectBtnOutCome.size.height)];
@@ -278,10 +388,74 @@ typedef enum : NSUInteger {
 }
 
 - (void)animationFinal {
-    [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
-//        [self dismissViewControllerAnimated:YES completion:^{
-//
-//        }];
+    if (_type == Jar) {
+        [self createJarServer];
+    } else {
+        [self createTotal];
+    }
+}
+
+#pragma mark - API
+
+- (void)createJarServer {
+    JarDto *jar = _listJars.list[indexCategory];
+    data._idJar = jar._id;
+    data.date = dateDetail;
+    data.amount = [_strNumber floatValue];
+    data.detail = _tvDetail.text;
+    
+    [App showLoading];
+    
+    switch (_typeJars) {
+        case Incomes:
+        {
+            [API createIncomeJarDetail:data callback:^(BOOL success, id data) {
+                [App hideLoading];
+                [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }];
+        }
+            break;
+            
+        case Spending:
+        {
+            [API createSpendingsJarDetail:data callback:^(BOOL success, id data) {
+                [App hideLoading];
+                [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }];
+        }
+            break;
+            
+        case Debts:
+        {
+            data.state = _lblTitleState.text;
+            data.isPositive = isPositive;
+            data.origin = _tfOrigin.text;
+            [API createDebtsJarDetail:data callback:^(BOOL success, id data) {
+                [App hideLoading];
+                [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }];
+        }
+            break;
+    }
+}
+
+- (void)createTotal {
+    data.date = dateDetail;
+    data.amount = [_strNumber floatValue];
+    data.detail = _tvDetail.text;
+    [App showLoading];
+    [API createIncomeGeneral:data callback:^(BOOL success, id data) {
+        [App hideLoading];
+        [AlertVC show:self content:@"Finished" title:@"Finished" callback:^(BOOL hasPressOK) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }];
     }];
 }
 
@@ -350,5 +524,27 @@ typedef enum : NSUInteger {
     NSInteger scrollIndex  = (scr.contentOffset.x + w/2) / w;
     _pageCategory.currentPage = scrollIndex;
 }
+
+#pragma mark - TextFied
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == _tfOrigin) {
+        [textField resignFirstResponder];
+    }
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

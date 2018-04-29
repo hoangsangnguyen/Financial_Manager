@@ -44,6 +44,10 @@
         JO(userName);
         JO(password);
     } else if (method == METHOD_POST_2) {
+        JO(firstName);
+        JO(lastName);
+        JO(email);
+        JO(phone);
         JO(userName);
         JO(password);
     }

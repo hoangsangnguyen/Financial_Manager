@@ -30,6 +30,8 @@
 
 @property (nonatomic, weak) IBOutlet UIView *vBackground;
 
+@property (nonatomic, weak) IBOutlet UIView  *lineView;
+
 @property (nonatomic, weak) id<BaseCellDelegate> delegate;
 
 @end

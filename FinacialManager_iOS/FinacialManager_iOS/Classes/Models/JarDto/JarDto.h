@@ -15,9 +15,12 @@
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *image;
 @property (nonatomic, assign) double incomes;
-@property (nonatomic, assign) double debts;
+@property (nonatomic, assign) double posDebts;
+@property (nonatomic, assign) double negWaittingDebts;
+@property (nonatomic, assign) double negReadyDebts;
+@property (nonatomic, assign) double negDoneDebts;
 @property (nonatomic, assign) double spendings;
-
+@property (nonatomic, assign) double avaiableAmount;
 
 @end
 

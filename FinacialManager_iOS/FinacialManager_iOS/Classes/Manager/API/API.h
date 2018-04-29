@@ -18,6 +18,7 @@
 @class ListDishDto;
 @class DishTypeDto;
 @class JarDto;
+@class DetailJarDto;
 
 typedef void (^APICallback)(BOOL success, id data);
 
@@ -56,6 +57,19 @@ typedef void (^APICallback)(BOOL success, id data);
 #pragma mark - State
 
 - (void)getAllState: (APICallback)callback;
+
+#pragma mark - GetIncome
+- (void)getIncomeJarDetail: (JarDto *)data callback: (APICallback)callback;
+- (void)createIncomeJarDetail:(DetailJarDto *)data callback: (APICallback)callback;
+- (void)createIncomeGeneral:(DetailJarDto *)data callback: (APICallback)callback;
+
+#pragma mark - GetSpendings
+- (void)getSpendingsJarDetail: (JarDto *)data callback: (APICallback)callback;
+- (void)createSpendingsJarDetail:(DetailJarDto *)data callback: (APICallback)callback;
+
+#pragma mark - GetDebts
+- (void)getDebtsJarDetail: (JarDto *)data callback: (APICallback)callback;
+- (void)createDebtsJarDetail:(DetailJarDto *)data callback: (APICallback)callback;
 
 @end
 

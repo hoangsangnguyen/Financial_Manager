@@ -31,7 +31,6 @@
     //Init SlideNav
     
     MenuVC *leftMenu = VCFromSB(MenuVC, SB_Main);
-
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     [SlideNavigationController sharedInstance].menuRevealAnimationDuration = 0.3;
     [SlideNavigationController sharedInstance].portraitSlideOffset = 100;

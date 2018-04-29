@@ -12,6 +12,13 @@
 
 
 @property (nonatomic, weak) IBOutlet UILabel *lblType;
+@property (nonatomic, weak) IBOutlet UILabel *lblDetail;
+@property (nonatomic, weak) IBOutlet UILabel *lblAmuont;
+@property (nonatomic, weak) IBOutlet UILabel *lblOrigin;
+@property (nonatomic, weak) IBOutlet UILabel *lblStaate;
 @property (nonatomic, weak) IBOutlet UIImageView *imgJar;
+
+@property (nonatomic, strong) IBOutlet UIButton *btnNev;
+@property (nonatomic, strong) IBOutlet UIButton *btnPos;
 
 @end

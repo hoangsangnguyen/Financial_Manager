@@ -17,8 +17,12 @@
             IO(_id);
             IO(type);
             ID(incomes);
-            ID(debts);
+            ID(posDebts);
+            ID(negWaittingDebts);
+            ID(negReadyDebts);
+            ID(negDoneDebts);
             ID(spendings);
+            ID(avaiableAmount);
         }
     }
     return self;
@@ -29,8 +33,12 @@
     JO(_id);
     JO(type);
     JD(incomes);
-    JD(debts);
+    JD(posDebts);
+    JD(negWaittingDebts);
+    JD(negReadyDebts);
+    JD(negDoneDebts);
     JD(spendings);
+    JD(avaiableAmount);
     
     return dic;
 }

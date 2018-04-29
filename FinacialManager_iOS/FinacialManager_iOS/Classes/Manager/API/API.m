@@ -13,6 +13,7 @@
 #import "JarDto.h"
 #import "TypeDto.h"
 #import "StatesDto.h"
+#import "DetailJarDto.h"
 
 @interface _API ()
 @property (nonatomic, assign) NSInteger _countRequest;
@@ -209,7 +210,7 @@
 }
 
 - (void)registerAccount:(UserDto*)user callback:(APICallback)callback {
-    [self processAPI:@"users/register"
+    [self processAPI:@"users"
               method:METHOD_POST_2
               header:nil
                 body:user
@@ -254,6 +255,73 @@
               header:nil
                 body:nil
         successClass:[ListStatesDto class]
+            callback:callback];
+}
+
+#pragma mark - GetIncome
+- (void)getIncomeJarDetail: (JarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@/incomes",Config.userDto._id,data._id)
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListDetailJarDto class]
+            callback:callback];
+}
+
+- (void)createIncomeJarDetail:(DetailJarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@/incomes",Config.userDto._id,data._idJar)
+              method:METHOD_POST
+              header:nil
+                body:data
+        successClass:[DetailJarDto class]
+            callback:callback];
+}
+
+- (void)createIncomeGeneral:(DetailJarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/incomes",Config.userDto._id)
+              method:METHOD_POST
+              header:nil
+                body:data
+        successClass:[DetailJarDto class]
+            callback:callback];
+}
+
+
+#pragma mark - GetSpendings
+- (void)getSpendingsJarDetail: (JarDto *)data callback: (APICallback)callback{
+    [self processAPI:SF(@"/users/%@/jars/%@/spendings",Config.userDto._id,data._id)
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListDetailJarDto class]
+            callback:callback];
+}
+
+- (void)createSpendingsJarDetail:(DetailJarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@/spendings",Config.userDto._id,data._idJar)
+              method:METHOD_POST
+              header:nil
+                body:data
+        successClass:[DetailJarDto class]
+            callback:callback];
+}
+
+#pragma mark - GetDebts
+- (void)getDebtsJarDetail: (JarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@/debts",Config.userDto._id,data._id)
+              method:METHOD_GET
+              header:nil
+                body:nil
+        successClass:[ListDetailJarDto class]
+            callback:callback];
+}
+
+- (void)createDebtsJarDetail:(DetailJarDto *)data callback: (APICallback)callback {
+    [self processAPI:SF(@"/users/%@/jars/%@/debts",Config.userDto._id,data._idJar)
+              method:METHOD_POST_2
+              header:nil
+                body:data
+        successClass:[DetailJarDto class]
             callback:callback];
 }
 

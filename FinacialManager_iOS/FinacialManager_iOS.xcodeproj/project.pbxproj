@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		42F72D9C2077B4000014173E /* TypeDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F72D9B2077B4000014173E /* TypeDto.m */; };
 		C77F7C9BE87C4BDDB6200893 /* libPods-FinacialManager_iOSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */; };
+		CA02840B2091B97300682236 /* DetailJarDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA02840A2091B97300682236 /* DetailJarDto.m */; };
+		CA0284132091BAEF00682236 /* NSDateFormatter+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0284122091BAEF00682236 /* NSDateFormatter+Util.m */; };
+		CA0284822091C51200682236 /* NSDate+NSDateEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0284812091C51200682236 /* NSDate+NSDateEx.m */; };
 		CA23AF30207CFEB9001662D8 /* StatesDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA23AF2F207CFEB9001662D8 /* StatesDto.m */; };
 		CA2B86FA20729C8E000FF7FC /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */; };
 		CA2B86FB20729C8E000FF7FC /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2B86F920729C8E000FF7FC /* UserNotifications.framework */; };
 		CA2D6329207D110700CEA328 /* BaseClv.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6318207D110700CEA328 /* BaseClv.m */; };
 		CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2EC1C3207355E600312C91 /* CalendarVC.m */; };
+		CA39AF6F2095F16400D0C916 /* PickerPopUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA39AF6C2095F16400D0C916 /* PickerPopUpCell.xib */; };
+		CA39AF702095F16400D0C916 /* PickerPopUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA39AF6E2095F16400D0C916 /* PickerPopUpVC.m */; };
 		CA4530D820810B9500B71BCC /* Caculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4530D720810B9500B71BCC /* Caculator.storyboard */; };
 		CA4530DC2081104A00B71BCC /* GateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4530DB2081104A00B71BCC /* GateVC.m */; };
 		CA4530E02081120200B71BCC /* GateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4530DF2081120200B71BCC /* GateView.m */; };
@@ -30,6 +35,10 @@
 		CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D819D205E510E005C23E6 /* BaseDto.m */; };
 		CA61B99020635DC00022A097 /* Overview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA61B98F20635DC00022A097 /* Overview.storyboard */; };
 		CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA61B99320635E0C0022A097 /* OverViewVC.m */; };
+		CA681C622095939300ADFF7A /* VCFloatingActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA681C602095939300ADFF7A /* VCFloatingActionButton.m */; };
+		CA681C66209595B800ADFF7A /* floatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA681C63209595B800ADFF7A /* floatTableViewCell.xib */; };
+		CA681C67209595B800ADFF7A /* floatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA681C64209595B800ADFF7A /* floatTableViewCell.m */; };
+		CA681C6B2095A8E100ADFF7A /* AlertPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CA681C692095A8E100ADFF7A /* AlertPickerVC.m */; };
 		CA6CFE3A206C94E5001314AB /* HButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE39206C94E5001314AB /* HButton.m */; };
 		CA6CFE3D206CF1E9001314AB /* ChosseCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */; };
 		CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6CFE3F206CF20B001314AB /* ChosseCategory.m */; };
@@ -82,6 +91,14 @@
 		888FDD289807EEC14A2CDE39 /* libPods-FinacialManager_iOSUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOSUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14EA6208C98D76168B421F4 /* libPods-FinacialManager_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinacialManager_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A388AB52E29658A3070DAD2E /* Pods-FinacialManager_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialManager_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialManager_iOSUITests/Pods-FinacialManager_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA0284092091B97300682236 /* DetailJarDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailJarDto.h; sourceTree = "<group>"; };
+		CA02840A2091B97300682236 /* DetailJarDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailJarDto.m; sourceTree = "<group>"; };
+		CA0284112091BAEF00682236 /* NSDateFormatter+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Util.h"; sourceTree = "<group>"; };
+		CA0284122091BAEF00682236 /* NSDateFormatter+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Util.m"; sourceTree = "<group>"; };
+		CA0284772091BB6C00682236 /* NSTimeZone+Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimeZone+Util.h"; sourceTree = "<group>"; };
+		CA0284782091BB6C00682236 /* NSTimeZone+Util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimeZone+Util.m"; sourceTree = "<group>"; };
+		CA0284802091C51200682236 /* NSDate+NSDateEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDateEx.h"; sourceTree = "<group>"; };
+		CA0284812091C51200682236 /* NSDate+NSDateEx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateEx.m"; sourceTree = "<group>"; };
 		CA23AF2E207CFEB9001662D8 /* StatesDto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatesDto.h; sourceTree = "<group>"; };
 		CA23AF2F207CFEB9001662D8 /* StatesDto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatesDto.m; sourceTree = "<group>"; };
 		CA2B86F820729C8E000FF7FC /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -90,6 +107,9 @@
 		CA2D6318207D110700CEA328 /* BaseClv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClv.m; sourceTree = "<group>"; };
 		CA2EC1C2207355E600312C91 /* CalendarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarVC.h; sourceTree = "<group>"; };
 		CA2EC1C3207355E600312C91 /* CalendarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarVC.m; sourceTree = "<group>"; };
+		CA39AF6C2095F16400D0C916 /* PickerPopUpCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerPopUpCell.xib; sourceTree = "<group>"; };
+		CA39AF6D2095F16400D0C916 /* PickerPopUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerPopUpVC.h; sourceTree = "<group>"; };
+		CA39AF6E2095F16400D0C916 /* PickerPopUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerPopUpVC.m; sourceTree = "<group>"; };
 		CA4530D720810B9500B71BCC /* Caculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Caculator.storyboard; sourceTree = "<group>"; };
 		CA4530DA2081104A00B71BCC /* GateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GateVC.h; sourceTree = "<group>"; };
 		CA4530DB2081104A00B71BCC /* GateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GateVC.m; sourceTree = "<group>"; };
@@ -121,6 +141,13 @@
 		CA61B98F20635DC00022A097 /* Overview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overview.storyboard; sourceTree = "<group>"; };
 		CA61B99220635E0C0022A097 /* OverViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverViewVC.h; sourceTree = "<group>"; };
 		CA61B99320635E0C0022A097 /* OverViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverViewVC.m; sourceTree = "<group>"; };
+		CA681C602095939300ADFF7A /* VCFloatingActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFloatingActionButton.m; sourceTree = "<group>"; };
+		CA681C612095939300ADFF7A /* VCFloatingActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFloatingActionButton.h; sourceTree = "<group>"; };
+		CA681C63209595B800ADFF7A /* floatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = floatTableViewCell.xib; sourceTree = "<group>"; };
+		CA681C64209595B800ADFF7A /* floatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floatTableViewCell.m; sourceTree = "<group>"; };
+		CA681C65209595B800ADFF7A /* floatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = floatTableViewCell.h; sourceTree = "<group>"; };
+		CA681C692095A8E100ADFF7A /* AlertPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertPickerVC.m; sourceTree = "<group>"; };
+		CA681C6A2095A8E100ADFF7A /* AlertPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertPickerVC.h; sourceTree = "<group>"; };
 		CA6CFE38206C94E5001314AB /* HButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HButton.h; sourceTree = "<group>"; };
 		CA6CFE39206C94E5001314AB /* HButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HButton.m; sourceTree = "<group>"; };
 		CA6CFE3C206CF1E9001314AB /* ChosseCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChosseCategory.xib; sourceTree = "<group>"; };
@@ -239,6 +266,52 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CA0284082091B95200682236 /* DetailJarDto */ = {
+			isa = PBXGroup;
+			children = (
+				CA0284092091B97300682236 /* DetailJarDto.h */,
+				CA02840A2091B97300682236 /* DetailJarDto.m */,
+			);
+			path = DetailJarDto;
+			sourceTree = "<group>";
+		};
+		CA02840C2091BA6F00682236 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				CA0284762091BB6C00682236 /* TimeZone */,
+				CA0284102091BAEF00682236 /* DateFormatter */,
+				CA02847C2091C4F500682236 /* NSDateEx */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		CA0284102091BAEF00682236 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				CA0284112091BAEF00682236 /* NSDateFormatter+Util.h */,
+				CA0284122091BAEF00682236 /* NSDateFormatter+Util.m */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		CA0284762091BB6C00682236 /* TimeZone */ = {
+			isa = PBXGroup;
+			children = (
+				CA0284772091BB6C00682236 /* NSTimeZone+Util.h */,
+				CA0284782091BB6C00682236 /* NSTimeZone+Util.m */,
+			);
+			path = TimeZone;
+			sourceTree = "<group>";
+		};
+		CA02847C2091C4F500682236 /* NSDateEx */ = {
+			isa = PBXGroup;
+			children = (
+				CA0284802091C51200682236 /* NSDate+NSDateEx.h */,
+				CA0284812091C51200682236 /* NSDate+NSDateEx.m */,
+			);
+			path = NSDateEx;
+			sourceTree = "<group>";
+		};
 		CA23AF2D207CFE97001662D8 /* StatesDto */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +337,16 @@
 				CA2EC1C3207355E600312C91 /* CalendarVC.m */,
 			);
 			path = CalendarVC;
+			sourceTree = "<group>";
+		};
+		CA39AF6B2095F16400D0C916 /* PickerPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				CA39AF6C2095F16400D0C916 /* PickerPopUpCell.xib */,
+				CA39AF6D2095F16400D0C916 /* PickerPopUpVC.h */,
+				CA39AF6E2095F16400D0C916 /* PickerPopUpVC.m */,
+			);
+			path = PickerPopUp;
 			sourceTree = "<group>";
 		};
 		CA4530D92081102300B71BCC /* GateVC */ = {
@@ -322,6 +405,7 @@
 		CA5D8165205E4FA3005C23E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA681C5F2095938300ADFF7A /* FloatingButton */,
 				CAFB8F7120720B21009EA2B3 /* MView */,
 				CA6CFE3B206CF1BD001314AB /* ChosseCategory */,
 				CA5D817A205E5038005C23E6 /* AnimationsSlideNav */,
@@ -348,6 +432,7 @@
 		CA5D8167205E4FB1005C23E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA0284082091B95200682236 /* DetailJarDto */,
 				CA23AF2D207CFE97001662D8 /* StatesDto */,
 				42F72D992077B3B40014173E /* TypesDto */,
 				CA701389207613AC00962831 /* JarDto */,
@@ -467,6 +552,27 @@
 				CA61B99320635E0C0022A097 /* OverViewVC.m */,
 			);
 			path = OverViewVC;
+			sourceTree = "<group>";
+		};
+		CA681C5F2095938300ADFF7A /* FloatingButton */ = {
+			isa = PBXGroup;
+			children = (
+				CA681C65209595B800ADFF7A /* floatTableViewCell.h */,
+				CA681C64209595B800ADFF7A /* floatTableViewCell.m */,
+				CA681C63209595B800ADFF7A /* floatTableViewCell.xib */,
+				CA681C612095939300ADFF7A /* VCFloatingActionButton.h */,
+				CA681C602095939300ADFF7A /* VCFloatingActionButton.m */,
+			);
+			path = FloatingButton;
+			sourceTree = "<group>";
+		};
+		CA681C682095A8D600ADFF7A /* AlertPickerVC */ = {
+			isa = PBXGroup;
+			children = (
+				CA681C6A2095A8E100ADFF7A /* AlertPickerVC.h */,
+				CA681C692095A8E100ADFF7A /* AlertPickerVC.m */,
+			);
+			path = AlertPickerVC;
 			sourceTree = "<group>";
 		};
 		CA6CFE37206C94E5001314AB /* HButton */ = {
@@ -692,6 +798,7 @@
 		CABBA128206A161E00254F95 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CA02840C2091BA6F00682236 /* NSDate */,
 				CA6CFE37206C94E5001314AB /* HButton */,
 				CABBA14F206A166700254F95 /* View */,
 				CABBA15E206A167B00254F95 /* Button */,
@@ -749,7 +856,9 @@
 		CAFB8F7720721D06009EA2B3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CA681C682095A8D600ADFF7A /* AlertPickerVC */,
 				CAFB8F7820721D0E009EA2B3 /* AlertVC */,
+				CA39AF6B2095F16400D0C916 /* PickerPopUp */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -853,7 +962,9 @@
 			files = (
 				CA76570E205EB70300751B9F /* Login.storyboard in Resources */,
 				CA4530D820810B9500B71BCC /* Caculator.storyboard in Resources */,
+				CA681C66209595B800ADFF7A /* floatTableViewCell.xib in Resources */,
 				CAAE45A8205CB14D00090152 /* LaunchScreen.storyboard in Resources */,
+				CA39AF6F2095F16400D0C916 /* PickerPopUpCell.xib in Resources */,
 				CAAE45A5205CB14D00090152 /* Assets.xcassets in Resources */,
 				CAFB8F7620721C46009EA2B3 /* Common.storyboard in Resources */,
 				CA61B99020635DC00022A097 /* Overview.storyboard in Resources */,
@@ -976,15 +1087,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA5D818D205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				CA39AF702095F16400D0C916 /* PickerPopUpVC.m in Sources */,
 				CA7300D9206E1A770085E616 /* CategoryCell.m in Sources */,
+				CA681C6B2095A8E100ADFF7A /* AlertPickerVC.m in Sources */,
 				CA23AF30207CFEB9001662D8 /* StatesDto.m in Sources */,
 				CA61B99420635E0C0022A097 /* OverViewVC.m in Sources */,
 				CA5D8189205E5038005C23E6 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				CA76571D205EB72C00751B9F /* SignInVC.m in Sources */,
 				CA5D8196205E5049005C23E6 /* Configure.m in Sources */,
 				CA765708205EB62100751B9F /* BaseTBV.m in Sources */,
+				CA681C67209595B800ADFF7A /* floatTableViewCell.m in Sources */,
 				CA701388207613A900962831 /* JarDto.m in Sources */,
 				CAAE45AB205CB14D00090152 /* main.m in Sources */,
+				CA0284132091BAEF00682236 /* NSDateFormatter+Util.m in Sources */,
 				CA765707205EB62100751B9F /* BaseCell.m in Sources */,
 				CA5D818A205E5038005C23E6 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				CA76570A205EB62100751B9F /* BaseVC.m in Sources */,
@@ -998,11 +1113,13 @@
 				CA5D818C205E5038005C23E6 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				CAFB8F7420720B35009EA2B3 /* MView.m in Sources */,
 				CA5D818E205E5038005C23E6 /* SlideNavigationController.m in Sources */,
+				CA0284822091C51200682236 /* NSDate+NSDateEx.m in Sources */,
 				CA5D819A205E508B005C23E6 /* UserDto.m in Sources */,
 				CA5D8195205E5049005C23E6 /* API.m in Sources */,
 				CAFB8F7B20721D24009EA2B3 /* AlertVC.m in Sources */,
 				CA765709205EB62100751B9F /* BaseNV.m in Sources */,
 				CA81D4AF208AD9D500A35E2F /* ProfileVC.m in Sources */,
+				CA02840B2091B97300682236 /* DetailJarDto.m in Sources */,
 				CA4530E02081120200B71BCC /* GateView.m in Sources */,
 				CABBA161206A169C00254F95 /* UIButton+Button.m in Sources */,
 				CACAA6A5205EBDFB0096DB80 /* MenuDto.m in Sources */,
@@ -1013,6 +1130,7 @@
 				CA5D819E205E510E005C23E6 /* BaseDto.m in Sources */,
 				CA76571E205EB72C00751B9F /* SignUpVC.m in Sources */,
 				CAAE459D205CB14D00090152 /* AppDelegate.m in Sources */,
+				CA681C622095939300ADFF7A /* VCFloatingActionButton.m in Sources */,
 				CA2EC1C4207355E600312C91 /* CalendarVC.m in Sources */,
 				42F72D9C2077B4000014173E /* TypeDto.m in Sources */,
 				CA6CFE40206CF20B001314AB /* ChosseCategory.m in Sources */,

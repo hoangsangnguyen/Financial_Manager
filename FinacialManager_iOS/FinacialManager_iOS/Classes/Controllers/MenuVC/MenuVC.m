@@ -11,6 +11,8 @@
 #import "UserDto.h"
 #import "WelcomeVC.h"
 #import "ProfileVC.h"
+#import "JarDetailVC.h"
+#import "AlertVC.h"
 
 typedef enum : NSUInteger {
     List = 0,
@@ -41,11 +43,15 @@ typedef enum : NSUInteger {
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    _lblEmail.text = Config.userDto.email;
+    _lblUserName.text= Config.userDto.userName;
+}
+
 - (void)initUI {
     [UIView addShadowWithRadius:2.0 withShadowOpacity:0.8 withShadowOffset:CGSizeMake(0, 0) withShadowColor:GRAY_COLOR withCornerRadius:1 forView:_vLineMenu];
     [UIView addShadowWithRadius:2.0 withShadowOpacity:0.8 withShadowOffset:CGSizeMake(0, 0) withShadowColor:GRAY_COLOR withCornerRadius:1 forView:_vLineUser];
-    _lblEmail.text = Config.userDto.email;
-    _lblUserName.text= Config.userDto.userName;
 }
 
 #pragma mark initListMenu
@@ -100,15 +106,20 @@ typedef enum : NSUInteger {
     BaseCell *cell = (BaseCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     UIView *cellBg = [[UIView alloc] initWithFrame:cell.frame];
-
+    cellBg.backgroundColor = MAINCOLOR;
+    cell.selectedBackgroundView = cellBg;
+    cell.lblTitle.textColor = WHITE_COLOR;
     
-    [UIView animateWithDuration:0.5 animations:^{
-        cellBg.backgroundColor = MAINCOLOR;
-        cell.selectedBackgroundView = cellBg;
-        cell.lblTitle.textColor = WHITE_COLOR;
-    } completion:^(BOOL finished) {
-        
-    }];
+    if (indexPath.row > 0) {
+        JarDetailVC * vc = VCFromSB(JarDetailVC,SB_Overview);
+        JarDto *data = Config.listJar.list[indexPath.row-1];
+        vc.jarDto = data;
+        [AppNav pushViewController:vc animated:YES];
+    } else {
+//        [AlertVC show:self content:@"OverView" title:@"Function is comming soon..." callback:^(BOOL hasPressOK) {
+//            
+//        }];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

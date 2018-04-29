@@ -29,9 +29,12 @@
     //[_btnRegister setStyleBlueSquare];
     
     _tfEmail.returnKeyType = UIReturnKeyNext;
-    _tfFullName.returnKeyType = UIReturnKeyNext;
-    _tfRePassword.returnKeyType = UIReturnKeyGo;
+    _tfFristName.returnKeyType = UIReturnKeyNext;
+    _tfLastName.returnKeyType = UIReturnKeyNext;
+    _tfPhone.returnKeyType = UIReturnKeyNext;
+    _tfUserName.returnKeyType = UIReturnKeyNext;
     _tfPassword.returnKeyType = UIReturnKeyNext;
+    _tfRePassword.returnKeyType = UIReturnKeyGo;
     
 }
 
@@ -99,6 +102,10 @@
     UserDto *user = [[UserDto alloc] init];
     user.email = _tfEmail.text;
     user.password = _tfPassword.text;
+    user.firstName = _tfFristName.text;
+    user.lastName = _tfLastName.text;
+    user.phone = _tfPhone.text;
+    user.userName = _tfUserName.text;
     
     [API registerAccount:user callback:^(BOOL success, id data) {
         [App hideLoading];
@@ -134,24 +141,34 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
-    if (_tfFullName == textField ) {
+    if (_tfFristName == textField ) {
+        [_tfLastName becomeFirstResponder];
+        
+    } else if (_tfLastName == textField) {
         [_tfEmail becomeFirstResponder];
         
     } else if (_tfEmail == textField) {
+        [_tfPhone becomeFirstResponder];
+        
+    } else if (_tfPhone == textField) {
+        [_tfUserName becomeFirstResponder];
+        
+    } else if (_tfUserName == textField) {
         [_tfPassword becomeFirstResponder];
         
     } else if(_tfPassword == textField) {
         [_tfRePassword becomeFirstResponder];
-        
     } else {
         [textField resignFirstResponder];
-        
     }
     return YES;
 }
 
 - (void)hiddenKeybroad {
-    [_tfFullName resignFirstResponder];
+    [_tfFristName resignFirstResponder];
+    [_tfLastName resignFirstResponder];
+    [_tfPhone resignFirstResponder];
+    [_tfUserName resignFirstResponder];
     [_tfEmail resignFirstResponder];
     [_tfPassword resignFirstResponder];
     [_tfRePassword resignFirstResponder];

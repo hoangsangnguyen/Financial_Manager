@@ -15,7 +15,7 @@
 #import "BaseColCell.h"
 #import "JarDetailVC.h"
 
-@interface OverViewVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SlideNavigationControllerDelegate> {
+@interface OverViewVC () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SlideNavigationControllerDelegate, floatMenuDelegate> {
     ListJarDto *_listData;
 }
 
@@ -28,6 +28,7 @@
     [self.navigationController setNavigationBarHidden:NO];
     // Do any additional setup after loading the view.
     [self initUI];
+    [self initFloatingButton];
     [_clvContent addPullRefreshAtVC:self toReloadAction:@selector(getAllJar)];
 }
 
@@ -49,18 +50,27 @@
 #pragma mark - InitUI
 - (void)initUI {
     
-    UIBarButtonItem * barSave = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"ic_add"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(addIncome)];
+    UIBarButtonItem * barSave = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"ic_summary"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(selectedSummary)];
     self.navigationItem.rightBarButtonItem = barSave;
     
-    
-    [_vAddIncome setFrame:CGRectMake(SWIDTH - 140, 55, 120, 81)];
-    _vAddIncome.layer.borderWidth = 1.0f;
-    _vAddIncome.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    [_vAddIncome setHidden:YES];
-    [self.navigationController.view addSubview:_vAddIncome];
-    
+
     _listData = Config.listJar;
     [_clvContent reloadData];
+}
+
+- (void)initFloatingButton {
+    CGRect floatFrame = CGRectMake(SWIDTH - 44 - 20, SHEIGHT - 44 - 70, 44, 44);
+    
+     _btnFloat = [[VCFloatingActionButton alloc]initWithFrame:floatFrame normalImage:[UIImage imageNamed:@"ic_plus"] andPressedImage:[UIImage imageNamed:@"ic_cross"] withScrollview:nil];
+    
+    _btnFloat.imageArray = @[@"ic_jar_white",@"ic_jar_white",@"ic_jar_white",@"ic_jar_white"];
+    _btnFloat.labelArray = @[@"Incomes",@"Spending",@"Debts",@"General"];
+    
+    
+    _btnFloat.hideWhileScrolling = YES;
+    _btnFloat.delegate = self;
+
+    [self.view addSubview:_btnFloat];
 }
 
 #pragma mark - API
@@ -81,35 +91,13 @@
 }
 
 #pragma mark - SlideNavigationController Methods
-
-#pragma mark - Action
-
-- (void)addIncome {
-    [_vAddIncome setHidden:NO];
+- (void)selectedSummary{
 }
 
-- (IBAction)btnCaculator:(UIButton *)btn {
-    [_vAddIncome setHidden:YES];
-    
-    CaculatorVC *vc = VCFromSB(CaculatorVC,SB_Caculator);
-    vc.type = btn.tag;
-    [AppNav presentViewController:vc animated:YES completion:nil];
-}
-
-- (IBAction)btnAlert:(id)sender {
-    [AlertVC showAlert:@"AAA" title:@"AAA" callback:^(BOOL hasPressOK) {
-
-    }];
-}
-
-- (IBAction)btnAPI:(id)sender {
-    [self getAllJar];
-}
-
-#pragma mark - CollectionView
+#pragma mar} - CollectionView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     float size = collectionView.frame.size.width/2 - 4;
-    return CGSizeMake(size, size);
+    return CGSizeMake(size, size+15);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -150,6 +138,15 @@
     JarDto *data = _listData.list[indexPath.row];
     vc.jarDto = data;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void) didSelectMenuOptionAtIndex:(NSInteger)row
+{
+    
+    CaculatorVC *vc = VCFromSB(CaculatorVC,SB_Caculator);
+    vc.type = (row == 3)? 1 : 0;
+    vc.typeJars = row;
+    [AppNav presentViewController:vc animated:YES completion:nil];
 }
 
 @end

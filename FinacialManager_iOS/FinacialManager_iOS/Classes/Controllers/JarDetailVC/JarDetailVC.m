@@ -9,6 +9,8 @@
 #import "JarDetailVC.h"
 #import "UIView+Util.h"
 #import "JarDetailCell.h"
+#import "DetailJarDto.h"
+#import "NSDate+NSDateEx.h"
 
 
 #define offset_HeaderStop 160
@@ -24,6 +26,8 @@ typedef enum : NSUInteger {
 @interface JarDetailVC () <UITableViewDataSource, UITableViewDelegate, UIWebViewDelegate, UIScrollViewDelegate> {
     BOOL isSelected;
     int indexSegment;
+    ListDetailJarDto *_listData;
+    NSMutableArray *_arrData;
 }
 
 @end
@@ -33,10 +37,10 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad
 {
     [self.navigationController setNavigationBarHidden:YES];
-    [self initUIHeader];
     [super viewDidLoad];
-    
+    [self initUIHeader];
     [self initVar];
+    [self getDataFromServer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,7 +53,9 @@ typedef enum : NSUInteger {
     [_vHeaderTbv setFrame:CGRectMake(0, 0, SWIDTH, 280)]; // include (160 + size View 80)
     _tbvContent.tableHeaderView = _vHeaderTbv;
     //[_imgHeaderView setImage:IM(@"bg_jar")];
-    _lblDescHeaderTBV.text = SF(@"%1.f$",_jarDto.incomes);
+    _lblDescAvaiable.text = SF(@"%0.f$",_jarDto.avaiableAmount);
+    _lblDesIncomes.text = SF(@"%0.f$",_jarDto.incomes);
+    _lblDesSpendings.text = SF(@"%0.f$",_jarDto.spendings);
     _lblTitleHeaderTBV.text = _jarDto.type;
     _lblHeader.text = _jarDto.type;
 
@@ -70,6 +76,58 @@ typedef enum : NSUInteger {
     [_vDebts setHidden:YES];
 }
 
+- (void)getDataFromServer {
+    switch (indexSegment) {
+        case Income: {
+            [API getIncomeJarDetail:_jarDto callback:^(BOOL success, ListDetailJarDto *data) {
+                _listData = data;
+                [self sortData];
+            }];
+        }
+            break;
+            
+        case Spending: {
+            [API getSpendingsJarDetail:_jarDto callback:^(BOOL success, ListDetailJarDto *data) {
+                _listData = data;
+                [self sortData];
+            }];
+        }
+            break;
+            
+        case Debt: {
+            [API getDebtsJarDetail:_jarDto callback:^(BOOL success, ListDetailJarDto *data) {
+                _listData = data;
+                [self sortData];
+            }];
+        }
+            break;
+    }
+
+}
+
+- (void)sortData {
+    _arrData = [[NSMutableArray alloc] init];
+    ListDetailJarDto *dtoList = [[ListDetailJarDto alloc] init];
+    for (int i = 0; i<_listData.list.count; i++) {
+        DetailJarDto *dto = _listData.list[i];
+        if (dtoList.list.count == 0) {
+            [dtoList.list addObject:dto];
+        } else {
+            if ([dtoList.list.firstObject.date isEqualExactDay:dto.date]) {
+                [dtoList.list addObject:dto];
+            } else {
+                [_arrData addObject:dtoList];
+                dtoList = [[ListDetailJarDto alloc] init];
+                [dtoList.list addObject:dto];
+            }
+        }
+        if (i == _listData.list.count - 1) {
+            [_arrData addObject:dtoList];
+        }
+    }
+    [_tbvContent reloadData];
+}
+
 #pragma mark - NAV
 -(IBAction)backBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -77,35 +135,68 @@ typedef enum : NSUInteger {
 
 #pragma mark Tableview data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return _arrData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 10;
+    ListDetailJarDto *list = _arrData[section];
+    return !list.isCollapse? list.list.count : 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 50;
+    return 40;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+
+    return (indexSegment == Debt)? 180 :80;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    JarDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JarDetailCell"];
+    ListDetailJarDto *list = _arrData[section];
+    JarDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"daycell"];
+    cell.lblTitle.text = [[NSDateFormatter serverDateFormatter] stringFromDate: list.list.firstObject.date];
+    if (list.isCollapse) {
+        [cell.btnAvatar setImage:[UIImage imageNamed:@"ic_arrowDown"] forState:UIControlStateNormal];
+    } else {
+        [cell.btnAvatar setImage:[UIImage imageNamed:@"ic_arrowUp"] forState:UIControlStateNormal];
+    }
+    cell.btnAction.tag = section;
     
     return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
-    
-    JarDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JarDetailCell"];
- 
-    
-    return cell;
+    NSInteger section = indexPath.section;
+    ListDetailJarDto *list = _arrData[section];
+    DetailJarDto *data = list.list[row];
+    if (indexSegment == Debt) {
+        JarDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"celldebt"];
+        cell.lblDetail.text = data.detail;
+        cell.lblOrigin.text = data.origin;
+        cell.lblStaate.text = data.state;
+        cell.lblAmuont.text = SF(@"%.0f",data.amount);
+        [cell.vBackground setHidden:(row == list.list.count -1)];
+        
+        if (!data.isPositive) {
+            [cell.btnNev setImage:[UIImage imageNamed:@"ic-ovalChecked"] forState:UIControlStateNormal];
+            [cell.btnPos setImage:[UIImage imageNamed:@"ic-ovalNonCheck"] forState:UIControlStateNormal];
+        } else {
+            [cell.btnNev setImage:[UIImage imageNamed:@"ic-ovalNonCheck"] forState:UIControlStateNormal];
+            [cell.btnPos setImage:[UIImage imageNamed:@"ic-ovalChecked"] forState:UIControlStateNormal];
+        }
+        
+        return cell;
+    } else {
+        JarDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JarDetailCell"];
+        cell.lblTitle.text = data.detail;
+        cell.lblSubTitle.text = SF(@"%.0f",data.amount);
+        [cell.vBackground setHidden:(row == list.list.count -1)];
+        
+        return cell;
+    }
+
 }
 
 #pragma mark - Action
@@ -135,7 +226,26 @@ typedef enum : NSUInteger {
         }
             break;
     }
+    [self getDataFromServer];
 }
+
+- (IBAction)selectedCollapse:(UIButton *)btn {
+    ListDetailJarDto *list = _arrData[btn.tag];
+    list.isCollapse = !list.isCollapse;
+    [_tbvContent reloadData];
+}
+
+- (IBAction)selectedPos:(UIButton *)btn {
+    
+}
+
+- (IBAction)selectedEdit:(UIButton *)btn {
+    ListDetailJarDto *list = _arrData[btn.tag];
+//    list.isCollapse = !list.isCollapse;
+//    [_tbvContent reloadData];
+}
+
+#pragma mark - animation
 
 - (void)animationButtonWithTopBot:(UIButton *)btn {
     CALayer *layer = [CALayer layer];
