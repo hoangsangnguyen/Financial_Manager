@@ -233,7 +233,7 @@ namespace Financial_Webservice.Services
 
                 }
 
-                return list;
+                return list.OrderBy(s => s.date);
             } catch (Exception e)
             {
                 Console.Write("Get incomes failed : " + e.Message);
