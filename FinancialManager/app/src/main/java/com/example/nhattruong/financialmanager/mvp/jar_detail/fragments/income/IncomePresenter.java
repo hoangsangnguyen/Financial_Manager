@@ -47,7 +47,7 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
     public void getAllIncome() {
         if (!isViewAttached()) return;
         getView().showLoading();
-        getApiManager().getAllIncome(getPreferManager().getUser().getId(), mJarId, new ApiCallback<IncomeResponse>() {
+        getApiManager().getAllIncome(getSQLiteManager().getUser().getId(), mJarId, new ApiCallback<IncomeResponse>() {
             @Override
             public void success(IncomeResponse res) {
                 getListIncome().clear();

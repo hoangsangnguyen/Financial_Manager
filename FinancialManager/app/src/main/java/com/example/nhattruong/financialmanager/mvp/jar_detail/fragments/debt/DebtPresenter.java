@@ -51,7 +51,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        getApiManager().getAllDebt(getPreferManager().getUser().getId(), mJarId, new ApiCallback<DebtResponse>() {
+        getApiManager().getAllDebt(getSQLiteManager().getUser().getId(), mJarId, new ApiCallback<DebtResponse>() {
             @Override
             public void success(DebtResponse res) {
                 getListDebt().clear();
@@ -77,7 +77,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
         getView().showLoading();
 
         getApiManager().deleteDebt(
-                getPreferManager().getUser().getId(),
+                getSQLiteManager().getUser().getId(),
                 mJarId,
                 getListDebt().get(positionGroup).getList().get(positionChild).getId(),
                 new ApiCallback<BaseResponse>() {
@@ -114,7 +114,7 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                 .build();
 
         getApiManager().updateDebt(
-                getPreferManager().getUser().getId(),
+                getSQLiteManager().getUser().getId(),
                 mJarId,
                 debt.getId(),
                 request,

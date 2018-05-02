@@ -26,7 +26,7 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
     public void getUserInfo() {
         if (!isViewAttached()) return;
         getView().showLoading();
-        getApiManager().getUser(getPreferManager().getUser().getId(), new ApiCallback<UserResponse>() {
+        getApiManager().getUser(getSQLiteManager().getUser().getId(), new ApiCallback<UserResponse>() {
             @Override
             public void success(UserResponse res) {
                 mUser = res.result;

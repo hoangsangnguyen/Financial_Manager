@@ -44,7 +44,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
     public void getAllSpending() {
         if (!isViewAttached()) return;
         getView().showLoading();
-        getApiManager().getAllSpending(getPreferManager().getUser().getId(), mJarId, new ApiCallback<SpendingResponse>() {
+        getApiManager().getAllSpending(getSQLiteManager().getUser().getId(), mJarId, new ApiCallback<SpendingResponse>() {
             @Override
             public void success(SpendingResponse res) {
                 getListSpending().clear();
@@ -70,7 +70,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
         getView().showLoading();
         
         getApiManager().deleteSpending(
-                getPreferManager().getUser().getId(),
+                getSQLiteManager().getUser().getId(),
                 mJarId,
                 getListSpending().get(positionGroup).getList().get(positionChild).getId(),
                 new ApiCallback<BaseResponse>() {

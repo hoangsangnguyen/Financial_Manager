@@ -91,10 +91,6 @@ public class MyProvider extends ContentProvider {
         }
     }
 
-    private static void save(Uri uri, ContentValues contentValues) {
-        sContext.getContentResolver().update(uri, contentValues, null, null);
-    }
-
     private static Config load(Uri uri, String... keys) {
         return new Config(sContext.getContentResolver().query(uri, keys, null, null, null));
     }

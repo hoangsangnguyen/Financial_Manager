@@ -73,7 +73,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
 
     @Override
     public void getJars() {
-        User user = getPreferManager().getUser();
+        User user = getSQLiteManager().getUser();
         if (!isViewAttached()) return;
         getView().showLoading();
         if (user != null) {

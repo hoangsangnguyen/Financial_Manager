@@ -9,6 +9,7 @@ import com.example.nhattruong.financialmanager.injection.module.ApplicationModul
 import com.example.nhattruong.financialmanager.injection.module.EventModule;
 import com.example.nhattruong.financialmanager.injection.module.NetworkModule;
 import com.example.nhattruong.financialmanager.injection.module.PreferModule;
+import com.example.nhattruong.financialmanager.injection.module.SQLiteModule;
 
 public class MainApplication extends Application {
 
@@ -24,6 +25,7 @@ public class MainApplication extends Application {
                     .networkModule(new NetworkModule())
                     .eventModule(new EventModule())
                     .preferModule(new PreferModule())
+                    .sQLiteModule(new SQLiteModule())
                     .build();
         }
         getAppComponent().inject(this);

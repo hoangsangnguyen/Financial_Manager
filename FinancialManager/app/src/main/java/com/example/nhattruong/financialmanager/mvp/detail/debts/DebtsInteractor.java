@@ -53,8 +53,8 @@ public class DebtsInteractor extends BasePresenter implements IDetailInteractor.
     public void getInfoId(Bundle bundle) {
         if (bundle != null) {
             String jarId = bundle.getString("JAR_ID");
-            String token = getPreferManager().getToken();
-            String userId = getPreferManager().getUser().getId();
+            String token = getSQLiteManager().getToken();
+            String userId = getSQLiteManager().getUser().getId();
             iViewDebtsInteractor.sendIdSuccess(token, userId, jarId);
         } else {
             iViewDebtsInteractor.sendIdFailure();

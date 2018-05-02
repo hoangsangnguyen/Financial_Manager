@@ -2,10 +2,6 @@ package com.example.nhattruong.financialmanager.sqlite;
 
 import android.database.Cursor;
 
-/**
- * Created by HRC7 on 11/14/2017.
- */
-
 public class Config {
     public static final String USER_TOKEN = MyDatabaseHelper.COL_USER_TOKEN;
     public static final String USER_DATA = MyDatabaseHelper.COL_USER_DATA;

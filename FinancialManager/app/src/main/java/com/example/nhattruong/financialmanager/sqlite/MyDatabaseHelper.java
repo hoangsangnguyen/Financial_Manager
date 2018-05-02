@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by nhattruong on 3/23/2018.
- */
-
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "SQLite";
@@ -48,26 +44,26 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public int save(ContentValues contentValues) {
-        SQLiteDatabase writeConfig = getWritableDatabase();
-        return writeConfig.update(TB_DATABASE, contentValues, null, null);
+        SQLiteDatabase db = getWritableDatabase();
+        return db.update(TB_DATABASE, contentValues, null, null);
     }
 
     public int save(String key, String value) {
-        SQLiteDatabase writeConfig = getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(key, value);
-        return writeConfig.update(TB_DATABASE, contentValues, null, null);
+        return db.update(TB_DATABASE, contentValues, null, null);
     }
 
-    private void createConfig(SQLiteDatabase writeConfig) {
+    private void createConfig(SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_USER_DATA, "");
         contentValues.put(COL_USER_TOKEN, "");
-        writeConfig.insert(TB_DATABASE, null, contentValues);
+        db.insert(TB_DATABASE, null, contentValues);
     }
 
     public Cursor load(String... keys) {
-        SQLiteDatabase readConfig = getReadableDatabase();
-        return readConfig.query(TB_DATABASE, keys, null, null, null, null, null);
+        SQLiteDatabase db = getReadableDatabase();
+        return db.query(TB_DATABASE, keys, null, null, null, null, null);
     }
 }

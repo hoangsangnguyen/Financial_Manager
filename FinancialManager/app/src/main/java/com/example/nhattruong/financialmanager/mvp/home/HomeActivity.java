@@ -103,7 +103,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         actionBar.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        User user = getPresenter().getPreferManager().getUser();
+        User user = getPresenter().getSQLiteManager().getUser();
         tvUserName.setText(user.getUserName());
         tvUserEmail.setText(user.getEmail());
 
@@ -174,7 +174,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                     public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
                         dialog.dismiss();
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                        intent.putExtra(LoginActivity.USER_NAME, getPresenter().getPreferManager().getUser().getUserName());
+                        intent.putExtra(LoginActivity.USER_NAME, getPresenter().getSQLiteManager().getUser().getUserName());
                         getPresenter().getPreferManager().resetUser();
                         startActivity(intent);
                         finish();

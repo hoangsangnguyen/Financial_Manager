@@ -16,11 +16,12 @@ public class SettingPresenter extends BasePresenter implements SettingContract.P
 
     @Override
     public void getUserInfo() {
-        getApiManager().getUser(getPreferManager().getUser().getId(), new ApiCallback<UserResponse>() {
+        getApiManager().getUser(getSQLiteManager().getUser().getId(), new ApiCallback<UserResponse>() {
             @Override
             public void success(UserResponse res) {
                 if (!isViewAttached()) return;
-                getPreferManager().setUser(new Gson().toJson(res.result));
+                getSQLiteManager().saveUser(new Gson().toJson(res.result));
+//                getPreferManager().setUser(new Gson().toJson(res.result));
                 getView().getUserInfoSuccess();
             }
 

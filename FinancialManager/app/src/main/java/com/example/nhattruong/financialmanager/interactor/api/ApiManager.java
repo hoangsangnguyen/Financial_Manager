@@ -20,6 +20,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDeb
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
+import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
 import com.example.nhattruong.financialmanager.model.Jar;
 
 import retrofit2.Retrofit;
@@ -30,18 +31,23 @@ public class ApiManager {
 
     private PreferManager mPreferManager;
     private EventManager mEventManager;
+    private SQLiteManager mSQLiteManager;
 
 
-    public ApiManager(Retrofit retrofit, PreferManager preferManager, EventManager eventManager) {
+    public ApiManager(Retrofit retrofit, PreferManager preferManager, EventManager eventManager, SQLiteManager sqLiteManager) {
         mApiServices = retrofit.create(ApiServices.class);
         mPreferManager = preferManager;
         mEventManager = eventManager;
+        this.mSQLiteManager = sqLiteManager;
     }
 
     // ==== GET TOKEN == //
     public String getToken() {
-        if (mPreferManager.getToken() == null) return null;
-        return mPreferManager.getToken();
+        /*if (mPreferManager.getToken() == null) return null;
+        return mPreferManager.getToken();*/
+
+        if (mSQLiteManager.getToken() == null) return null;
+        return mSQLiteManager.getToken();
     }
 
     //======================== Login ==========================

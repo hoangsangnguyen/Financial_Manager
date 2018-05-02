@@ -54,8 +54,8 @@ public class IncomesInteractor extends BasePresenter implements IDetailInteracto
     public void getInfoId(Bundle bundle) {
         if (bundle != null) {
             String jarId = bundle.getString("JAR_ID");
-            String token = getPreferManager().getToken();
-            String userId = getPreferManager().getUser().getId();
+            String token = getSQLiteManager().getToken();
+            String userId = getSQLiteManager().getUser().getId();
             iViewInteractor.sendIdSuccess(token, userId, jarId);
         }else {
             iViewInteractor.sendIdFailure();

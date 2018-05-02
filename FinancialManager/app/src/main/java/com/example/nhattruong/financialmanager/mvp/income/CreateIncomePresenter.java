@@ -39,7 +39,7 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
     public void getAllJar() {
         if (!isViewAttached()) return;
         getView().showLoading();
-        getApiManager().getJars(getPreferManager().getUser().getId(), new ApiCallback<JarResponse>() {
+        getApiManager().getJars(getSQLiteManager().getUser().getId(), new ApiCallback<JarResponse>() {
             @Override
             public void success(JarResponse res) {
                 if (!isViewAttached()) return;
@@ -66,7 +66,7 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
 
         CreateIncomeSpendingRequest request =
                 new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
-        getApiManager().createIncomeForJar(getPreferManager().getUser().getId(), mJarId, request, new ApiCallback<BaseResponse>() {
+        getApiManager().createIncomeForJar(getSQLiteManager().getUser().getId(), mJarId, request, new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
                 if (!isViewAttached()) return;
@@ -90,7 +90,7 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
 
         CreateIncomeSpendingRequest request =
                 new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
-        getApiManager().createGeneralIncome(getPreferManager().getUser().getId(), request, new ApiCallback<BaseResponse>() {
+        getApiManager().createGeneralIncome(getSQLiteManager().getUser().getId(), request, new ApiCallback<BaseResponse>() {
             @Override
             public void success(BaseResponse res) {
                 if (!isViewAttached()) return;
@@ -114,7 +114,7 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
         CreateIncomeSpendingRequest request =
                 new CreateIncomeSpendingRequest.Builder().setDate(date).setDetail(detail).setAmount(amount).build();
         getApiManager().createSpending(
-                getPreferManager().getUser().getId(),
+                getSQLiteManager().getUser().getId(),
                 mJarId,
                 request,
                 new ApiCallback<BaseResponse>() {
@@ -144,7 +144,7 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
         if (!isViewAttached()) return;
         getView().showLoading();
         getApiManager().createDebt(
-                getPreferManager().getUser().getId(),
+                getSQLiteManager().getUser().getId(),
                 mJarId,
                 request,
                 new ApiCallback<BaseResponse>() {

@@ -7,6 +7,7 @@ import com.example.nhattruong.financialmanager.interactor.caches.CachesManager;
 import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.resources.ResourcesManager;
+import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
 
 import javax.inject.Inject;
 
@@ -45,6 +46,9 @@ public abstract class BasePresenter {
     @Inject
     ResourcesManager mResourcesManager;
 
+    @Inject
+    SQLiteManager mSQLiteManager;
+
     public BasePresenter() {
         MainApplication.getAppComponent().inject(this);
     }
@@ -72,6 +76,8 @@ public abstract class BasePresenter {
     public ResourcesManager getResourcesManager() {
         return mResourcesManager;
     }
+
+    public SQLiteManager getSQLiteManager(){return mSQLiteManager;}
 
     private Unbinder mBinder;
 

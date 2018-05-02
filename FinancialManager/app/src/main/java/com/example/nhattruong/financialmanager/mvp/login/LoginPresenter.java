@@ -29,8 +29,10 @@ class LoginPresenter extends BasePresenter implements LoginContract.IPresenter{
             @Override
             public void success(UserResponse res) {
                 if (res.result != null) {
-                    getPreferManager().setUser(new Gson().toJson(res.result));
-                    getPreferManager().setToken(res.result.getToken());
+                    getSQLiteManager().saveToken(res.result.getToken());
+                    getSQLiteManager().saveUser(new Gson().toJson(res.result));
+                   /* getPreferManager().setUser(new Gson().toJson(res.result));
+                    getPreferManager().setToken(res.result.getToken());*/
                 }
 
                 getView().hideLoading();
