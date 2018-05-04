@@ -39,7 +39,8 @@ public class JarAdapter extends RecyclerView.Adapter<JarAdapter.ViewHolder> {
         Jar jar = mItems.get(position);
         if (jar != null && position != 6) { // type "Tổng hợp"
             Double rest = jar.getIncomes() - jar.getSpending() - jar.getDebts();
-            holder.tvQuantity.setText(mContext.getString(R.string.currency_USD, rest.intValue()));
+//            holder.tvQuantity.setText(mContext.getString(R.string.currency_USD, String.valueOf(rest)));
+            holder.tvQuantity.setText(mContext.getString(R.string.currency_USD, String.valueOf((int)jar.getAvailableAmout())));
             holder.tvType.setText(jar.getType());
         }
     }

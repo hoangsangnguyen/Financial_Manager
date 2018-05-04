@@ -413,7 +413,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
                 getPresenter().createIncomeForJar(date, note, Double.parseDouble(tvCurrency.getText().toString()));
                 break;
             case AppConstants.CREATE_SPENDING:
-                getPresenter().createSpending(date, note, 0 - Double.parseDouble(tvCurrency.getText().toString()));
+                getPresenter().createSpending(date, note,  Double.parseDouble(tvCurrency.getText().toString()));
                 break;
             case AppConstants.CREATE_DEBT:
                 String origin = edtOrigin.getEditText().getText().toString();

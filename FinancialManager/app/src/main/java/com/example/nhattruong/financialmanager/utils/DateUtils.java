@@ -123,7 +123,7 @@ public class DateUtils {
     }
 
     public static String formatFullDatePeriods(Date date) {
-        return formatDate(date, "MM/dd/yyyy");
+        return formatDate(date, "dd/MM/yyyy");
     }
 
 

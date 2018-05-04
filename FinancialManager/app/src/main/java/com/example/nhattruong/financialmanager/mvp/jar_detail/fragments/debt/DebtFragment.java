@@ -89,6 +89,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
             @Override
             public void onDeleteClicked(int positionGroup, int positionChild) {
                 //delete debt
+                getPresenter().deleteDebt(positionGroup, positionChild);
             }
         });
 

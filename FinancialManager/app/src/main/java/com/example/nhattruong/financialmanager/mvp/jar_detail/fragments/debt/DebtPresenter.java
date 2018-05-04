@@ -86,7 +86,8 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                         getListDebt().get(positionGroup).getList().remove(positionChild);
                         if (!isViewAttached()) return;
                         getView().hideLoading();
-                        getView().onSuccess();
+//                        getView().onSuccess();
+                        getAllDebt();
                     }
 
                     @Override

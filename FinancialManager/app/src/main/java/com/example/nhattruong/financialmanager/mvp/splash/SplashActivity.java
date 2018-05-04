@@ -28,7 +28,7 @@ public class SplashActivity
                 if (mExisted) {
                     return;
                 }
-                if (MainApplication.getAppComponent().getPreferManager().isLogin()) {
+                if (MainApplication.getAppComponent().getSQLiteManager().isLogin()) {
                     Intent intent = new Intent(SplashActivity.this, SettingActivity.class);
                     intent.setData(getIntent().getData());
                     startActivity(intent);

@@ -79,7 +79,8 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
                         getListSpending().get(positionGroup).getList().remove(positionChild);
                         if (!isViewAttached()) return;
                         getView().hideLoading();
-                        getView().deleteSpendingSuccess();
+                        getAllSpending();
+//                        getView().deleteSpendingSuccess();
                     }
 
                     @Override

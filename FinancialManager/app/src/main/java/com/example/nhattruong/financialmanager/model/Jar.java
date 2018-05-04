@@ -26,6 +26,10 @@ public class Jar implements Serializable {
     @Expose
     private double spendings;
 
+    @SerializedName("availableAmount")
+    @Expose
+    private double availableAmout;
+
     public String getId() {
         return id;
     }
@@ -64,5 +68,13 @@ public class Jar implements Serializable {
 
     public void setSpending(int spendings) {
         this.spendings = spendings;
+    }
+
+    public double getAvailableAmout() {
+        return availableAmout;
+    }
+
+    public void setAvailableAmout(double availableAmout) {
+        this.availableAmout = availableAmout;
     }
 }

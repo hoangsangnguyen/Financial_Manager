@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,14 @@ public class JarDetailDTO implements Comparable<JarDetailDTO>{
 
     @Override
     public int compareTo(@NonNull JarDetailDTO jarDetailDTO) {
-        return date.compareTo(jarDetailDTO.getDate());
+       /* String date1 =  date.toString();
+        String date2 = jarDetailDTO.date.toString();
+        return date1.substring(0,date1.indexOf("T")).compareTo(date2.substring(0,date2.indexOf("T")));
+*/
+        SimpleDateFormat math = new SimpleDateFormat("yyyyMMdd");
+        Long date1asLong = new Long(math.format(date));
+        Long date2asLong = new Long(math.format(jarDetailDTO.date));
+        return date1asLong.compareTo(date2asLong);
+//        return date.compareTo(jarDetailDTO.getDate());
     }
 }

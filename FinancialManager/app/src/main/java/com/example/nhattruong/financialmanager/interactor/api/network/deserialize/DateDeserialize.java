@@ -20,7 +20,7 @@ public class DateDeserialize implements
 
     public DateDeserialize() {
         serverDateFormat = new SimpleDateFormat(AppConstants.SERVER_DATE_FORMAT, Locale.US);
-        serverDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+//        serverDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     @Override
