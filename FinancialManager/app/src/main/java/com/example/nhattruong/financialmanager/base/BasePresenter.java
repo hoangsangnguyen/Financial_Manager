@@ -2,9 +2,6 @@ package com.example.nhattruong.financialmanager.base;
 
 import com.example.nhattruong.financialmanager.MainApplication;
 import com.example.nhattruong.financialmanager.interactor.api.ApiManager;
-import com.example.nhattruong.financialmanager.interactor.assets.AssetsManager;
-import com.example.nhattruong.financialmanager.interactor.caches.CachesManager;
-import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.resources.ResourcesManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
@@ -32,16 +29,7 @@ public abstract class BasePresenter {
     ApiManager mApiManager;
 
     @Inject
-    EventManager mEventManager;
-
-    @Inject
     PreferManager mPreferManager;
-
-    @Inject
-    AssetsManager mAssetsManager;
-
-    @Inject
-    CachesManager mCachesManager;
 
     @Inject
     ResourcesManager mResourcesManager;
@@ -57,20 +45,8 @@ public abstract class BasePresenter {
         return mApiManager;
     }
 
-    public EventManager getEventManager() {
-        return mEventManager;
-    }
-
     public PreferManager getPreferManager() {
         return mPreferManager;
-    }
-
-    public AssetsManager getAssetsManager() {
-        return mAssetsManager;
-    }
-
-    public CachesManager getCachesManager() {
-        return mCachesManager;
     }
 
     public ResourcesManager getResourcesManager() {

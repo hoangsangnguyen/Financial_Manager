@@ -7,7 +7,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:layout_gravity="center"
+            android:textColor="@color/black_color"
+            android:textSize="24sp" />
 
         <ExpandableListView
             android:id="@+id/lv_detail_jar"

@@ -1,11 +1,11 @@
-package com.example.nhattruong.financialmanager.mvp.income;
+package com.example.nhattruong.financialmanager.mvp.create;
 
 import com.example.nhattruong.financialmanager.base.IBaseView;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 
 import java.util.Date;
 
-public interface CreateIncomeContract {
+public interface CreateContract {
     interface View extends IBaseView{
 
         void getAllJarSuccess();

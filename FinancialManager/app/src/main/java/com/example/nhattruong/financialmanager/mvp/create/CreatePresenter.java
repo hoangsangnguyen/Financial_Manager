@@ -1,4 +1,4 @@
-package com.example.nhattruong.financialmanager.mvp.income;
+package com.example.nhattruong.financialmanager.mvp.create;
 
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CreateIncomePresenter extends BasePresenter implements CreateIncomeContract.Presenter {
+public class CreatePresenter extends BasePresenter implements CreateContract.Presenter {
 
     private List<Jar> mJarList;
     private String mJarId;
@@ -31,8 +31,8 @@ public class CreateIncomePresenter extends BasePresenter implements CreateIncome
     }
 
     @Override
-    public CreateIncomeContract.View getView() {
-        return (CreateIncomeContract.View) super.getView();
+    public CreateContract.View getView() {
+        return (CreateContract.View) super.getView();
     }
 
     @Override

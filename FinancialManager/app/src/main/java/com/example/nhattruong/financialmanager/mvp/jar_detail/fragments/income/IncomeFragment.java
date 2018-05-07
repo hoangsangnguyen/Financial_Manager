@@ -6,20 +6,26 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
+import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
+
+import java.util.Date;
 
 import butterknife.BindView;
 
 import static android.app.Activity.RESULT_OK;
 
 public class IncomeFragment extends BaseJarDetailFragment implements IncomeContract.View {
+
+    @BindView(R.id.tv_no_data)
+    TextView tvNoData;
 
     @BindView(R.id.lv_detail_jar)
     ExpandableListView rcvDetail;
@@ -48,7 +54,7 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
 
     @Override
     public IncomePresenter getPresenter() {
-        return (IncomePresenter)super.getPresenter();
+        return (IncomePresenter) super.getPresenter();
     }
 
     @Override
@@ -58,7 +64,7 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
         adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListIncome());
         rcvDetail.setAdapter(adapter);
 
-        getPresenter().getAllIncome();
+        getPresenter().getIncomes();
     }
 
     @Override
@@ -67,15 +73,15 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
             @Override
             public void onRefresh() {
                 mRefresh.setRefreshing(false);
-                getPresenter().getAllIncome();
+                getPresenter().getIncomes();
             }
         });
 
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCreate = new Intent(getActivity(), CreateIncomeActivity.class);
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
+                Intent intentCreate = new Intent(getActivity(), CreateActivity.class);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
                 startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             }
         });
@@ -88,6 +94,7 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
 
     @Override
     public void getIncomeSuccess() {
+        tvNoData.setVisibility(getPresenter().getListIncome().isEmpty() ? View.VISIBLE : View.GONE);
         adapter.notifyDataSetChanged();
     }
 
@@ -97,16 +104,21 @@ public class IncomeFragment extends BaseJarDetailFragment implements IncomeContr
     }
 
     @Override
-    public void getAllIncome(String jarId) {
-        getPresenter().setJarId(jarId);
-        getPresenter().getAllIncome();
+    public void getIncomes() {
+        getPresenter().getIncomes();
+    }
+
+    @Override
+    public void filterIncome(Date dateFrom, Date dateTo) {
+        getPresenter().setDateFromTo(dateFrom, dateTo);
+        getPresenter().getIncomes();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK){
-            getPresenter().getAllIncome();
+        if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK) {
+            getPresenter().getIncomes();
         }
     }
 }

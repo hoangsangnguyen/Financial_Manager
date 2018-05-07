@@ -161,11 +161,4 @@ abstract public class BaseFragment extends Fragment implements IBaseView {
     public interface IRestErrorListener {
         void onListener();
     }
-
-    private boolean handleSpecialCode(RestError error) {
-        return error.code == AppConstants.ERROR_CODE_USER_NOT_FOUND
-                || error.code == AppConstants.ERROR_CODE_TOKEN_FAILED
-                || error.code == AppConstants.ERROR_CODE_RELOGIN
-                || error.code == AppConstants.ERROR_CODE_IP_ACCESS;
-    }
 }

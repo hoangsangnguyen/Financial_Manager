@@ -6,7 +6,6 @@ import com.example.nhattruong.financialmanager.injection.component.ApplicationCo
 import com.example.nhattruong.financialmanager.injection.component.DaggerApplicationComponent;
 import com.example.nhattruong.financialmanager.injection.module.ApiModule;
 import com.example.nhattruong.financialmanager.injection.module.ApplicationModule;
-import com.example.nhattruong.financialmanager.injection.module.EventModule;
 import com.example.nhattruong.financialmanager.injection.module.NetworkModule;
 import com.example.nhattruong.financialmanager.injection.module.PreferModule;
 import com.example.nhattruong.financialmanager.injection.module.SQLiteModule;
@@ -23,7 +22,6 @@ public class MainApplication extends Application {
                     .applicationModule(new ApplicationModule(this))
                     .apiModule(new ApiModule())
                     .networkModule(new NetworkModule())
-                    .eventModule(new EventModule())
                     .preferModule(new PreferModule())
                     .sQLiteModule(new SQLiteModule())
                     .build();

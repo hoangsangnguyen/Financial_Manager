@@ -31,7 +31,6 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.socket.client.Socket;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BaseActivity extends AppCompatActivity implements IBaseView {
@@ -217,14 +216,6 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
         super.onResume();
     }
 
-  /*  @SuppressLint("WrongConstant")
-    protected void logoutUser() {
-        preferManager.resetUser();
-        Intent i = new Intent(this, LoginActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
-    }*/
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -247,12 +238,4 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
         dismissDialogLoading();
         showErrorDialog(error);
     }
-
-    private boolean handleSpecialCode(RestError error) {
-        return error.code == AppConstants.ERROR_CODE_USER_NOT_FOUND
-                || error.code == AppConstants.ERROR_CODE_TOKEN_FAILED
-                || error.code == AppConstants.ERROR_CODE_RELOGIN
-                || error.code == AppConstants.ERROR_CODE_IP_ACCESS;
-    }
-
 }

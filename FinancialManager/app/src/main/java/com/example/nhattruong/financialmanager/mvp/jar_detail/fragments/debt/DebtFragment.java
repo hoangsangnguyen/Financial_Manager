@@ -6,12 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.dialog.detail.EditDebtDialog;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.model.Debt;
-import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
+import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
@@ -22,6 +23,9 @@ import butterknife.BindView;
 import static android.app.Activity.RESULT_OK;
 
 public class DebtFragment extends BaseJarDetailFragment implements DebtContract.View {
+
+    @BindView(R.id.tv_no_data)
+    TextView tvNoData;
 
     @BindView(R.id.lv_detail_jar)
     ExpandableListView lvDetail;
@@ -60,7 +64,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
         adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListDebt());
         lvDetail.setAdapter(adapter);
 
-        getPresenter().getAllDebt();
+        getPresenter().getDebts();
     }
 
     @Override
@@ -69,8 +73,6 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
         adapter.setItemDebtListener(new JarDetailExpandableAdapter.OnItemDebtListener() {
             @Override
             public void onEditClicked(int positionGroup, int positionChild) {
-
-               getPresenter().setPositionGroupAndChild(positionGroup, positionChild);
 
                 //edit debt
                 EditDebtDialog debtDialog = new EditDebtDialog(
@@ -96,8 +98,8 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCreate = new Intent(getActivity(), CreateIncomeActivity.class);
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
+                Intent intentCreate = new Intent(getActivity(), CreateActivity.class);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
                 startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             }
         });
@@ -106,7 +108,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
             @Override
             public void onRefresh() {
                 mRefresh.setRefreshing(false);
-                getPresenter().getAllDebt();
+                getPresenter().getDebts();
             }
         });
     }
@@ -118,6 +120,7 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
 
     @Override
     public void onSuccess() {
+        tvNoData.setVisibility(getPresenter().getListDebt().isEmpty()?View.VISIBLE:View.GONE);
         adapter.notifyDataSetChanged();
     }
 
@@ -128,15 +131,14 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
 
     @Override
     public void getAllDebt(String jarId) {
-        getPresenter().setJarId(jarId);
-        getPresenter().getAllDebt();
+        getPresenter().getDebts();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK){
-            getPresenter().getAllDebt();
+            getPresenter().getDebts();
         }
     }
 }

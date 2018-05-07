@@ -1,7 +1,6 @@
 package com.example.nhattruong.financialmanager.utils;
 
-import com.example.nhattruong.financialmanager.mvp.income.fragment.dto.CalendarDto;
-import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
+import com.example.nhattruong.financialmanager.mvp.create.fragment.dto.CalendarDto;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -126,6 +125,9 @@ public class DateUtils {
         return formatDate(date, "dd/MM/yyyy");
     }
 
+    public static String formatDateFilter(Date date) {
+        return formatDate(date, "yyyy-MM-dd");
+    }
 
     // format date object to string with a format
     private static String formatDate(Date date, String desFormat) {
@@ -222,6 +224,22 @@ public class DateUtils {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
+
+    public static Date resetDateEnd(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, 23);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        return calendar.getTime();
+    }
+
+    public static Date getCurrentDate() {
+        Calendar cal = Calendar.getInstance();
         return cal.getTime();
     }
 

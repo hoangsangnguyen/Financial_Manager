@@ -9,9 +9,9 @@ import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
 
     private List<JarDetailDTO> mList;
     private String mJarId;
+    private Date dateFrom, dateTo;
 
     public String getJarId() {
         return mJarId;
@@ -35,13 +36,26 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
         return mList;
     }
 
+    public void setDateFromTo(Date dateFrom, Date dateTo) {
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
     @Override
     public SpendingContract.View getView() {
         return (SpendingContract.View)super.getView();
     }
 
     @Override
-    public void getAllSpending() {
+    public void getSpending() {
+        if (dateFrom == null && dateTo == null){
+            getAllSpending();
+        } else {
+            filterSpending();
+        }
+    }
+
+    private void getAllSpending() {
         if (!isViewAttached()) return;
         getView().showLoading();
         getApiManager().getAllSpending(getSQLiteManager().getUser().getId(), mJarId, new ApiCallback<SpendingResponse>() {
@@ -49,7 +63,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             public void success(SpendingResponse res) {
                 getListSpending().clear();
                 parseToJarDetailDTO(res.getSpendings());
-                Collections.sort(mList);
+//                Collections.sort(mList);
                 if (!isViewAttached()) return;
                 getView().hideLoading();
                 getView().getSpendingSuccess();
@@ -62,6 +76,38 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
                 getView().onFailure(error);
             }
         });
+    }
+
+    private void filterSpending(){
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        String dateFromString = DateUtils.formatDateFilter(dateFrom);
+        String dateToString = DateUtils.formatDateFilter(dateTo);
+
+        getApiManager().filterSpending(
+                getSQLiteManager().getUser().getId(),
+                mJarId,
+                dateFromString,
+                dateToString,
+                new ApiCallback<SpendingResponse>() {
+                    @Override
+                    public void success(SpendingResponse res) {
+                        getListSpending().clear();
+                        parseToJarDetailDTO(res.getSpendings());
+//                Collections.sort(mList);
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().getSpendingSuccess();
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        if (!isViewAttached()) return;
+                        getView().hideLoading();
+                        getView().onFailure(error);
+                    }
+                });
     }
 
     @Override
@@ -107,7 +153,7 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
             spendingDTOS.remove(0);
 
             for (int i = spendingDTOS.size() - 1; i >=0; i--) {
-                if (compareDate(newSpendingDTO.getDate(), spendingDTOS.get(i).getDate())) {
+                if (compareDate(newSpendingDTO.getDate().toString(), spendingDTOS.get(i).getDate().toString())) {
                     listChildSpendingDTO.add(spendingDTOS.get(i));
                     spendingDTOS.remove(i);
                 }
@@ -117,11 +163,11 @@ public class SpendingPresenter extends BasePresenter implements SpendingContract
         }
     }
 
-    private boolean compareDate(Date date1, Date date2){
-        /*date1 = date1.substring(0, date1.indexOf("T"));
+    private boolean compareDate(String date1, String date2){
+        date1 = date1.substring(0, date1.indexOf("T"));
         date2 = date2.substring(0, date2.indexOf("T"));
 
-        return date1.equalsIgnoreCase(date2);*/
-        return date1.compareTo(date2) == 0;
+        return date1.equalsIgnoreCase(date2);
+//        return date1.compareTo(date2) == 0;
     }
 }

@@ -23,15 +23,10 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
 
     private List<JarDetailDTO> mList;
     private String mJarId;
-    private int mPositionGroup, mPositionChild;
+    private Date dateFrom, dateTo;
 
     public void setJarId(String jarId) {
         this.mJarId = jarId;
-    }
-
-    public void setPositionGroupAndChild(int positionGroup, int positionChild){
-        this.mPositionGroup = positionGroup;
-        this.mPositionChild = positionChild;
     }
 
     public List<JarDetailDTO> getListDebt() {
@@ -41,13 +36,30 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
         return mList;
     }
 
+    public void setDateFromTo(Date dateFrom, Date dateTo) {
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
     @Override
     public DebtContract.View getView() {
         return (DebtContract.View)super.getView();
     }
 
     @Override
-    public void getAllDebt() {
+    public void getDebts() {
+        if (dateFrom != null && dateTo != null){
+            filterDebts();
+        } else {
+            getAllDebt();
+        }
+    }
+
+    private void filterDebts() {
+
+    }
+
+    private void getAllDebt() {
         if (!isViewAttached()) return;
         getView().showLoading();
 
@@ -86,7 +98,6 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
                         getListDebt().get(positionGroup).getList().remove(positionChild);
                         if (!isViewAttached()) return;
                         getView().hideLoading();
-//                        getView().onSuccess();
                         getAllDebt();
                     }
 

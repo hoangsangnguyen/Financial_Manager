@@ -1,4 +1,4 @@
-package com.example.nhattruong.financialmanager.mvp.income.adapter;
+package com.example.nhattruong.financialmanager.mvp.create.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

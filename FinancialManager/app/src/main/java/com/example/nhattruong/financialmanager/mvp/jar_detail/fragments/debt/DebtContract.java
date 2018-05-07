@@ -15,7 +15,8 @@ public interface DebtContract {
     }
 
     interface Presenter{
-        void getAllDebt();
+
+        void getDebts();
 
         void deleteDebt(int positionGroup, int positionChild);
 

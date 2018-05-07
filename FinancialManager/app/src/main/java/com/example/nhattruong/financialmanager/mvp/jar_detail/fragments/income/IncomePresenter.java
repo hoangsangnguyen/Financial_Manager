@@ -4,13 +4,10 @@ import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
-import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.model.Income;
-import com.example.nhattruong.financialmanager.model.Spending;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.dto.IncomeDTO;
-import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.dto.SpendingDTO;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -22,6 +19,7 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
 
     private List<JarDetailDTO> mList;
     private String mJarId;
+    private Date dateFrom, dateTo;
 
     public String getJarId() {
         return mJarId;
@@ -29,6 +27,11 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
 
     public void setJarId(String jarId) {
         this.mJarId = jarId;
+    }
+
+    public void setDateFromTo(Date dateFrom, Date dateTo) {
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
     }
 
     public List<JarDetailDTO> getListIncome(){
@@ -44,10 +47,45 @@ public class IncomePresenter extends BasePresenter implements IncomeContract.Pre
     }
 
     @Override
-    public void getAllIncome() {
+    public void getIncomes() {
+        if (dateFrom != null && dateTo !=null){
+            filterIncome();
+        } else {
+            getAllIncome();
+        }
+    }
+
+    private void getAllIncome() {
         if (!isViewAttached()) return;
         getView().showLoading();
         getApiManager().getAllIncome(getSQLiteManager().getUser().getId(), mJarId, new ApiCallback<IncomeResponse>() {
+            @Override
+            public void success(IncomeResponse res) {
+                getListIncome().clear();
+                parseToJarDetailDTO(res.getIncomes());
+                Collections.sort(mList);
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().getIncomeSuccess();
+            }
+
+            @Override
+            public void failure(RestError error) {
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().getIncomeFailure(error);
+            }
+        });
+    }
+
+    private void filterIncome(){
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        String dateFromString = DateUtils.formatDateFilter(dateFrom);
+        String dateToString = DateUtils.formatDateFilter(dateTo);
+
+        getApiManager().filterIncome(getSQLiteManager().getUser().getId(), mJarId,dateFromString, dateToString, new ApiCallback<IncomeResponse>() {
             @Override
             public void success(IncomeResponse res) {
                 getListIncome().clear();

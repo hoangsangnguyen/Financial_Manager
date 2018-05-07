@@ -29,14 +29,8 @@
         <activity android:name=".mvp.login.LoginActivity" />
         <activity android:name=".mvp.setting.SettingActivity" />
         <activity
-            android:name=".mvp.income.CreateIncomeActivity"
+            android:name=".mvp.create.CreateActivity"
             android:windowSoftInputMode="adjustPan" />
-
-        <provider
-            android:name=".sqlite.MyProvider"
-            android:authorities="com.example.nhattruong.financialmanager.MyProvider"
-            android:exported="true"
-            android:multiprocess="true" />
 
         <activity android:name=".mvp.jar_detail.JarDetailActivity"></activity>
     </application>

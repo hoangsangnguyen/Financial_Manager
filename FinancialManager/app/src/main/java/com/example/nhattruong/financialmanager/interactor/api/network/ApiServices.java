@@ -101,6 +101,15 @@ public interface ApiServices {
             @Path("jarId") String jarId
     );
 
+    @GET("users/{userId}/jars/{jarId}/spendings")
+    Call<SpendingResponse> filterSpending(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Query("from") String dateFrom,
+            @Query("to") String dateTo
+    );
+
     @DELETE("users/{userId}/jars/{jarId}/spendings/{spendingId}")
     Call<BaseResponse> deleteSpending(
             @Header("token") String token,
@@ -114,6 +123,15 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Path("jarId") String jarId
+    );
+
+    @GET("users/{userId}/jars/{jarId}/incomes")
+    Call<IncomeResponse> filterIncome(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Query("from") String dateFrom,
+            @Query("to") String dateTo
     );
 
     @GET("users/{userId}/jars/{jarId}/debts")

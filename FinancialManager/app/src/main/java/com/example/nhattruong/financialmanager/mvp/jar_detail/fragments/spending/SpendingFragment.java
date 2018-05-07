@@ -6,21 +6,27 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
+import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.util.Date;
+
 import butterknife.BindView;
 
 import static android.app.Activity.RESULT_OK;
 
-public class SpendingFragment extends BaseJarDetailFragment implements SpendingContract.View{
+public class SpendingFragment extends BaseJarDetailFragment implements SpendingContract.View {
+
+    @BindView(R.id.tv_no_data)
+    TextView tvNoData;
 
     @BindView(R.id.lv_detail_jar)
     ExpandableListView lvDetail;
@@ -49,7 +55,7 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
 
     @Override
     public SpendingPresenter getPresenter() {
-        return (SpendingPresenter)super.getPresenter();
+        return (SpendingPresenter) super.getPresenter();
     }
 
     @Override
@@ -59,7 +65,7 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
         adapter = new JarDetailExpandableAdapter(getActivity(), getPresenter().getListSpending());
         lvDetail.setAdapter(adapter);
 
-        getPresenter().getAllSpending();
+        getPresenter().getSpending();
     }
 
     @Override
@@ -85,15 +91,15 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
             @Override
             public void onRefresh() {
                 mRefresh.setRefreshing(false);
-                getPresenter().getAllSpending();
+                getPresenter().getSpending();
             }
         });
 
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCreate = new Intent(getActivity(), CreateIncomeActivity.class);
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
+                Intent intentCreate = new Intent(getActivity(), CreateActivity.class);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
                 startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             }
         });
@@ -106,6 +112,7 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
 
     @Override
     public void getSpendingSuccess() {
+        tvNoData.setVisibility(getPresenter().getListSpending().isEmpty()? View.VISIBLE: View.GONE);
         adapter.notifyDataSetChanged();
     }
 
@@ -115,9 +122,14 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
     }
 
     @Override
-    public void getAllSpending(String jarId) {
-        getPresenter().setJarId(jarId);
-        getPresenter().getAllSpending();
+    public void getAllSpending() {
+        getPresenter().getSpending();
+    }
+
+    @Override
+    public void filterSpending(Date dateStart, Date dateEnd) {
+        getPresenter().setDateFromTo(dateStart, dateEnd);
+        getPresenter().getSpending();
     }
 
     @Override
@@ -128,8 +140,8 @@ public class SpendingFragment extends BaseJarDetailFragment implements SpendingC
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK){
-            getPresenter().getAllSpending();
+        if (requestCode == AppConstants.REQUEST_CODE_CREATE && resultCode == RESULT_OK) {
+            getPresenter().getSpending();
         }
     }
 }

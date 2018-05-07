@@ -1,4 +1,4 @@
-package com.example.nhattruong.financialmanager.mvp.income;
+package com.example.nhattruong.financialmanager.mvp.create;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
@@ -22,9 +22,9 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.detail.SpinnerStateAdapter;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
-import com.example.nhattruong.financialmanager.mvp.income.adapter.CalculatorAdapter;
-import com.example.nhattruong.financialmanager.mvp.income.adapter.CategoryAdapter;
-import com.example.nhattruong.financialmanager.mvp.income.fragment.DetailsFragment;
+import com.example.nhattruong.financialmanager.mvp.create.adapter.CalculatorAdapter;
+import com.example.nhattruong.financialmanager.mvp.create.adapter.CategoryAdapter;
+import com.example.nhattruong.financialmanager.mvp.create.fragment.DetailsFragment;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 
 import java.lang.reflect.Method;
@@ -35,7 +35,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class CreateIncomeActivity extends BaseActivity implements View.OnClickListener, CreateIncomeContract.View, DetailsFragment.ICalendarListener {
+public class CreateActivity extends BaseActivity implements View.OnClickListener, CreateContract.View, DetailsFragment.ICalendarListener {
 
     public static final String CREATE_TYPE = "CREATE_TYPE";
 
@@ -120,7 +120,7 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setPresenter(new CreateIncomePresenter());
+        setPresenter(new CreatePresenter());
         setContentView(R.layout.activity_create_income_layout);
         super.onCreate(savedInstanceState);
 
@@ -129,8 +129,8 @@ public class CreateIncomeActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    public CreateIncomePresenter getPresenter() {
-        return (CreateIncomePresenter) super.getPresenter();
+    public CreatePresenter getPresenter() {
+        return (CreatePresenter) super.getPresenter();
     }
 
     private void initData() {

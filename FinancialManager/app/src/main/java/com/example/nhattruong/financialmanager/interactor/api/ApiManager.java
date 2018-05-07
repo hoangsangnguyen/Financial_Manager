@@ -18,7 +18,6 @@ import com.example.nhattruong.financialmanager.interactor.api.response.StateResp
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
-import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
 import com.example.nhattruong.financialmanager.model.Jar;
@@ -30,14 +29,12 @@ public class ApiManager {
     private ApiServices mApiServices;
 
     private PreferManager mPreferManager;
-    private EventManager mEventManager;
     private SQLiteManager mSQLiteManager;
 
 
-    public ApiManager(Retrofit retrofit, PreferManager preferManager, EventManager eventManager, SQLiteManager sqLiteManager) {
+    public ApiManager(Retrofit retrofit, PreferManager preferManager, SQLiteManager sqLiteManager) {
         mApiServices = retrofit.create(ApiServices.class);
         mPreferManager = preferManager;
-        mEventManager = eventManager;
         this.mSQLiteManager = sqLiteManager;
     }
 
@@ -237,6 +234,21 @@ public class ApiManager {
                 });
     }
 
+    public void filterSpending(String userId, String jarId, String dateFrom, String dateTo, final ApiCallback<SpendingResponse> callback){
+        mApiServices.filterSpending(getToken(),userId, jarId, dateFrom, dateTo)
+                .enqueue(new RestCallback<SpendingResponse>() {
+                    @Override
+                    public void success(SpendingResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
     public void deleteSpending(String userId, String jarId, String spendingId, final ApiCallback<BaseResponse> callback) {
         mApiServices.deleteSpending(getToken(), userId, jarId, spendingId)
                 .enqueue(new RestCallback<BaseResponse>() {
@@ -254,6 +266,21 @@ public class ApiManager {
 
     public void getAllIncome(String userId, String debtId, final ApiCallback<IncomeResponse> callback) {
         mApiServices.getAllIncome(getToken(), userId, debtId)
+                .enqueue(new RestCallback<IncomeResponse>() {
+                    @Override
+                    public void success(IncomeResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void filterIncome(String userId, String jarId, String dateFrom, String dateTo, final ApiCallback<IncomeResponse> callback){
+        mApiServices.filterIncome(getToken(), userId, jarId, dateFrom, dateTo)
                 .enqueue(new RestCallback<IncomeResponse>() {
                     @Override
                     public void success(IncomeResponse res) {

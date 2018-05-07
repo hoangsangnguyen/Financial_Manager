@@ -19,13 +19,12 @@ import android.widget.TextView;
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
-import com.example.nhattruong.financialmanager.dialog.dialogAddIncome.DialogAddIncome;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.model.User;
+import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
-import com.example.nhattruong.financialmanager.mvp.income.CreateIncomeActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
@@ -176,7 +175,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                         intent.putExtra(LoginActivity.USER_NAME, getPresenter().getSQLiteManager().getUser().getUserName());
                         getPresenter().getSQLiteManager().resetUser();
-                        getPresenter().getPreferManager().resetUser();
+//                        getPresenter().getPreferManager().resetUser();
                         startActivity(intent);
                         finish();
                     }
@@ -230,30 +229,30 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
             DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
                 @Override
                 public void onAddIncomeForJar() {
-                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
                     startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
                 }
 
                 @Override
                 public void onAddGeneralIncome() {
-                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateIncomeActivity.class);
+                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateActivity.class);
                     intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
                     startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
                 }
             });
             dialogAddIncome.show();
         }*/ else {
-            Intent intentCreate = new Intent(this, CreateIncomeActivity.class);
+            Intent intentCreate = new Intent(this, CreateActivity.class);
             if (view == fabIncome){
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);
             } else if (view == fabSpending){
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
             } else if (view == fabDebt){
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
             } else if (view == fabGeneral)
             {
-                intentCreate.putExtra(CreateIncomeActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
+                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
             }
             startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             fabAdd.close(true);

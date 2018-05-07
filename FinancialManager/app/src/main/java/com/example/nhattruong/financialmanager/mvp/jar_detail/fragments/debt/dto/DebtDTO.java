@@ -1,7 +1,5 @@
 package com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto;
 
-import android.support.annotation.NonNull;
-
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.IJarDetail;
 
@@ -10,9 +8,6 @@ import java.util.Date;
 public class DebtDTO implements IJarDetail {
 
     private Debt dto;
-
-    public DebtDTO() {
-    }
 
     public DebtDTO(Debt dto) {
         this.dto = dto;
@@ -53,7 +48,7 @@ public class DebtDTO implements IJarDetail {
         return dto.isPositive();
     }
 
-    public void setDebtChanged(Debt debt){
+    /*public void setDebtChanged(Debt debt){
         dto = new Debt();
         dto.setId(debt.getId());
         dto.setDate(debt.getDate());
@@ -62,5 +57,5 @@ public class DebtDTO implements IJarDetail {
         dto.setOrigin(debt.getOrigin());
         dto.setState(debt.getState());
         dto.setPositive(debt.isPositive());
-    }
+    }*/
 }

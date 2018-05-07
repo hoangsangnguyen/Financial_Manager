@@ -1,7 +1,6 @@
 package com.example.nhattruong.financialmanager.injection.module;
 
 import com.example.nhattruong.financialmanager.interactor.api.ApiManager;
-import com.example.nhattruong.financialmanager.interactor.event.EventManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
 
@@ -17,7 +16,7 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    ApiManager provideApiManager(@Named("api") Retrofit retrofit, PreferManager preferManager, EventManager eventManager, SQLiteManager sqLiteManager) {
-        return new ApiManager(retrofit, preferManager, eventManager, sqLiteManager);
+    ApiManager provideApiManager(@Named("api") Retrofit retrofit, PreferManager preferManager, SQLiteManager sqLiteManager) {
+        return new ApiManager(retrofit, preferManager, sqLiteManager);
     }
 }

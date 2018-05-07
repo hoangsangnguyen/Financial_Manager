@@ -13,9 +13,6 @@ public class JarDetailDTO implements Comparable<JarDetailDTO>{
     private Date date;
     private List<IJarDetail> mList;
 
-    public JarDetailDTO() {
-    }
-
     public JarDetailDTO(Date date, List<IJarDetail> mList) {
         this.date = date;
         this.mList = mList;
@@ -34,14 +31,9 @@ public class JarDetailDTO implements Comparable<JarDetailDTO>{
 
     @Override
     public int compareTo(@NonNull JarDetailDTO jarDetailDTO) {
-       /* String date1 =  date.toString();
-        String date2 = jarDetailDTO.date.toString();
-        return date1.substring(0,date1.indexOf("T")).compareTo(date2.substring(0,date2.indexOf("T")));
-*/
         SimpleDateFormat math = new SimpleDateFormat("yyyyMMdd");
         Long date1asLong = new Long(math.format(date));
         Long date2asLong = new Long(math.format(jarDetailDTO.date));
         return date1asLong.compareTo(date2asLong);
-//        return date.compareTo(jarDetailDTO.getDate());
     }
 }
