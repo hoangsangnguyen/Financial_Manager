@@ -60,6 +60,13 @@ namespace Financial_Webservice.Services
         bool UpdateDebt(Guid jarID, Debt debt);
         bool DeleteDebt(Guid jarID, Debt debt);
         #endregion
+
+        #region Images
+        Image GetImageById(Guid id);
+        bool SaveImage(Image image);
+        bool DeleteImage(Image image);
+
+        #endregion
         bool Save();
     }
 }

@@ -586,6 +586,51 @@ namespace Financial_Webservice.Services
             }
         }
 
+
+        #endregion
+        #region Images
+        public Image GetImageById(Guid id)
+        {
+            try
+            {
+                return _context.Images.FirstOrDefault(x => x._id == id);
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Get image {id} failed : " + e.Message);
+                return null;
+            }
+        }
+
+        public bool SaveImage(Image image)
+        {
+            try
+            {
+                image._id = Guid.NewGuid();
+                _context.Images.Add(image);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Save image {image._id} failed : " + e.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteImage(Image image)
+        {
+            try
+            {
+                _context.Images.Remove(image);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Delete image {image._id} failed : " + e.Message);
+                return false;
+            }
+        }
+
         #endregion
     }
 }

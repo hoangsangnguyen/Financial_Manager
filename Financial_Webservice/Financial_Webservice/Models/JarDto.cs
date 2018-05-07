@@ -19,7 +19,7 @@ namespace Financial_Webservice.Models
         public double negDoneDebts { get; set; }
 
         public double spendings { get; set; }
-        public double avaiableAmount{ get; set; }
+        public double availableAmount{ get; set; }
 
 
     }

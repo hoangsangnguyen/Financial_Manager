@@ -8,6 +8,8 @@ using Financial_Webservice.Models;
 using Financial_Webservice.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Financial_Webservice.Controllers
 {
@@ -16,7 +18,8 @@ namespace Financial_Webservice.Controllers
     public class UsersController : Controller
     {
         private IFinancialRepository _financialRepository;
-        public UsersController(IFinancialRepository financialRepository)
+
+        public UsersController(IHostingEnvironment environment, IFinancialRepository financialRepository)
         {
             _financialRepository = financialRepository;
         }
@@ -124,6 +127,13 @@ namespace Financial_Webservice.Controllers
             result.message = "Login succeed";
             result.results = userToReturn;
             return Ok(result);
+        }
+
+        [HttpPost("upload")]
+        public IActionResult UploadAvatar ([FromForm] IFormFile file )
+        {
+            
+            return Ok(file);
         }
     }
 }

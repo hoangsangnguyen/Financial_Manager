@@ -44,6 +44,8 @@ namespace Financial_Webservice
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, FinancialDBContext context, IFinancialRepository financialRepository)
         {
+            app.UseStaticFiles();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,7 +72,7 @@ namespace Financial_Webservice
                     .ForMember(dest => dest.negWaittingDebts, opt => opt.MapFrom(scr => scr.GetNegWaittingDebtAmount(states)))
                     .ForMember(dest => dest.negReadyDebts, opt => opt.MapFrom(scr => scr.GetNegReadyDebtAmount(states)))
                     .ForMember(dest => dest.negDoneDebts, opt => opt.MapFrom(scr => scr.GetNegDoneDebtAmount(states)))
-                    .ForMember(dest => dest.avaiableAmount, opt => opt.MapFrom(scr => scr.GetAvaiableAmount(states)))
+                    .ForMember(dest => dest.availableAmount, opt => opt.MapFrom(scr => scr.GetAvaiableAmount(states)))
                     .ForMember(dest => dest.spendings, opt => opt.MapFrom(scr => scr.GetSpendingAmount()));
 
                 cfg.CreateMap<Models.JarCreationDto, Entities.Jar>()
@@ -87,7 +89,7 @@ namespace Financial_Webservice
                     .ForMember(dest => dest.negWaittingDebts, opt => opt.Ignore())
                     .ForMember(dest => dest.negReadyDebts, opt => opt.Ignore())
                     .ForMember(dest => dest.negDoneDebts, opt => opt.Ignore())
-                    .ForMember(dest => dest.avaiableAmount, opt => opt.Ignore())
+                    .ForMember(dest => dest.availableAmount, opt => opt.Ignore())
                     .ForMember(dest => dest.spendings, opt => opt.Ignore());
 
                 #endregion
@@ -121,6 +123,11 @@ namespace Financial_Webservice
                 cfg.CreateMap<Models.SpendingCreationDto, Entities.SpendingDetail>();
                 #endregion
 
+                #region images
+                cfg.CreateMap<Entities.Image, Models.ImageDto>();
+                cfg.CreateMap<Models.ImageDto, Image>();
+
+                #endregion
             });
         }
     }

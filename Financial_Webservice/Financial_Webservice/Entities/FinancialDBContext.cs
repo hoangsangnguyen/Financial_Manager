@@ -29,6 +29,7 @@ namespace Financial_Webservice.Entities
         public DbSet<Debt> Debts{ get; set; }
         public DbSet<SpendingDetail> SpendingsDetail { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<Image> Images { get; set; }
 
     }
 }

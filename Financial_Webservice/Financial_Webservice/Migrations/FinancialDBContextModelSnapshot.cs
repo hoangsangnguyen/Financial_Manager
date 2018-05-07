@@ -50,6 +50,24 @@ namespace Financial_Webservice.Migrations
                     b.ToTable("Debts");
                 });
 
+            modelBuilder.Entity("Financial_Webservice.Entities.Image", b =>
+                {
+                    b.Property<Guid>("_id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("data")
+                        .IsRequired();
+
+                    b.Property<string>("fileName")
+                        .IsRequired();
+
+                    b.Property<int>("size");
+
+                    b.HasKey("_id");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("Financial_Webservice.Entities.InCome", b =>
                 {
                     b.Property<Guid>("_id")
