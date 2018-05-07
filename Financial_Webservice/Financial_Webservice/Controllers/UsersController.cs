@@ -129,11 +129,43 @@ namespace Financial_Webservice.Controllers
             return Ok(result);
         }
 
-        [HttpPost("upload")]
-        public IActionResult UploadAvatar ([FromForm] IFormFile file )
+        [HttpPut("{id}")]
+        public IActionResult UploadAvatar ([FromHeader] string token, Guid id, [FromBody] UserUpdattionDto user )
         {
-            
-            return Ok(file);
+            ResultDto result = new ResultDto();
+            if (!_financialRepository.checkAuthenticated(token, id))
+            {
+                result.message = "Token failed";
+                return BadRequest(result);
+            }
+
+            if (!_financialRepository.UserExists(id))
+            {
+                result.message = "User not found";
+                return BadRequest(result);
+            }
+
+            var userEntity = _financialRepository.GetUser(id);
+            if (userEntity == null)
+            {
+                result.message = $"User id {id} not found";
+                return NotFound(result);
+            }
+
+            Mapper.Map(user, userEntity);
+            _financialRepository.UpdateUser(userEntity);
+           
+            if (!_financialRepository.Save())
+            {
+                result.message = "Update user failed on saving";
+                return Ok(result);
+            }
+
+            var userToReturn = Mapper.Map<UserDto>(userEntity);
+            result.success = true;
+            result.message = "Update user succeed";
+            result.results = userToReturn;
+            return Ok(result);
         }
     }
 }

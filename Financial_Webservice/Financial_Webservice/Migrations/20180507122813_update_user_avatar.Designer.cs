@@ -12,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 namespace Financial_Webservice.Migrations
 {
     [DbContext(typeof(FinancialDBContext))]
-    partial class FinancialDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180507122813_update_user_avatar")]
+    partial class update_user_avatar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

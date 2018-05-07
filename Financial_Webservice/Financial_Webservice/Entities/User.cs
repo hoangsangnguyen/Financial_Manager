@@ -26,6 +26,9 @@ namespace Financial_Webservice.Entities
         [Required]
         public string password { get; set; }
         public string token { get; set; }
+
+        public string avatarUrl { get; set; }
+
         public ICollection<Jar> Jars { get; set; } = new List<Jar>();
     }
 }

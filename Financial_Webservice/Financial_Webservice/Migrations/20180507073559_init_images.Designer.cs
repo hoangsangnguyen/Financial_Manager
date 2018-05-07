@@ -12,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 namespace Financial_Webservice.Migrations
 {
     [DbContext(typeof(FinancialDBContext))]
-    partial class FinancialDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180507073559_init_images")]
+    partial class init_images
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +62,7 @@ namespace Financial_Webservice.Migrations
                     b.Property<string>("fileName")
                         .IsRequired();
 
-                    b.Property<long>("size");
+                    b.Property<int>("size");
 
                     b.HasKey("_id");
 
@@ -158,8 +159,6 @@ namespace Financial_Webservice.Migrations
                 {
                     b.Property<Guid>("_id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("avatarUrl");
 
                     b.Property<string>("email");
 

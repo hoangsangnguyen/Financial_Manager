@@ -472,16 +472,33 @@ namespace Financial_Webservice.Services
         {
             try
             {
-                if (debtResourceParameters.isPositive != null)
+                DateTime? from = debtResourceParameters.from;
+                DateTime? to = debtResourceParameters.to;
+                var list = _context.Debts.Where(s => s.jarID == jarID).ToList();
+
+                if (from != null || to != null)
                 {
-                    string _positive = debtResourceParameters.isPositive.ToLowerInvariant() ;
-                    if (_positive == "true")
-                        return _context.Debts.Where(d => d.jarID == jarID && d.isPositive).ToList();
-                    if (_positive == "false")
-                        return _context.Debts.Where(d => d.jarID == jarID && ! d.isPositive).ToList();
+                    if (from == null)
+                        return list.Where(s => DateTime.Compare(s.date, (DateTime)to) <= 0).ToList();
+                    if (to == null)
+                        return list.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0).ToList();
+
+                    return list.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0 && DateTime.Compare(s.date, (DateTime)to) <= 0).ToList();
+
                 }
 
-                return _context.Debts.Where(x => x.jarID == jarID).ToList();
+                return list;
+
+                //if (debtResourceParameters.isPositive != null)
+                //{
+                //    string _positive = debtResourceParameters.isPositive.ToLowerInvariant() ;
+                //    if (_positive == "true")
+                //        return _context.Debts.Where(d => d.jarID == jarID && d.isPositive).ToList();
+                //    if (_positive == "false")
+                //        return _context.Debts.Where(d => d.jarID == jarID && ! d.isPositive).ToList();
+                //}
+
+                //return _context.Debts.Where(x => x.jarID == jarID).ToList();
             } catch (Exception e)
             {
                 Console.Write("Get debt for jar failed : " + e.Message);

@@ -62,6 +62,15 @@ namespace Financial_Webservice
                 #region Users
                 cfg.CreateMap<Entities.User, Models.UserDto>();
                 cfg.CreateMap<Models.UserCreationDto, Entities.User>();
+                cfg.CreateMap<Models.UserUpdattionDto, Entities.User>()
+                    .ForMember(dest => dest.firstName, opts => opts.Condition(src => src.firstName != null))
+                    .ForMember(dest => dest.lastName, opts => opts.Condition(src => src.lastName != null))
+                    .ForMember(dest => dest.email, opts => opts.Condition(src => src.email != null))
+                    .ForMember(dest => dest.phone, opts => opts.Condition(src => src.phone != null))
+                    .ForMember(dest => dest.password, opts => opts.Condition(src => src.password != null))
+                    .ForMember(dest => dest.avatarUrl, opts => opts.Condition(src => src.avatarUrl != null))
+                    .ForMember(dest => dest.userName, opts => opts.Ignore());
+                    
                 #endregion
 
                 #region Jars

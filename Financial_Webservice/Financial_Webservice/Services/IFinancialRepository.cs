@@ -15,6 +15,7 @@ namespace Financial_Webservice.Services
         bool DeleteUser(User user);
         bool UserExists(Guid userID);
         bool checkAuthenticated(string token, Guid id);
+        
         User login(string userName, string password);
 
         #endregion
