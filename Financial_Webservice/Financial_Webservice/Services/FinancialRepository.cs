@@ -648,6 +648,106 @@ namespace Financial_Webservice.Services
             }
         }
 
+
+        #endregion
+
+        #region Statistics
+        public StatisticDto GetStatisticsByMonths(PeriodResourceParameters period)
+        {
+            try
+            {
+                DateTime? from = period.from;
+                DateTime? to = period.to;
+                var debts = _context.Debts.ToList();
+                var incomes = _context.Incomes.ToList();
+                var spendings = _context.SpendingsDetail.ToList();
+
+                if (from != null || to != null)
+                {
+                    if (from == null)
+                    {
+                        debts = debts.Where(s => DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                        incomes = incomes.Where(s => DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                        spendings = spendings.Where(s => DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                    }
+                    else if (to == null)
+                    {
+                        debts = debts.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0).OrderBy(s => s.date).ToList();
+                        incomes = incomes.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0).OrderBy(s => s.date).ToList();
+                        spendings = spendings.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0).OrderBy(s => s.date).ToList();
+                    }
+                    else
+                    {
+                        debts = debts.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0 && DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                        incomes = incomes.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0 && DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                        spendings = spendings.Where(s => DateTime.Compare(s.date, (DateTime)from) >= 0 && DateTime.Compare(s.date, (DateTime)to) <= 0).OrderBy(s => s.date).ToList();
+                    }
+                }
+
+                StatisticDto result = new StatisticDto();
+                result.incomes = GetIncomesByMonths(incomes);
+                result.spendings = GetSpendingsByMonths(spendings);
+                result.debts = GetDebtByMonths(debts);
+                return result;
+
+            } catch (Exception e)
+            {
+                Console.Write($"Statistics failed : " + e.Message);
+                return null;
+            }
+        }
+
+        private List<double> GetDebtByMonths(List<Debt> debts)
+        {
+            List<double> list = new List<double>();
+            for (int i = 0; i < 12; i++)
+            {
+                list.Add(0);
+            }
+
+            foreach(Debt debt in debts)
+            {
+                int month = debt.date.Month;
+                list[month-1] += debt.amount;
+            }
+
+            return list;
+        }
+
+        private List<double> GetIncomesByMonths(List<InCome> incomes)
+        {
+            List<double> list = new List<double>();
+            for (int i = 0; i < 12; i++)
+            {
+                list.Add(0);
+            }
+
+            foreach (InCome income in incomes)
+            {
+                int month = income.date.Month;
+                list[month-1] += income.amount;
+            }
+
+            return list;
+        }
+
+        private List<double> GetSpendingsByMonths(List<SpendingDetail> spendings)
+        {
+            List<double> list = new List<double>();
+            for (int i = 0; i < 12; i++)
+            {
+                list.Add(0);
+            }
+
+            foreach (SpendingDetail spending in spendings)
+            {
+                int month = spending.date.Month;
+                list[month-1] += spending.amount;
+            }
+
+            return list;
+        }
+
         #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Financial_Webservice.Entities;
 using Financial_Webservice.Helpers;
+using Financial_Webservice.Models;
 using System;
 using System.Collections.Generic;
 
@@ -67,6 +68,10 @@ namespace Financial_Webservice.Services
         bool SaveImage(Image image);
         bool DeleteImage(Image image);
 
+        #endregion
+
+        #region Statistics
+        StatisticDto GetStatisticsByMonths(PeriodResourceParameters period);
         #endregion
         bool Save();
     }
