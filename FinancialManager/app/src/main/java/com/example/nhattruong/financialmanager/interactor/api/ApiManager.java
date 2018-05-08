@@ -11,6 +11,7 @@ import com.example.nhattruong.financialmanager.interactor.api.request.LoginReque
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
@@ -20,8 +21,11 @@ import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDeb
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
+import com.example.nhattruong.financialmanager.model.Image;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.model.User;
 
+import okhttp3.MultipartBody;
 import retrofit2.Retrofit;
 
 public class ApiManager {
@@ -86,6 +90,22 @@ public class ApiManager {
                 .enqueue(new RestCallback<UserResponse>() {
                     @Override
                     public void success(UserResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    //======================== Update User ==========================
+    public void updateUser(String userId, User user, final ApiCallback<BaseResponse> callback) {
+        mApiServices.updateUser(getToken(), userId, user)
+                .enqueue(new RestCallback<BaseResponse>() {
+                    @Override
+                    public void success(BaseResponse res) {
                         callback.success(res);
                     }
 
@@ -344,6 +364,21 @@ public class ApiManager {
                 .enqueue(new RestCallback<DebtResponse>() {
                     @Override
                     public void success(DebtResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void uploadImage(String userId, MultipartBody.Part file, final ApiCallback<ImageResponse> callback){
+        mApiServices.uploadImage(getToken(), userId, file)
+                .enqueue(new RestCallback<ImageResponse>() {
+                    @Override
+                    public void success(ImageResponse res) {
                         callback.success(res);
                     }
 

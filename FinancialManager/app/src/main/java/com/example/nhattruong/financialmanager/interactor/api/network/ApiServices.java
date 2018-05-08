@@ -7,6 +7,7 @@ import com.example.nhattruong.financialmanager.interactor.api.request.LoginReque
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
@@ -15,14 +16,18 @@ import com.example.nhattruong.financialmanager.interactor.api.response.TypeRespo
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
+import com.example.nhattruong.financialmanager.model.User;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -42,6 +47,13 @@ public interface ApiServices {
     Call<UserResponse> getUser(
             @Header("token") String token,
             @Path("userId") String userId
+    );
+
+    @PUT("users/{userId}")
+    Call<BaseResponse> updateUser(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Body User user
     );
 
     @GET("types")
@@ -165,6 +177,15 @@ public interface ApiServices {
             @Path("debtId") String debtId,
             @Body DebtUpdateRequest request
     );
+
+    @Multipart
+    @POST("users/{userId}/images")
+    Call<ImageResponse> uploadImage(
+            @Header("token") String token,
+            @Path("userId") String usreId,
+            @Part MultipartBody.Part file
+    );
+
 
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 

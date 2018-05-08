@@ -18,6 +18,10 @@ public class User implements Serializable{
     @Expose
     private String lastName;
 
+    @SerializedName("avatarUrl")
+    @Expose
+    private String avatarUrl;
+
     @SerializedName("email")
     @Expose
     private String email;
@@ -60,6 +64,14 @@ public class User implements Serializable{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getEmail() {
