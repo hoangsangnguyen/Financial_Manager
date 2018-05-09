@@ -17,6 +17,7 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.Deb
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.income.IncomeFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.spending.SpendingFragment;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -123,6 +124,8 @@ public class JarDetailActivity extends BaseActivity {
                         new DateFromToPickerDialog.OnClickDoneListener() {
                             @Override
                             public void onDoneClick(Date dateFrom, Date dateTo) {
+                                tvStartDate.setText(DateUtils.formatFullDatePeriods(dateFrom));
+                                tvEndDate.setText(DateUtils.formatFullDatePeriods(dateTo));
                                 getPresenter().setDateStart(dateFrom);
                                 getPresenter().setDateEnd(dateTo);
                                 filterDetail();

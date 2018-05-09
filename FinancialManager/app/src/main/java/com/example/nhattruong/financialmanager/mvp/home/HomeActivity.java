@@ -1,5 +1,7 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,10 +30,13 @@ import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
+import com.example.nhattruong.financialmanager.reminder.ReminderService;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 
@@ -88,6 +93,20 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         setPresenter(new HomePresenter());
         setContentView(R.layout.activity_home);
         super.onCreate(savedInstanceState);
+
+        Intent reminderIntent = new Intent(ReminderService.ACTION_INIT_EVENT_REMINDER);
+       /* AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, reminderIntent, 0);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*60*60*24 , pendingIntent);*/
+        ReminderService.enqueueWork(this, reminderIntent);
     }
 
     @Override
@@ -215,6 +234,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     public void onLoadJarsSuccess() {
+
         mRefresh.setRefreshing(false);
         mJarAdapter.notifyDataSetChanged();
     }

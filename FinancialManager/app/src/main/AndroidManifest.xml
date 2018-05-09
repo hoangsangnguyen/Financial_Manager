@@ -42,6 +42,20 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+        <service
+            android:name=".reminder.ReminderService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        
+        <receiver android:name=".reminder.ReminderReceiver">
+            <intent-filter>
+                <action android:name="com.example.nhattruong.financialmanager.action.CLEAR_EVENT_REMINDER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.nhattruong.financialmanager.action.INIT_EVENT_REMINDER"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

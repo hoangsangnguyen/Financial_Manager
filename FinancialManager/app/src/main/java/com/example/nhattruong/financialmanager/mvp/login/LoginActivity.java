@@ -58,6 +58,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View, V
         String username = getIntent().getStringExtra(USER_NAME);
         if (!TextUtils.isEmpty(username)) {
             edtUsername.setText(username);
+            edtPassword.setText("");
         }
     }
 

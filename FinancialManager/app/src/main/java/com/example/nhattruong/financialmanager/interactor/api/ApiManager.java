@@ -18,6 +18,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.JarRespon
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.TodoResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -396,6 +397,21 @@ public class ApiManager {
                 .enqueue(new RestCallback<StatisticResponse>() {
                     @Override
                     public void success(StatisticResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getTodoNext(String userId, final ApiCallback<TodoResponse> callback){
+        mApiServices.getTodoNext(getToken(), userId)
+                .enqueue(new RestCallback<TodoResponse>() {
+                    @Override
+                    public void success(TodoResponse res) {
                         callback.success(res);
                     }
 

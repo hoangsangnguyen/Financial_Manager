@@ -11,6 +11,8 @@ import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Date;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -26,14 +28,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
         Uri sound= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(this)
-                .setSmallIcon(android.R.drawable.ic_dialog_alert)
+                .setSmallIcon(android.R.drawable.ic_popup_reminder)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
                 .setSound(sound)
                 .setContentIntent(pendingIntent);
         NotificationManager manager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(0,builder.build());
+        manager.notify((int)new Date().getTime(),builder.build());
     }
     private void showNotification(String body) {
         showNotification(body,"Financial Manager");

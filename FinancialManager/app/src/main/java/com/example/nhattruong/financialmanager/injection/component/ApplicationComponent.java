@@ -18,6 +18,7 @@ import com.example.nhattruong.financialmanager.interactor.api.ApiManager;
 import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.resources.ResourcesManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
+import com.example.nhattruong.financialmanager.reminder.ReminderService;
 
 import javax.inject.Singleton;
 
@@ -35,6 +36,8 @@ public interface ApplicationComponent {
     void inject(BaseActivity activity);
 
     void inject(BaseFragment fragment);
+
+    void inject(ReminderService services);
 
     @ApplicationContext
     Context getContext();

@@ -14,6 +14,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.JarRespon
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.TodoResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -195,6 +196,11 @@ public interface ApiServices {
             @Body StatisticRequest request
     );
 
+    @GET("users/{userID}/notifications/next")
+    Call<TodoResponse> getTodoNext(
+            @Header("token") String token,
+            @Path("userID") String userID
+    );
 
     String URL = "http://sixfinancialbox.azurewebsites.net/api/";
 
