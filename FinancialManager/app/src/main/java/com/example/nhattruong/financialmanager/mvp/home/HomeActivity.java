@@ -23,6 +23,7 @@ import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
+import com.example.nhattruong.financialmanager.model.Todo;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.chart.ChartActivity;
 import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
@@ -30,6 +31,7 @@ import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
+import com.example.nhattruong.financialmanager.mvp.todo.TodoActivity;
 import com.example.nhattruong.financialmanager.reminder.ReminderService;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
@@ -86,7 +88,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.fab_general)
     FloatingActionButton fabGeneral;
 
-    JarAdapter mJarAdapter;
+    private JarAdapter mJarAdapter;
+    private boolean isCreateTodo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,11 +183,21 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                     case R.id.jar6:
                         jarId = getPresenter().getJarList().get(5).getId();
                         break;
+                    case R.id.todo:
+                        isCreateTodo = true;
+                        Intent intentCreateTodo = new Intent(HomeActivity.this, TodoActivity.class);
+                        startActivityForResult(intentCreateTodo, AppConstants.REQUEST_CODE_CREATE_TODO);
+                        break;
                 }
 
-                Intent intentDetail = new Intent(HomeActivity.this, JarDetailActivity.class);
-                intentDetail.putExtra(AppConstants.JAR_ID, jarId);
-                startActivity(intentDetail);
+                if (!isCreateTodo){
+                    Intent intentDetail = new Intent(HomeActivity.this, JarDetailActivity.class);
+                    intentDetail.putExtra(AppConstants.JAR_ID, jarId);
+                    startActivity(intentDetail);
+                }
+
+                isCreateTodo = false;
+
                 return true;
             }
         });
@@ -277,8 +290,14 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == AppConstants.REQUEST_CODE_CREATE) {
-            getPresenter().getJars();
+        if (resultCode == RESULT_OK) {
+            if (requestCode == AppConstants.REQUEST_CODE_CREATE){
+                getPresenter().getJars();
+            }
+            else if (requestCode == AppConstants.REQUEST_CODE_CREATE_TODO){
+               /* Todo todo = (Todo) data.getSerializableExtra(AppConstants.TODO);
+                new ReminderService().sendNotification(todo);*/
+            }
         }
     }
 }

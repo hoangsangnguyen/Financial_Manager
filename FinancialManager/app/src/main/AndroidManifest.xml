@@ -11,9 +11,9 @@
         android:name=".MainApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
+        android:icon="@drawable/ic_circle_currency"
         android:label="@string/app_name"
         android:roundIcon="@null"
-        android:icon="@drawable/ic_circle_currency"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MainActivity" />
@@ -34,28 +34,28 @@
             android:name=".mvp.create.CreateActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".mvp.jar_detail.JarDetailActivity" />
-        <activity android:name=".mvp.chart.ChartActivity"/>
+        <activity android:name=".mvp.chart.ChartActivity" />
 
-        <service
-            android:name=".firebase.MyFirebaseMessagingService">
+        <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".reminder.ReminderService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
-        
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <receiver android:name=".reminder.ReminderReceiver">
             <intent-filter>
-                <action android:name="com.example.nhattruong.financialmanager.action.CLEAR_EVENT_REMINDER"/>
+                <action android:name="com.example.nhattruong.financialmanager.action.CLEAR_EVENT_REMINDER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.example.nhattruong.financialmanager.action.INIT_EVENT_REMINDER"/>
+                <action android:name="com.example.nhattruong.financialmanager.action.INIT_EVENT_REMINDER" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".mvp.todo.TodoActivity"></activity>
     </application>
 
 </manifest>

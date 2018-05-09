@@ -28,5 +28,9 @@
             android:id="@+id/jar6"
             android:icon="@drawable/ic_small_jar"
             android:title="Tự do tài chính" />
+        <item
+            android:id="@+id/todo"
+            android:title="Dự định tương lai"
+            android:icon="@drawable/icon_todo"/>
     </group>
 </menu>

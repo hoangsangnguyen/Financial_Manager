@@ -69,6 +69,29 @@ public class ReminderService extends JobIntentService {
         });
     }
 
+    public void sendNotification(Todo todo) {
+        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationManager mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("channel", "channel", NotificationManager.IMPORTANCE_DEFAULT);
+            mNM.createNotificationChannel(channel);
+        }
+
+        Intent myIntent = new Intent(this , HomeActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, myIntent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "channel")
+                    .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                    .setContentTitle(getString(R.string.app_name))
+                    .setContentText(todo.getName() + " on " + DateUtils.formatFullDatePeriods(todo.getDate()))
+                    .setContentIntent(contentIntent)
+                    .setAutoCancel(true)
+                    .setSound(sound)
+                    .build();
+            mNM.notify(10, notification);
+    }
+
     private void sendNotification(List<Todo> listTodo) {
 
 //        cancelAlarms(getApplicationContext());

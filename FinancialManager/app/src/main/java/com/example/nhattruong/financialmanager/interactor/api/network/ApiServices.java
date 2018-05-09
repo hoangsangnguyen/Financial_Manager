@@ -2,11 +2,13 @@ package com.example.nhattruong.financialmanager.interactor.api.network;
 
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateDebtRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeSpendingRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateTodoRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.CreateTodoResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
@@ -194,6 +196,13 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String userId,
             @Body StatisticRequest request
+    );
+
+    @POST("users/{userID}/notifications")
+    Call<CreateTodoResponse> createTodo(
+            @Header("token") String token,
+            @Path("userID") String userID,
+            @Body CreateTodoRequest request
     );
 
     @GET("users/{userID}/notifications/next")

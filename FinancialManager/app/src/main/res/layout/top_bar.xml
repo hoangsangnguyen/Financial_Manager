@@ -43,7 +43,7 @@
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/tv_save_top_bar"
+        android:id="@+id/tv_right_top_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|center_vertical"

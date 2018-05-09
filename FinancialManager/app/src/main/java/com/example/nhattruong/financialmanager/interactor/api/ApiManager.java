@@ -6,11 +6,13 @@ import com.example.nhattruong.financialmanager.interactor.api.network.RestCallba
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateDebtRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateIncomeSpendingRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.CreateTodoRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.CreateTodoResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.IncomeResponse;
@@ -397,6 +399,21 @@ public class ApiManager {
                 .enqueue(new RestCallback<StatisticResponse>() {
                     @Override
                     public void success(StatisticResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void createTodo(String userId, CreateTodoRequest request, final ApiCallback<CreateTodoResponse> callback){
+        mApiServices.createTodo(getToken(), userId, request)
+                .enqueue(new RestCallback<CreateTodoResponse>() {
+                    @Override
+                    public void success(CreateTodoResponse res) {
                         callback.success(res);
                     }
 

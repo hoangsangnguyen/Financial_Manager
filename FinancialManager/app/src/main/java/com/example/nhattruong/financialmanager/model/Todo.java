@@ -3,9 +3,10 @@ package com.example.nhattruong.financialmanager.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Todo {
+public class Todo implements Serializable {
     @SerializedName("_id")
     @Expose
     private String id;

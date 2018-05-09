@@ -38,7 +38,7 @@ public class EditDebtDialog extends Dialog implements View.OnClickListener, DayM
     @BindView(R.id.tv_title_top_bar)
     TextView tvTitle;
 
-    @BindView(R.id.tv_save_top_bar)
+    @BindView(R.id.tv_right_top_bar)
     TextView tvSave;
 
     @BindView(R.id.tv_edit_date)

@@ -97,4 +97,9 @@
     <string name="to_2_dot">To:</string>
     <string name="all">All</string>
     <string name="no_data">No Data</string>
+    <string name="content_2_dot">Content:</string>
+    <string name="plan_in_future">Plan in future</string>
+    <string name="not_submit">Not submit</string>
+    <string name="todo">Todo</string>
+    <string name="create">Create</string>
 </resources>

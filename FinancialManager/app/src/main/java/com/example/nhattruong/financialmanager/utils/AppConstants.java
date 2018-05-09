@@ -21,6 +21,8 @@ public class AppConstants {
 
     public static final String KEY_DETAIL_TOKEN_FILE = "KEY_DETAIL_TOKEN_FILE";
 
+    public static final String TODO = "TODO";
+
 
     public static final int REQUEST_PERMISSION_CAPTURE_IMAGE = 1;
     public static final int REQUEST_PERMISSION_READ_LIBRARY = 2;
@@ -51,5 +53,6 @@ public class AppConstants {
     public static final int CREATE_GENERAL= 3;
 
     public static final int REQUEST_CODE_CREATE = 22;
+    public static final int REQUEST_CODE_CREATE_TODO = 44;
 
 }
