@@ -32,6 +32,16 @@
         android:textColor="@color/white_color"
         android:textSize="@dimen/text_24sp" />
 
+    <ImageView
+        android:id="@+id/iv_right_top_bar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="@dimen/small_8dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
     <TextView
         android:id="@+id/tv_save_top_bar"
         android:layout_width="wrap_content"

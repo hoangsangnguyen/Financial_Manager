@@ -20,7 +20,9 @@ import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
 import com.example.nhattruong.financialmanager.model.User;
+import com.example.nhattruong.financialmanager.mvp.chart.ChartActivity;
 import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
 import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
@@ -29,12 +31,13 @@ import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity implements HomeContract.View, View.OnClickListener {
 
-    public static final String ADD_INCOME_FOR_JAR = "ADD_INCOME_FOR_JAR";
+    public static final String STATISTIC = "STATISTIC";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -45,8 +48,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @BindView(R.id.tb_home)
     Toolbar toolbar;
 
-    @BindView(R.id.iv_add)
-    ImageView ivAdd;
+    @BindView(R.id.iv_chart)
+    ImageView ivChart;
 
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
@@ -95,6 +98,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @Override
     public void onInitData() {
 
+        FirebaseMessaging.getInstance().subscribeToTopic("Notification");
+
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -123,7 +128,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     @Override
     public void onInitListener() {
         tvUserName.setOnClickListener(this);
-        ivAdd.setOnClickListener(this);
+        ivChart.setOnClickListener(this);
         fabIncome.setOnClickListener(this);
         fabSpending.setOnClickListener(this);
         fabDebt.setOnClickListener(this);
@@ -215,7 +220,14 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     }
 
     @Override
-    public void onLoadJarsFailed(RestError error) {
+    public void getStatisticSuccess(StatisticResponse response) {
+        Intent intentChart = new Intent(this, ChartActivity.class);
+        intentChart.putExtra(STATISTIC, response);
+        startActivity(intentChart);
+    }
+
+    @Override
+    public void onFailure(RestError error) {
         mRefresh.setRefreshing(false);
         showErrorDialog(error.message);
     }
@@ -224,25 +236,9 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
     public void onClick(View view) {
         if (view == tvUserName) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-        }/* else if (view == ivAdd) {
-
-            DialogAddIncome dialogAddIncome = new DialogAddIncome(this, new DialogAddIncome.onClickItemListener() {
-                @Override
-                public void onAddIncomeForJar() {
-                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateActivity.class);
-                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, true);
-                    startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
-                }
-
-                @Override
-                public void onAddGeneralIncome() {
-                    Intent intentAddIncome = new Intent(HomeActivity.this, CreateActivity.class);
-                    intentAddIncome.putExtra(ADD_INCOME_FOR_JAR, false);
-                    startActivityForResult(intentAddIncome, AppConstants.REQUEST_CODE_CREATE);
-                }
-            });
-            dialogAddIncome.show();
-        }*/ else {
+        }else if (view == ivChart){
+            getPresenter().getStatistic();
+        }else {
             Intent intentCreate = new Intent(this, CreateActivity.class);
             if (view == fabIncome){
                 intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_INCOME);

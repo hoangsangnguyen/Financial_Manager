@@ -34,4 +34,6 @@
     <dimen name="mini">4dp</dimen>
     <dimen name="mini_2dp">2dp</dimen>
 
+    <dimen name="icon_size_24">24dp</dimen>
+
 </resources>

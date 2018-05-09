@@ -9,6 +9,7 @@ import com.example.nhattruong.financialmanager.interactor.api.request.CreateInco
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
@@ -16,6 +17,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.IncomeRes
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -379,6 +381,21 @@ public class ApiManager {
                 .enqueue(new RestCallback<ImageResponse>() {
                     @Override
                     public void success(ImageResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
+    public void getStatistic(String userId, StatisticRequest request, final ApiCallback<StatisticResponse> callback){
+        mApiServices.getStatistic(getToken(), userId, request)
+                .enqueue(new RestCallback<StatisticResponse>() {
+                    @Override
+                    public void success(StatisticResponse res) {
                         callback.success(res);
                     }
 

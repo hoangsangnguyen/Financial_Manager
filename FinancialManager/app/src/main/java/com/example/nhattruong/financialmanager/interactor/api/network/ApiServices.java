@@ -5,6 +5,7 @@ import com.example.nhattruong.financialmanager.interactor.api.request.CreateInco
 import com.example.nhattruong.financialmanager.interactor.api.request.DebtUpdateRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.LoginRequest;
 import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequest;
+import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.DebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.ImageResponse;
@@ -12,6 +13,7 @@ import com.example.nhattruong.financialmanager.interactor.api.response.IncomeRes
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.SpendingResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UpdateDebtResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.UserResponse;
@@ -184,6 +186,13 @@ public interface ApiServices {
             @Header("token") String token,
             @Path("userId") String usreId,
             @Part MultipartBody.Part file
+    );
+
+    @POST("users/{userId}/statistics/months")
+    Call<StatisticResponse> getStatistic(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Body StatisticRequest request
     );
 
 

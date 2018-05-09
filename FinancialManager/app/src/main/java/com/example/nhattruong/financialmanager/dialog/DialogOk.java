@@ -47,9 +47,9 @@ public class DialogOk extends Dialog {
 
         setContentView(R.layout.dialog_ok);
 
-        TextView mTvTitle = (TextView) findViewById(R.id.dialog_title);
-        TextView mTvMessage = (TextView) findViewById(R.id.dialog_message);
-        Button mBtnOk = (Button) findViewById(R.id.dialog_btn_ok);
+        TextView mTvTitle = findViewById(R.id.dialog_title);
+        TextView mTvMessage = findViewById(R.id.dialog_message);
+        Button mBtnOk = findViewById(R.id.dialog_btn_ok);
 
         mTvTitle.setText(mTitle);
         mTvMessage.setText(mMessage);

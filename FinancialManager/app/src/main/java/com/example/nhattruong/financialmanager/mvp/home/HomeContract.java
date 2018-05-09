@@ -2,6 +2,7 @@ package com.example.nhattruong.financialmanager.mvp.home;
 
 import com.example.nhattruong.financialmanager.base.IBaseView;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
 
 public interface HomeContract {
 
@@ -9,7 +10,9 @@ public interface HomeContract {
 
         void onLoadJarsSuccess();
 
-        void onLoadJarsFailed(RestError error);
+        void getStatisticSuccess(StatisticResponse response);
+
+        void onFailure(RestError error);
 
     }
 
@@ -19,5 +22,7 @@ public interface HomeContract {
         void getStates();
 
         void getJars();
+
+        void getStatistic();
     }
 }

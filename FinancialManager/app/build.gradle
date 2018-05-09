@@ -117,6 +117,8 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.2'
     implementation 'com.sromku:simple-fb:4.1.1'
 
+    //Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
 }
 apply plugin: 'com.google.gms.google-services'
-

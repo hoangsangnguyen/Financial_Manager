@@ -3,8 +3,10 @@ package com.example.nhattruong.financialmanager.mvp.home;
 import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
+import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.JarResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.StateResponse;
+import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
 import com.example.nhattruong.financialmanager.model.User;
@@ -93,12 +95,35 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
                 public void failure(RestError error) {
                     if (!isViewAttached()) return;
                     getView().hideLoading();
-                    getView().onLoadJarsFailed(error);
+                    getView().onFailure(error);
                 }
             });
         } else {
             if (!isViewAttached()) return;
             getView().hideLoading();
         }
+    }
+
+    @Override
+    public void getStatistic() {
+        if (!isViewAttached()) return;
+        getView().showLoading();
+
+        StatisticRequest request = new StatisticRequest("2018-1-1", "2019-1-1");
+        getApiManager().getStatistic(getSQLiteManager().getUser().getId(), request, new ApiCallback<StatisticResponse>() {
+            @Override
+            public void success(StatisticResponse res) {
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().getStatisticSuccess(res);
+            }
+
+            @Override
+            public void failure(RestError error) {
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().onFailure(error);
+            }
+        });
     }
 }
