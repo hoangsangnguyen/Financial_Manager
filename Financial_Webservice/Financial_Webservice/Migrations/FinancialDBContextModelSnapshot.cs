@@ -104,6 +104,25 @@ namespace Financial_Webservice.Migrations
                     b.ToTable("Jars");
                 });
 
+            modelBuilder.Entity("Financial_Webservice.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("_id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("date");
+
+                    b.Property<string>("name")
+                        .IsRequired();
+
+                    b.Property<Guid>("userID");
+
+                    b.HasKey("_id");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("Financial_Webservice.Entities.SpendingDetail", b =>
                 {
                     b.Property<Guid>("_id")
@@ -215,6 +234,14 @@ namespace Financial_Webservice.Migrations
                 {
                     b.HasOne("Financial_Webservice.Entities.User", "user")
                         .WithMany("Jars")
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Financial_Webservice.Entities.Notification", b =>
+                {
+                    b.HasOne("Financial_Webservice.Entities.User", "user")
+                        .WithMany()
                         .HasForeignKey("userID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

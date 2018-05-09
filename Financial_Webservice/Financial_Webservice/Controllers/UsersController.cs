@@ -130,7 +130,7 @@ namespace Financial_Webservice.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UploadAvatar ([FromHeader] string token, Guid id, [FromBody] UserUpdattionDto user )
+        public IActionResult UpdateUser([FromHeader] string token, Guid id, [FromBody] UserUpdattionDto user )
         {
             ResultDto result = new ResultDto();
             if (!_financialRepository.checkAuthenticated(token, id))

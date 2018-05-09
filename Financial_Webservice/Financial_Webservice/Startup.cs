@@ -137,6 +137,13 @@ namespace Financial_Webservice
                 cfg.CreateMap<Models.ImageDto, Image>();
 
                 #endregion
+                #region Notification
+                cfg.CreateMap<Entities.Notification, Models.NotificationDto>();
+                cfg.CreateMap<Models.NotificationCreationDto, Entities.Notification>();
+                cfg.CreateMap<Models.NotificationUpdationDto, Entities.Notification>()
+                    .ForMember(dest => dest.name, opt => opt.Condition(src => src.name != null))
+                    .ForMember(dest => dest.date, opt => opt.Condition(src => src.date != null));
+                #endregion
             });
         }
     }

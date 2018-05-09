@@ -71,7 +71,16 @@ namespace Financial_Webservice.Services
         #endregion
 
         #region Statistics
-        StatisticDto GetStatisticsByMonths(PeriodResourceParameters period);
+        StatisticDto GetStatisticsByMonths(Guid userID, PeriodResourceParameters period);
+        #endregion
+
+        #region Notification
+        List<Notification> GetAllNotificationsForUser(Guid userID);
+        List<Notification> GetNextNotificationsForUser(Guid userID);
+        Notification GetNotificationById(Guid id);
+        bool CreateNotification(Guid userID, Notification notification);
+        bool DeleteNotification(Notification notification);
+        bool UpdateNotification(Notification notification);
         #endregion
         bool Save();
     }

@@ -652,15 +652,17 @@ namespace Financial_Webservice.Services
         #endregion
 
         #region Statistics
-        public StatisticDto GetStatisticsByMonths(PeriodResourceParameters period)
+        public StatisticDto GetStatisticsByMonths(Guid userID, PeriodResourceParameters period)
         {
             try
             {
+                var jarIDList = _context.Jars.Where(j => j.userID == userID).Select(j => j._id).ToList();
+
                 DateTime? from = period.from;
                 DateTime? to = period.to;
-                var debts = _context.Debts.ToList();
-                var incomes = _context.Incomes.ToList();
-                var spendings = _context.SpendingsDetail.ToList();
+                var debts = _context.Debts.Where(d => jarIDList.Any(x => x == d.jarID)).ToList();
+                var incomes = _context.Incomes.Where(d => jarIDList.Any(x => x == d.jarID)).ToList();
+                var spendings = _context.SpendingsDetail.Where(d => jarIDList.Any(x => x == d.jarID)).ToList();
 
                 if (from != null || to != null)
                 {
@@ -746,6 +748,86 @@ namespace Financial_Webservice.Services
             }
 
             return list;
+        }
+
+
+        #endregion
+        #region Notification
+        public List<Notification> GetAllNotificationsForUser(Guid userID)
+        {
+            try
+            {
+                return _context.Notifications.Where(n => n.userID == userID).OrderBy(n => n.date).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Get notifications for user {userID} failed : " + e.Message);
+                return null;
+            }
+        }
+
+        public List<Notification> GetNextNotificationsForUser(Guid userID)
+        {
+            try
+            {
+                return _context.Notifications.Where(n => n.userID == userID && 
+                                                    n.date >= DateTime.Now).OrderBy(n => n.date).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Get next notifications for user {userID} failed : " + e.Message);
+                return null;
+            }
+        }
+
+        public bool CreateNotification(Guid userID, Notification notification)
+        {
+            try
+            {
+                notification._id = Guid.NewGuid();
+                notification.userID = userID;
+                _context.Notifications.Add(notification);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Create notification for user {userID} failed : " + e.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteNotification(Notification notification)
+        {
+            try
+            {
+                _context.Notifications.Remove(notification);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Delete notification {notification._id} failed : " + e.Message);
+                return false;
+            }
+        }
+
+        public bool UpdateNotification(Notification notification)
+        {
+            // not implement
+            return true;
+        }
+
+        public Notification GetNotificationById(Guid id)
+        {
+            try
+            {
+               return _context.Notifications.FirstOrDefault(n => n._id == id);
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Get notification by ID {id} failed : " + e.Message);
+                return null;
+            }
+
         }
 
         #endregion
