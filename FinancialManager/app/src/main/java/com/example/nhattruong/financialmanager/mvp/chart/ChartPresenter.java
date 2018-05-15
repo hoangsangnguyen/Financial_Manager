@@ -5,6 +5,7 @@ import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallbac
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.StatisticRequest;
 import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 public class ChartPresenter extends BasePresenter implements ChartContract.Presenter{
 
@@ -18,8 +19,10 @@ public class ChartPresenter extends BasePresenter implements ChartContract.Prese
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        StatisticRequest request = new StatisticRequest("2018-1-1", "2019-1-1");
-        getApiManager().getStatistic(getSQLiteManager().getUser().getId(), request, new ApiCallback<StatisticResponse>() {
+        final String startDayMonth = "-1-1";
+        String startDate = DateUtils.getCurrentYear() + startDayMonth;
+        String endDate = (DateUtils.getCurrentYear() + 1) + startDayMonth;
+        getApiManager().getStatistic(getSQLiteManager().getUser().getId(), new StatisticRequest(startDate, endDate), new ApiCallback<StatisticResponse>() {
             @Override
             public void success(StatisticResponse res) {
                 if (!isViewAttached()) return;

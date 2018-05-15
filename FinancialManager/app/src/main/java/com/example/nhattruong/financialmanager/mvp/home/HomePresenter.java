@@ -10,8 +10,10 @@ import com.example.nhattruong.financialmanager.interactor.api.response.Statistic
 import com.example.nhattruong.financialmanager.interactor.api.response.TypeResponse;
 import com.example.nhattruong.financialmanager.model.Jar;
 import com.example.nhattruong.financialmanager.model.User;
+import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomePresenter extends BasePresenter implements HomeContract.IPresenter {
@@ -23,7 +25,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
     private List<Jar> jarList;
 
     List<Jar> getJarList() {
-        if (jarList == null){
+        if (jarList == null) {
             jarList = new ArrayList<>();
         }
         return jarList;
@@ -37,7 +39,7 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
             @Override
             public void success(TypeResponse res) {
                 if (res != null) {
-                   getJars();
+                    getJars();
                 } else {
                     if (!isViewAttached()) return;
                     getView().hideLoading();
@@ -109,8 +111,10 @@ public class HomePresenter extends BasePresenter implements HomeContract.IPresen
         if (!isViewAttached()) return;
         getView().showLoading();
 
-        StatisticRequest request = new StatisticRequest("2018-1-1", "2019-1-1");
-        getApiManager().getStatistic(getSQLiteManager().getUser().getId(), request, new ApiCallback<StatisticResponse>() {
+        final String startDayMonth = "-1-1";
+        String startDate = DateUtils.getCurrentYear() + startDayMonth;
+        String endDate = (DateUtils.getCurrentYear() + 1) + startDayMonth;
+        getApiManager().getStatistic(getSQLiteManager().getUser().getId(), new StatisticRequest(startDate, endDate), new ApiCallback<StatisticResponse>() {
             @Override
             public void success(StatisticResponse res) {
                 if (!isViewAttached()) return;

@@ -118,6 +118,8 @@ public class ChartActivity extends BaseActivity implements ChartContract.View {
 
         refresh.setRefreshing(false);
 
+        if (dataSets != null && !dataSets.isEmpty()) dataSets.clear();
+
         if (response.getResult()==null) return;
 
         List<Entry> yValueIncomes = new ArrayList<>();
