@@ -23,15 +23,6 @@
             android:id="@+id/lv_detail_jar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_add_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginEnd="@dimen/small_8dp"
-            android:src="@drawable/ic_add_white"
-            fab:fab_colorNormal="#F50057" />
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
 

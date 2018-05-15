@@ -212,7 +212,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                         intent.putExtra(LoginActivity.USER_NAME, getPresenter().getSQLiteManager().getUser().getUserName());
                         getPresenter().getSQLiteManager().resetUser();
-//                        getPresenter().getPreferManager().resetUser();
                         startActivity(intent);
                         finish();
                     }

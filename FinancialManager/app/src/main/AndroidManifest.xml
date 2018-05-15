@@ -34,7 +34,9 @@
             android:name=".mvp.create.CreateActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".mvp.jar_detail.JarDetailActivity" />
-        <activity android:name=".mvp.chart.ChartActivity" />
+        <activity
+            android:name=".mvp.chart.ChartActivity"
+            android:screenOrientation="landscape"/>
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -48,14 +50,11 @@
 
         <receiver android:name=".reminder.ReminderReceiver">
             <intent-filter>
-                <action android:name="com.example.nhattruong.financialmanager.action.CLEAR_EVENT_REMINDER" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="com.example.nhattruong.financialmanager.action.INIT_EVENT_REMINDER" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".mvp.todo.TodoActivity"></activity>
+        <activity android:name=".mvp.todo.TodoActivity"/>
     </application>
 
 </manifest>

@@ -4,9 +4,7 @@ import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.request.CreateTodoRequest;
-import com.example.nhattruong.financialmanager.interactor.api.response.BaseResponse;
 import com.example.nhattruong.financialmanager.interactor.api.response.CreateTodoResponse;
-import com.example.nhattruong.financialmanager.interactor.api.response.TodoResponse;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
 import java.util.Date;

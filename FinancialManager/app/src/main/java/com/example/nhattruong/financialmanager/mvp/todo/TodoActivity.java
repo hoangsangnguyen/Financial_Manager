@@ -1,7 +1,6 @@
 package com.example.nhattruong.financialmanager.mvp.todo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
 import com.example.nhattruong.financialmanager.base.BaseActivity;
-import com.example.nhattruong.financialmanager.base.BasePresenter;
 import com.example.nhattruong.financialmanager.dialog.DialogOk;
 import com.example.nhattruong.financialmanager.dialog.dialogDayMonthYearPicker.DayMonthYearPickerDialog;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;

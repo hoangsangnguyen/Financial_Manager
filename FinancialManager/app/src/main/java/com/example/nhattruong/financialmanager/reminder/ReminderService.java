@@ -20,7 +20,6 @@ import com.example.nhattruong.financialmanager.interactor.api.ApiManager;
 import com.example.nhattruong.financialmanager.interactor.api.network.ApiCallback;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.TodoResponse;
-import com.example.nhattruong.financialmanager.interactor.prefer.PreferManager;
 import com.example.nhattruong.financialmanager.interactor.sqlite.SQLiteManager;
 import com.example.nhattruong.financialmanager.model.Todo;
 import com.example.nhattruong.financialmanager.mvp.home.HomeActivity;
@@ -33,8 +32,6 @@ import javax.inject.Inject;
 public class ReminderService extends JobIntentService {
 
     private static final int JOB_ID = 1000;
-
-    public static final String ACTION_CLEAR_EVENT_REMINDER = "com.example.nhattruong.financialmanager.action.CLEAR_EVENT_REMINDER";
     public static final String ACTION_INIT_EVENT_REMINDER = "com.example.nhattruong.financialmanager.action.INIT_EVENT_REMINDER";
 
     @Inject
@@ -69,33 +66,7 @@ public class ReminderService extends JobIntentService {
         });
     }
 
-    public void sendNotification(Todo todo) {
-        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        NotificationManager mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("channel", "channel", NotificationManager.IMPORTANCE_DEFAULT);
-            mNM.createNotificationChannel(channel);
-        }
-
-        Intent myIntent = new Intent(this , HomeActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, myIntent, 0);
-
-        Notification notification = new NotificationCompat.Builder(this, "channel")
-                    .setSmallIcon(android.R.drawable.ic_popup_reminder)
-                    .setContentTitle(getString(R.string.app_name))
-                    .setContentText(todo.getName() + " on " + DateUtils.formatFullDatePeriods(todo.getDate()))
-                    .setContentIntent(contentIntent)
-                    .setAutoCancel(true)
-                    .setSound(sound)
-                    .build();
-            mNM.notify(10, notification);
-    }
-
     private void sendNotification(List<Todo> listTodo) {
-
-//        cancelAlarms(getApplicationContext());
-
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationManager mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
@@ -121,15 +92,4 @@ public class ReminderService extends JobIntentService {
             mNM.notify(i, notification);
         }
     }
-
-   /* private void cancelAlarms(Context context) {
-        PendingIntent alarmIntentFirst = createPendingIntent(context, alarms.get(i).getAlarmFirst());
-        alarmMgr.cancel(alarmIntentFirst);
-    }
-
-    private static PendingIntent createPendingIntent(Context context, int alarmId) {
-        Intent intent = new Intent(context, ReminderReceiver.class);
-        intent.setAction(ReminderService.ACTION_FIRE_EVENT_REMINDER);
-        return PendingIntent.getBroadcast(context, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }*/
 }
