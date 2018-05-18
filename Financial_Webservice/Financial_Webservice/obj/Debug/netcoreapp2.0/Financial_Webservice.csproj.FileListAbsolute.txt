@@ -20,3 +20,14 @@ D:\Workspace\Webservice\Financial_Manager\Financial_Webservice\Financial_Webserv
 D:\Workspace\Webservice\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.AssemblyInfo.cs
 D:\Workspace\Webservice\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.dll
 D:\Workspace\Webservice\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.pdb
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.deps.json
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.runtimeconfig.json
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.runtimeconfig.dev.json
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.dll
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\bin\Debug\netcoreapp2.0\Financial_Webservice.pdb
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.csprojResolveAssemblyReference.cache
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.csproj.CoreCompileInputs.cache
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.AssemblyInfoInputs.cache
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.AssemblyInfo.cs
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.dll
+D:\Workspace\Financial_Manager\Financial_Webservice\Financial_Webservice\obj\Debug\netcoreapp2.0\Financial_Webservice.pdb

@@ -13229,11 +13229,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\Workspace\\Webservice\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\Financial_Webservice.csproj",
+      "projectUniqueName": "D:\\Workspace\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\Financial_Webservice.csproj",
       "projectName": "Financial_Webservice",
-      "projectPath": "D:\\Workspace\\Webservice\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\Financial_Webservice.csproj",
+      "projectPath": "D:\\Workspace\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\Financial_Webservice.csproj",
       "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "D:\\Workspace\\Webservice\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\obj\\",
+      "outputPath": "D:\\Workspace\\Financial_Manager\\Financial_Webservice\\Financial_Webservice\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
