@@ -21,7 +21,6 @@ public class SettingPresenter extends BasePresenter implements SettingContract.P
             public void success(UserResponse res) {
                 if (!isViewAttached()) return;
                 getSQLiteManager().saveUser(new Gson().toJson(res.result));
-//                getPreferManager().setUser(new Gson().toJson(res.result));
                 getView().getUserInfoSuccess();
             }
 

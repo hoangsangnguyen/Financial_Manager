@@ -158,6 +158,15 @@ public interface ApiServices {
             @Path("jarId") String jarId
     );
 
+    @GET("users/{userId}/jars/{jarId}/debts")
+    Call<DebtResponse> filterDebt(
+            @Header("token") String token,
+            @Path("userId") String userId,
+            @Path("jarId") String jarId,
+            @Query("from") String dateFrom,
+            @Query("to") String dateTo
+    );
+
     @POST("users/{userId}/jars/{jarId}/debts")
     Call<BaseResponse> createDebt(
             @Header("token") String token,

@@ -54,9 +54,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.ll_header)
     LinearLayout llHeader;
 
-   /* @BindView(R.id.ll_in_out_come)
-    LinearLayout llInOutCome;*/
-
     @BindView(R.id.ll_calculator)
     LinearLayout llCalculator;
 
@@ -74,12 +71,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
     @BindView(R.id.tv_currency)
     TextView tvCurrency;
-
-   /* @BindView(R.id.tv_income)
-    TextView tvIncome;
-
-    @BindView(R.id.tv_outcome)
-    TextView tvOutcome;*/
 
     @BindView(R.id.tv_next)
     TextView tvNext;
@@ -158,7 +149,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
         numberList.add(7);
         numberList.add(8);
         numberList.add(9);
-        numberList.add(android.R.drawable.divider_horizontal_dark);
+        numberList.add(-1);
         numberList.add(0);
         numberList.add(R.drawable.ic_keyboard_delete);
 
@@ -173,7 +164,6 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                     if (!TextUtils.isEmpty(currency)) {
                         if (currency.length() == 1) {
                             tvCurrency.setText("");
-//                            isFirstInput = true;
                         } else {
                             currency = currency.substring(0, currency.length() - 1);
                             tvCurrency.setText(currency);
@@ -185,41 +175,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                     tvCurrency.setText(currency.concat("."));
                 } else {
                     tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
-                   /* if (isFirstInput) {
-                        tvCurrency.setText(mType != AppConstants.CREATE_SPENDING
-                                ? "+" + currency.concat(String.valueOf(position + 1))
-                                : currency.concat(String.valueOf(0 - position - 1))
-                        );
-                        isFirstInput = false;
-                    } else {
-                        tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
-                    }*/
                 }
-
-                /*String currency = tvCurrency.getText().toString();
-                if (position >= numberList.size() - 1 && position != 9) {
-                    if (!TextUtils.isEmpty(currency)) {
-                        if (currency.length() == 1) {
-                            tvCurrency.setText("");
-                            isFirstInput = true;
-                        } else {
-                            currency = currency.substring(0, currency.length() - 1);
-                            tvCurrency.setText(currency);
-                        }
-                    }
-                } else if (position == 10 && !TextUtils.isEmpty(tvCurrency.getText())) {
-                    tvCurrency.setText(currency.concat(String.valueOf(0)));
-                } else {
-                    if (isFirstInput) {
-                        tvCurrency.setText(tvIncome.isSelected()
-                                ? "+" + currency.concat(String.valueOf(position + 1))
-                                : currency.concat(String.valueOf(0 - position - 1))
-                        );
-                        isFirstInput = false;
-                    } else {
-                        tvCurrency.setText(currency.concat(String.valueOf(position + 1)));
-                    }
-                }*/
             }
         }));
 
@@ -282,34 +238,12 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
 
         } else if (view == ivLeftBack) {
             onBackPressed();
-        }/* else if (view == tvIncome) {
-            if (!TextUtils.isEmpty(tvCurrency.getText())) {
-                String textCurrency = tvCurrency.getText().toString().substring(1);
-                int currency = Math.abs(Integer.valueOf(textCurrency));
-                tvCurrency.setText(getString(R.string.positive_number, currency));
-            }
-
-            llMain.setSelected(true);
-            tvIncome.setSelected(true);
-            tvOutcome.setSelected(false);
-        } else if (view == tvOutcome) {
-            if (!TextUtils.isEmpty(tvCurrency.getText())) {
-                String textCurrency = tvCurrency.getText().toString().substring(1);
-                int currency = Integer.valueOf(textCurrency);
-                if (currency >= 0) {
-                    tvCurrency.setText(String.valueOf(0 - currency));
-                }
-            }
-            llMain.setSelected(false);
-            tvIncome.setSelected(false);
-            tvOutcome.setSelected(true);
-        }*/ else if (view == tvDetail) {
+        } else if (view == tvDetail) {
             if (mType == AppConstants.CREATE_DEBT) {
                 llStateDebt.setVisibility(View.VISIBLE);
             } else {
                 llDetail.setVisibility(View.VISIBLE);
             }
-//            llDetail.setVisibility(View.VISIBLE);
             rcvCategory.setVisibility(View.INVISIBLE);
             tvDetail.setOnClickListener(null);
             animation(llCategory);
@@ -367,8 +301,7 @@ public class CreateActivity extends BaseActivity implements View.OnClickListener
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        /*float marginDp = 50f;
-        float fpixelsMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, marginDp, metrics);*/
+
         lpCurrency.topMargin = 50;
         tvCurrency.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
         tvCurrency.setLayoutParams(lpCurrency);

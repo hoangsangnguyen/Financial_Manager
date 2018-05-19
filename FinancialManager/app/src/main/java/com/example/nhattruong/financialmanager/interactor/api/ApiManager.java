@@ -379,6 +379,21 @@ public class ApiManager {
                 });
     }
 
+    public void filterDebt(String userId, String jarId, String dateFrom, String dateTo, final ApiCallback<DebtResponse> callback){
+        mApiServices.filterDebt(getToken(), userId, jarId, dateFrom, dateTo)
+                .enqueue(new RestCallback<DebtResponse>() {
+                    @Override
+                    public void success(DebtResponse res) {
+                        callback.success(res);
+                    }
+
+                    @Override
+                    public void failure(RestError error) {
+                        callback.failure(error);
+                    }
+                });
+    }
+
     public void uploadImage(String userId, MultipartBody.Part file, final ApiCallback<ImageResponse> callback){
         mApiServices.uploadImage(getToken(), userId, file)
                 .enqueue(new RestCallback<ImageResponse>() {

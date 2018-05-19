@@ -13,7 +13,6 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.debt.dto
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.dto.JarDetailDTO;
 import com.example.nhattruong.financialmanager.utils.DateUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -56,7 +55,30 @@ public class DebtPresenter extends BasePresenter implements DebtContract.Present
     }
 
     private void filterDebts() {
+        if (!isViewAttached()) return;
+        getView().showLoading();
 
+        String dateFromString = DateUtils.formatDateFilter(dateFrom);
+        String dateToString = DateUtils.formatDateFilter(dateTo);
+
+        getApiManager().filterDebt(getSQLiteManager().getUser().getId(), mJarId,dateFromString, dateToString, new ApiCallback<DebtResponse>() {
+            @Override
+            public void success(DebtResponse res) {
+                getListDebt().clear();
+                parseToJarDetailDTO(res.getDebts());
+                Collections.sort(mList);
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().onSuccess();
+            }
+
+            @Override
+            public void failure(RestError error) {
+                if (!isViewAttached()) return;
+                getView().hideLoading();
+                getView().onFailure(error);
+            }
+        });
     }
 
     private void getAllDebt() {

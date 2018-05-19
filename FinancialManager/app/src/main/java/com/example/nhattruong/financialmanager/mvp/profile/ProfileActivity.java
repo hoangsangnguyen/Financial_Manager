@@ -1,15 +1,11 @@
 package com.example.nhattruong.financialmanager.mvp.profile;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -104,7 +100,7 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
 
     @Override
     public void getUserFailed(RestError error) {
-        showRestErrorDialog(error, null);
+        showErrorDialog(error.message);
     }
 
     @Override
@@ -122,6 +118,11 @@ public class ProfileActivity extends BaseActivity implements ProfileContract.Vie
         if (view == ivBack) {
             onBackPressed();
         } else if (view == tvSave) {
+            getPresenter().getUser().setFirstName(edtFirstName.getText().toString());
+            getPresenter().getUser().setLastName(edtLastName.getText().toString());
+            getPresenter().getUser().setUserName(edtUsername.getText().toString());
+            getPresenter().getUser().setEmail(edtEmail.getText().toString());
+            getPresenter().getUser().setPhone(edtPhone.getText().toString());
             getPresenter().updateUser();
         } else if (view == tvSelectPhoto) {
             handleOpenLibrary();

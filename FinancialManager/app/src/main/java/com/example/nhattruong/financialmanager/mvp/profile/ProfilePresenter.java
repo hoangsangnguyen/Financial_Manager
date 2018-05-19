@@ -45,6 +45,9 @@ public class ProfilePresenter extends BasePresenter implements ProfileContract.P
                 if (!isViewAttached()) return;
                 getView().getUserFailed(error);
             }
+
+
+
         });
     }
 

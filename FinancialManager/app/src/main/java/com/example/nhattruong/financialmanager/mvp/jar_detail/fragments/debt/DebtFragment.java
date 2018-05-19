@@ -8,12 +8,15 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.nhattruong.financialmanager.R;
+import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.dialog.detail.EditDebtDialog;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.model.Debt;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.BaseJarDetailFragment;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.fragments.adapter.JarDetailExpandableAdapter;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
+
+import java.util.Date;
 
 import butterknife.BindView;
 
@@ -81,9 +84,18 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
             }
 
             @Override
-            public void onDeleteClicked(int positionGroup, int positionChild) {
+            public void onDeleteClicked(final int positionGroup, final int positionChild) {
                 //delete debt
-                getPresenter().deleteDebt(positionGroup, positionChild);
+                showConfirmDialog("Are you sure to delete this?", new DialogPositiveNegative.IPositiveNegativeDialogListener() {
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerPositive(DialogPositiveNegative dialog) {
+                        getPresenter().deleteDebt(positionGroup, positionChild);
+                    }
+
+                    @Override
+                    public void onIPositiveNegativeDialogAnswerNegative(DialogPositiveNegative dialog) {
+                    }
+                });
             }
         });
 
@@ -114,6 +126,12 @@ public class DebtFragment extends BaseJarDetailFragment implements DebtContract.
 
     @Override
     public void getAllDebt(String jarId) {
+        getPresenter().getDebts();
+    }
+
+    @Override
+    public void filterDebt(Date dateFrom, Date dateTo) {
+        getPresenter().setDateFromTo(dateFrom, dateTo);
         getPresenter().getDebts();
     }
 }

@@ -147,7 +147,7 @@ public class JarDetailActivity extends BaseActivity {
                 ((IncomeFragment) mFragments.get(TYPE_INCOME)).filterIncome(dateFrom, dateTo);
                 break;
             case TYPE_DEBT:
-                ((DebtFragment) mFragments.get(TYPE_DEBT)).getAllDebt(jarId);
+                ((DebtFragment) mFragments.get(TYPE_DEBT)).filterDebt(dateFrom, dateTo);
                 break;
         }
     }

@@ -43,7 +43,7 @@ public class AppConstants {
     public static final int DAY_FRIDAY = 5;
     public static final int DAY_SATURDAY = 6;
 
-    public static final String BASE_URL = "http://sixfinancialbox.azurewebsites.net/api/";
+    public static final String BASE_URL = "http://financialwebservice.azurewebsites.net/api/";
 
     public static final String JAR_ID = "JAR_ID";
 
