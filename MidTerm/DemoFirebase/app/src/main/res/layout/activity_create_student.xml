@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nhattruong.demofirebase.create_student.CreateStudentActivity">
+
+    <include layout="@layout/top_bar" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_8dp"
+            android:hint="@string/name" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edt_student_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_8dp"
+            android:hint="@string/student_code" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_blue_rectangle"
+        android:paddingBottom="@dimen/small_8dp"
+        android:paddingEnd="@dimen/large"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/large"
+        android:paddingTop="@dimen/small_8dp"
+        android:text="Create"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_show_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_blue_rectangle"
+        android:paddingBottom="@dimen/small_8dp"
+        android:paddingEnd="@dimen/large"
+        android:layout_gravity="center"
+        android:paddingStart="@dimen/large"
+        android:paddingTop="@dimen/small_8dp"
+        android:layout_marginTop="@dimen/large"
+        android:text="@string/show_list_student"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+</LinearLayout>

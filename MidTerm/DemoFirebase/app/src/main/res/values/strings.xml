@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">DemoFirebase</string>
+    <string name="display_name">Display Name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="create_account">Create account</string>
+    <string name="student_list">Student List</string>
+    <string name="student_code">Student code</string>
+    <string name="class_code">Class code</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="line">-</string>
+    <string name="change_info">Change info</string>
+    <string name="save_changes">Save changes</string>
+    <string name="name">Name</string>
+    <string name="show_list_student">Show List Student</string>
+    <string name="list_student">List Student</string>
+    <string name="create_student">Create student</string>
+</resources>
