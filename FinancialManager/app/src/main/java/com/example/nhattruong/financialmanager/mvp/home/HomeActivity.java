@@ -32,6 +32,7 @@ import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
 import com.example.nhattruong.financialmanager.mvp.todo.TodoActivity;
+import com.example.nhattruong.financialmanager.mvp.todo.TodoListActivity;
 import com.example.nhattruong.financialmanager.reminder.ReminderService;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
@@ -175,7 +176,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                         break;
                     case R.id.todo:
                         isCreateTodo = true;
-                        Intent intentCreateTodo = new Intent(HomeActivity.this, TodoActivity.class);
+                        Intent intentCreateTodo = new Intent(HomeActivity.this, TodoListActivity.class);
                         startActivityForResult(intentCreateTodo, AppConstants.REQUEST_CODE_CREATE_TODO);
                         break;
                 }

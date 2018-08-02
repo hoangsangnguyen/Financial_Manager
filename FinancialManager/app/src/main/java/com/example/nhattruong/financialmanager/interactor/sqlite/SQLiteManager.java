@@ -3,9 +3,19 @@ package com.example.nhattruong.financialmanager.interactor.sqlite;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.example.nhattruong.financialmanager.model.Todo;
+import com.example.nhattruong.financialmanager.model.Type;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.sqlite.SQLiteDatabaseHandler;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLiteManager {
 
@@ -35,6 +45,21 @@ public class SQLiteManager {
             return new Gson().fromJson(mDatabase.loadData(SQLiteDatabaseHandler.KEY_USER), User.class);
         } catch (Exception e) {
             return new User();
+        }
+    }
+
+    public void saveTodoList(List<Todo> items){
+        mDatabase.saveData(SQLiteDatabaseHandler.KEY_TODO, new Gson().toJson(items));
+    }
+
+    public List<Todo> getTodoList(){
+        if (TextUtils.isEmpty(mDatabase.loadData(SQLiteDatabaseHandler.KEY_TODO))) return new ArrayList<>();
+        try {
+            String json = mDatabase.loadData(SQLiteDatabaseHandler.KEY_TODO);
+            java.lang.reflect.Type type = new TypeToken<ArrayList<Todo>>(){}.getType();
+            return new Gson().fromJson(json, type);
+        }catch (Exception e) {
+           return new ArrayList<>();
         }
     }
 

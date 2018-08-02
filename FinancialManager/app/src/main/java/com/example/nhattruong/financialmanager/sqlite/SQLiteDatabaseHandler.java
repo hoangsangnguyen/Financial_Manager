@@ -14,8 +14,9 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     public static final String KEY_TOKEN = "token";
     public static final String KEY_USER = "user";
+    public static final String KEY_TODO = "todo";
 
-    private static final String[] COLUMNS = new String[]{KEY_TOKEN, KEY_USER};
+    private static final String[] COLUMNS = new String[]{KEY_TOKEN, KEY_TODO, KEY_USER};
 
     public SQLiteDatabaseHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -24,6 +25,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME
                 + " (" + KEY_TOKEN + " TEXT, "
+                + KEY_TODO + " TEXT, "
                 + KEY_USER + " TEXT)";
         sqLiteDatabase.execSQL(CREATE_TABLE);
         createConfig(sqLiteDatabase);
@@ -64,6 +66,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     private void createConfig(SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_TOKEN, "");
+        contentValues.put(KEY_TODO, "");
         contentValues.put(KEY_USER, "");
         db.insert(TABLE_NAME, null, contentValues);
     }

@@ -20,6 +20,9 @@ android {
     }
     compileOptions {
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 repositories {

@@ -53,7 +53,16 @@ public class ReminderService extends JobIntentService {
     }
 
     private void processMessage() {
-        mApiManager.getTodoNext(mSQLiteManager.getUser().getId(), new ApiCallback<TodoResponse>() {
+
+        List<Todo> todoList =  mSQLiteManager.getTodoList();
+
+        if (!todoList.isEmpty()) {
+            sendNotification(todoList);
+        }
+
+        mSQLiteManager.saveTodoList(todoList);
+
+       /* mApiManager.getTodoNext(mSQLiteManager.getUser().getId(), new ApiCallback<TodoResponse>() {
             @Override
             public void success(TodoResponse res) {
                 sendNotification(res.getList());
@@ -63,7 +72,7 @@ public class ReminderService extends JobIntentService {
             public void failure(RestError error) {
                 Toast.makeText(ReminderService.this, "Get Todo Failed!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     private void sendNotification(List<Todo> listTodo) {
@@ -80,16 +89,19 @@ public class ReminderService extends JobIntentService {
 
         Notification notification;
 
-        for (int i = 0; i<listTodo.size(); i++){
-            notification = new NotificationCompat.Builder(this, "channel")
-                    .setSmallIcon(android.R.drawable.ic_popup_reminder)
-                    .setContentTitle(getString(R.string.app_name))
-                    .setContentText(listTodo.get(i).getName() + " on " + DateUtils.formatFullDatePeriods(listTodo.get(i).getDate()))
-                    .setContentIntent(contentIntent)
-                    .setAutoCancel(true)
-                    .setSound(sound)
-                    .build();
-            mNM.notify(i, notification);
+        for (int i = listTodo.size()-1; i>0; i--){
+            if (DateUtils.compareDate(listTodo.get(i).getDate(),DateUtils.getCurrentDate()) == 0){
+                notification = new NotificationCompat.Builder(this, "channel")
+                        .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(listTodo.get(i).getName() + " on " + DateUtils.formatFullDatePeriods(listTodo.get(i).getDate()))
+                        .setContentIntent(contentIntent)
+                        .setAutoCancel(true)
+                        .setSound(sound)
+                        .build();
+                mNM.notify(i, notification);
+                listTodo.remove(i);
+            }
         }
     }
 }

@@ -6,8 +6,7 @@ import com.example.nhattruong.financialmanager.model.Todo;
 
 public interface TodoContract {
     interface View extends IBaseView{
-        void onSuccess(Todo todo);
-
+        void onSuccess();
         void onFailure(RestError restError);
     }
 

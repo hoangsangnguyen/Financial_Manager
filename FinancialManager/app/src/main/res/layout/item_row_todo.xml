@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"/>
+
+        <TextView
+            android:id="@+id/tvTitleContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/gl"
+            android:layout_marginStart="@dimen/large"
+            android:layout_marginTop="@dimen/small_8dp"
+            android:text="@string/content_2_dot"
+            android:textColor="@color/blue_color"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black_color"
+            android:singleLine="true"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvTitleContent"
+            app:layout_constraintLeft_toLeftOf="@+id/gl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="@dimen/super_large"
+            android:text="ddddddddd fdfdfdf fdfddd dfdfdfdf"/>
+
+        <TextView
+            android:id="@+id/tvTitleDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleContent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/gl"
+            android:layout_marginStart="@dimen/large"
+            android:layout_marginTop="@dimen/small_8dp"
+            android:text="@string/date_2_dot"
+            android:textColor="@color/blue_color"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/black_color"
+            android:singleLine="true"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvTitleDate"
+            app:layout_constraintLeft_toLeftOf="@+id/gl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="@dimen/super_large"
+            android:text="18/08/2018"/>
+
+        <ImageView
+            android:contentDescription="@null"
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bg_btn_delete"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvContent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDate"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleDate"
+            android:layout_marginTop="@dimen/small_8dp"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

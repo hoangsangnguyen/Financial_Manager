@@ -36,7 +36,7 @@
         <activity android:name=".mvp.jar_detail.JarDetailActivity" />
         <activity
             android:name=".mvp.chart.ChartActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
 
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -54,7 +54,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".mvp.todo.TodoActivity"/>
+        <activity android:name=".mvp.todo.TodoActivity" />
+        <activity android:name=".mvp.todo.TodoListActivity"/>
     </application>
 
 </manifest>

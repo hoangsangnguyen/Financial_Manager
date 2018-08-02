@@ -88,13 +88,19 @@ public class TodoActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onSuccess(final Todo todo) {
+    public void onBackPressed() {
+        Intent intent = new Intent(TodoActivity.this, TodoListActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onSuccess() {
         showOkDialog(getString(R.string.app_name), "Create todo success!", new DialogOk.IOkDialogListener() {
             @Override
             public void onIOkDialogAnswerOk(DialogOk dialog) {
-                Intent intent = new Intent(TodoActivity.this, HomeActivity.class);
-                intent.putExtra(AppConstants.TODO, todo);
-                setResult(RESULT_OK, intent);
+                Intent intent = new Intent(TodoActivity.this, TodoListActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -104,4 +110,5 @@ public class TodoActivity extends BaseActivity implements View.OnClickListener, 
     public void onFailure(RestError restError) {
         showErrorDialog(restError.message);
     }
+
 }
