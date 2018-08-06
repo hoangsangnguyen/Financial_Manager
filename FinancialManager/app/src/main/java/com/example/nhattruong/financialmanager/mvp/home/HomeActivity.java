@@ -1,7 +1,5 @@
 package com.example.nhattruong.financialmanager.mvp.home;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,7 +21,6 @@ import com.example.nhattruong.financialmanager.base.BaseActivity;
 import com.example.nhattruong.financialmanager.dialog.DialogPositiveNegative;
 import com.example.nhattruong.financialmanager.interactor.api.network.RestError;
 import com.example.nhattruong.financialmanager.interactor.api.response.StatisticResponse;
-import com.example.nhattruong.financialmanager.model.Todo;
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.chart.ChartActivity;
 import com.example.nhattruong.financialmanager.mvp.create.CreateActivity;
@@ -31,15 +28,12 @@ import com.example.nhattruong.financialmanager.mvp.home.adapter.JarAdapter;
 import com.example.nhattruong.financialmanager.mvp.jar_detail.JarDetailActivity;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 import com.example.nhattruong.financialmanager.mvp.profile.ProfileActivity;
-import com.example.nhattruong.financialmanager.mvp.todo.TodoActivity;
 import com.example.nhattruong.financialmanager.mvp.todo.TodoListActivity;
 import com.example.nhattruong.financialmanager.reminder.ReminderService;
 import com.example.nhattruong.financialmanager.utils.AppConstants;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.firebase.messaging.FirebaseMessaging;
-
-import java.util.Calendar;
 
 import butterknife.BindView;
 
@@ -85,9 +79,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
 
     @BindView(R.id.fab_debt)
     FloatingActionButton fabDebt;
-
-    @BindView(R.id.fab_general)
-    FloatingActionButton fabGeneral;
 
     private JarAdapter mJarAdapter;
     private boolean isCreateTodo = false;
@@ -145,7 +136,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
         fabIncome.setOnClickListener(this);
         fabSpending.setOnClickListener(this);
         fabDebt.setOnClickListener(this);
-        fabGeneral.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -269,9 +259,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View, Vie
                 intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_SPENDING);
             } else if (view == fabDebt){
                 intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_DEBT);
-            } else if (view == fabGeneral)
-            {
-                intentCreate.putExtra(CreateActivity.CREATE_TYPE, AppConstants.CREATE_GENERAL);
             }
             startActivityForResult(intentCreate, AppConstants.REQUEST_CODE_CREATE);
             fabAdd.close(true);

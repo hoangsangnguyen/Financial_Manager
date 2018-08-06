@@ -149,7 +149,7 @@ public class JarDetailExpandableAdapter extends BaseExpandableListAdapter {
         public void bind(IJarDetail dto, final int i, final int i1) {
             tvDetail.setText(dto.getDetail());
             tvAmount.setText(mContext.getString(R.string.currency_VND, String.valueOf((int)dto.getAmount())));
-            ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
+//            ivDelete.setVisibility(dto instanceof SpendingDTO ? View.VISIBLE : View.INVISIBLE);
             itemView.setBackgroundResource((i1 < mItems.get(i).getList().size() - 1) ? R.drawable.bg_white_grey_bottom : R.color.white_color);
             ivDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

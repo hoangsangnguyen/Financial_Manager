@@ -113,14 +113,6 @@
                 fab:fab_label="@string/debts"
                 fab:fab_size="mini" />
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab_general"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_jar_white"
-                fab:fab_colorNormal="#F50057"
-                fab:fab_label="@string/general"
-                fab:fab_size="mini" />
         </com.github.clans.fab.FloatingActionMenu>
     </android.support.design.widget.CoordinatorLayout>
 

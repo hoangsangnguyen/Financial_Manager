@@ -12,6 +12,9 @@ import com.example.nhattruong.financialmanager.interactor.api.request.SignUpRequ
 import com.example.nhattruong.financialmanager.model.User;
 import com.example.nhattruong.financialmanager.mvp.login.LoginActivity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -87,6 +90,8 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
     public void signUp() {
         if (missingInfo()) {
             showOkDialog("", "Please, fill full information!", null);
+        }else if (!isEmailValid(edtEmail.getEditText().getText().toString().trim())){
+            showOkDialog("", "Email inValid. Fill again, please!", null);
         } else {
             getPresenter().signUp(getInfoSignUp());
         }
@@ -135,15 +140,22 @@ public class SignUpActivity extends BaseActivity implements SignUpContract.View 
 
     private boolean missingInfo() {
         return isTextEmpty(edtFirstName)
-                && isTextEmpty(edtLastName)
-                && isTextEmpty(edtEmail)
-                && isTextEmpty(edtPhone)
-                && isTextEmpty(edtUsername)
-                && isTextEmpty(edtPassword);
+                || isTextEmpty(edtLastName)
+                || isTextEmpty(edtEmail)
+                || isTextEmpty(edtPhone)
+                || isTextEmpty(edtUsername)
+                || isTextEmpty(edtPassword);
     }
 
     private boolean isTextEmpty(TextInputLayout textInputLayout) {
         return textInputLayout.getEditText() != null && textInputLayout.getEditText().getText().toString().trim().isEmpty();
+    }
+
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
     @Override
